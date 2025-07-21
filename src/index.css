@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply [&::-webkit-scrollbar]:w-1.5
+    [&::-webkit-scrollbar-track]:bg-default-50
+    [&::-webkit-scrollbar-thumb]:bg-default-300
+    dark:[&::-webkit-scrollbar-track]:bg-content1-100
+    dark:[&::-webkit-scrollbar-thumb]:bg-content1-300;
+  }
+
+  thead {
+    @apply [&>tr]:first:rounded-none [&>tr]:first:m-0 sticky top-0 z-20 [&>tr]:first:shadow-none h-12 !important;
+  }
+
+  @media (max-width: 768px) {
+    * {
+      scrollbar-width: none;
+    }
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+.scroll-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+*:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+body {
+  @apply text-foreground bg-background;
+}
+
+.data-grid-container ::-webkit-scrollbar-thumb {
+  border: none !important;
+  border-radius: 0 !important;
+  min-height: 50px !important;
+  margin: 0 !important;
+}
+
+.data-grid-container ::-webkit-scrollbar-track-piece {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+td:first-child label {
+  width: 100%;
+}

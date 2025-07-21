@@ -1,0 +1,205 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Composant Button > Snapshots > devrait correspondre au snapshot avec contenu additionnel 1`] = `
+<div>
+  <button
+    class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 text-small gap-2 rounded-small [&>svg]:max-w-[theme(spacing.8)] transition-transform-colors-opacity motion-reduce:transition-none bg-primary text-primary-foreground data-[hover=true]:opacity-hover"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class=""
+    >
+      <span>
+        Start
+      </span>
+    </span>
+    <span
+      class=""
+    >
+      Test
+    </span>
+    <span
+      class=""
+    >
+      <span>
+        End
+      </span>
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Composant Button > Snapshots > devrait correspondre au snapshot avec contenu de base 1`] = `
+<div>
+  <button
+    class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 text-small gap-2 rounded-small [&>svg]:max-w-[theme(spacing.8)] transition-transform-colors-opacity motion-reduce:transition-none bg-primary text-primary-foreground data-[hover=true]:opacity-hover"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class=""
+    >
+      Test
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Composant Button > Snapshots > devrait correspondre au snapshot avec props fullWidth 1`] = `
+<div>
+  <button
+    class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 text-small gap-2 rounded-small w-full [&>svg]:max-w-[theme(spacing.8)] transition-transform-colors-opacity motion-reduce:transition-none bg-primary text-primary-foreground data-[hover=true]:opacity-hover"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class=""
+    >
+      Test
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Composant Button > Snapshots > devrait correspondre au snapshot en tant que lien 1`] = `
+<div>
+  <a
+    class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 text-small gap-2 rounded-small [&>svg]:max-w-[theme(spacing.8)] transition-transform-colors-opacity motion-reduce:transition-none bg-primary text-primary-foreground data-[hover=true]:opacity-hover"
+    href="/test"
+    role="button"
+    tabindex="0"
+  >
+    <span
+      class=""
+    >
+      Test Link
+    </span>
+  </a>
+</div>
+`;
+
+exports[`Composant Button > Snapshots > devrait correspondre au snapshot en état de chargement 1`] = `
+<div>
+  <button
+    class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 text-small gap-2 rounded-small opacity-disabled pointer-events-none [&>svg]:max-w-[theme(spacing.8)] transition-transform-colors-opacity motion-reduce:transition-none bg-primary text-primary-foreground data-[hover=true]:opacity-hover"
+    data-disabled="true"
+    data-loading="true"
+    disabled=""
+    type="button"
+  >
+    <div
+      aria-label="Loading"
+      class="relative inline-flex flex-col gap-2 items-center justify-center"
+    >
+      <div
+        class="relative flex w-5 h-5"
+      >
+        <i
+          class="absolute w-full h-full rounded-full border-2 border-b-current animate-spinner-ease-spin border-solid border-t-transparent border-l-transparent border-r-transparent"
+        />
+        <i
+          class="absolute w-full h-full rounded-full border-2 border-b-current opacity-75 animate-spinner-linear-spin border-dotted border-t-transparent border-l-transparent border-r-transparent"
+        />
+      </div>
+    </div>
+    <span
+      class=""
+    >
+      Test
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Composant Buttons > Snapshots > devrait correspondre au snapshot avec contenu React complexe 1`] = `
+<div>
+  <div
+    class="inline-flex items-center justify-center h-auto"
+    role="group"
+  >
+    <button
+      class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 text-small gap-2 [&:not(:first-child):not(:last-child)]:rounded-none [&>svg]:max-w-[theme(spacing.8)] transition-transform-colors-opacity motion-reduce:transition-none bg-primary text-primary-foreground rounded-none first:rounded-s-small last:rounded-e-small data-[hover=true]:opacity-hover"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class=""
+      >
+        <span
+          data-testid="custom-content"
+        >
+          Label complexe
+        </span>
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Composant Buttons > Snapshots > devrait correspondre au snapshot avec groupe de boutons personnalisé 1`] = `
+<div>
+  <div
+    aria-label="Groupe de boutons"
+    class="inline-flex items-center justify-center h-auto w-full"
+    role="group"
+  >
+    <button
+      class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 text-small gap-2 [&:not(:first-child):not(:last-child)]:rounded-none [&>svg]:max-w-[theme(spacing.8)] transition-transform-colors-opacity motion-reduce:transition-none bg-primary text-primary-foreground rounded-none first:rounded-s-small last:rounded-e-small data-[hover=true]:opacity-hover"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class=""
+      >
+        Bouton 1
+      </span>
+    </button>
+    <button
+      class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 text-small gap-2 opacity-disabled pointer-events-none [&:not(:first-child):not(:last-child)]:rounded-none [&>svg]:max-w-[theme(spacing.8)] transition-transform-colors-opacity motion-reduce:transition-none bg-primary text-primary-foreground rounded-none first:rounded-s-small last:rounded-e-small data-[hover=true]:opacity-hover"
+      data-disabled="true"
+      disabled=""
+      type="button"
+    >
+      <span
+        class=""
+      >
+        Bouton 2
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Composant Buttons > Snapshots > devrait correspondre au snapshot avec plusieurs boutons 1`] = `
+<div>
+  <div
+    class="inline-flex items-center justify-center h-auto"
+    role="group"
+  >
+    <button
+      class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 text-small gap-2 [&:not(:first-child):not(:last-child)]:rounded-none [&>svg]:max-w-[theme(spacing.8)] transition-transform-colors-opacity motion-reduce:transition-none bg-primary text-primary-foreground rounded-none first:rounded-s-small last:rounded-e-small data-[hover=true]:opacity-hover"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class=""
+      >
+        Bouton 1
+      </span>
+    </button>
+    <button
+      class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent transform-gpu data-[pressed=true]:scale-[0.97] outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 text-small gap-2 opacity-disabled pointer-events-none [&:not(:first-child):not(:last-child)]:rounded-none [&>svg]:max-w-[theme(spacing.8)] transition-transform-colors-opacity motion-reduce:transition-none bg-primary text-primary-foreground rounded-none first:rounded-s-small last:rounded-e-small data-[hover=true]:opacity-hover"
+      data-disabled="true"
+      disabled=""
+      type="button"
+    >
+      <span
+        class=""
+      >
+        Bouton 2
+      </span>
+    </button>
+  </div>
+</div>
+`;

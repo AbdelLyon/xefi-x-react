@@ -1,0 +1,104 @@
+stages:
+  - lint
+  - test
+  - build
+  - publish
+
+variables:
+  CI_DEBUG_TRACE: "false"
+  PNPM_VERSION: "9.15.0"
+  MIN_COVERAGE: 40
+  NODE_VERSION: "18"
+
+.setup-pnpm:
+  before_script:
+    # Installer Node.js si nécessaire
+    - |
+      if ! command -v node &> /dev/null; then
+        echo "Installation de Node.js..."
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+        export NVM_DIR="$HOME/.nvm"
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+        nvm install $NODE_VERSION
+        nvm use $NODE_VERSION
+      fi
+    # Vérifier les installations
+    - node --version || echo "Node n'est pas installé"
+    - npm --version || echo "npm n'est pas installé"
+    # Installer pnpm avec npm ou curl
+    - |
+      if command -v npm &> /dev/null; then
+        npm install -g pnpm@$PNPM_VERSION
+      else
+        curl -fsSL https://get.pnpm.io/install.sh | sh -
+        export PNPM_HOME="$HOME/.local/share/pnpm"
+        export PATH="$PNPM_HOME:$PATH"
+      fi
+    # Vérifier pnpm
+    - pnpm --version
+    # Installer les dépendances
+    - pnpm install
+
+lint:
+  extends: .setup-pnpm
+  stage: lint
+  script:
+    - pnpm lint
+  only:
+    - main
+    - develop
+    - /^release\/[\S\d]{1,}$/
+    - tags
+  tags:
+    - dailyapps-dev-k8s-front
+
+test:
+  extends: .setup-pnpm
+  stage: test
+  script:
+    - pnpm test:cov
+    - |
+      if [ -f "coverage/coverage-summary.json" ]; then
+        COVERAGE=$(cat coverage/coverage-summary.json | grep -o '"total": {"lines":{"total":[0-9]*,"covered":[0-9]*,"skipped":[0-9]*,"pct":[0-9.]*' | grep -o 'pct":[0-9.]*' | grep -o '[0-9.]*')
+        echo "Couverture de test actuelle: $COVERAGE%"
+        echo "Couverture minimale requise: $MIN_COVERAGE%"
+        if (( $(echo "$COVERAGE < $MIN_COVERAGE" | bc -l) )); then
+          echo "La couverture de test est inférieure au minimum requis!"
+          exit 1
+        fi
+      else
+        echo "Attention: Fichier coverage/coverage-summary.json non trouvé!"
+        echo "Assurez-vous que votre configuration Vitest inclut le reporter 'json-summary'"
+      fi
+  artifacts:
+    paths:
+      - coverage/
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage/cobertura-coverage.xml
+    when: always
+  only:
+    - main
+    - develop
+    - /^release\/[\S\d]{1,}$/
+    - tags
+  tags:
+    - dailyapps-dev-k8s-front
+
+build:
+  extends: .setup-pnpm
+  stage: build
+  script:
+    - pnpm build
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 1 week
+  only:
+    - main
+    - develop
+    - /^release\/[\S\d]{1,}$/
+    - tags
+  tags:
+    - dailyapps-dev-k8s-front

@@ -1,0 +1,375 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Composants Avatar > Avatar > Snapshots > devrait correspondre au snapshot avec fallback 1`] = `
+<div>
+  <span
+    class="flex relative justify-center items-center box-border overflow-hidden align-middle z-0 outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 w-10 h-10 text-tiny bg-default text-default-foreground rounded-full"
+    tabindex="-1"
+  >
+    <img
+      alt="avatar"
+      class="flex object-cover w-full h-full transition-opacity !duration-500 opacity-0 data-[loaded=true]:opacity-100"
+      src="invalid.jpg"
+    />
+    <div
+      aria-label="avatar"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center"
+      role="img"
+    >
+      <div
+        data-testid="fallback"
+      >
+        FB
+      </div>
+    </div>
+  </span>
+</div>
+`;
+
+exports[`Composants Avatar > Avatar > Snapshots > devrait correspondre au snapshot avec name 1`] = `
+<div>
+  <span
+    class="flex relative justify-center items-center box-border overflow-hidden align-middle z-0 outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 w-10 h-10 text-tiny bg-default text-default-foreground rounded-full"
+    tabindex="-1"
+  >
+    <span
+      aria-label="John Doe"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-normal text-center text-inherit"
+      role="img"
+    >
+      Joh
+    </span>
+  </span>
+</div>
+`;
+
+exports[`Composants Avatar > Avatar > Snapshots > devrait correspondre au snapshot avec src et alt 1`] = `
+<div>
+  <span
+    class="flex relative justify-center items-center box-border overflow-hidden align-middle z-0 outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 w-10 h-10 text-tiny bg-default text-default-foreground rounded-full"
+    tabindex="-1"
+  >
+    <img
+      alt="Mon avatar"
+      class="flex object-cover w-full h-full transition-opacity !duration-500 opacity-0 data-[loaded=true]:opacity-100"
+      src="test.jpg"
+    />
+  </span>
+</div>
+`;
+
+exports[`Composants Avatar > Avatar > Snapshots > devrait correspondre au snapshot avec taille différente 1`] = `
+<div>
+  <span
+    class="flex relative justify-center items-center box-border overflow-hidden align-middle z-0 outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 w-14 h-14 text-small bg-default text-default-foreground rounded-full"
+    tabindex="-1"
+  >
+    <span
+      aria-label="avatar"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center text-inherit w-full h-full"
+      role="img"
+    >
+      <svg
+        aria-hidden="true"
+        fill="none"
+        height="80%"
+        role="presentation"
+        viewBox="0 0 24 24"
+        width="80%"
+      >
+        <path
+          d="M12 2C9.38 2 7.25 4.13 7.25 6.75C7.25 9.32 9.26 11.4 11.88 11.49C11.96 11.48 12.04 11.48 12.1 11.49C12.12 11.49 12.13 11.49 12.15 11.49C12.16 11.49 12.16 11.49 12.17 11.49C14.73 11.4 16.74 9.32 16.75 6.75C16.75 4.13 14.62 2 12 2Z"
+          fill="currentColor"
+        />
+        <path
+          d="M17.0809 14.1489C14.2909 12.2889 9.74094 12.2889 6.93094 14.1489C5.66094 14.9989 4.96094 16.1489 4.96094 17.3789C4.96094 18.6089 5.66094 19.7489 6.92094 20.5889C8.32094 21.5289 10.1609 21.9989 12.0009 21.9989C13.8409 21.9989 15.6809 21.5289 17.0809 20.5889C18.3409 19.7389 19.0409 18.5989 19.0409 17.3589C19.0309 16.1289 18.3409 14.9889 17.0809 14.1489Z"
+          fill="currentColor"
+        />
+      </svg>
+    </span>
+  </span>
+</div>
+`;
+
+exports[`Composants Avatar > Avatar > Snapshots > devrait correspondre au snapshot sans props 1`] = `
+<div>
+  <span
+    class="flex relative justify-center items-center box-border overflow-hidden align-middle z-0 outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 w-10 h-10 text-tiny bg-default text-default-foreground rounded-full"
+    tabindex="-1"
+  >
+    <span
+      aria-label="avatar"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center text-inherit w-full h-full"
+      role="img"
+    >
+      <svg
+        aria-hidden="true"
+        fill="none"
+        height="80%"
+        role="presentation"
+        viewBox="0 0 24 24"
+        width="80%"
+      >
+        <path
+          d="M12 2C9.38 2 7.25 4.13 7.25 6.75C7.25 9.32 9.26 11.4 11.88 11.49C11.96 11.48 12.04 11.48 12.1 11.49C12.12 11.49 12.13 11.49 12.15 11.49C12.16 11.49 12.16 11.49 12.17 11.49C14.73 11.4 16.74 9.32 16.75 6.75C16.75 4.13 14.62 2 12 2Z"
+          fill="currentColor"
+        />
+        <path
+          d="M17.0809 14.1489C14.2909 12.2889 9.74094 12.2889 6.93094 14.1489C5.66094 14.9989 4.96094 16.1489 4.96094 17.3789C4.96094 18.6089 5.66094 19.7489 6.92094 20.5889C8.32094 21.5289 10.1609 21.9989 12.0009 21.9989C13.8409 21.9989 15.6809 21.5289 17.0809 20.5889C18.3409 19.7389 19.0409 18.5989 19.0409 17.3589C19.0309 16.1289 18.3409 14.9889 17.0809 14.1489Z"
+          fill="currentColor"
+        />
+      </svg>
+    </span>
+  </span>
+</div>
+`;
+
+exports[`Composants Avatar > AvatarGroup > Snapshots > devrait correspondre au snapshot avec max et total 1`] = `
+<div>
+  <div
+    class="flex items-center justify-center h-auto w-max"
+    role="group"
+  >
+    <span
+      class="flex relative justify-center items-center box-border overflow-hidden align-middle z-0 outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 w-10 h-10 text-tiny bg-default text-default-foreground rounded-full data-[hover=true]:-translate-x-3 rtl:data-[hover=true]:translate-x-3 transition-transform data-[focus-visible=true]:-translate-x-3 rtl:data-[focus-visible=true]:translate-x-3 ms-0"
+      tabindex="-1"
+    >
+      <span
+        aria-label="User 1"
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-normal text-center text-inherit"
+        role="img"
+      >
+        Use
+      </span>
+    </span>
+    <span
+      class="flex relative justify-center items-center box-border overflow-hidden align-middle z-0 outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 w-10 h-10 text-tiny bg-default text-default-foreground rounded-full -ms-2 data-[hover=true]:-translate-x-3 rtl:data-[hover=true]:translate-x-3 transition-transform data-[focus-visible=true]:-translate-x-3 rtl:data-[focus-visible=true]:translate-x-3"
+      tabindex="-1"
+    >
+      <span
+        aria-label="+3"
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-normal text-center text-inherit"
+        role="img"
+      >
+        +3
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Composants Avatar > AvatarGroup > Snapshots > devrait correspondre au snapshot avec styles personnalisés 1`] = `
+<div>
+  <div
+    class="flex items-center justify-center size-6"
+    role="group"
+  >
+    <span
+      class="flex relative justify-center items-center box-border overflow-hidden align-middle z-0 outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 w-10 h-10 text-tiny bg-default text-default-foreground rounded-full data-[hover=true]:-translate-x-3 rtl:data-[hover=true]:translate-x-3 transition-transform data-[focus-visible=true]:-translate-x-3 rtl:data-[focus-visible=true]:translate-x-3 ms-0 hover:-translate-x-0"
+      tabindex="-1"
+    >
+      <span
+        aria-label="avatar"
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center text-inherit w-full h-full"
+        role="img"
+      >
+        <svg
+          aria-hidden="true"
+          fill="none"
+          height="80%"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="80%"
+        >
+          <path
+            d="M12 2C9.38 2 7.25 4.13 7.25 6.75C7.25 9.32 9.26 11.4 11.88 11.49C11.96 11.48 12.04 11.48 12.1 11.49C12.12 11.49 12.13 11.49 12.15 11.49C12.16 11.49 12.16 11.49 12.17 11.49C14.73 11.4 16.74 9.32 16.75 6.75C16.75 4.13 14.62 2 12 2Z"
+            fill="currentColor"
+          />
+          <path
+            d="M17.0809 14.1489C14.2909 12.2889 9.74094 12.2889 6.93094 14.1489C5.66094 14.9989 4.96094 16.1489 4.96094 17.3789C4.96094 18.6089 5.66094 19.7489 6.92094 20.5889C8.32094 21.5289 10.1609 21.9989 12.0009 21.9989C13.8409 21.9989 15.6809 21.5289 17.0809 20.5889C18.3409 19.7389 19.0409 18.5989 19.0409 17.3589C19.0309 16.1289 18.3409 14.9889 17.0809 14.1489Z"
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Composants Avatar > AvatarGroup > Snapshots > devrait correspondre au snapshot pour un groupe simple 1`] = `
+<div>
+  <div
+    class="flex items-center justify-center h-auto w-max"
+    role="group"
+  >
+    <span
+      class="flex relative justify-center items-center box-border overflow-hidden align-middle z-0 outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 w-10 h-10 text-tiny bg-default text-default-foreground rounded-full data-[hover=true]:-translate-x-3 rtl:data-[hover=true]:translate-x-3 transition-transform data-[focus-visible=true]:-translate-x-3 rtl:data-[focus-visible=true]:translate-x-3 ms-0"
+      tabindex="-1"
+    >
+      <span
+        aria-label="User 1"
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-normal text-center text-inherit"
+        role="img"
+      >
+        Use
+      </span>
+    </span>
+    <span
+      class="flex relative justify-center items-center box-border overflow-hidden align-middle z-0 outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 w-10 h-10 text-tiny bg-default text-default-foreground rounded-full data-[hover=true]:-translate-x-3 rtl:data-[hover=true]:translate-x-3 transition-transform data-[focus-visible=true]:-translate-x-3 rtl:data-[focus-visible=true]:translate-x-3 -ms-2 hover:-translate-x-0"
+      tabindex="-1"
+    >
+      <span
+        aria-label="User 2"
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-normal text-center text-inherit"
+        role="img"
+      >
+        Use
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Composants Avatar > UserAvatar > Snapshots > devrait correspondre au snapshot avec avatar personnalisé 1`] = `
+<div>
+  <div
+    class="inline-flex items-center justify-center gap-2 rounded-small outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2"
+    tabindex="-1"
+  >
+    <span
+      class="flex relative justify-center items-center box-border overflow-hidden align-middle z-0 outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 w-10 h-10 text-tiny bg-default text-default-foreground rounded-full"
+      tabindex="-1"
+    >
+      <img
+        alt="John"
+        class="flex object-cover w-full h-full transition-opacity !duration-500 opacity-0 data-[loaded=true]:opacity-100"
+        src="test.jpg"
+      />
+    </span>
+    <div
+      class="inline-flex flex-col items-start"
+    >
+      <span
+        class="text-small text-inherit"
+      >
+        John Doe
+      </span>
+      <span
+        class="text-tiny text-foreground-400"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Composants Avatar > UserAvatar > Snapshots > devrait correspondre au snapshot avec contenus personnalisés 1`] = `
+<div>
+  <div
+    class="inline-flex items-center justify-center gap-2 rounded-small outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2"
+    tabindex="-1"
+  >
+    <span
+      class="flex relative justify-center items-center box-border overflow-hidden align-middle z-0 outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 w-10 h-10 text-tiny bg-default text-default-foreground rounded-full"
+      tabindex="-1"
+    >
+      <span
+        aria-label="avatar"
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center text-inherit w-full h-full"
+        role="img"
+      >
+        <svg
+          aria-hidden="true"
+          fill="none"
+          height="80%"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="80%"
+        >
+          <path
+            d="M12 2C9.38 2 7.25 4.13 7.25 6.75C7.25 9.32 9.26 11.4 11.88 11.49C11.96 11.48 12.04 11.48 12.1 11.49C12.12 11.49 12.13 11.49 12.15 11.49C12.16 11.49 12.16 11.49 12.17 11.49C14.73 11.4 16.74 9.32 16.75 6.75C16.75 4.13 14.62 2 12 2Z"
+            fill="currentColor"
+          />
+          <path
+            d="M17.0809 14.1489C14.2909 12.2889 9.74094 12.2889 6.93094 14.1489C5.66094 14.9989 4.96094 16.1489 4.96094 17.3789C4.96094 18.6089 5.66094 19.7489 6.92094 20.5889C8.32094 21.5289 10.1609 21.9989 12.0009 21.9989C13.8409 21.9989 15.6809 21.5289 17.0809 20.5889C18.3409 19.7389 19.0409 18.5989 19.0409 17.3589C19.0309 16.1289 18.3409 14.9889 17.0809 14.1489Z"
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+    </span>
+    <div
+      class="inline-flex flex-col items-start"
+    >
+      <span
+        class="text-small text-inherit"
+      >
+        <span
+          data-testid="custom-name"
+        >
+          John
+        </span>
+      </span>
+      <span
+        class="text-tiny text-foreground-400"
+      >
+        <span
+          data-testid="custom-desc"
+        >
+          Info
+        </span>
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Composants Avatar > UserAvatar > Snapshots > devrait correspondre au snapshot avec informations de base 1`] = `
+<div>
+  <div
+    class="inline-flex items-center justify-center gap-2 rounded-small outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2"
+    tabindex="-1"
+  >
+    <span
+      class="flex relative justify-center items-center box-border overflow-hidden align-middle z-0 outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 w-10 h-10 text-tiny bg-default text-default-foreground rounded-full"
+      tabindex="-1"
+    >
+      <span
+        aria-label="avatar"
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center text-inherit w-full h-full"
+        role="img"
+      >
+        <svg
+          aria-hidden="true"
+          fill="none"
+          height="80%"
+          role="presentation"
+          viewBox="0 0 24 24"
+          width="80%"
+        >
+          <path
+            d="M12 2C9.38 2 7.25 4.13 7.25 6.75C7.25 9.32 9.26 11.4 11.88 11.49C11.96 11.48 12.04 11.48 12.1 11.49C12.12 11.49 12.13 11.49 12.15 11.49C12.16 11.49 12.16 11.49 12.17 11.49C14.73 11.4 16.74 9.32 16.75 6.75C16.75 4.13 14.62 2 12 2Z"
+            fill="currentColor"
+          />
+          <path
+            d="M17.0809 14.1489C14.2909 12.2889 9.74094 12.2889 6.93094 14.1489C5.66094 14.9989 4.96094 16.1489 4.96094 17.3789C4.96094 18.6089 5.66094 19.7489 6.92094 20.5889C8.32094 21.5289 10.1609 21.9989 12.0009 21.9989C13.8409 21.9989 15.6809 21.5289 17.0809 20.5889C18.3409 19.7389 19.0409 18.5989 19.0409 17.3589C19.0309 16.1289 18.3409 14.9889 17.0809 14.1489Z"
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+    </span>
+    <div
+      class="inline-flex flex-col items-start"
+    >
+      <span
+        class="text-small text-inherit"
+      >
+        John Doe
+      </span>
+      <span
+        class="text-tiny text-foreground-400"
+      >
+        Developer
+      </span>
+    </div>
+  </div>
+</div>
+`;

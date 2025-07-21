@@ -1,0 +1,49 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Composant Dropdown > Snapshots > devrait correspondre au snapshot avec des props minimales 1`] = `
+<div>
+  <button
+    aria-expanded="false"
+    aria-haspopup="true"
+    class="z-10 aria-expanded:scale-[0.97] aria-expanded:opacity-70 subpixel-antialiased"
+    data-slot="trigger"
+    id="react-aria-:r3:"
+    tabindex="0"
+    type="button"
+  >
+    Ouvrir Dropdown
+  </button>
+</div>
+`;
+
+exports[`Composant Dropdown > Snapshots > devrait correspondre au snapshot avec des sections ayant des séparateurs 1`] = `
+<div>
+  <button
+    aria-expanded="false"
+    aria-haspopup="true"
+    class="z-10 aria-expanded:scale-[0.97] aria-expanded:opacity-70 subpixel-antialiased"
+    data-slot="trigger"
+    id="react-aria-:r6:"
+    tabindex="0"
+    type="button"
+  >
+    Ouvrir Dropdown
+  </button>
+</div>
+`;
+
+exports[`Composant Dropdown > Snapshots > devrait correspondre au snapshot avec les props par défaut 1`] = `
+<div>
+  <button
+    aria-expanded="false"
+    aria-haspopup="true"
+    class="z-10 aria-expanded:scale-[0.97] aria-expanded:opacity-70 subpixel-antialiased"
+    data-slot="trigger"
+    id="react-aria-:r0:"
+    tabindex="0"
+    type="button"
+  >
+    Ouvrir Dropdown
+  </button>
+</div>
+`;

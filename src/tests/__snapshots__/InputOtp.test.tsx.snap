@@ -1,0 +1,340 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Composant InputOtp > Snapshots > devrait correspondre au snapshot avec des classes personnalisées 1`] = `
+<div>
+  <div
+    class="flex flex-col custom-container"
+  >
+    <div
+      aria-label="One-time password input"
+      class="relative flex flex-col w-fit"
+      data-slot="base"
+      role="base"
+    >
+      <noscript />
+      <div
+        class="group flex items-center has-[:disabled]:opacity-60"
+        data-input-otp-container="true"
+        style="position: relative; cursor: text; user-select: none; pointer-events: none; --root-height: 0px;"
+      >
+        <div
+          aria-label="One-time password input"
+          class="inline-flex gap-x-1 py-2"
+          data-slot="segment-wrapper"
+        >
+          <div
+            class="font-semibold flex justify-center items-center data-[active=true]:border-default-400 data-[active=true]:scale-110 shadow-sm hover:bg-danger outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-transparent rounded-md h-10 min-h-10 w-10 min-w-10 text-small transition duration-150 bg-default-100 data-[active=true]:bg-default-200"
+            data-slot="segment2"
+            role="presentation"
+          >
+            <div />
+          </div>
+          <div
+            class="font-semibold flex justify-center items-center data-[active=true]:border-default-400 data-[active=true]:scale-110 shadow-sm hover:bg-danger outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-transparent rounded-md h-10 min-h-10 w-10 min-w-10 text-small transition duration-150 bg-default-100 data-[active=true]:bg-default-200"
+            data-slot="segment2"
+            role="presentation"
+          >
+            <div />
+          </div>
+          <div
+            class="font-semibold flex justify-center items-center data-[active=true]:border-default-400 data-[active=true]:scale-110 shadow-sm hover:bg-danger outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-transparent rounded-md h-10 min-h-10 w-10 min-w-10 text-small transition duration-150 bg-default-100 data-[active=true]:bg-default-200"
+            data-slot="segment2"
+            role="presentation"
+          >
+            <div />
+          </div>
+          <div
+            class="font-semibold flex justify-center items-center data-[active=true]:border-default-400 data-[active=true]:scale-110 shadow-sm hover:bg-danger outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-transparent rounded-md h-10 min-h-10 w-10 min-w-10 text-small transition duration-150 bg-default-100 data-[active=true]:bg-default-200"
+            data-slot="segment2"
+            role="presentation"
+          >
+            <div />
+          </div>
+          <div
+            class="font-semibold flex justify-center items-center data-[active=true]:border-default-400 data-[active=true]:scale-110 shadow-sm hover:bg-danger outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-transparent rounded-md h-10 min-h-10 w-10 min-w-10 text-small transition duration-150 bg-default-100 data-[active=true]:bg-default-200"
+            data-slot="segment2"
+            role="presentation"
+          >
+            <div />
+          </div>
+          <div
+            class="font-semibold flex justify-center items-center data-[active=true]:border-default-400 data-[active=true]:scale-110 shadow-sm hover:bg-danger outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-transparent rounded-md h-10 min-h-10 w-10 min-w-10 text-small transition duration-150 bg-default-100 data-[active=true]:bg-default-200"
+            data-slot="segment2"
+            role="presentation"
+          >
+            <div />
+          </div>
+        </div>
+        <div
+          style="position: absolute; inset: 0; pointer-events: none;"
+        >
+          <input
+            autocomplete="one-time-code"
+            data-input-otp="true"
+            data-input-otp-placeholder-shown="true"
+            inputmode="numeric"
+            maxlength="6"
+            minlength="6"
+            pattern="^[0-9]*$"
+            style="position: absolute; inset: 0; width: 100%; height: 100%; display: flex; text-align: center; opacity: 1; color: transparent; pointer-events: all; background: transparent; caret-color: transparent; border: 0px solid transparent; outline: 0 solid transparent; box-shadow: none; line-height: 1; letter-spacing: -.5em; font-size: var(--root-height); font-family: monospace; font-variant-numeric: tabular-nums;"
+            title=""
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Composant InputOtp > Snapshots > devrait correspondre au snapshot avec les props par défaut 1`] = `
+<div>
+  <div
+    class="flex flex-col"
+  >
+    <div
+      aria-label="One-time password input"
+      class="relative flex flex-col w-fit"
+      data-slot="base"
+      role="base"
+    >
+      <noscript />
+      <div
+        class="group flex items-center has-[:disabled]:opacity-60"
+        data-input-otp-container="true"
+        style="position: relative; cursor: text; user-select: none; pointer-events: none; --root-height: 0px;"
+      >
+        <div
+          aria-label="One-time password input"
+          class="inline-flex gap-x-1 py-2"
+          data-slot="segment-wrapper"
+        >
+          <div
+            class="font-semibold flex justify-center items-center data-[active=true]:border-default-400 data-[active=true]:scale-110 shadow-sm hover:bg-danger outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-transparent rounded-md h-10 min-h-10 w-10 min-w-10 text-small transition duration-150 bg-default-100 data-[active=true]:bg-default-200"
+            data-slot="segment2"
+            role="presentation"
+          >
+            <div />
+          </div>
+          <div
+            class="font-semibold flex justify-center items-center data-[active=true]:border-default-400 data-[active=true]:scale-110 shadow-sm hover:bg-danger outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-transparent rounded-md h-10 min-h-10 w-10 min-w-10 text-small transition duration-150 bg-default-100 data-[active=true]:bg-default-200"
+            data-slot="segment2"
+            role="presentation"
+          >
+            <div />
+          </div>
+          <div
+            class="font-semibold flex justify-center items-center data-[active=true]:border-default-400 data-[active=true]:scale-110 shadow-sm hover:bg-danger outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-transparent rounded-md h-10 min-h-10 w-10 min-w-10 text-small transition duration-150 bg-default-100 data-[active=true]:bg-default-200"
+            data-slot="segment2"
+            role="presentation"
+          >
+            <div />
+          </div>
+          <div
+            class="font-semibold flex justify-center items-center data-[active=true]:border-default-400 data-[active=true]:scale-110 shadow-sm hover:bg-danger outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-transparent rounded-md h-10 min-h-10 w-10 min-w-10 text-small transition duration-150 bg-default-100 data-[active=true]:bg-default-200"
+            data-slot="segment2"
+            role="presentation"
+          >
+            <div />
+          </div>
+          <div
+            class="font-semibold flex justify-center items-center data-[active=true]:border-default-400 data-[active=true]:scale-110 shadow-sm hover:bg-danger outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-transparent rounded-md h-10 min-h-10 w-10 min-w-10 text-small transition duration-150 bg-default-100 data-[active=true]:bg-default-200"
+            data-slot="segment2"
+            role="presentation"
+          >
+            <div />
+          </div>
+          <div
+            class="font-semibold flex justify-center items-center data-[active=true]:border-default-400 data-[active=true]:scale-110 shadow-sm hover:bg-danger outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-transparent rounded-md h-10 min-h-10 w-10 min-w-10 text-small transition duration-150 bg-default-100 data-[active=true]:bg-default-200"
+            data-slot="segment2"
+            role="presentation"
+          >
+            <div />
+          </div>
+        </div>
+        <div
+          style="position: absolute; inset: 0; pointer-events: none;"
+        >
+          <input
+            autocomplete="one-time-code"
+            data-input-otp="true"
+            data-input-otp-placeholder-shown="true"
+            inputmode="numeric"
+            maxlength="6"
+            minlength="6"
+            pattern="^[0-9]*$"
+            style="position: absolute; inset: 0; width: 100%; height: 100%; display: flex; text-align: center; opacity: 1; color: transparent; pointer-events: all; background: transparent; caret-color: transparent; border: 0px solid transparent; outline: 0 solid transparent; box-shadow: none; line-height: 1; letter-spacing: -.5em; font-size: var(--root-height); font-family: monospace; font-variant-numeric: tabular-nums;"
+            title=""
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Composant InputOtp > Snapshots > devrait correspondre au snapshot avec un label 1`] = `
+<div>
+  <div
+    class="flex flex-col"
+  >
+    <p
+      class="text-small mb-2"
+    >
+      Code OTP
+    </p>
+    <div
+      aria-label="One-time password input"
+      class="relative flex flex-col w-fit"
+      data-slot="base"
+      role="base"
+    >
+      <noscript />
+      <div
+        class="group flex items-center has-[:disabled]:opacity-60"
+        data-input-otp-container="true"
+        style="position: relative; cursor: text; user-select: none; pointer-events: none; --root-height: 0px;"
+      >
+        <div
+          aria-label="One-time password input"
+          class="inline-flex gap-x-1 py-2"
+          data-slot="segment-wrapper"
+        >
+          <div
+            class="font-semibold flex justify-center items-center data-[active=true]:border-default-400 data-[active=true]:scale-110 shadow-sm hover:bg-danger outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-transparent rounded-md h-10 min-h-10 w-10 min-w-10 text-small transition duration-150 bg-default-100 data-[active=true]:bg-default-200"
+            data-slot="segment2"
+            role="presentation"
+          >
+            <div />
+          </div>
+          <div
+            class="font-semibold flex justify-center items-center data-[active=true]:border-default-400 data-[active=true]:scale-110 shadow-sm hover:bg-danger outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-transparent rounded-md h-10 min-h-10 w-10 min-w-10 text-small transition duration-150 bg-default-100 data-[active=true]:bg-default-200"
+            data-slot="segment2"
+            role="presentation"
+          >
+            <div />
+          </div>
+          <div
+            class="font-semibold flex justify-center items-center data-[active=true]:border-default-400 data-[active=true]:scale-110 shadow-sm hover:bg-danger outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-transparent rounded-md h-10 min-h-10 w-10 min-w-10 text-small transition duration-150 bg-default-100 data-[active=true]:bg-default-200"
+            data-slot="segment2"
+            role="presentation"
+          >
+            <div />
+          </div>
+          <div
+            class="font-semibold flex justify-center items-center data-[active=true]:border-default-400 data-[active=true]:scale-110 shadow-sm hover:bg-danger outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-transparent rounded-md h-10 min-h-10 w-10 min-w-10 text-small transition duration-150 bg-default-100 data-[active=true]:bg-default-200"
+            data-slot="segment2"
+            role="presentation"
+          >
+            <div />
+          </div>
+          <div
+            class="font-semibold flex justify-center items-center data-[active=true]:border-default-400 data-[active=true]:scale-110 shadow-sm hover:bg-danger outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-transparent rounded-md h-10 min-h-10 w-10 min-w-10 text-small transition duration-150 bg-default-100 data-[active=true]:bg-default-200"
+            data-slot="segment2"
+            role="presentation"
+          >
+            <div />
+          </div>
+          <div
+            class="font-semibold flex justify-center items-center data-[active=true]:border-default-400 data-[active=true]:scale-110 shadow-sm hover:bg-danger outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-transparent rounded-md h-10 min-h-10 w-10 min-w-10 text-small transition duration-150 bg-default-100 data-[active=true]:bg-default-200"
+            data-slot="segment2"
+            role="presentation"
+          >
+            <div />
+          </div>
+        </div>
+        <div
+          style="position: absolute; inset: 0; pointer-events: none;"
+        >
+          <input
+            autocomplete="one-time-code"
+            data-input-otp="true"
+            data-input-otp-placeholder-shown="true"
+            inputmode="numeric"
+            maxlength="6"
+            minlength="6"
+            pattern="^[0-9]*$"
+            style="position: absolute; inset: 0; width: 100%; height: 100%; display: flex; text-align: center; opacity: 1; color: transparent; pointer-events: all; background: transparent; caret-color: transparent; border: 0px solid transparent; outline: 0 solid transparent; box-shadow: none; line-height: 1; letter-spacing: -.5em; font-size: var(--root-height); font-family: monospace; font-variant-numeric: tabular-nums;"
+            title=""
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Composant InputOtp > Snapshots > devrait correspondre au snapshot avec une longueur personnalisée 1`] = `
+<div>
+  <div
+    class="flex flex-col"
+  >
+    <div
+      aria-label="One-time password input"
+      class="relative flex flex-col w-fit"
+      data-slot="base"
+      role="base"
+    >
+      <noscript />
+      <div
+        class="group flex items-center has-[:disabled]:opacity-60"
+        data-input-otp-container="true"
+        style="position: relative; cursor: text; user-select: none; pointer-events: none; --root-height: 0px;"
+      >
+        <div
+          aria-label="One-time password input"
+          class="inline-flex gap-x-1 py-2"
+          data-slot="segment-wrapper"
+        >
+          <div
+            class="font-semibold flex justify-center items-center data-[active=true]:border-default-400 data-[active=true]:scale-110 shadow-sm hover:bg-danger outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-transparent rounded-md h-10 min-h-10 w-10 min-w-10 text-small transition duration-150 bg-default-100 data-[active=true]:bg-default-200"
+            data-slot="segment2"
+            role="presentation"
+          >
+            <div />
+          </div>
+          <div
+            class="font-semibold flex justify-center items-center data-[active=true]:border-default-400 data-[active=true]:scale-110 shadow-sm hover:bg-danger outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-transparent rounded-md h-10 min-h-10 w-10 min-w-10 text-small transition duration-150 bg-default-100 data-[active=true]:bg-default-200"
+            data-slot="segment2"
+            role="presentation"
+          >
+            <div />
+          </div>
+          <div
+            class="font-semibold flex justify-center items-center data-[active=true]:border-default-400 data-[active=true]:scale-110 shadow-sm hover:bg-danger outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-transparent rounded-md h-10 min-h-10 w-10 min-w-10 text-small transition duration-150 bg-default-100 data-[active=true]:bg-default-200"
+            data-slot="segment2"
+            role="presentation"
+          >
+            <div />
+          </div>
+          <div
+            class="font-semibold flex justify-center items-center data-[active=true]:border-default-400 data-[active=true]:scale-110 shadow-sm hover:bg-danger outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 border-transparent rounded-md h-10 min-h-10 w-10 min-w-10 text-small transition duration-150 bg-default-100 data-[active=true]:bg-default-200"
+            data-slot="segment2"
+            role="presentation"
+          >
+            <div />
+          </div>
+        </div>
+        <div
+          style="position: absolute; inset: 0; pointer-events: none;"
+        >
+          <input
+            autocomplete="one-time-code"
+            data-input-otp="true"
+            data-input-otp-placeholder-shown="true"
+            inputmode="numeric"
+            maxlength="4"
+            minlength="4"
+            pattern="^[0-9]*$"
+            style="position: absolute; inset: 0; width: 100%; height: 100%; display: flex; text-align: center; opacity: 1; color: transparent; pointer-events: all; background: transparent; caret-color: transparent; border: 0px solid transparent; outline: 0 solid transparent; box-shadow: none; line-height: 1; letter-spacing: -.5em; font-size: var(--root-height); font-family: monospace; font-variant-numeric: tabular-nums;"
+            title=""
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

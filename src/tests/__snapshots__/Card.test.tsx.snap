@@ -1,0 +1,99 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Composant Card > Snapshots > devrait correspondre au snapshot avec des classNames personnalisés 1`] = `
+<div>
+  <div
+    class="flex flex-col relative overflow-hidden h-auto text-foreground box-border bg-content1 outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-none rounded-small transition-transform-background motion-reduce:transition-none border border-border dark:bg-background data-[hover=true]:bg-content1-100/30 dark:data-[hover=true]:bg-content1-200/20 transition-all bg-gradient-to-b p-2 from-content1 to-content1-100/10 dark:from-background-200/20 dark:to-background"
+    tabindex="-1"
+  >
+    <div
+      class="flex p-3 z-10 w-full justify-start items-center shrink-0 overflow-inherit color-inherit subpixel-antialiased rounded-t-small custom-header"
+    >
+      En-tête de la Card
+    </div>
+    <div
+      class="relative flex w-full p-3 flex-auto flex-col place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased custom-body"
+    >
+      Contenu de la Card
+    </div>
+    <div
+      class="p-3 h-auto flex w-full items-center overflow-hidden color-inherit subpixel-antialiased rounded-b-small custom-footer"
+    >
+      Pied de la Card
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Composant Card > Snapshots > devrait correspondre au snapshot avec des props d'interaction 1`] = `
+<div>
+  <button
+    class="flex flex-col relative overflow-hidden h-auto text-foreground box-border bg-content1 outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-none rounded-small cursor-pointer data-[pressed=true]:scale-[0.97] tap-highlight-transparent border border-border dark:bg-background data-[hover=true]:bg-content1-100/30 dark:data-[hover=true]:bg-content1-200/20 transition-all bg-gradient-to-b p-2 from-content1 to-content1-100/10 dark:from-background-200/20 dark:to-background"
+    role="button"
+    tabindex="0"
+    type="button"
+  >
+    <div
+      class="relative flex w-full p-3 flex-auto flex-col place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased"
+    >
+      Card Interactive
+    </div>
+  </button>
+</div>
+`;
+
+exports[`Composant Card > Snapshots > devrait correspondre au snapshot avec des props visuelles 1`] = `
+<div>
+  <div
+    class="flex flex-col relative overflow-hidden h-auto text-foreground box-border outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-large rounded-small w-full bg-background/80 backdrop-blur-md backdrop-saturate-150 opacity-disabled cursor-not-allowed transition-transform-background motion-reduce:transition-none border border-border dark:bg-background data-[hover=true]:bg-content1-100/30 dark:data-[hover=true]:bg-content1-200/20 transition-all bg-gradient-to-b p-2 from-content1 to-content1-100/10 dark:from-background-200/20 dark:to-background"
+    data-disabled="true"
+    tabindex="-1"
+  >
+    <div
+      class="relative flex w-full p-3 flex-auto flex-col place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased"
+    >
+      Contenu de la Card
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Composant Card > Snapshots > devrait correspondre au snapshot avec les props par défaut 1`] = `
+<div>
+  <div
+    class="flex flex-col relative overflow-hidden h-auto text-foreground box-border bg-content1 outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-none rounded-small transition-transform-background motion-reduce:transition-none border border-border dark:bg-background data-[hover=true]:bg-content1-100/30 dark:data-[hover=true]:bg-content1-200/20 transition-all bg-gradient-to-b p-2 from-content1 to-content1-100/10 dark:from-background-200/20 dark:to-background"
+    tabindex="-1"
+  >
+    <div
+      class="flex p-3 z-10 w-full justify-start items-center shrink-0 overflow-inherit color-inherit subpixel-antialiased rounded-t-small"
+    >
+      En-tête de la Card
+    </div>
+    <div
+      class="relative flex w-full p-3 flex-auto flex-col place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased"
+    >
+      Contenu de la Card
+    </div>
+    <div
+      class="p-3 h-auto flex w-full items-center overflow-hidden color-inherit subpixel-antialiased rounded-b-small"
+    >
+      Pied de la Card
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Composant Card > Snapshots > devrait correspondre au snapshot sans en-tête ni pied 1`] = `
+<div>
+  <div
+    class="flex flex-col relative overflow-hidden h-auto text-foreground box-border bg-content1 outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-none rounded-small transition-transform-background motion-reduce:transition-none border border-border dark:bg-background data-[hover=true]:bg-content1-100/30 dark:data-[hover=true]:bg-content1-200/20 transition-all bg-gradient-to-b p-2 from-content1 to-content1-100/10 dark:from-background-200/20 dark:to-background"
+    tabindex="-1"
+  >
+    <div
+      class="relative flex w-full p-3 flex-auto flex-col place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased"
+    >
+      Contenu de la Card uniquement
+    </div>
+  </div>
+</div>
+`;

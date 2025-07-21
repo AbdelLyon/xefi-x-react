@@ -1,0 +1,70 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Composant Popover > Snapshots > devrait correspondre au snapshot avec des props de motion personnalisés 1`] = `
+<div
+  aria-hidden="true"
+>
+  <button
+    aria-controls="react-aria-:r9:"
+    aria-expanded="true"
+    aria-haspopup="dialog"
+    class="z-10 aria-expanded:scale-[0.97] aria-expanded:opacity-70 subpixel-antialiased"
+    data-slot="trigger"
+    tabindex="0"
+    type="button"
+  >
+    Cliquez-moi
+  </button>
+</div>
+`;
+
+exports[`Composant Popover > Snapshots > devrait correspondre au snapshot avec le déclencheur 1`] = `
+<div>
+  <button
+    aria-expanded="false"
+    aria-haspopup="dialog"
+    class="z-10 aria-expanded:scale-[0.97] aria-expanded:opacity-70 subpixel-antialiased"
+    data-slot="trigger"
+    tabindex="0"
+    type="button"
+  >
+    Cliquez-moi
+  </button>
+</div>
+`;
+
+exports[`Composant Popover > Snapshots > devrait correspondre au snapshot avec une classe personnalisée pour le contenu 1`] = `
+<div
+  aria-hidden="true"
+>
+  <button
+    aria-controls="react-aria-:r5:"
+    aria-expanded="true"
+    aria-haspopup="dialog"
+    class="z-10 aria-expanded:scale-[0.97] aria-expanded:opacity-70 subpixel-antialiased"
+    data-slot="trigger"
+    tabindex="0"
+    type="button"
+  >
+    Cliquez-moi
+  </button>
+</div>
+`;
+
+exports[`Composant Popover > Snapshots > devrait correspondre au snapshot quand ouvert 1`] = `
+<div
+  aria-hidden="true"
+>
+  <button
+    aria-controls="react-aria-:r1:"
+    aria-expanded="true"
+    aria-haspopup="dialog"
+    class="z-10 aria-expanded:scale-[0.97] aria-expanded:opacity-70 subpixel-antialiased"
+    data-slot="trigger"
+    tabindex="0"
+    type="button"
+  >
+    Cliquez-moi
+  </button>
+</div>
+`;

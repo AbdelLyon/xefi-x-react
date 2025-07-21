@@ -1,0 +1,73 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Composant Drawer > Snapshots > devrait correspondre au snapshot avec des boutons personnalisés 1`] = `
+<div>
+  <div
+    class="inline-block"
+    role="button"
+    tabindex="0"
+  >
+    <button>
+      Ouvrir
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Composant Drawer > Snapshots > devrait correspondre au snapshot avec les props par défaut 1`] = `
+<div>
+  <div
+    class="inline-block"
+    role="button"
+    tabindex="0"
+  >
+    <button>
+      Ouvrir
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Composant Drawer > Snapshots > devrait correspondre au snapshot avec un footer personnalisé 1`] = `
+<div>
+  <div
+    class="inline-block"
+    role="button"
+    tabindex="0"
+  >
+    <button>
+      Ouvrir
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Composant Drawer > Snapshots > devrait correspondre au snapshot avec un titre 1`] = `
+<div>
+  <div
+    class="inline-block"
+    role="button"
+    tabindex="0"
+  >
+    <button>
+      Ouvrir
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Composant Drawer > Snapshots > devrait correspondre au snapshot quand le drawer est ouvert 1`] = `
+<div
+  aria-hidden="true"
+>
+  <div
+    class="inline-block"
+    role="button"
+    tabindex="0"
+  >
+    <button>
+      Ouvrir
+    </button>
+  </div>
+</div>
+`;

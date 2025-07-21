@@ -1,0 +1,278 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Composant Chip > Snapshots > devrait correspondre au snapshot avec contenu de début et de fin 1`] = `
+<div>
+  <div
+    class="relative max-w-fit min-w-min inline-flex items-center justify-between box-border whitespace-nowrap px-1 h-7 text-small rounded-full bg-default text-default-foreground"
+  >
+    <span
+      class="max-h-[80%]"
+    >
+      Début
+    </span>
+    <span
+      class="flex-1 text-inherit font-normal px-2 pl-1 pr-1"
+    >
+      Contenu
+    </span>
+    <span
+      class="max-h-[80%]"
+    >
+      Fin
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Composant Chip > Snapshots > devrait correspondre au snapshot avec différentes couleurs 1`] = `
+<div>
+  <div
+    class="relative max-w-fit min-w-min inline-flex items-center justify-between box-border whitespace-nowrap px-1 h-7 text-small rounded-full bg-default text-default-foreground"
+  >
+    <span
+      class="flex-1 text-inherit font-normal px-2"
+    >
+      Chip 
+      default
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Composant Chip > Snapshots > devrait correspondre au snapshot avec différentes couleurs 2`] = `
+<div>
+  <div
+    class="relative max-w-fit min-w-min inline-flex items-center justify-between box-border whitespace-nowrap px-1 h-7 text-small rounded-full bg-primary text-primary-foreground"
+  >
+    <span
+      class="flex-1 text-inherit font-normal px-2"
+    >
+      Chip 
+      primary
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Composant Chip > Snapshots > devrait correspondre au snapshot avec différentes couleurs 3`] = `
+<div>
+  <div
+    class="relative max-w-fit min-w-min inline-flex items-center justify-between box-border whitespace-nowrap px-1 h-7 text-small rounded-full bg-secondary text-secondary-foreground"
+  >
+    <span
+      class="flex-1 text-inherit font-normal px-2"
+    >
+      Chip 
+      secondary
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Composant Chip > Snapshots > devrait correspondre au snapshot avec différentes couleurs 4`] = `
+<div>
+  <div
+    class="relative max-w-fit min-w-min inline-flex items-center justify-between box-border whitespace-nowrap px-1 h-7 text-small rounded-full bg-success text-success-foreground"
+  >
+    <span
+      class="flex-1 text-inherit font-normal px-2"
+    >
+      Chip 
+      success
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Composant Chip > Snapshots > devrait correspondre au snapshot avec différentes couleurs 5`] = `
+<div>
+  <div
+    class="relative max-w-fit min-w-min inline-flex items-center justify-between box-border whitespace-nowrap px-1 h-7 text-small rounded-full bg-warning text-warning-foreground"
+  >
+    <span
+      class="flex-1 text-inherit font-normal px-2"
+    >
+      Chip 
+      warning
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Composant Chip > Snapshots > devrait correspondre au snapshot avec différentes couleurs 6`] = `
+<div>
+  <div
+    class="relative max-w-fit min-w-min inline-flex items-center justify-between box-border whitespace-nowrap px-1 h-7 text-small rounded-full bg-danger text-danger-foreground"
+  >
+    <span
+      class="flex-1 text-inherit font-normal px-2"
+    >
+      Chip 
+      danger
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Composant Chip > Snapshots > devrait correspondre au snapshot avec différentes tailles 1`] = `
+<div>
+  <div
+    class="relative max-w-fit min-w-min inline-flex items-center justify-between box-border whitespace-nowrap px-1 h-6 text-tiny rounded-full bg-default text-default-foreground"
+  >
+    <span
+      class="flex-1 text-inherit font-normal px-1"
+    >
+      Chip 
+      sm
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Composant Chip > Snapshots > devrait correspondre au snapshot avec différentes tailles 2`] = `
+<div>
+  <div
+    class="relative max-w-fit min-w-min inline-flex items-center justify-between box-border whitespace-nowrap px-1 h-7 text-small rounded-full bg-default text-default-foreground"
+  >
+    <span
+      class="flex-1 text-inherit font-normal px-2"
+    >
+      Chip 
+      md
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Composant Chip > Snapshots > devrait correspondre au snapshot avec différentes tailles 3`] = `
+<div>
+  <div
+    class="relative max-w-fit min-w-min inline-flex items-center justify-between box-border whitespace-nowrap px-2 h-8 text-medium rounded-full bg-default text-default-foreground"
+  >
+    <span
+      class="flex-1 text-inherit font-normal px-2"
+    >
+      Chip 
+      lg
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Composant Chip > Snapshots > devrait correspondre au snapshot avec différentes variantes 1`] = `
+<div>
+  <div
+    class="relative max-w-fit min-w-min inline-flex items-center justify-between box-border whitespace-nowrap px-1 h-7 text-small rounded-full bg-default text-default-foreground"
+  >
+    <span
+      class="flex-1 text-inherit font-normal px-2"
+    >
+      Chip 
+      solid
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Composant Chip > Snapshots > devrait correspondre au snapshot avec différentes variantes 2`] = `
+<div>
+  <div
+    class="relative max-w-fit min-w-min inline-flex items-center justify-between box-border whitespace-nowrap border-medium px-1 h-7 text-small rounded-full bg-transparent border-default text-foreground"
+  >
+    <span
+      class="flex-1 text-inherit font-normal px-2"
+    >
+      Chip 
+      bordered
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Composant Chip > Snapshots > devrait correspondre au snapshot avec différentes variantes 3`] = `
+<div>
+  <div
+    class="relative max-w-fit min-w-min inline-flex items-center justify-between box-border whitespace-nowrap px-1 h-7 text-small rounded-full bg-transparent text-default-foreground"
+  >
+    <span
+      class="flex-1 text-inherit font-normal px-2"
+    >
+      Chip 
+      light
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Composant Chip > Snapshots > devrait correspondre au snapshot avec différentes variantes 4`] = `
+<div>
+  <div
+    class="relative max-w-fit min-w-min inline-flex items-center justify-between box-border whitespace-nowrap px-1 h-7 text-small rounded-full bg-default/40 text-default-700"
+  >
+    <span
+      class="flex-1 text-inherit font-normal px-2"
+    >
+      Chip 
+      flat
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Composant Chip > Snapshots > devrait correspondre au snapshot avec différentes variantes 5`] = `
+<div>
+  <div
+    class="relative max-w-fit min-w-min inline-flex items-center justify-between box-border whitespace-nowrap border-medium px-1 h-7 text-small rounded-full border-default bg-default-100 text-default-foreground"
+  >
+    <span
+      class="flex-1 text-inherit font-normal px-2"
+    >
+      Chip 
+      faded
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Composant Chip > Snapshots > devrait correspondre au snapshot avec différentes variantes 6`] = `
+<div>
+  <div
+    class="relative max-w-fit min-w-min inline-flex items-center justify-between box-border whitespace-nowrap px-1 h-7 text-small rounded-full shadow-lg shadow-default/50 bg-default text-default-foreground"
+  >
+    <span
+      class="flex-1 text-inherit font-normal px-2"
+    >
+      Chip 
+      shadow
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Composant Chip > Snapshots > devrait correspondre au snapshot avec les props par défaut 1`] = `
+<div>
+  <div
+    class="relative max-w-fit min-w-min inline-flex items-center justify-between box-border whitespace-nowrap px-1 h-7 text-small rounded-full bg-default text-default-foreground"
+  >
+    <span
+      class="flex-1 text-inherit font-normal px-2"
+    >
+      Chip par défaut
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Composant Chip > Snapshots > devrait correspondre au snapshot quand désactivé 1`] = `
+<div>
+  <div
+    class="relative max-w-fit min-w-min inline-flex items-center justify-between box-border whitespace-nowrap px-1 h-7 text-small rounded-full opacity-disabled pointer-events-none bg-default text-default-foreground"
+  >
+    <span
+      class="flex-1 text-inherit font-normal px-2"
+    >
+      Chip désactivé
+    </span>
+  </div>
+</div>
+`;

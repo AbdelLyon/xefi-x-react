@@ -1,0 +1,233 @@
+{
+  "name": "@xefi/x-react",
+  "version": "1.6.13",
+  "description": "Xefi React Package",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "restricted",
+    "@xefi:registry": "https://gitlab.xefi.fr/api/v4/projects/2481/packages/npm/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AbdelLyon/xefi-x-react.git"
+  },
+  "author": "DailyApps",
+  "license": "MIT",
+  "exports": {
+    "./style.css": "./dist/style.css",
+    "./tailwind.config": "./dist/tailwind.config.js",
+    "./button": {
+      "import": "./dist/button/Button/index.es.js",
+      "types": "./dist/button/index.d.ts"
+    },
+    "./skeleton": {
+      "import": "./dist/skeleton/index.es.js",
+      "types": "./dist/skeleton/index.d.ts"
+    },
+    "./toast": {
+      "import": "./dist/toast/index.es.js",
+      "types": "./dist/toast/index.d.ts"
+    },
+    "./divider": {
+      "import": "./dist/divider/index.es.js",
+      "types": "./dist/divider/index.d.ts"
+    },
+    "./buttons": {
+      "import": "./dist/buttons/Buttons/index.es.js",
+      "types": "./dist/buttons/Buttons.d.ts"
+    },
+    "./modal": {
+      "import": "./dist/modal/Modal/index.es.js",
+      "types": "./dist/modal/Modal.d.ts"
+    },
+    "./utils": {
+      "import": "./dist/utils/index.es.js",
+      "types": "./dist/utils/index.d.ts"
+    },
+    "./hooks": {
+      "import": "./dist/hooks/index.es.js",
+      "types": "./dist/hooks/index.d.ts"
+    },
+    "./providers": {
+      "import": "./dist/providers/index.es.js",
+      "types": "./dist/providers/index.d.ts"
+    },
+    "./theme": {
+      "import": "./dist/theme/index.es.js",
+      "types": "./dist/theme/index.d.ts"
+    },
+    "./icons": {
+      "import": "./dist/icons/index.es.js",
+      "types": "./dist/icons/index.d.ts"
+    },
+    "./accordion": {
+      "import": "./dist/accordion/Accordion/index.es.js",
+      "types": "./dist/accordion/Accordion.d.ts"
+    },
+    "./alert": {
+      "import": "./dist/alert/Alert/index.es.js",
+      "types": "./dist/alert/Alert.d.ts"
+    },
+    "./avatar": {
+      "import": "./dist/avatar/Avatar/index.es.js",
+      "types": "./dist/avatar/Avatar.d.ts"
+    },
+    "./card": {
+      "import": "./dist/card/Card/index.es.js",
+      "types": "./dist/card/Card.d.ts"
+    },
+    "./form": {
+      "import": "./dist/form/index.es.js",
+      "types": "./dist/form/index.d.ts"
+    },
+    "./popover": {
+      "import": "./dist/popover/Popover/index.es.js",
+      "types": "./dist/popover/Popover.d.ts"
+    },
+    "./dropdown": {
+      "import": "./dist/dropdown/Dropdown/index.es.js",
+      "types": "./dist/dropdown/Dropdown.d.ts"
+    },
+    "./image": {
+      "import": "./dist/image/index.es.js",
+      "types": "./dist/image/index.d.ts"
+    },
+    "./slider": {
+      "import": "./dist/slider/Slider/index.es.js",
+      "types": "./dist/slider/Slider.d.ts"
+    },
+    "./progress": {
+      "import": "./dist/progress/index.es.js",
+      "types": "./dist/progress/index.d.ts"
+    },
+    "./spiner": {
+      "import": "./dist/spiner/Spiner/index.es.js",
+      "types": "./dist/spiner/Spiner.d.ts"
+    },
+    "./datagrid": {
+      "import": "./dist/datagrid/index.es.js",
+      "types": "./dist/datagrid/index.d.ts"
+    },
+    "./datepicker": {
+      "import": "./dist/datepicker/DatePicker/index.es.js",
+      "types": "./dist/datepicker/DatePicker.d.ts"
+    },
+    "./chip": {
+      "import": "./dist/chip/Chip/index.es.js",
+      "types": "./dist/chip/Chip.d.ts"
+    },
+    "./drawer": {
+      "import": "./dist/drawer/Drawer/index.es.js",
+      "types": "./dist/drawer/Drawer.d.ts"
+    },
+    "./navbar": {
+      "import": "./dist/navbar/index.es.js",
+      "types": "./dist/navbar/index.d.ts"
+    },
+    "./sidebar": {
+      "import": "./dist/sidebar/index.es.js",
+      "types": "./dist/sidebar/index.d.ts"
+    },
+    "./layout": {
+      "import": "./dist/layout/index.es.js",
+      "types": "./dist/layout/index.d.ts"
+    },
+    "./tooltip": {
+      "import": "./dist/tooltip/Tooltip/index.es.js",
+      "types": "./dist/tooltip/Tooltip.d.ts"
+    },
+    "./tabs": {
+      "import": "./dist/tabs/Tabs/index.es.js",
+      "types": "./dist/tabs/Tabs.d.ts"
+    },
+    "./pagination": {
+      "import": "./dist/pagination/Pagination/index.es.js",
+      "types": "./dist/pagination/Pagination.d.ts"
+    },
+    "./typography": {
+      "import": "./dist/typography/Typography/index.es.js",
+      "types": "./dist/typography/Typography.d.ts"
+    },
+    "./chart": {
+      "import": "./dist/chart/Chart/index.es.js",
+      "types": "./dist/chart/Chart.d.ts"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*/index.d.ts"
+      ]
+    }
+  },
+  "scripts": {
+    "clean": "rimraf node_modules dist *.log && pnpm install",
+    "build": "vite build",
+    "test": "vitest",
+    "test:cov": "vitest --coverage",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "reset": "pnpm clean && pnpm build"
+  },
+  "dependencies": {
+    "@heroui/react": "^2.7.8",
+    "clsx": "^2.1.1",
+    "fs-extra": "^11.3.0",
+    "next-themes": "^0.4.6",
+    "tailwind-merge": "^2.6.0"
+  },
+  "peerDependencies": {
+    "@tabler/icons-react": "^3.26.0",
+    "framer-motion": "^11.15.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "optionalDependencies": {
+    "@internationalized/date": "^3.8.0",
+    "chart.js": "^4.4.9",
+    "react-chartjs-2": "^5.3.0"
+  },
+  "devDependencies": {
+    "@emotion/react": "^11.14.0",
+    "@eslint/js": "^9.26.0",
+    "@swc/plugin-emotion": "^8.7.2",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^22.15.18",
+    "@types/react": "^19.1.4",
+    "@types/react-dom": "^19.1.5",
+    "@typescript-eslint/eslint-plugin": "^8.32.1",
+    "@typescript-eslint/parser": "^8.32.1",
+    "@vitejs/plugin-react": "^4.4.1",
+    "@vitejs/plugin-react-swc": "^3.9.0",
+    "@vitest/coverage-v8": "^2.1.9",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.26.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "eslint-plugin-tailwindcss": "^3.18.0",
+    "globals": "^15.15.0",
+    "jsdom": "^25.0.1",
+    "postcss": "^8.5.3",
+    "prettier": "^3.5.3",
+    "rimraf": "^6.0.1",
+    "tailwindcss": "^3.4.17",
+    "terser": "^5.39.2",
+    "typescript": "~5.6.3",
+    "typescript-eslint": "^8.32.1",
+    "vite": "^6.3.5",
+    "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-dts": "^4.5.4",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^2.1.9"
+  }
+}
