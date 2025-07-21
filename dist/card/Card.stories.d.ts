@@ -1,0 +1,10 @@
+import { Meta, StoryObj } from '@storybook/react';
+import { Card } from './Card';
+declare const meta: Meta<typeof Card>;
+export default meta;
+type Story = StoryObj<typeof meta>;
+export declare const Default: Story;
+export declare const ModernShowcase: Story;
+export declare const StyleVariations: Story;
+export declare const InteractiveStates: Story;
+export declare const BusinessCards: Story;

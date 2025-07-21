@@ -216,7 +216,10 @@
     "test:ui": "vitest --ui",
     "test:watch": "vitest --watch",
     "typecheck": "tsc --noEmit",
-    "validate": "pnpm lint && pnpm typecheck && pnpm test"
+    "validate": "pnpm lint && pnpm typecheck && pnpm test",
+    "storybook": "storybook dev -p 6006",
+    "stb:s": "storybook dev -p 6006",
+    "stb:b": "storybook build"
   },
   "dependencies": {
     "@heroui/react": "^2.7.8",
@@ -239,6 +242,9 @@
   "devDependencies": {
     "@emotion/react": "^11.14.0",
     "@eslint/js": "^9.26.0",
+    "@storybook/addon-docs": "^9.0.17",
+    "@storybook/addon-onboarding": "^9.0.17",
+    "@storybook/react-vite": "^9.0.17",
     "@swc/plugin-emotion": "^8.7.2",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
@@ -256,12 +262,14 @@
     "eslint": "^9.26.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
+    "eslint-plugin-storybook": "^9.0.17",
     "eslint-plugin-tailwindcss": "^3.18.0",
     "globals": "^15.15.0",
     "jsdom": "^25.0.1",
     "postcss": "^8.5.3",
     "prettier": "^3.5.3",
     "rimraf": "^6.0.1",
+    "storybook": "^9.0.17",
     "tailwindcss": "^3.4.17",
     "terser": "^5.39.2",
     "typescript": "~5.6.3",

@@ -23,3 +23,6 @@ coverage/
 *.sln
 *.sw?
 coverage/
+
+*storybook.log
+storybook-static
