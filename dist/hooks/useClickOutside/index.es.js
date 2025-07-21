@@ -25,7 +25,7 @@ const useClickOutside = (handler, events, nodes) => {
         (fn) => document.removeEventListener(fn, listener)
       );
     };
-  }, [ref, handler, nodes]);
+  }, [ref, handler, nodes, events]);
   return ref;
 };
 export {

@@ -28,38 +28,17 @@ var __objRest = (source, exclude) => {
 };
 import { jsx } from "react/jsx-runtime";
 import { forwardRef } from "react";
-import { Chart as Chart$2, CategoryScale, LinearScale, Title, Tooltip, Legend, RadialLinearScale, BarElement, ArcElement, PointElement, LineElement, BarController, DoughnutController, ScatterController, PolarAreaController } from "chart.js";
 import { Chart as Chart$1, getElementAtEvent } from "react-chartjs-2";
+import { defaultChartClasses, registerChartComponents } from "../chartConfig/index.es.js";
+import { mergeChartOptions, createDefaultChartOptions } from "../chartOptions/index.es.js";
 import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
-Chart$2.register(
-  CategoryScale,
-  LinearScale,
-  Title,
-  Tooltip,
-  Legend,
-  RadialLinearScale,
-  BarElement,
-  ArcElement,
-  PointElement,
-  LineElement,
-  BarController,
-  DoughnutController,
-  ScatterController,
-  PolarAreaController
-);
-const defaultClassNames = {
-  root: "relative w-full h-max flex flex-col items-center border border-border justify-center bg-white dark:bg-content1 p-6 shadow-md rounded-xl",
-  canvas: "w-full h-[400px]",
-  title: "text-lg font-semibold text-center mb-4",
-  legend: "mt-4",
-  tooltip: "bg-white p-2 rounded shadow-lg border text-sm"
-};
+registerChartComponents();
 const Chart = forwardRef(
   (_a, ref) => {
     var _b = _a, {
       type,
       data,
-      options,
+      options: userOptions,
       getElementSelected,
       classNames = {},
       responsive = true,
@@ -84,74 +63,49 @@ const Chart = forwardRef(
       "customTooltip"
     ]);
     const mergedClassNames = {
-      root: mergeTailwindClasses(defaultClassNames.root, classNames.root),
-      canvas: mergeTailwindClasses(defaultClassNames.canvas, classNames.canvas),
-      title: mergeTailwindClasses(defaultClassNames.title, classNames.title),
-      legend: mergeTailwindClasses(defaultClassNames.legend, classNames.legend),
+      root: mergeTailwindClasses(defaultChartClasses.root, classNames.root),
+      canvas: mergeTailwindClasses(
+        defaultChartClasses.canvas,
+        classNames.canvas
+      ),
+      title: mergeTailwindClasses(defaultChartClasses.title, classNames.title),
+      legend: mergeTailwindClasses(
+        defaultChartClasses.legend,
+        classNames.legend
+      ),
       tooltip: mergeTailwindClasses(
-        defaultClassNames.tooltip,
+        defaultChartClasses.tooltip,
         classNames.tooltip
       )
     };
     const handleClick = (event) => {
+      if (!getElementSelected) {
+        return;
+      }
       const chartElement = event.currentTarget;
-      if (getElementSelected) {
-        const clickedElements = getElementAtEvent(
-          chartElement,
-          event
-        );
-        if (clickedElements.length > 0) {
-          getElementSelected(clickedElements);
-        }
+      const clickedElements = getElementAtEvent(
+        chartElement,
+        event
+      );
+      if (clickedElements.length > 0) {
+        getElementSelected(clickedElements);
       }
     };
-    const defaultOptions = {
+    const defaultOptions = createDefaultChartOptions({
       responsive,
       maintainAspectRatio,
-      plugins: {
-        title: title ? {
-          display: true,
-          text: title,
-          font: {
-            size: 16,
-            weight: "bold"
-          },
-          padding: {
-            top: 10,
-            bottom: 20
-          }
-        } : void 0,
-        legend: {
-          display: showLegend,
-          position: legendPosition
-        },
-        tooltip: showTooltip ? __spreadValues({
-          enabled: true,
-          backgroundColor: "white",
-          titleColor: "#1f2937",
-          bodyColor: "#4b5563",
-          borderColor: "#e5e7eb",
-          borderWidth: 1,
-          padding: 8,
-          cornerRadius: 4,
-          bodyFont: { size: 14 },
-          titleFont: {
-            size: 14,
-            weight: "bold"
-          }
-        }, customTooltip && {
-          callbacks: {
-            label: customTooltip
-          }
-        }) : void 0
-      }
-    };
-    const mergedOptions = __spreadValues(__spreadValues({}, defaultOptions), options);
+      title,
+      showLegend,
+      showTooltip,
+      legendPosition,
+      customTooltip
+    });
+    const finalOptions = mergeChartOptions(defaultOptions, userOptions);
     return /* @__PURE__ */ jsx("div", { ref, className: mergedClassNames.root, children: /* @__PURE__ */ jsx(
       Chart$1,
       __spreadValues({
         data,
-        options: mergedOptions,
+        options: finalOptions,
         type,
         onClick: handleClick,
         className: mergedClassNames.canvas
@@ -159,6 +113,7 @@ const Chart = forwardRef(
     ) });
   }
 );
+Chart.displayName = "Chart";
 export {
   Chart
 };

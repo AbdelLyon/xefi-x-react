@@ -50,9 +50,6 @@ function isObject(value) {
   const type = typeof value;
   return value !== null && (type === "object" || type === "function") && !isArray(value);
 }
-function isFunction(value) {
-  return typeof value === "function";
-}
 function isEmptyArray(value) {
   return isArray(value) && value.length === 0;
 }
@@ -216,7 +213,6 @@ export {
   isEmpty,
   isEmptyArray,
   isEmptyObject,
-  isFunction,
   isNumeric,
   isObject,
   joinStringsWithSpace,

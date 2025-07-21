@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 interface UseIntervalOptions {
   autoInvoke?: boolean;
@@ -20,7 +20,7 @@ export const useInterval = (
   const intervalRef = useRef<number | null>(null);
   const fnRef = useRef<() => void>(fn);
 
-  const start = (): void => {
+  const start = useCallback((): void => {
     setActive((old): boolean => {
       if (
         !old &&
@@ -30,7 +30,7 @@ export const useInterval = (
       }
       return true;
     });
-  };
+  }, [interval]);
 
   const stop = (): void => {
     setActive(false);
@@ -52,14 +52,14 @@ export const useInterval = (
       start();
     }
     return stop;
-  }, [fn, active, interval]);
+  }, [fn, active, interval, start]);
 
   useEffect((): (() => void) => {
     if (autoInvoke) {
       start();
     }
     return (): void => stop();
-  }, []);
+  }, [autoInvoke, start]);
 
   return { start, stop, toggle, active };
 };

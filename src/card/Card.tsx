@@ -46,11 +46,11 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
         {...props}
       >
         {header !== undefined && (
-          <CardHeader className={classNames?.header}>{header}</CardHeader>
+          <CardHeader className={mergeTailwindClasses(classNames?.header)}>{header}</CardHeader>
         )}
-        <CardBody className={classNames?.body}>{children}</CardBody>
+        <CardBody className={mergeTailwindClasses(classNames?.body)}>{children}</CardBody>
         {footer !== undefined && (
-          <CardFooter className={classNames?.footer} {...footerProps}>
+          <CardFooter className={mergeTailwindClasses(classNames?.footer)} {...footerProps}>
             {footer}
           </CardFooter>
         )}

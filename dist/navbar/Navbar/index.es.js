@@ -64,9 +64,9 @@ const Navbar = forwardRef(
       "onMenuOpenChange"
     ]);
     const { isDesktop, isMobile, isTablet } = useResponsive();
-    const handleItemPress = (item) => {
+    const handleItemPress = (item, event) => {
       var _a2;
-      (_a2 = item.onPress) == null ? void 0 : _a2.call(item);
+      (_a2 = item.onClick) == null ? void 0 : _a2.call(item, event);
       onItemClick == null ? void 0 : onItemClick(item);
       onMenuOpenChange == null ? void 0 : onMenuOpenChange(false);
     };
@@ -109,12 +109,10 @@ const Navbar = forwardRef(
                 {
                   className: mergeTailwindClasses(
                     "p-2 hover:bg-content1 rounded-md text-foreground",
-                    {
-                      "border-l-2 border-primary bg-content1 text-primary": item.isActive
-                    },
+                    item.isActive && "border-l-2 border-primary bg-content1 text-primary",
                     classNames == null ? void 0 : classNames.item
                   ),
-                  onPress: () => handleItemPress(item),
+                  onPress: (ev) => handleItemPress(item, ev),
                   children: [
                     item.startContent,
                     item.label,
@@ -131,9 +129,7 @@ const Navbar = forwardRef(
               {
                 className: mergeTailwindClasses(
                   "flex items-center gap-3 p-3 text-foreground hover:bg-content1 rounded-md cursor-pointer",
-                  {
-                    "border-l-2 border-primary bg-content1 text-primary": item.isActive
-                  },
+                  item.isActive && "border-l-2 border-primary bg-content1 text-primary",
                   classNames == null ? void 0 : classNames.item
                 ),
                 onPress: () => onItemClick == null ? void 0 : onItemClick(item),

@@ -11,5 +11,5 @@ export const useWindowEvent = <K extends string>(
     window.addEventListener(type, listener as EventListener, options);
     return (): void =>
       window.removeEventListener(type, listener as EventListener, options);
-  }, [type, listener]);
+  }, [type, listener, options]);
 };

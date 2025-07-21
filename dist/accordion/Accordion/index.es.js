@@ -30,50 +30,86 @@ var __objRest = (source, exclude) => {
   return target;
 };
 import { jsx } from "react/jsx-runtime";
-import { forwardRef, createElement } from "react";
+import { forwardRef } from "react";
 import { Accordion as Accordion$1, AccordionItem } from "@heroui/react";
+import { validateAccordionItem, getAccordionSizeClasses, getAccordionVariantClasses } from "../accordionConfig/index.es.js";
 import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
 const Accordion = forwardRef(
   (_a, ref) => {
-    var _b = _a, { items, itemClasses } = _b, accordionProps = __objRest(_b, ["items", "itemClasses"]);
-    const defaultItemClasses = {
-      base: mergeTailwindClasses("w-full shadow-none ", {
-        "bg-white dark:bg-content1 border-1 border-border rounded-md": accordionProps.variant === "splitted"
-      }),
-      title: "text-lg font-semibold"
+    var _b = _a, {
+      items,
+      classNames,
+      validateItems = process.env.NODE_ENV !== "production",
+      size = "md",
+      variant = "light"
+    } = _b, accordionProps = __objRest(_b, [
+      "items",
+      "classNames",
+      "validateItems",
+      "size",
+      "variant"
+    ]);
+    if (validateItems) {
+      items.forEach((item, index) => {
+        const validation = validateAccordionItem(item);
+        if (!validation.valid) {
+          console.warn(
+            `[Accordion] Item at index ${index} has validation errors:`,
+            validation.errors
+          );
+        }
+      });
+    }
+    const variantClasses = getAccordionVariantClasses(variant);
+    const sizeClasses = getAccordionSizeClasses(size);
+    const mergedClasses = {
+      base: mergeTailwindClasses(
+        "rounded-md",
+        variantClasses.base || "",
+        classNames == null ? void 0 : classNames.base
+      ),
+      item: mergeTailwindClasses(
+        "w-full shadow-none",
+        variantClasses.item || "",
+        classNames == null ? void 0 : classNames.item
+      ),
+      itemTitle: mergeTailwindClasses(
+        "text-lg font-semibold",
+        sizeClasses.itemTitle || "",
+        classNames == null ? void 0 : classNames.itemTitle
+      ),
+      itemContent: mergeTailwindClasses(
+        "text-sm",
+        sizeClasses.itemContent || "",
+        classNames == null ? void 0 : classNames.itemContent
+      ),
+      itemIndicator: mergeTailwindClasses(
+        "",
+        classNames == null ? void 0 : classNames.itemIndicator
+      )
     };
-    const defaultClassName = mergeTailwindClasses(
-      "rounded-md",
-      {
-        "border-1 border-border": accordionProps.variant === "bordered"
-      },
-      accordionProps.className
-    );
+    const finalProps = __spreadValues({
+      variant,
+      size
+    }, accordionProps);
     return /* @__PURE__ */ jsx(
       Accordion$1,
       __spreadProps(__spreadValues({
         ref
-      }, accordionProps), {
-        className: defaultClassName,
-        itemClasses: __spreadProps(__spreadValues(__spreadValues({}, defaultItemClasses), itemClasses), {
-          base: mergeTailwindClasses(
-            defaultItemClasses.base,
-            itemClasses == null ? void 0 : itemClasses.base
-          ),
-          title: mergeTailwindClasses(
-            defaultItemClasses.title,
-            itemClasses == null ? void 0 : itemClasses.title
-          )
-        }),
+      }, finalProps), {
+        className: mergeTailwindClasses(
+          mergedClasses.base,
+          accordionProps.className
+        ),
+        itemClasses: {
+          base: mergedClasses.item,
+          title: mergedClasses.itemTitle,
+          content: mergedClasses.itemContent,
+          indicator: mergedClasses.itemIndicator
+        },
         children: items.map((item) => {
-          const _a2 = item, { content } = _a2, itemProps = __objRest(_a2, ["content"]);
-          return /* @__PURE__ */ createElement(
-            AccordionItem,
-            __spreadProps(__spreadValues({}, itemProps), {
-              key: itemProps.key,
-              children: content
-            })
-          );
+          const _a2 = item, { key, title, content } = _a2, itemProps = __objRest(_a2, ["key", "title", "content"]);
+          return /* @__PURE__ */ jsx(AccordionItem, __spreadProps(__spreadValues({ title }, itemProps), { children: content }), key);
         })
       })
     );

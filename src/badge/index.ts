@@ -1,1 +1,1 @@
-export { Badge, type BadgeProps, type BadgeVariantProps } from "@heroui/react";
+export { Badge, type BadgeProps } from "./Badge";

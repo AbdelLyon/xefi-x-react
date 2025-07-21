@@ -14,25 +14,53 @@ var __spreadValues = (a, b) => {
     }
   return a;
 };
+import { useState, useCallback } from "react";
 import { clampNumber } from "../../utils/utils/index.es.js";
-import { useState } from "react";
 const DEFAULT_OPTIONS = {
   min: -Infinity,
-  max: Infinity
+  max: Infinity,
+  step: 1
 };
-const useCounter = (initialValue = 0, options) => {
-  const { min, max } = __spreadValues(__spreadValues({}, DEFAULT_OPTIONS), options);
-  const [count, setCount] = useState(clampNumber(initialValue, min, max));
-  const increment = () => setCount((current) => clampNumber(current + 1, min, max));
-  const decrement = () => setCount((current) => clampNumber(current - 1, min, max));
-  const set = (value) => setCount(clampNumber(value, min, max));
-  const reset = () => setCount(clampNumber(initialValue, min, max));
+const useCounter = (initialValue = 0, options = {}) => {
+  const { min, max, step } = __spreadValues(__spreadValues({}, DEFAULT_OPTIONS), options);
+  const [count, setCount] = useState(() => clampNumber(initialValue, min, max));
+  const set = useCallback((value) => {
+    setCount((current) => {
+      const newValue = typeof value === "function" ? value(current) : value;
+      return clampNumber(newValue, min, max);
+    });
+  }, [min, max]);
+  const increment = useCallback(() => {
+    set((current) => current + step);
+  }, [set, step]);
+  const decrement = useCallback(() => {
+    set((current) => current - step);
+  }, [set, step]);
+  const incrementBy = useCallback((amount) => {
+    set((current) => current + amount);
+  }, [set]);
+  const decrementBy = useCallback((amount) => {
+    set((current) => current - amount);
+  }, [set]);
+  const reset = useCallback(() => {
+    set(initialValue);
+  }, [set, initialValue]);
+  const isAtMin = count <= min;
+  const isAtMax = count >= max;
+  const canIncrement = count + step <= max;
+  const canDecrement = count - step >= min;
   return {
     count,
     increment,
     decrement,
     set,
-    reset
+    reset,
+    incrementBy,
+    decrementBy,
+    isAtMin,
+    isAtMax,
+    canIncrement,
+    canDecrement
   };
 };
 export {

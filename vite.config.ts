@@ -3,7 +3,8 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import dts from "vite-plugin-dts";
 import tailwindcss from "tailwindcss";
-import fs from "fs-extra";
+
+import fs from 'fs-extra';
 
 const modules = [
   "utils",
@@ -40,23 +41,21 @@ const modules = [
   "skeleton",
   "toast",
   "divider",
+  "skeleton"
 ];
 
 export default defineConfig({
   plugins: [
     react(),
     dts({
-      exclude: ["src/tests/**/*"],
+      exclude: ["src/tests/**/*", "**/*.test.*", "**/*.spec.*"],
+      outDir: "dist",
+      entryRoot: "src",
+      insertTypesEntry: true,
+      copyDtsFiles: true,
+      strictOutput: true,
+      logLevel: "warn"
     }),
-    {
-      name: "ensure-dist-directory",
-      buildStart() {
-        const distPath = path.resolve(__dirname, "dist");
-        if (!fs.existsSync(distPath)) {
-          fs.mkdirSync(distPath, { recursive: true });
-        }
-      },
-    },
     {
       name: "transform-tailwind-config",
       apply: "build",
@@ -128,10 +127,10 @@ export default defineConfig({
     reportCompressedSize: false,
     cssCodeSplit: true,
     chunkSizeWarningLimit: 500,
-    outDir: "dist",
 
     lib: {
       entry: {
+        index: "index.ts",
         style: "src/index.css",
         ...Object.fromEntries(
           modules.map((module) => [
@@ -163,7 +162,6 @@ export default defineConfig({
       ],
 
       output: {
-        dir: "dist",
         preserveModulesRoot: "src",
         preserveModules: true,
         exports: "named",
@@ -175,15 +173,12 @@ export default defineConfig({
           "chart.js": "Chart",
           "react-chartjs-2": "ReactChartJS",
           "@heroui/react": "HerouiReact",
-          "react-intersection-observer": "ReactIntersectionObserver",
+          "react-intersection-observer": "ReactIntersectionObserver"
         },
         entryFileNames: (chunkInfo) => {
           return `${chunkInfo.name}/index.es.js`;
         },
         assetFileNames: (chunkInfo) => {
-          if (chunkInfo.type?.endsWith(".d.ts")) {
-            return `${chunkInfo.type.replace(".d.ts", "")}/index.d.ts`;
-          }
           return "[name][extname]";
         },
       },

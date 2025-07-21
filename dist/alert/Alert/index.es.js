@@ -29,39 +29,105 @@ var __objRest = (source, exclude) => {
     }
   return target;
 };
-import { jsx } from "react/jsx-runtime";
-import { forwardRef } from "react";
+import { jsxs, jsx } from "react/jsx-runtime";
+import { forwardRef, useState, useCallback, useEffect } from "react";
 import { Alert as Alert$1 } from "@heroui/react";
+import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
 const Alert = forwardRef(
   (_a, ref) => {
     var _b = _a, {
       onVisibleChange,
       onClose,
       isVisible = true,
-      isClosable = false
-    } = _b, otherProps = __objRest(_b, [
+      isClosable = false,
+      autoCloseDelay,
+      icon,
+      actions,
+      dismissOnEscape = true,
+      color = "default",
+      classNames,
+      className,
+      children
+    } = _b, props = __objRest(_b, [
       "onVisibleChange",
       "onClose",
       "isVisible",
-      "isClosable"
+      "isClosable",
+      "autoCloseDelay",
+      "icon",
+      "actions",
+      "dismissOnEscape",
+      "color",
+      "classNames",
+      "className",
+      "children"
     ]);
+    const [internalVisible, setInternalVisible] = useState(isVisible);
+    const handleClose = useCallback(() => {
+      setInternalVisible(false);
+      onClose == null ? void 0 : onClose();
+      onVisibleChange == null ? void 0 : onVisibleChange(false);
+    }, [onClose, onVisibleChange]);
     const handleVisibilityChange = (visible) => {
+      setInternalVisible(visible);
       onVisibleChange == null ? void 0 : onVisibleChange(visible);
     };
-    const handleClose = () => {
-      onClose == null ? void 0 : onClose();
-      handleVisibilityChange(false);
-    };
-    if (!isVisible) {
+    useEffect(() => {
+      setInternalVisible(isVisible);
+    }, [isVisible]);
+    useEffect(() => {
+      if (!autoCloseDelay || !internalVisible) {
+        return;
+      }
+      const timer = setTimeout(() => {
+        handleClose();
+      }, autoCloseDelay);
+      return () => clearTimeout(timer);
+    }, [autoCloseDelay, internalVisible, handleClose]);
+    useEffect(() => {
+      if (!dismissOnEscape || !internalVisible || !isClosable) {
+        return;
+      }
+      const handleKeyDown = (event) => {
+        if (event.key === "Escape") {
+          handleClose();
+        }
+      };
+      document.addEventListener("keydown", handleKeyDown);
+      return () => document.removeEventListener("keydown", handleKeyDown);
+    }, [dismissOnEscape, internalVisible, isClosable, handleClose]);
+    if (!internalVisible) {
       return null;
     }
-    return /* @__PURE__ */ jsx(
+    return /* @__PURE__ */ jsxs(
       Alert$1,
-      __spreadProps(__spreadValues({}, otherProps), {
+      __spreadProps(__spreadValues({
         ref,
+        color,
         isClosable,
         onVisibleChange: handleVisibilityChange,
-        onClose: handleClose
+        onClose: handleClose,
+        startContent: icon,
+        endContent: actions,
+        className: mergeTailwindClasses(
+          // Custom transitions for auto-dismiss
+          autoCloseDelay && "transition-all duration-300 ease-in-out",
+          className
+        ),
+        classNames: {
+          base: mergeTailwindClasses(classNames == null ? void 0 : classNames.base),
+          mainWrapper: mergeTailwindClasses(classNames == null ? void 0 : classNames.mainWrapper),
+          description: mergeTailwindClasses(classNames == null ? void 0 : classNames.description),
+          iconWrapper: mergeTailwindClasses(classNames == null ? void 0 : classNames.iconWrapper)
+        }
+      }, props), {
+        children: [
+          children,
+          actions && /* @__PURE__ */ jsx("div", { className: mergeTailwindClasses(
+            "mt-3 flex items-center gap-2",
+            classNames == null ? void 0 : classNames.actionsWrapper
+          ), children: actions })
+        ]
       })
     );
   }

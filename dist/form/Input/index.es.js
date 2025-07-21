@@ -1,6 +1,4 @@
 var __defProp = Object.defineProperty;
-var __defProps = Object.defineProperties;
-var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __propIsEnum = Object.prototype.propertyIsEnumerable;
@@ -16,7 +14,6 @@ var __spreadValues = (a, b) => {
     }
   return a;
 };
-var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 var __objRest = (source, exclude) => {
   var target = {};
   for (var prop in source)
@@ -33,7 +30,7 @@ import { jsx } from "react/jsx-runtime";
 import { forwardRef, useState } from "react";
 import { Input as Input$1 } from "@heroui/react";
 import { IconEye, IconEyeOff } from "@tabler/icons-react";
-import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
+import { inputClassConfig, getInputColorClasses, getInputSizeClasses, getInputVariantClasses } from "../inputConfig/index.es.js";
 const Input = forwardRef(
   (_a, ref) => {
     var _b = _a, {
@@ -81,63 +78,10 @@ const Input = forwardRef(
       }
     ) : void 0;
     const _a2 = props, { classNames: propClassNames } = _a2, restProps = __objRest(_a2, ["classNames"]);
-    const getVariantStyles = () => {
-      switch (variant) {
-        case "bordered":
-          return [
-            "border-1",
-            "bg-white",
-            "dark:bg-background",
-            "border-border",
-            "data-[hover=true]:border-outline",
-            "group-data-[focus=true]:border-outline",
-            "group-data-[focus=true]:bg-content1",
-            "h-12"
-          ].join(" ");
-        case "flat":
-          return [
-            "border-none",
-            "bg-default-100",
-            "dark:bg-default-50",
-            "data-[hover=true]:bg-content1-300-200",
-            "group-data-[focus=true]:bg-default-100",
-            "h-12"
-          ].join(" ");
-        case "faded":
-          return [
-            "border-1",
-            "border-transparent",
-            "bg-default-100",
-            "dark:bg-default-50",
-            "data-[hover=true]:bg-content1-300-200",
-            "group-data-[focus=true]:border-outline",
-            "h-12"
-          ].join(" ");
-        case "underlined":
-          return [
-            "relative",
-            "border-b-1",
-            "rounded-none",
-            "bg-transparent",
-            "border-border",
-            "h-12",
-            "after:bg-outline",
-            "data-[hover=true]:after:scale-x-100",
-            "data-[hover=true]:after:bg-outline",
-            "group-data-[focus=true]:after:scale-x-100",
-            "group-data-[focus=true]:after:bg-outline"
-          ].join(" ");
-        default:
-          return [
-            "border-1",
-            "bg-white",
-            "dark:bg-background",
-            "data-[hover=true]:border-outline",
-            "group-data-[focus=true]:border-outline",
-            "h-12"
-          ].join(" ");
-      }
-    };
+    const variantClasses = getInputVariantClasses(variant);
+    const sizeClasses = getInputSizeClasses(size);
+    const colorClasses = getInputColorClasses(color);
+    const mergedClasses = inputClassConfig.mergeClasses(__spreadValues(__spreadValues(__spreadValues(__spreadValues({}, variantClasses), sizeClasses), colorClasses), propClassNames));
     return /* @__PURE__ */ jsx(
       Input$1,
       __spreadValues({
@@ -149,12 +93,7 @@ const Input = forwardRef(
         labelPlacement,
         fullWidth,
         validate: combinedValidate,
-        classNames: __spreadProps(__spreadValues({}, propClassNames), {
-          inputWrapper: mergeTailwindClasses(
-            getVariantStyles(),
-            propClassNames == null ? void 0 : propClassNames.inputWrapper
-          )
-        }),
+        classNames: mergedClasses,
         endContent,
         type: inputType
       }, restProps)

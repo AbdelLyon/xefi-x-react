@@ -1,0 +1,100 @@
+name: ✨ Feature Request
+description: Suggest a new feature or enhancement
+title: "[FEATURE] "
+labels: ["enhancement", "needs-triage"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for your interest in improving @xefi/x-react! 
+        Please provide detailed information about your feature request.
+
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: Prerequisites
+      description: Please confirm these before submitting the request
+      options:
+        - label: I have searched existing issues and discussions for similar requests
+          required: true
+        - label: This is not a bug report (use the bug report template instead)
+          required: true
+
+  - type: dropdown
+    id: feature-type
+    attributes:
+      label: Feature Type
+      description: What type of feature are you requesting?
+      options:
+        - New Component
+        - Component Enhancement
+        - New Hook
+        - Hook Enhancement
+        - Development Tool
+        - Documentation
+        - Performance Improvement
+        - Accessibility Improvement
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Description
+      description: What problem does this feature solve? Why do you need it?
+      placeholder: "I'm always frustrated when..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: Describe the solution you'd like to see implemented
+      placeholder: "I would like to see..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternative Solutions
+      description: Describe any alternative solutions or workarounds you've considered
+      placeholder: "Other approaches I've considered are..."
+
+  - type: textarea
+    id: examples
+    attributes:
+      label: Usage Examples
+      description: Show how you would like to use this feature
+      render: tsx
+      placeholder: |
+        import { NewComponent } from "@xefi/x-react/new-component"
+        
+        function Example() {
+          return (
+            <NewComponent
+              prop1="value1"
+              prop2="value2"
+            />
+          )
+        }
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Add any other context, screenshots, or references about the feature request
+      placeholder: Links to similar implementations, mockups, etc.
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution
+      description: Are you willing to contribute to this feature?
+      options:
+        - label: I'd be willing to submit a PR for this feature
+        - label: I'd be willing to help with testing
+        - label: I'd be willing to help with documentation

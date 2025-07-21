@@ -1,12 +1,26 @@
 import "@/index.css";
 
-export { Chart } from "@/chart/Chart";
+export { Chart } from "./Chart";
 export type {
-  ChartBaseProps,
+  ChartComponentProps,
   ChartClassNames,
-  ChartJS,
-  ChartOptions,
-  ChartProps,
   ChartType,
-  ChartTypeRegistry,
-} from "@/chart/Chart";
+  DefaultChartOptionsConfig,
+  ChartData,
+  ChartOptions,
+  InteractionItem,
+  TooltipItem,
+  ChartJS,
+} from "./Chart";
+
+// Export utilities for advanced usage
+export { 
+  registerChartComponents, 
+  defaultChartTheme, 
+  defaultChartClasses 
+} from "./chartConfig";
+
+export {
+  createDefaultChartOptions,
+  mergeChartOptions,
+} from "./chartOptions";

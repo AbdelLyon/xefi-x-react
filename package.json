@@ -1,7 +1,7 @@
 {
   "name": "@xefi/x-react",
   "version": "1.6.13",
-  "description": "Xefi React Package",
+  "description": "A modern, comprehensive React component library built with TypeScript, featuring tree-shakeable components, dark/light theme support, and extensive customization options.",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -11,152 +11,185 @@
   ],
   "sideEffects": false,
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/AbdelLyon/xefi-x-react.git"
   },
-  "author": "DailyApps",
+  "author": {
+    "name": "DailyApps",
+    "url": "https://github.com/AbdelLyon"
+  },
+  "homepage": "https://github.com/AbdelLyon/xefi-x-react#readme",
+  "bugs": {
+    "url": "https://github.com/AbdelLyon/xefi-x-react/issues"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "ui",
+    "typescript",
+    "tailwind",
+    "heroui",
+    "design-system",
+    "component-library",
+    "tree-shaking",
+    "dark-mode",
+    "accessibility",
+    "responsive",
+    "hooks",
+    "charts",
+    "forms"
+  ],
   "license": "MIT",
   "exports": {
     "./style.css": "./dist/style.css",
     "./tailwind.config": "./dist/tailwind.config.js",
-    "./button": {
-      "import": "./dist/button/Button/index.es.js",
-      "types": "./dist/button/index.d.ts"
-    },
-    "./skeleton": {
-      "import": "./dist/skeleton/index.es.js",
-      "types": "./dist/skeleton/index.d.ts"
-    },
-    "./toast": {
-      "import": "./dist/toast/index.es.js",
-      "types": "./dist/toast/index.d.ts"
-    },
-    "./divider": {
-      "import": "./dist/divider/index.es.js",
-      "types": "./dist/divider/index.d.ts"
-    },
-    "./buttons": {
-      "import": "./dist/buttons/Buttons/index.es.js",
-      "types": "./dist/buttons/Buttons.d.ts"
-    },
-    "./modal": {
-      "import": "./dist/modal/Modal/index.es.js",
-      "types": "./dist/modal/Modal.d.ts"
-    },
-    "./utils": {
-      "import": "./dist/utils/index.es.js",
-      "types": "./dist/utils/index.d.ts"
-    },
-    "./hooks": {
-      "import": "./dist/hooks/index.es.js",
-      "types": "./dist/hooks/index.d.ts"
-    },
-    "./providers": {
-      "import": "./dist/providers/index.es.js",
-      "types": "./dist/providers/index.d.ts"
-    },
-    "./theme": {
-      "import": "./dist/theme/index.es.js",
-      "types": "./dist/theme/index.d.ts"
-    },
-    "./icons": {
-      "import": "./dist/icons/index.es.js",
-      "types": "./dist/icons/index.d.ts"
-    },
     "./accordion": {
-      "import": "./dist/accordion/Accordion/index.es.js",
-      "types": "./dist/accordion/Accordion.d.ts"
+      "types": "./dist/accordion/index.d.ts",
+      "import": "./dist/accordion/index.es.js"
     },
     "./alert": {
-      "import": "./dist/alert/Alert/index.es.js",
-      "types": "./dist/alert/Alert.d.ts"
+      "types": "./dist/alert/index.d.ts",
+      "import": "./dist/alert/index.es.js"
     },
     "./avatar": {
-      "import": "./dist/avatar/Avatar/index.es.js",
-      "types": "./dist/avatar/Avatar.d.ts"
+      "types": "./dist/avatar/index.d.ts",
+      "import": "./dist/avatar/index.es.js"
+    },
+    "./badge": {
+      "types": "./dist/badge/index.d.ts",
+      "import": "./dist/badge/index.es.js"
+    },
+    "./button": {
+      "types": "./dist/button/index.d.ts",
+      "import": "./dist/button/index.es.js"
+    },
+    "./buttons": {
+      "types": "./dist/buttons/index.d.ts",
+      "import": "./dist/buttons/index.es.js"
     },
     "./card": {
-      "import": "./dist/card/Card/index.es.js",
-      "types": "./dist/card/Card.d.ts"
-    },
-    "./form": {
-      "import": "./dist/form/index.es.js",
-      "types": "./dist/form/index.d.ts"
-    },
-    "./popover": {
-      "import": "./dist/popover/Popover/index.es.js",
-      "types": "./dist/popover/Popover.d.ts"
-    },
-    "./dropdown": {
-      "import": "./dist/dropdown/Dropdown/index.es.js",
-      "types": "./dist/dropdown/Dropdown.d.ts"
-    },
-    "./image": {
-      "import": "./dist/image/index.es.js",
-      "types": "./dist/image/index.d.ts"
-    },
-    "./slider": {
-      "import": "./dist/slider/Slider/index.es.js",
-      "types": "./dist/slider/Slider.d.ts"
-    },
-    "./progress": {
-      "import": "./dist/progress/index.es.js",
-      "types": "./dist/progress/index.d.ts"
-    },
-    "./spiner": {
-      "import": "./dist/spiner/Spiner/index.es.js",
-      "types": "./dist/spiner/Spiner.d.ts"
-    },
-    "./datagrid": {
-      "import": "./dist/datagrid/index.es.js",
-      "types": "./dist/datagrid/index.d.ts"
-    },
-    "./datepicker": {
-      "import": "./dist/datepicker/DatePicker/index.es.js",
-      "types": "./dist/datepicker/DatePicker.d.ts"
-    },
-    "./chip": {
-      "import": "./dist/chip/Chip/index.es.js",
-      "types": "./dist/chip/Chip.d.ts"
-    },
-    "./drawer": {
-      "import": "./dist/drawer/Drawer/index.es.js",
-      "types": "./dist/drawer/Drawer.d.ts"
-    },
-    "./navbar": {
-      "import": "./dist/navbar/index.es.js",
-      "types": "./dist/navbar/index.d.ts"
-    },
-    "./sidebar": {
-      "import": "./dist/sidebar/index.es.js",
-      "types": "./dist/sidebar/index.d.ts"
-    },
-    "./layout": {
-      "import": "./dist/layout/index.es.js",
-      "types": "./dist/layout/index.d.ts"
-    },
-    "./tooltip": {
-      "import": "./dist/tooltip/Tooltip/index.es.js",
-      "types": "./dist/tooltip/Tooltip.d.ts"
-    },
-    "./tabs": {
-      "import": "./dist/tabs/Tabs/index.es.js",
-      "types": "./dist/tabs/Tabs.d.ts"
-    },
-    "./pagination": {
-      "import": "./dist/pagination/Pagination/index.es.js",
-      "types": "./dist/pagination/Pagination.d.ts"
-    },
-    "./typography": {
-      "import": "./dist/typography/Typography/index.es.js",
-      "types": "./dist/typography/Typography.d.ts"
+      "types": "./dist/card/index.d.ts",
+      "import": "./dist/card/index.es.js"
     },
     "./chart": {
-      "import": "./dist/chart/Chart/index.es.js",
-      "types": "./dist/chart/Chart.d.ts"
+      "types": "./dist/chart/index.d.ts",
+      "import": "./dist/chart/index.es.js"
+    },
+    "./chip": {
+      "types": "./dist/chip/index.d.ts",
+      "import": "./dist/chip/index.es.js"
+    },
+    "./datagrid": {
+      "types": "./dist/datagrid/index.d.ts",
+      "import": "./dist/datagrid/index.es.js"
+    },
+    "./datepicker": {
+      "types": "./dist/datepicker/index.d.ts",
+      "import": "./dist/datepicker/index.es.js"
+    },
+    "./divider": {
+      "types": "./dist/divider/index.d.ts",
+      "import": "./dist/divider/index.es.js"
+    },
+    "./drawer": {
+      "types": "./dist/drawer/index.d.ts",
+      "import": "./dist/drawer/index.es.js"
+    },
+    "./dropdown": {
+      "types": "./dist/dropdown/index.d.ts",
+      "import": "./dist/dropdown/index.es.js"
+    },
+    "./form": {
+      "types": "./dist/form/index.d.ts",
+      "import": "./dist/form/index.es.js"
+    },
+    "./hooks": {
+      "types": "./dist/hooks/index.d.ts",
+      "import": "./dist/hooks/index.es.js"
+    },
+    "./icons": {
+      "types": "./dist/icons/index.d.ts",
+      "import": "./dist/icons/index.es.js"
+    },
+    "./image": {
+      "types": "./dist/image/index.d.ts",
+      "import": "./dist/image/index.es.js"
+    },
+    "./layout": {
+      "types": "./dist/layout/index.d.ts",
+      "import": "./dist/layout/index.es.js"
+    },
+    "./modal": {
+      "types": "./dist/modal/index.d.ts",
+      "import": "./dist/modal/index.es.js"
+    },
+    "./navbar": {
+      "types": "./dist/navbar/index.d.ts",
+      "import": "./dist/navbar/index.es.js"
+    },
+    "./pagination": {
+      "types": "./dist/pagination/index.d.ts",
+      "import": "./dist/pagination/index.es.js"
+    },
+    "./popover": {
+      "types": "./dist/popover/index.d.ts",
+      "import": "./dist/popover/index.es.js"
+    },
+    "./progress": {
+      "types": "./dist/progress/index.d.ts",
+      "import": "./dist/progress/index.es.js"
+    },
+    "./providers": {
+      "types": "./dist/providers/index.d.ts",
+      "import": "./dist/providers/index.es.js"
+    },
+    "./sidebar": {
+      "types": "./dist/sidebar/index.d.ts",
+      "import": "./dist/sidebar/index.es.js"
+    },
+    "./skeleton": {
+      "types": "./dist/skeleton/index.d.ts",
+      "import": "./dist/skeleton/index.es.js"
+    },
+    "./slider": {
+      "types": "./dist/slider/index.d.ts",
+      "import": "./dist/slider/index.es.js"
+    },
+    "./spiner": {
+      "types": "./dist/spiner/index.d.ts",
+      "import": "./dist/spiner/index.es.js"
+    },
+    "./tabs": {
+      "types": "./dist/tabs/index.d.ts",
+      "import": "./dist/tabs/index.es.js"
+    },
+    "./theme": {
+      "types": "./dist/theme/index.d.ts",
+      "import": "./dist/theme/index.es.js"
+    },
+    "./toast": {
+      "types": "./dist/toast/index.d.ts",
+      "import": "./dist/toast/index.es.js"
+    },
+    "./tooltip": {
+      "types": "./dist/tooltip/index.d.ts",
+      "import": "./dist/tooltip/index.es.js"
+    },
+    "./typography": {
+      "types": "./dist/typography/index.d.ts",
+      "import": "./dist/typography/index.es.js"
+    },
+    "./utils": {
+      "types": "./dist/utils/index.d.ts",
+      "import": "./dist/utils/index.es.js"
     }
   },
   "typesVersions": {
@@ -167,13 +200,23 @@
     }
   },
   "scripts": {
-    "clean": "rimraf node_modules dist *.log && pnpm install",
     "build": "vite build",
+    "build:watch": "vite build --watch",
+    "clean": "rimraf node_modules dist *.log && pnpm install",
+    "dev": "vite build --watch",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --fix",
+    "prepublishOnly": "pnpm build && pnpm test && pnpm lint",
+    "preview": "vite preview",
+    "reset": "pnpm clean && pnpm build",
     "test": "vitest",
     "test:cov": "vitest --coverage",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "reset": "pnpm clean && pnpm build"
+    "test:ui": "vitest --ui",
+    "test:watch": "vitest --watch",
+    "typecheck": "tsc --noEmit",
+    "validate": "pnpm lint && pnpm typecheck && pnpm test"
   },
   "dependencies": {
     "@heroui/react": "^2.7.8",

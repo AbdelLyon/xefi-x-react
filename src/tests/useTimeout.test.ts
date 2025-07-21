@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
 interface UseTimeoutOptions {
   autoInvoke?: boolean;
@@ -16,7 +16,7 @@ export const useTimeout = (
 ): UseTimeoutReturn => {
   const timeoutRef = useRef<number | null>(null);
 
-  const start = (...params: unknown[]): void => {
+  const start = useCallback((...params: unknown[]): void => {
     // Correction ici : vérifier null au lieu de undefined
     if (timeoutRef.current === null) {
       timeoutRef.current = window.setTimeout((): void => {
@@ -24,7 +24,7 @@ export const useTimeout = (
         timeoutRef.current = null;
       }, delay);
     }
-  };
+  }, [callback, delay]);
 
   const clear = (): void => {
     if (timeoutRef.current !== null) {
@@ -38,7 +38,7 @@ export const useTimeout = (
       start();
     }
     return clear;
-  }, [delay, autoInvoke]); // Ajout de autoInvoke dans les dépendances
+  }, [autoInvoke, start]); // Ajout de autoInvoke dans les dépendances
 
   return { start, clear };
 };

@@ -29,61 +29,90 @@ var __objRest = (source, exclude) => {
     }
   return target;
 };
-import { jsx, jsxs, Fragment } from "react/jsx-runtime";
-import { Button as Button$1 } from "@heroui/react";
-const Button = (_a) => {
-  var _b = _a, {
-    onClick,
-    radius = "sm",
-    color = "primary",
-    startContent,
-    endContent,
-    LinkComponent,
-    classNames = {},
-    href,
-    children,
-    target,
-    rel
-  } = _b, props = __objRest(_b, [
-    "onClick",
-    "radius",
-    "color",
-    "startContent",
-    "endContent",
-    "LinkComponent",
-    "classNames",
-    "href",
-    "children",
-    "target",
-    "rel"
-  ]);
-  const { beforeContent = "", afterContent = "", content = "" } = classNames;
-  const Content = () => /* @__PURE__ */ jsxs(Fragment, { children: [
-    startContent && /* @__PURE__ */ jsx("span", { className: beforeContent, children: startContent }),
-    /* @__PURE__ */ jsx("span", { className: content, children }),
-    endContent && /* @__PURE__ */ jsx("span", { className: afterContent, children: endContent })
-  ] });
-  const hasValidLink = href && href.length > 0 && LinkComponent;
-  const buttonProps = __spreadValues({
-    onPress: onClick,
-    radius,
-    color
-  }, props);
-  if (hasValidLink) {
+import { jsx } from "react/jsx-runtime";
+import { Button as Button$1, Spinner } from "@heroui/react";
+import { forwardRef } from "react";
+import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
+const Button = forwardRef(
+  (_a, ref) => {
+    var _b = _a, {
+      variant = "solid",
+      color = "primary",
+      size = "md",
+      loading = false,
+      leftIcon,
+      rightIcon,
+      fullWidth = false,
+      children,
+      disabled,
+      className,
+      onClick,
+      loadingSpinner,
+      loadingText,
+      disableRipple = false,
+      disableAnimation = false
+    } = _b, props = __objRest(_b, [
+      "variant",
+      "color",
+      "size",
+      "loading",
+      "leftIcon",
+      "rightIcon",
+      "fullWidth",
+      "children",
+      "disabled",
+      "className",
+      "onClick",
+      "loadingSpinner",
+      "loadingText",
+      "disableRipple",
+      "disableAnimation"
+    ]);
+    const isDisabled = disabled || loading;
+    const handlePress = (e) => {
+      if (loading) {
+        return;
+      }
+      e.continuePropagation();
+      onClick == null ? void 0 : onClick(e);
+    };
+    const spinner = loadingSpinner || /* @__PURE__ */ jsx(
+      Spinner,
+      {
+        size: size === "sm" ? "sm" : "md",
+        color: "current",
+        classNames: {
+          circle1: "border-b-current",
+          circle2: "border-b-current"
+        }
+      }
+    );
+    const buttonContent = loading && loadingText ? loadingText : children;
     return /* @__PURE__ */ jsx(
       Button$1,
       __spreadProps(__spreadValues({
-        as: LinkComponent,
-        href,
-        rel: target === "_blank" ? "noopener noreferrer" : rel,
-        target
-      }, buttonProps), {
-        children: /* @__PURE__ */ jsx(Content, {})
+        ref,
+        variant,
+        onPress: handlePress,
+        color,
+        size,
+        isDisabled,
+        disableRipple: disableRipple || loading,
+        disableAnimation,
+        startContent: loading ? spinner : leftIcon,
+        endContent: !loading ? rightIcon : void 0,
+        className: mergeTailwindClasses(
+          fullWidth && "w-full",
+          loading && "cursor-wait relative",
+          className
+        )
+      }, props), {
+        children: buttonContent
       })
     );
   }
-  return /* @__PURE__ */ jsx(Button$1, __spreadProps(__spreadValues({}, buttonProps), { children: /* @__PURE__ */ jsx(Content, {}) }));
-};
+);
+Button.displayName = "Button";
 export {
   Button
 };

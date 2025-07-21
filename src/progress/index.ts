@@ -1,3 +1,15 @@
 import "@/index.css";
-export { Progress } from "@/progress/Progress";
-export { CircularProgress } from "@/progress/CircularProgress";
+
+export { Progress, type ProgressProps } from "./Progress";
+export { CircularProgress } from "./CircularProgress";
+export { ProgressLabel, type ProgressLabelProps } from "./ProgressLabel";
+
+// Export utilities for advanced usage
+export {
+  formatProgressValue,
+  calculatePercentage,
+  validateProgressValue,
+  getProgressStatus,
+  defaultProgressFormatOptions,
+  type ProgressFormatOptions,
+} from "./progressUtils";

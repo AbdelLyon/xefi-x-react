@@ -30,9 +30,9 @@ var __objRest = (source, exclude) => {
   return target;
 };
 import { jsx } from "react/jsx-runtime";
-import { forwardRef } from "react";
+import { forwardRef, useCallback } from "react";
 import { Tabs as Tabs$1, Tab } from "@heroui/react";
-import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
+import { getTabsVariantClasses, defaultTabsClassNames } from "../tabsUtils/index.es.js";
 const Tabs = forwardRef(
   (_a, ref) => {
     var _b = _a, {
@@ -44,7 +44,8 @@ const Tabs = forwardRef(
       size = "md",
       radius = "md",
       placement = "top",
-      classNames: propClassNames
+      variant = "solid",
+      classNames
     } = _b, props = __objRest(_b, [
       "items",
       "defaultActiveTab",
@@ -54,44 +55,17 @@ const Tabs = forwardRef(
       "size",
       "radius",
       "placement",
+      "variant",
       "classNames"
     ]);
-    const handleSelectionChange = (key) => {
+    const handleSelectionChange = useCallback((key) => {
       onTabChange == null ? void 0 : onTabChange(key.toString());
-    };
-    const defaultContent = (item) => item.content;
-    const contentRenderer = renderTabContent != null ? renderTabContent : defaultContent;
-    const getVariantStyles = () => {
-      if (props.variant === "bordered") {
-        return "border-1 border-border";
-      }
-      return "";
-    };
-    const baseClassNames = {
-      base: "",
-      tabList: getVariantStyles(),
-      tab: "",
-      tabContent: "text-default-700",
-      cursor: "",
-      tabItem: ""
-    };
-    const mergedClassNames = {};
-    Object.keys(baseClassNames).forEach((key) => {
-      var _a2, _b2;
-      const baseClass = (_a2 = baseClassNames[key]) != null ? _a2 : "";
-      const propClass = (_b2 = propClassNames == null ? void 0 : propClassNames[key]) != null ? _b2 : "";
-      mergedClassNames[key] = mergeTailwindClasses(baseClass, propClass);
-    });
-    if (propClassNames) {
-      Object.keys(propClassNames).forEach((key) => {
-        var _a2;
-        if (!(key in baseClassNames)) {
-          mergedClassNames[key] = mergeTailwindClasses(
-            (_a2 = propClassNames[key]) != null ? _a2 : ""
-          );
-        }
-      });
-    }
+    }, [onTabChange]);
+    const contentRenderer = useCallback((item) => {
+      return renderTabContent ? renderTabContent(item) : item.content;
+    }, [renderTabContent]);
+    const variantStyles = getTabsVariantClasses(variant);
+    const finalClassNames = __spreadValues(__spreadValues(__spreadValues({}, defaultTabsClassNames), variantStyles), classNames);
     return /* @__PURE__ */ jsx(
       Tabs$1,
       __spreadProps(__spreadValues({
@@ -100,24 +74,23 @@ const Tabs = forwardRef(
         size,
         radius,
         placement,
+        variant,
         defaultSelectedKey: defaultActiveTab,
-        classNames: mergedClassNames,
+        classNames: finalClassNames,
         onSelectionChange: handleSelectionChange
       }, props), {
-        children: items.map(
-          (item) => /* @__PURE__ */ jsx(
-            Tab,
-            {
-              title: item.title,
-              titleValue: item.titleValue,
-              href: item.href,
-              target: item.target,
-              isDisabled: item.disabled,
-              children: contentRenderer(item)
-            },
-            item.key
-          )
-        )
+        children: items.map((item) => /* @__PURE__ */ jsx(
+          Tab,
+          {
+            title: item.title,
+            titleValue: item.titleValue,
+            href: item.href,
+            target: item.target,
+            isDisabled: item.disabled,
+            children: contentRenderer(item)
+          },
+          item.key
+        ))
       })
     );
   }

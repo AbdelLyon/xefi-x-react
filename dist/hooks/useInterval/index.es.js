@@ -1,16 +1,16 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 const useInterval = (fn, interval, { autoInvoke = false } = {}) => {
   const [active, setActive] = useState(false);
   const intervalRef = useRef(null);
   const fnRef = useRef(fn);
-  const start = () => {
+  const start = useCallback(() => {
     setActive((old) => {
       if (!old && (intervalRef.current === null || intervalRef.current === -1)) {
         intervalRef.current = window.setInterval(fnRef.current, interval);
       }
       return true;
     });
-  };
+  }, [interval]);
   const stop = () => {
     var _a;
     setActive(false);
@@ -30,13 +30,13 @@ const useInterval = (fn, interval, { autoInvoke = false } = {}) => {
       start();
     }
     return stop;
-  }, [fn, active, interval]);
+  }, [fn, active, interval, start]);
   useEffect(() => {
     if (autoInvoke) {
       start();
     }
     return () => stop();
-  }, []);
+  }, [autoInvoke, start]);
   return { start, stop, toggle, active };
 };
 export {

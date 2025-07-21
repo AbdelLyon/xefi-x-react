@@ -1,18 +1,29 @@
-import { CheckboxGroupProps, CheckboxProps, Checkbox } from '@heroui/react';
-type CheckboxItemProps = {
-    label?: React.ReactNode;
-} & Omit<CheckboxProps, "children">;
-type CheckboxWrapperProps = {
-    items: CheckboxItemProps[];
-    groupClasses?: {
-        base?: string;
-        label?: string;
-    };
-    itemClasses?: {
-        base?: string;
-        label?: string;
+import { CheckboxGroupProps as HeroUICheckboxGroupProps, Checkbox } from '@heroui/react';
+import { CheckboxItemConfig } from './checkboxConfig';
+import { FormFieldState, FormFieldSize } from './formConfig';
+import { ReactNode } from 'react';
+import { StylableComponent } from '../utils/typeUtils';
+export interface CheckboxGroupProps extends Omit<HeroUICheckboxGroupProps, "children" | "classNames" | "validate">, StylableComponent {
+    items: CheckboxItemConfig[];
+    size?: FormFieldSize;
+    color?: "default" | "primary" | "secondary" | "success" | "warning" | "danger";
+    state?: FormFieldState;
+    orientation?: "horizontal" | "vertical";
+    spacing?: "sm" | "md" | "lg";
+    maxSelections?: number;
+    minSelections?: number;
+    showSelectAll?: boolean;
+    selectAllLabel?: ReactNode;
+    customValidate?: (selectedValues: string[]) => boolean | string | Promise<boolean | string>;
+    onValidationChange?: (isValid: boolean, errors: string[]) => void;
+    classNames?: {
         wrapper?: string;
+        label?: string;
+        description?: string;
+        errorMessage?: string;
+        items?: string;
     };
-} & Omit<CheckboxGroupProps, "children">;
-declare const CheckboxGroup: import('react').ForwardRefExoticComponent<Omit<CheckboxWrapperProps, "ref"> & import('react').RefAttributes<HTMLDivElement>>;
-export { Checkbox, CheckboxGroup };
+    validateConfig?: boolean;
+}
+export declare const CheckboxGroup: import('react').ForwardRefExoticComponent<Omit<CheckboxGroupProps, "ref"> & import('react').RefAttributes<HTMLDivElement>>;
+export { Checkbox };

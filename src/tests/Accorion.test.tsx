@@ -75,7 +75,7 @@ describe("Composant Accordion", (): void => {
 
     it("devrait appliquer les classes par défaut", (): void => {
       const { container } = render(<Accordion items={defaultItems} />);
-      const accordionItems = container.querySelectorAll('[class*="text-lg"]');
+      const accordionItems = container.querySelectorAll('[data-slot="base"]');
       expect(accordionItems.length).toBeGreaterThan(0);
     });
 

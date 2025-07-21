@@ -3,7 +3,7 @@
 exports[`Composant Alert > Snapshots > devrait correspondre au snapshot avec des props minimales 1`] = `
 <div>
   <div
-    class="flex flex-grow flex-row w-full py-3 px-4 gap-x-1 rounded-medium items-start bg-default-100 dark:bg-default-50/50 text-default-foreground"
+    class="flex flex-grow flex-row w-full items-start py-3 px-4 gap-x-1 rounded-medium bg-default-100 dark:bg-default-50/50 text-default-foreground"
     data-visible="true"
     role="alert"
   >
@@ -24,7 +24,7 @@ exports[`Composant Alert > Snapshots > devrait correspondre au snapshot avec des
       </svg>
     </div>
     <div
-      class="h-full flex-grow min-h-10 ms-2 flex flex-col box-border text-inherit justify-center items-center"
+      class="h-full flex-grow min-h-10 ms-2 flex flex-col box-border items-start text-inherit justify-center"
     />
     <button
       aria-label="Close"
@@ -58,7 +58,7 @@ exports[`Composant Alert > Snapshots > devrait correspondre au snapshot avec des
 exports[`Composant Alert > Snapshots > devrait correspondre au snapshot avec différentes variantes de couleur 1`] = `
 <div>
   <div
-    class="flex flex-grow flex-row w-full py-3 px-4 gap-x-1 rounded-medium items-start bg-primary text-primary-foreground"
+    class="flex flex-grow flex-row w-full items-start py-3 px-4 gap-x-1 rounded-medium bg-primary text-primary-foreground"
     data-visible="true"
     role="alert"
   >
@@ -79,7 +79,7 @@ exports[`Composant Alert > Snapshots > devrait correspondre au snapshot avec dif
       </svg>
     </div>
     <div
-      class="h-full flex-grow min-h-10 ms-2 flex flex-col box-border text-inherit justify-center items-center"
+      class="h-full flex-grow min-h-10 ms-2 flex flex-col box-border items-start text-inherit justify-center"
     />
     <button
       aria-label="Close"
@@ -113,7 +113,7 @@ exports[`Composant Alert > Snapshots > devrait correspondre au snapshot avec dif
 exports[`Composant Alert > Snapshots > devrait correspondre au snapshot avec différentes variantes de couleur 2`] = `
 <div>
   <div
-    class="flex flex-grow flex-row w-full py-3 px-4 gap-x-1 rounded-medium items-start bg-secondary text-secondary-foreground"
+    class="flex flex-grow flex-row w-full items-start py-3 px-4 gap-x-1 rounded-medium bg-secondary text-secondary-foreground"
     data-visible="true"
     role="alert"
   >
@@ -134,7 +134,7 @@ exports[`Composant Alert > Snapshots > devrait correspondre au snapshot avec dif
       </svg>
     </div>
     <div
-      class="h-full flex-grow min-h-10 ms-2 flex flex-col box-border text-inherit justify-center items-center"
+      class="h-full flex-grow min-h-10 ms-2 flex flex-col box-border items-start text-inherit justify-center"
     />
     <button
       aria-label="Close"
@@ -168,7 +168,7 @@ exports[`Composant Alert > Snapshots > devrait correspondre au snapshot avec dif
 exports[`Composant Alert > Snapshots > devrait correspondre au snapshot avec différentes variantes de couleur 3`] = `
 <div>
   <div
-    class="flex flex-grow flex-row w-full py-3 px-4 gap-x-1 rounded-medium items-start bg-success text-success-foreground"
+    class="flex flex-grow flex-row w-full items-start py-3 px-4 gap-x-1 rounded-medium bg-success text-success-foreground"
     data-visible="true"
     role="alert"
   >
@@ -194,7 +194,7 @@ exports[`Composant Alert > Snapshots > devrait correspondre au snapshot avec dif
       </svg>
     </div>
     <div
-      class="h-full flex-grow min-h-10 ms-2 flex flex-col box-border text-inherit justify-center items-center"
+      class="h-full flex-grow min-h-10 ms-2 flex flex-col box-border items-start text-inherit justify-center"
     />
     <button
       aria-label="Close"
@@ -228,7 +228,7 @@ exports[`Composant Alert > Snapshots > devrait correspondre au snapshot avec dif
 exports[`Composant Alert > Snapshots > devrait correspondre au snapshot avec différentes variantes de couleur 4`] = `
 <div>
   <div
-    class="flex flex-grow flex-row w-full py-3 px-4 gap-x-1 rounded-medium items-start bg-warning text-warning-foreground"
+    class="flex flex-grow flex-row w-full items-start py-3 px-4 gap-x-1 rounded-medium bg-warning text-warning-foreground"
     data-visible="true"
     role="alert"
   >
@@ -252,7 +252,7 @@ exports[`Composant Alert > Snapshots > devrait correspondre au snapshot avec dif
       </svg>
     </div>
     <div
-      class="h-full flex-grow min-h-10 ms-2 flex flex-col box-border text-inherit justify-center items-center"
+      class="h-full flex-grow min-h-10 ms-2 flex flex-col box-border items-start text-inherit justify-center"
     />
     <button
       aria-label="Close"
@@ -286,7 +286,7 @@ exports[`Composant Alert > Snapshots > devrait correspondre au snapshot avec dif
 exports[`Composant Alert > Snapshots > devrait correspondre au snapshot avec différentes variantes de couleur 5`] = `
 <div>
   <div
-    class="flex flex-grow flex-row w-full py-3 px-4 gap-x-1 rounded-medium items-start bg-danger text-danger-foreground"
+    class="flex flex-grow flex-row w-full items-start py-3 px-4 gap-x-1 rounded-medium bg-danger text-danger-foreground"
     data-visible="true"
     role="alert"
   >
@@ -307,7 +307,7 @@ exports[`Composant Alert > Snapshots > devrait correspondre au snapshot avec dif
       </svg>
     </div>
     <div
-      class="h-full flex-grow min-h-10 ms-2 flex flex-col box-border text-inherit justify-center items-center"
+      class="h-full flex-grow min-h-10 ms-2 flex flex-col box-border items-start text-inherit justify-center"
     />
     <button
       aria-label="Close"
@@ -341,7 +341,7 @@ exports[`Composant Alert > Snapshots > devrait correspondre au snapshot avec dif
 exports[`Composant Alert > Snapshots > devrait correspondre au snapshot avec isClosable 1`] = `
 <div>
   <div
-    class="flex flex-grow flex-row w-full py-3 px-4 gap-x-1 rounded-medium items-start bg-primary text-primary-foreground"
+    class="flex flex-grow flex-row w-full items-start py-3 px-4 gap-x-1 rounded-medium bg-primary text-primary-foreground"
     data-closeable="true"
     data-visible="true"
     role="alert"
@@ -363,7 +363,7 @@ exports[`Composant Alert > Snapshots > devrait correspondre au snapshot avec isC
       </svg>
     </div>
     <div
-      class="h-full flex-grow min-h-10 ms-2 flex flex-col box-border text-inherit justify-center items-center"
+      class="h-full flex-grow min-h-10 ms-2 flex flex-col box-border items-start text-inherit justify-center"
     />
     <button
       aria-label="Close"
@@ -397,7 +397,7 @@ exports[`Composant Alert > Snapshots > devrait correspondre au snapshot avec isC
 exports[`Composant Alert > Snapshots > devrait correspondre au snapshot avec les props par défaut 1`] = `
 <div>
   <div
-    class="flex flex-grow flex-row w-full py-3 px-4 gap-x-1 rounded-medium items-start bg-primary text-primary-foreground"
+    class="flex flex-grow flex-row w-full items-start py-3 px-4 gap-x-1 rounded-medium bg-primary text-primary-foreground"
     data-visible="true"
     role="alert"
   >
@@ -418,7 +418,7 @@ exports[`Composant Alert > Snapshots > devrait correspondre au snapshot avec les
       </svg>
     </div>
     <div
-      class="h-full flex-grow min-h-10 ms-2 flex flex-col box-border text-inherit justify-center items-center"
+      class="h-full flex-grow min-h-10 ms-2 flex flex-col box-border items-start text-inherit justify-center"
     />
     <button
       aria-label="Close"

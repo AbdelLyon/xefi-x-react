@@ -127,7 +127,7 @@ exports[`Composants Avatar > Avatar > Snapshots > devrait correspondre au snapsh
 exports[`Composants Avatar > AvatarGroup > Snapshots > devrait correspondre au snapshot avec max et total 1`] = `
 <div>
   <div
-    class="flex items-center justify-center h-auto w-max"
+    class="flex items-center -space-x-2"
     role="group"
   >
     <span
@@ -143,7 +143,7 @@ exports[`Composants Avatar > AvatarGroup > Snapshots > devrait correspondre au s
       </span>
     </span>
     <span
-      class="flex relative justify-center items-center box-border overflow-hidden align-middle z-0 outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 w-10 h-10 text-tiny bg-default text-default-foreground rounded-full -ms-2 data-[hover=true]:-translate-x-3 rtl:data-[hover=true]:translate-x-3 transition-transform data-[focus-visible=true]:-translate-x-3 rtl:data-[focus-visible=true]:translate-x-3"
+      class="flex relative justify-center items-center box-border overflow-hidden align-middle z-0 outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 w-10 h-10 rounded-full -ms-2 data-[hover=true]:-translate-x-3 rtl:data-[hover=true]:translate-x-3 transition-transform data-[focus-visible=true]:-translate-x-3 rtl:data-[focus-visible=true]:translate-x-3 bg-default-200 text-default-800 text-xs font-medium"
       tabindex="-1"
     >
       <span
@@ -161,7 +161,7 @@ exports[`Composants Avatar > AvatarGroup > Snapshots > devrait correspondre au s
 exports[`Composants Avatar > AvatarGroup > Snapshots > devrait correspondre au snapshot avec styles personnalisés 1`] = `
 <div>
   <div
-    class="flex items-center justify-center size-6"
+    class="flex items-center -space-x-2 size-6"
     role="group"
   >
     <span
@@ -199,7 +199,7 @@ exports[`Composants Avatar > AvatarGroup > Snapshots > devrait correspondre au s
 exports[`Composants Avatar > AvatarGroup > Snapshots > devrait correspondre au snapshot pour un groupe simple 1`] = `
 <div>
   <div
-    class="flex items-center justify-center h-auto w-max"
+    class="flex items-center -space-x-2"
     role="group"
   >
     <span

@@ -15,7 +15,7 @@ import { usePreviousValue } from "./usePreviousValue/index.es.js";
 import { useReactiveSet } from "./useReactiveSet/index.es.js";
 import { useRerender } from "./useRerender/index.es.js";
 import { useStateHistory } from "./useStateHistory/index.es.js";
-import { useToggle } from "./useToggle/index.es.js";
+import { useBooleanToggle, useToggle } from "./useToggle/index.es.js";
 import { useMounted } from "./useMounted/index.es.js";
 import { useTimeout } from "./useTimeout/index.es.js";
 import { useInterval } from "./useInterval/index.es.js";
@@ -23,9 +23,15 @@ import { useCallbackRef } from "./useCallbackRef/index.es.js";
 import { useLocalStorage } from "./useLocalStorage/index.es.js";
 import { useMergedRef } from "./useMergedRef/index.es.js";
 import { useDisclosure } from "./useDisclosure/index.es.js";
+import { useAsyncState } from "./useAsyncState/index.es.js";
+import { useClipboard } from "./useClipboard/index.es.js";
+import { useKeyboard } from "./useKeyboard/index.es.js";
 export {
+  useAsyncState,
+  useBooleanToggle,
   useCallbackRef,
   useClickOutside,
+  useClipboard,
   useCounter,
   useDebouncedCallback,
   useDebouncedState,
@@ -36,6 +42,7 @@ export {
   useInfiniteScroll,
   useIntersection,
   useInterval,
+  useKeyboard,
   useLocalStorage,
   useMediaQuery,
   useMergedRef,

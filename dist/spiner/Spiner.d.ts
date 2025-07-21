@@ -1,8 +1,8 @@
 import { SpinnerProps as SpinnerRootProps } from '@heroui/react';
-import { Color, Size } from '../types/types';
+import { Color } from '../types';
 interface SpinnerProps extends Omit<SpinnerRootProps, "label" | "labelColor"> {
     color?: Color;
-    size?: Size;
+    size?: "sm" | "md" | "lg";
     disableAnimation?: boolean;
     strokeWidth?: number;
 }

@@ -1,95 +1,93 @@
-import type { JSX } from "react";
-import React, { forwardRef } from "react";
+import type { JSX } from "react"
+import React, { forwardRef } from "react"
 import type {
   ChartData,
   ChartOptions,
-  ChartTypeRegistry,
   InteractionItem,
-  TooltipItem,
   Chart as ChartJS,
-} from "chart.js";
+} from "chart.js"
+import type { ChartProps } from "react-chartjs-2"
+import { Chart as ChartRoot, getElementAtEvent } from "react-chartjs-2"
+import { mergeTailwindClasses } from "@/utils"
+import { registerChartComponents, defaultChartClasses } from "./chartConfig"
 import {
-  CategoryScale,
-  Chart as ChartLibrary,
-  Legend,
-  LinearScale,
-  Title,
-  Tooltip,
-  BarController,
-  DoughnutController,
-  BarElement,
-  ArcElement,
-  PointElement,
-  LineElement,
-  RadialLinearScale,
-  ScatterController,
-  PolarAreaController,
-} from "chart.js";
-import type { ChartProps } from "react-chartjs-2";
-import { Chart as ChartRoot, getElementAtEvent } from "react-chartjs-2";
-import { mergeTailwindClasses } from "@/utils";
+  createDefaultChartOptions,
+  mergeChartOptions,
+  type ChartType,
+  type DefaultChartOptionsConfig,
+} from "./chartOptions"
 
-ChartLibrary.register(
-  CategoryScale,
-  LinearScale,
-  Title,
-  Tooltip,
-  Legend,
-  RadialLinearScale,
-  BarElement,
-  ArcElement,
-  PointElement,
-  LineElement,
-  BarController,
-  DoughnutController,
-  ScatterController,
-  PolarAreaController,
-);
+// Register Chart.js components on module load
+registerChartComponents()
 
-type ChartType = keyof ChartTypeRegistry;
-
-interface ChartClassNames {
-  root?: string;
-  canvas?: string;
-  title?: string;
-  legend?: string;
-  tooltip?: string;
+/**
+ * Custom styling options for chart components
+ */
+export interface ChartClassNames {
+  root?: string
+  canvas?: string
+  title?: string
+  legend?: string
+  tooltip?: string
 }
 
-interface ChartBaseProps<T extends ChartType> {
-  data: ChartData<T>;
-  options?: ChartOptions<T>;
-  type: T;
-  getElementSelected?: (elementSelected: InteractionItem[]) => void;
-  classNames?: ChartClassNames;
-  width?: number | string;
-  height?: number | string;
-  responsive?: boolean;
-  maintainAspectRatio?: boolean;
-  title?: string;
-  showLegend?: boolean;
-  showTooltip?: boolean;
-  legendPosition?: "top" | "bottom" | "left" | "right";
-  customTooltip?: (context: TooltipItem<T>) => string | string[] | undefined;
+/**
+ * Enhanced Chart component props
+ */
+export interface ChartBaseProps<T extends ChartType>
+  extends DefaultChartOptionsConfig<T> {
+  /** Chart data */
+  data: ChartData<T>
+  /** Chart options (will be merged with defaults) */
+  options?: ChartOptions<T>
+  /** Chart type */
+  type: T
+  /** Callback when chart elements are clicked */
+  getElementSelected?: (elementSelected: InteractionItem[]) => void
+  /** Custom CSS classes for different parts */
+  classNames?: ChartClassNames
+  /** Chart width */
+  width?: number | string
+  /** Chart height */
+  height?: number | string
 }
 
-type Props<T extends ChartType> = ChartBaseProps<T> &
-  Omit<ChartProps<T>, keyof ChartBaseProps<T>>;
+/**
+ * Complete Chart component props
+ */
+export type ChartComponentProps<T extends ChartType> = ChartBaseProps<T> &
+  Omit<ChartProps<T>, keyof ChartBaseProps<T>>
 
-const defaultClassNames: Required<ChartClassNames> = {
-  root: "relative w-full h-max flex flex-col items-center border border-border justify-center bg-white dark:bg-content1 p-6 shadow-md rounded-xl",
-  canvas: "w-full h-[400px]",
-  title: "text-lg font-semibold text-center mb-4",
-  legend: "mt-4",
-  tooltip: "bg-white p-2 rounded shadow-lg border text-sm",
-};
-
-export const Chart = forwardRef<HTMLDivElement, Props<ChartType>>(
+/**
+ * Enhanced Chart component built on top of react-chartjs-2
+ * Provides theming, responsive behavior, and interaction handling
+ *
+ * @example
+ * ```tsx
+ * // Basic chart
+ * <Chart
+ *   type="bar"
+ *   data={chartData}
+ *   title="Sales Report"
+ *   showLegend={true}
+ * />
+ *
+ * // Chart with custom options and click handling
+ * <Chart
+ *   type="doughnut"
+ *   data={pieData}
+ *   options={{ cutout: '60%' }}
+ *   getElementSelected={(elements) => console.log(elements)}
+ *   customTooltip={(context) => `${context.label}: ${context.parsed}`}
+ * />
+ * ```
+ */
+export const Chart = forwardRef<HTMLDivElement, ChartComponentProps<ChartType>>(
   (
     {
       type,
       data,
-      options,
+      options: userOptions,
       getElementSelected,
       classNames = {},
       responsive = true,
@@ -101,109 +99,90 @@ export const Chart = forwardRef<HTMLDivElement, Props<ChartType>>(
       customTooltip,
       ...props
     },
-    ref,
+    ref
   ): JSX.Element => {
-    // Fusion des classes
+    // Merge custom classes with defaults
     const mergedClassNames = {
-      root: mergeTailwindClasses(defaultClassNames.root, classNames.root),
-      canvas: mergeTailwindClasses(defaultClassNames.canvas, classNames.canvas),
-      title: mergeTailwindClasses(defaultClassNames.title, classNames.title),
-      legend: mergeTailwindClasses(defaultClassNames.legend, classNames.legend),
-      tooltip: mergeTailwindClasses(
-        defaultClassNames.tooltip,
-        classNames.tooltip,
+      root: mergeTailwindClasses(defaultChartClasses.root, classNames.root),
+      canvas: mergeTailwindClasses(
+        defaultChartClasses.canvas,
+        classNames.canvas
       ),
-    };
+      title: mergeTailwindClasses(defaultChartClasses.title, classNames.title),
+      legend: mergeTailwindClasses(
+        defaultChartClasses.legend,
+        classNames.legend
+      ),
+      tooltip: mergeTailwindClasses(
+        defaultChartClasses.tooltip,
+        classNames.tooltip
+      ),
+    }
 
+    // Handle chart element click events
     const handleClick = (event: React.MouseEvent<HTMLCanvasElement>): void => {
-      const chartElement = event.currentTarget;
-      if (getElementSelected) {
-        const clickedElements = getElementAtEvent(
-          chartElement as unknown as ChartJS<keyof ChartTypeRegistry>,
-          event,
-        );
-
-        if (clickedElements.length > 0) {
-          getElementSelected(clickedElements);
-        }
+      if (!getElementSelected) {
+        return
       }
-    };
 
-    const defaultOptions: ChartOptions<ChartType> = {
+      const chartElement = event.currentTarget
+      const clickedElements = getElementAtEvent(
+        chartElement as unknown as ChartJS<
+          | "line"
+          | "bar"
+          | "radar"
+          | "doughnut"
+          | "pie"
+          | "polarArea"
+          | "bubble"
+          | "scatter"
+        >,
+        event
+      )
+
+      if (clickedElements.length > 0) {
+        getElementSelected(clickedElements)
+      }
+    }
+
+    // Create and merge chart options
+    const defaultOptions = createDefaultChartOptions({
       responsive,
       maintainAspectRatio,
-      plugins: {
-        title: title
-          ? {
-              display: true,
-              text: title,
-              font: {
-                size: 16,
-                weight: "bold",
-              },
-              padding: {
-                top: 10,
-                bottom: 20,
-              },
-            }
-          : undefined,
+      title,
+      showLegend,
+      showTooltip,
+      legendPosition,
+      customTooltip,
+    })
 
-        legend: {
-          display: showLegend,
-          position: legendPosition,
-        },
-
-        tooltip: showTooltip
-          ? {
-              enabled: true,
-              backgroundColor: "white",
-              titleColor: "#1f2937",
-              bodyColor: "#4b5563",
-              borderColor: "#e5e7eb",
-              borderWidth: 1,
-              padding: 8,
-              cornerRadius: 4,
-              bodyFont: { size: 14 },
-              titleFont: {
-                size: 14,
-                weight: "bold" as const,
-              },
-              ...(customTooltip && {
-                callbacks: {
-                  label: customTooltip,
-                },
-              }),
-            }
-          : undefined,
-      },
-    };
-
-    const mergedOptions: ChartOptions<ChartType> = {
-      ...defaultOptions,
-      ...options,
-    };
+    const finalOptions = mergeChartOptions(defaultOptions, userOptions)
 
     return (
       <div ref={ref} className={mergedClassNames.root}>
         <ChartRoot
           data={data}
-          options={mergedOptions}
+          options={finalOptions}
           type={type}
           onClick={handleClick}
           className={mergedClassNames.canvas}
           {...props}
         />
       </div>
-    );
-  },
-);
+    )
+  }
+)
 
+Chart.displayName = "Chart"
+
+// Re-export types for external use
+export type { ChartType, DefaultChartOptionsConfig }
+
+// Re-export Chart.js types for convenience
 export type {
-  ChartType,
-  ChartClassNames,
-  ChartTypeRegistry,
-  ChartJS,
+  ChartData,
   ChartOptions,
-  ChartProps,
-  ChartBaseProps,
-};
+  InteractionItem,
+  TooltipItem,
+  Chart as ChartJS,
+} from "chart.js"

@@ -8,7 +8,7 @@ exports[`Composant Accordion > Snapshots > devrait correspondre au snapshot avec
     data-orientation="vertical"
   >
     <div
-      class="w-full shadow-none custom-base-class"
+      class="w-full shadow-none bg-transparent"
       data-slot="base"
     >
       <h2
@@ -26,7 +26,7 @@ exports[`Composant Accordion > Snapshots > devrait correspondre au snapshot avec
             class="flex-1 flex flex-col text-start"
           >
             <span
-              class="text-foreground text-lg font-semibold custom-title-class"
+              class="text-foreground font-semibold text-base"
               data-slot="title"
             >
               Premier élément
@@ -63,7 +63,7 @@ exports[`Composant Accordion > Snapshots > devrait correspondre au snapshot avec
       role="separator"
     />
     <div
-      class="w-full shadow-none custom-base-class"
+      class="w-full shadow-none bg-transparent"
       data-slot="base"
     >
       <h2
@@ -81,7 +81,7 @@ exports[`Composant Accordion > Snapshots > devrait correspondre au snapshot avec
             class="flex-1 flex flex-col text-start"
           >
             <span
-              class="text-foreground text-lg font-semibold custom-title-class"
+              class="text-foreground font-semibold text-base"
               data-slot="title"
             >
               Deuxième élément
@@ -120,12 +120,12 @@ exports[`Composant Accordion > Snapshots > devrait correspondre au snapshot avec
 exports[`Composant Accordion > Snapshots > devrait correspondre au snapshot avec la variante 'splitted' 1`] = `
 <div>
   <div
-    class="px-2 flex flex-col gap-2 w-full rounded-md"
+    class="px-2 flex flex-col w-full rounded-md gap-2"
     data-collection="react-aria-:r5:"
     data-orientation="vertical"
   >
     <div
-      class="px-4 w-full shadow-none bg-white dark:bg-content1 border-1 border-border rounded-md"
+      class="px-4 w-full shadow-none bg-white dark:bg-content1 border-1 border-border rounded-md mb-2 last:mb-0"
       data-slot="base"
     >
       <h2
@@ -143,7 +143,7 @@ exports[`Composant Accordion > Snapshots > devrait correspondre au snapshot avec
             class="flex-1 flex flex-col text-start"
           >
             <span
-              class="text-foreground text-lg font-semibold"
+              class="text-foreground font-semibold text-base"
               data-slot="title"
             >
               Premier élément
@@ -176,7 +176,7 @@ exports[`Composant Accordion > Snapshots > devrait correspondre au snapshot avec
       </h2>
     </div>
     <div
-      class="px-4 w-full shadow-none bg-white dark:bg-content1 border-1 border-border rounded-md"
+      class="px-4 w-full shadow-none bg-white dark:bg-content1 border-1 border-border rounded-md mb-2 last:mb-0"
       data-slot="base"
     >
       <h2
@@ -194,7 +194,7 @@ exports[`Composant Accordion > Snapshots > devrait correspondre au snapshot avec
             class="flex-1 flex flex-col text-start"
           >
             <span
-              class="text-foreground text-lg font-semibold"
+              class="text-foreground font-semibold text-base"
               data-slot="title"
             >
               Deuxième élément
@@ -239,7 +239,7 @@ exports[`Composant Accordion > Snapshots > devrait correspondre au snapshot avec
     data-selection-mode="multiple"
   >
     <div
-      class="w-full shadow-none"
+      class="w-full shadow-none bg-transparent"
       data-slot="base"
     >
       <h2
@@ -257,7 +257,7 @@ exports[`Composant Accordion > Snapshots > devrait correspondre au snapshot avec
             class="flex-1 flex flex-col text-start"
           >
             <span
-              class="text-foreground text-lg font-semibold"
+              class="text-foreground font-semibold text-base"
               data-slot="title"
             >
               Premier élément
@@ -294,7 +294,7 @@ exports[`Composant Accordion > Snapshots > devrait correspondre au snapshot avec
       role="separator"
     />
     <div
-      class="w-full shadow-none"
+      class="w-full shadow-none bg-transparent"
       data-slot="base"
     >
       <h2
@@ -312,7 +312,7 @@ exports[`Composant Accordion > Snapshots > devrait correspondre au snapshot avec
             class="flex-1 flex flex-col text-start"
           >
             <span
-              class="text-foreground text-lg font-semibold"
+              class="text-foreground font-semibold text-base"
               data-slot="title"
             >
               Deuxième élément
@@ -356,7 +356,7 @@ exports[`Composant Accordion > Snapshots > devrait correspondre au snapshot avec
     data-orientation="vertical"
   >
     <div
-      class="w-full shadow-none"
+      class="w-full shadow-none bg-transparent"
       data-slot="base"
     >
       <h2
@@ -374,7 +374,7 @@ exports[`Composant Accordion > Snapshots > devrait correspondre au snapshot avec
             class="flex-1 flex flex-col text-start"
           >
             <span
-              class="text-foreground text-lg font-semibold"
+              class="text-foreground font-semibold text-base"
               data-slot="title"
             >
               Premier élément
@@ -411,7 +411,7 @@ exports[`Composant Accordion > Snapshots > devrait correspondre au snapshot avec
       role="separator"
     />
     <div
-      class="w-full shadow-none"
+      class="w-full shadow-none bg-transparent"
       data-slot="base"
     >
       <h2
@@ -429,7 +429,7 @@ exports[`Composant Accordion > Snapshots > devrait correspondre au snapshot avec
             class="flex-1 flex flex-col text-start"
           >
             <span
-              class="text-foreground text-lg font-semibold"
+              class="text-foreground font-semibold text-base"
               data-slot="title"
             >
               Deuxième élément

@@ -10,12 +10,12 @@ exports[`Composant Input > Snapshots > devrait correspondre au snapshot avec lab
     data-slot="base"
   >
     <div
-      class="relative w-full inline-flex tap-highlight-transparent shadow-sm px-3 min-h-10 rounded-medium flex-col items-start justify-center gap-0 transition-background !duration-150 transition-colors motion-reduce:transition-none py-2 border-1 bg-white dark:bg-background border-border data-[hover=true]:border-outline group-data-[focus=true]:border-outline group-data-[focus=true]:bg-content1 h-12"
+      class="relative w-full inline-flex tap-highlight-transparent px-3 border-medium border-default-200 data-[hover=true]:border-default-400 group-data-[focus=true]:border-default-foreground rounded-medium flex-col items-start justify-center gap-0 transition-background !duration-150 transition-colors motion-reduce:transition-none py-2 shadow-sm h-12 min-h-12"
       data-slot="input-wrapper"
       style="cursor: text;"
     >
       <label
-        class="absolute z-10 pointer-events-none origin-top-left flex-shrink-0 rtl:origin-top-right subpixel-antialiased block text-foreground-500 cursor-text will-change-auto !duration-200 !ease-out motion-reduce:transition-none transition-[transform,color,left,opacity] group-data-[filled-within=true]:text-default-600 group-data-[filled-within=true]:pointer-events-auto group-data-[filled-within=true]:scale-85 text-small group-data-[filled-within=true]:-translate-y-[calc(50%_+_theme(fontSize.small)/2_-_6px_-_theme(borderWidth.medium))] pe-2 max-w-full text-ellipsis overflow-hidden"
+        class="absolute z-10 pointer-events-none origin-top-left flex-shrink-0 rtl:origin-top-right subpixel-antialiased block cursor-text will-change-auto !duration-200 !ease-out motion-reduce:transition-none transition-[transform,color,left,opacity] group-data-[filled-within=true]:text-default-600 group-data-[filled-within=true]:pointer-events-auto group-data-[filled-within=true]:scale-85 text-small group-data-[filled-within=true]:-translate-y-[calc(50%_+_theme(fontSize.small)/2_-_6px_-_theme(borderWidth.medium))] pe-2 max-w-full text-ellipsis overflow-hidden text-default-600"
         data-slot="label"
         for="react-aria-:r1d:"
         id="react-aria-:r1e:"
@@ -29,7 +29,7 @@ exports[`Composant Input > Snapshots > devrait correspondre au snapshot avec lab
         <input
           aria-label="Nom d'utilisateur"
           aria-labelledby="react-aria-:r1d: react-aria-:r1e:"
-          class="w-full font-normal bg-transparent !outline-none placeholder:text-foreground-500 focus-visible:outline-none data-[has-start-content=true]:ps-1.5 data-[has-end-content=true]:pe-1.5 data-[type=color]:rounded-none file:cursor-pointer file:bg-transparent file:border-0 autofill:bg-transparent bg-clip-text text-small"
+          class="w-full font-normal bg-transparent !outline-none focus-visible:outline-none data-[has-start-content=true]:ps-1.5 data-[has-end-content=true]:pe-1.5 data-[type=color]:rounded-none file:cursor-pointer file:bg-transparent file:border-0 autofill:bg-transparent bg-clip-text placeholder:text-default-500 text-sm"
           data-slot="input"
           id="react-aria-:r1d:"
           tabindex="0"
@@ -55,7 +55,7 @@ exports[`Composant Input > Snapshots > devrait correspondre au snapshot avec les
       data-slot="main-wrapper"
     >
       <div
-        class="relative w-full inline-flex tap-highlight-transparent flex-row items-center shadow-sm px-3 gap-3 min-h-10 rounded-medium transition-background !duration-150 transition-colors motion-reduce:transition-none border-1 bg-white dark:bg-background border-border data-[hover=true]:border-outline group-data-[focus=true]:border-outline group-data-[focus=true]:bg-content1 h-12"
+        class="relative w-full inline-flex tap-highlight-transparent flex-row items-center px-3 gap-3 border-medium border-default-200 data-[hover=true]:border-default-400 group-data-[focus=true]:border-default-foreground rounded-medium transition-background !duration-150 transition-colors motion-reduce:transition-none shadow-sm h-12 min-h-12"
         data-slot="input-wrapper"
         style="cursor: text;"
       >
@@ -65,7 +65,7 @@ exports[`Composant Input > Snapshots > devrait correspondre au snapshot avec les
         >
           <input
             aria-label=" "
-            class="w-full font-normal bg-transparent !outline-none placeholder:text-foreground-500 focus-visible:outline-none data-[has-start-content=true]:ps-1.5 data-[has-end-content=true]:pe-1.5 data-[type=color]:rounded-none file:cursor-pointer file:bg-transparent file:border-0 autofill:bg-transparent bg-clip-text text-small"
+            class="w-full font-normal bg-transparent !outline-none focus-visible:outline-none data-[has-start-content=true]:ps-1.5 data-[has-end-content=true]:pe-1.5 data-[type=color]:rounded-none file:cursor-pointer file:bg-transparent file:border-0 autofill:bg-transparent bg-clip-text placeholder:text-default-500 text-sm"
             data-slot="input"
             id="react-aria-:r0:"
             tabindex="0"
@@ -92,7 +92,7 @@ exports[`Composant Input > Snapshots > devrait correspondre au snapshot pour cha
       data-slot="main-wrapper"
     >
       <div
-        class="relative w-full inline-flex tap-highlight-transparent flex-row items-center shadow-sm px-3 gap-3 min-h-10 rounded-medium transition-background !duration-150 transition-colors motion-reduce:transition-none border-1 bg-white dark:bg-background border-border data-[hover=true]:border-outline group-data-[focus=true]:border-outline group-data-[focus=true]:bg-content1 h-12"
+        class="relative w-full inline-flex tap-highlight-transparent flex-row items-center px-3 gap-3 border-medium border-default-200 data-[hover=true]:border-default-400 group-data-[focus=true]:border-default-foreground rounded-medium transition-background !duration-150 transition-colors motion-reduce:transition-none shadow-sm h-12 min-h-12"
         data-slot="input-wrapper"
         style="cursor: text;"
       >
@@ -102,7 +102,7 @@ exports[`Composant Input > Snapshots > devrait correspondre au snapshot pour cha
         >
           <input
             aria-label=" "
-            class="w-full font-normal bg-transparent !outline-none placeholder:text-foreground-500 focus-visible:outline-none data-[has-start-content=true]:ps-1.5 data-[has-end-content=true]:pe-1.5 data-[type=color]:rounded-none file:cursor-pointer file:bg-transparent file:border-0 autofill:bg-transparent bg-clip-text text-small"
+            class="w-full font-normal bg-transparent !outline-none focus-visible:outline-none data-[has-start-content=true]:ps-1.5 data-[has-end-content=true]:pe-1.5 data-[type=color]:rounded-none file:cursor-pointer file:bg-transparent file:border-0 autofill:bg-transparent bg-clip-text placeholder:text-default-500 text-sm"
             data-slot="input"
             id="react-aria-:r5:"
             tabindex="0"
@@ -129,7 +129,7 @@ exports[`Composant Input > Snapshots > devrait correspondre au snapshot pour cha
       data-slot="main-wrapper"
     >
       <div
-        class="relative w-full inline-flex tap-highlight-transparent flex-row items-center shadow-sm px-3 gap-3 min-h-10 rounded-medium transition-background motion-reduce:transition-none !duration-150 outline-none group-data-[focus-visible=true]:z-10 group-data-[focus-visible=true]:ring-2 group-data-[focus-visible=true]:ring-focus group-data-[focus-visible=true]:ring-offset-2 group-data-[focus-visible=true]:ring-offset-background border-none bg-default-100 dark:bg-default-50 data-[hover=true]:bg-content1-300-200 group-data-[focus=true]:bg-default-100 h-12"
+        class="relative w-full inline-flex tap-highlight-transparent flex-row items-center px-3 gap-3 bg-default-100 data-[hover=true]:bg-default-200 group-data-[focus=true]:bg-default-100 rounded-medium transition-background motion-reduce:transition-none !duration-150 outline-none group-data-[focus-visible=true]:z-10 group-data-[focus-visible=true]:ring-2 group-data-[focus-visible=true]:ring-focus group-data-[focus-visible=true]:ring-offset-2 group-data-[focus-visible=true]:ring-offset-background shadow-sm h-12 min-h-12"
         data-slot="input-wrapper"
         style="cursor: text;"
       >
@@ -139,7 +139,7 @@ exports[`Composant Input > Snapshots > devrait correspondre au snapshot pour cha
         >
           <input
             aria-label=" "
-            class="w-full font-normal bg-transparent !outline-none placeholder:text-foreground-500 focus-visible:outline-none data-[has-start-content=true]:ps-1.5 data-[has-end-content=true]:pe-1.5 data-[type=color]:rounded-none file:cursor-pointer file:bg-transparent file:border-0 autofill:bg-transparent bg-clip-text text-small group-data-[has-value=true]:text-default-foreground"
+            class="w-full font-normal bg-transparent !outline-none focus-visible:outline-none data-[has-start-content=true]:ps-1.5 data-[has-end-content=true]:pe-1.5 data-[type=color]:rounded-none file:cursor-pointer file:bg-transparent file:border-0 autofill:bg-transparent bg-clip-text group-data-[has-value=true]:text-default-foreground placeholder:text-default-500 text-sm"
             data-slot="input"
             id="react-aria-:ra:"
             tabindex="0"
@@ -166,7 +166,7 @@ exports[`Composant Input > Snapshots > devrait correspondre au snapshot pour cha
       data-slot="main-wrapper"
     >
       <div
-        class="relative w-full inline-flex tap-highlight-transparent flex-row items-center shadow-sm px-3 gap-3 data-[hover=true]:border-default-400 focus-within:border-default-400 min-h-10 rounded-medium transition-background !duration-150 transition-colors motion-reduce:transition-none outline-none group-data-[focus-visible=true]:z-10 group-data-[focus-visible=true]:ring-2 group-data-[focus-visible=true]:ring-focus group-data-[focus-visible=true]:ring-offset-2 group-data-[focus-visible=true]:ring-offset-background border-1 border-transparent bg-default-100 dark:bg-default-50 data-[hover=true]:bg-content1-300-200 group-data-[focus=true]:border-outline h-12"
+        class="relative w-full inline-flex tap-highlight-transparent flex-row items-center px-3 gap-3 bg-default-100 border-medium border-default-200 data-[hover=true]:border-default-400 focus-within:border-default-400 rounded-medium transition-background !duration-150 transition-colors motion-reduce:transition-none outline-none group-data-[focus-visible=true]:z-10 group-data-[focus-visible=true]:ring-2 group-data-[focus-visible=true]:ring-focus group-data-[focus-visible=true]:ring-offset-2 group-data-[focus-visible=true]:ring-offset-background shadow-sm h-12 min-h-12"
         data-slot="input-wrapper"
         style="cursor: text;"
       >
@@ -176,7 +176,7 @@ exports[`Composant Input > Snapshots > devrait correspondre au snapshot pour cha
         >
           <input
             aria-label=" "
-            class="w-full font-normal bg-transparent !outline-none placeholder:text-foreground-500 focus-visible:outline-none data-[has-start-content=true]:ps-1.5 data-[has-end-content=true]:pe-1.5 data-[type=color]:rounded-none file:cursor-pointer file:bg-transparent file:border-0 autofill:bg-transparent bg-clip-text text-small"
+            class="w-full font-normal bg-transparent !outline-none focus-visible:outline-none data-[has-start-content=true]:ps-1.5 data-[has-end-content=true]:pe-1.5 data-[type=color]:rounded-none file:cursor-pointer file:bg-transparent file:border-0 autofill:bg-transparent bg-clip-text placeholder:text-default-500 text-sm"
             data-slot="input"
             id="react-aria-:rf:"
             tabindex="0"
@@ -203,7 +203,7 @@ exports[`Composant Input > Snapshots > devrait correspondre au snapshot pour cha
       data-slot="main-wrapper"
     >
       <div
-        class="w-full inline-flex tap-highlight-transparent flex-row items-center px-3 gap-3 !px-1 !pb-0 !gap-0 box-border shadow-[0_1px_0px_0_rgba(0,0,0,0.05)] !rounded-none hover:border-default-300 after:content-[''] after:w-0 after:origin-center after:absolute after:left-1/2 after:-translate-x-1/2 after:-bottom-[2px] after:h-[2px] group-data-[focus=true]:after:w-full min-h-10 transition-background motion-reduce:transition-none !duration-150 after:transition-width motion-reduce:after:transition-none relative border-b-1 rounded-none bg-transparent border-border h-12 after:bg-outline data-[hover=true]:after:scale-x-100 data-[hover=true]:after:bg-outline group-data-[focus=true]:after:scale-x-100 group-data-[focus=true]:after:bg-outline"
+        class="w-full inline-flex tap-highlight-transparent flex-row items-center px-3 gap-3 !px-1 !pb-0 !gap-0 relative box-border border-b-medium border-default-200 !rounded-none hover:border-default-300 after:content-[''] after:w-0 after:origin-center after:bg-default-foreground after:absolute after:left-1/2 after:-translate-x-1/2 after:-bottom-[2px] after:h-[2px] group-data-[focus=true]:after:w-full rounded-medium transition-background motion-reduce:transition-none !duration-150 after:transition-width motion-reduce:after:transition-none shadow-sm h-12 min-h-12"
         data-slot="input-wrapper"
         style="cursor: text;"
       >
@@ -213,7 +213,7 @@ exports[`Composant Input > Snapshots > devrait correspondre au snapshot pour cha
         >
           <input
             aria-label=" "
-            class="w-full font-normal bg-transparent !outline-none placeholder:text-foreground-500 focus-visible:outline-none data-[has-start-content=true]:ps-1.5 data-[has-end-content=true]:pe-1.5 data-[type=color]:rounded-none file:cursor-pointer file:bg-transparent file:border-0 autofill:bg-transparent bg-clip-text text-small group-data-[has-value=true]:text-foreground"
+            class="w-full font-normal bg-transparent !outline-none focus-visible:outline-none data-[has-start-content=true]:ps-1.5 data-[has-end-content=true]:pe-1.5 data-[type=color]:rounded-none file:cursor-pointer file:bg-transparent file:border-0 autofill:bg-transparent bg-clip-text group-data-[has-value=true]:text-foreground placeholder:text-default-500 text-sm"
             data-slot="input"
             id="react-aria-:rk:"
             tabindex="0"
@@ -240,7 +240,7 @@ exports[`Composant Input > Snapshots > devrait correspondre au snapshot pour dif
       data-slot="main-wrapper"
     >
       <div
-        class="relative w-full inline-flex tap-highlight-transparent flex-row items-center shadow-sm gap-3 min-h-8 px-2 rounded-medium transition-background !duration-150 transition-colors motion-reduce:transition-none border-1 bg-white dark:bg-background border-border data-[hover=true]:border-outline group-data-[focus=true]:border-outline group-data-[focus=true]:bg-content1 h-12"
+        class="relative w-full inline-flex tap-highlight-transparent flex-row items-center gap-3 border-medium border-default-200 data-[hover=true]:border-default-400 group-data-[focus=true]:border-default-foreground px-2 rounded-medium transition-background !duration-150 transition-colors motion-reduce:transition-none shadow-sm h-10 min-h-10"
         data-slot="input-wrapper"
         style="cursor: text;"
       >
@@ -250,7 +250,7 @@ exports[`Composant Input > Snapshots > devrait correspondre au snapshot pour dif
         >
           <input
             aria-label=" "
-            class="w-full font-normal bg-transparent !outline-none placeholder:text-foreground-500 focus-visible:outline-none data-[has-start-content=true]:ps-1.5 data-[has-end-content=true]:pe-1.5 data-[type=color]:rounded-none file:cursor-pointer file:bg-transparent file:border-0 autofill:bg-transparent bg-clip-text text-small"
+            class="w-full font-normal bg-transparent !outline-none focus-visible:outline-none data-[has-start-content=true]:ps-1.5 data-[has-end-content=true]:pe-1.5 data-[type=color]:rounded-none file:cursor-pointer file:bg-transparent file:border-0 autofill:bg-transparent bg-clip-text placeholder:text-default-500 text-sm"
             data-slot="input"
             id="react-aria-:rp:"
             tabindex="0"
@@ -277,7 +277,7 @@ exports[`Composant Input > Snapshots > devrait correspondre au snapshot pour dif
       data-slot="main-wrapper"
     >
       <div
-        class="relative w-full inline-flex tap-highlight-transparent flex-row items-center shadow-sm px-3 gap-3 min-h-10 rounded-medium transition-background !duration-150 transition-colors motion-reduce:transition-none border-1 bg-white dark:bg-background border-border data-[hover=true]:border-outline group-data-[focus=true]:border-outline group-data-[focus=true]:bg-content1 h-12"
+        class="relative w-full inline-flex tap-highlight-transparent flex-row items-center px-3 gap-3 border-medium border-default-200 data-[hover=true]:border-default-400 group-data-[focus=true]:border-default-foreground rounded-medium transition-background !duration-150 transition-colors motion-reduce:transition-none shadow-sm h-12 min-h-12"
         data-slot="input-wrapper"
         style="cursor: text;"
       >
@@ -287,7 +287,7 @@ exports[`Composant Input > Snapshots > devrait correspondre au snapshot pour dif
         >
           <input
             aria-label=" "
-            class="w-full font-normal bg-transparent !outline-none placeholder:text-foreground-500 focus-visible:outline-none data-[has-start-content=true]:ps-1.5 data-[has-end-content=true]:pe-1.5 data-[type=color]:rounded-none file:cursor-pointer file:bg-transparent file:border-0 autofill:bg-transparent bg-clip-text text-small"
+            class="w-full font-normal bg-transparent !outline-none focus-visible:outline-none data-[has-start-content=true]:ps-1.5 data-[has-end-content=true]:pe-1.5 data-[type=color]:rounded-none file:cursor-pointer file:bg-transparent file:border-0 autofill:bg-transparent bg-clip-text placeholder:text-default-500 text-sm"
             data-slot="input"
             id="react-aria-:ru:"
             tabindex="0"
@@ -314,7 +314,7 @@ exports[`Composant Input > Snapshots > devrait correspondre au snapshot pour dif
       data-slot="main-wrapper"
     >
       <div
-        class="relative w-full inline-flex tap-highlight-transparent flex-row items-center shadow-sm px-3 gap-3 min-h-12 rounded-medium transition-background !duration-150 transition-colors motion-reduce:transition-none border-1 bg-white dark:bg-background border-border data-[hover=true]:border-outline group-data-[focus=true]:border-outline group-data-[focus=true]:bg-content1 h-12"
+        class="relative w-full inline-flex tap-highlight-transparent flex-row items-center px-3 gap-3 border-medium border-default-200 data-[hover=true]:border-default-400 group-data-[focus=true]:border-default-foreground rounded-medium transition-background !duration-150 transition-colors motion-reduce:transition-none shadow-sm h-14 min-h-14"
         data-slot="input-wrapper"
         style="cursor: text;"
       >
@@ -324,7 +324,7 @@ exports[`Composant Input > Snapshots > devrait correspondre au snapshot pour dif
         >
           <input
             aria-label=" "
-            class="w-full font-normal bg-transparent !outline-none placeholder:text-foreground-500 focus-visible:outline-none data-[has-start-content=true]:ps-1.5 data-[has-end-content=true]:pe-1.5 data-[type=color]:rounded-none file:cursor-pointer file:bg-transparent file:border-0 autofill:bg-transparent bg-clip-text text-medium"
+            class="w-full font-normal bg-transparent !outline-none focus-visible:outline-none data-[has-start-content=true]:ps-1.5 data-[has-end-content=true]:pe-1.5 data-[type=color]:rounded-none file:cursor-pointer file:bg-transparent file:border-0 autofill:bg-transparent bg-clip-text placeholder:text-default-500 text-base"
             data-slot="input"
             id="react-aria-:r13:"
             tabindex="0"
@@ -351,7 +351,7 @@ exports[`Composant Input > Snapshots > devrait correspondre au snapshot pour le 
       data-slot="main-wrapper"
     >
       <div
-        class="relative w-full inline-flex tap-highlight-transparent flex-row items-center shadow-sm px-3 gap-3 min-h-10 rounded-medium transition-background !duration-150 transition-colors motion-reduce:transition-none border-1 bg-white dark:bg-background border-border data-[hover=true]:border-outline group-data-[focus=true]:border-outline group-data-[focus=true]:bg-content1 h-12"
+        class="relative w-full inline-flex tap-highlight-transparent flex-row items-center px-3 gap-3 border-medium border-default-200 data-[hover=true]:border-default-400 group-data-[focus=true]:border-default-foreground rounded-medium transition-background !duration-150 transition-colors motion-reduce:transition-none shadow-sm h-12 min-h-12"
         data-slot="input-wrapper"
         style="cursor: text;"
       >
@@ -361,7 +361,7 @@ exports[`Composant Input > Snapshots > devrait correspondre au snapshot pour le 
         >
           <input
             aria-label=" "
-            class="w-full font-normal bg-transparent !outline-none placeholder:text-foreground-500 focus-visible:outline-none data-[has-start-content=true]:ps-1.5 data-[has-end-content=true]:pe-1.5 data-[type=color]:rounded-none file:cursor-pointer file:bg-transparent file:border-0 autofill:bg-transparent bg-clip-text text-small [&::-ms-reveal]:hidden"
+            class="w-full font-normal bg-transparent !outline-none focus-visible:outline-none data-[has-start-content=true]:ps-1.5 data-[has-end-content=true]:pe-1.5 data-[type=color]:rounded-none file:cursor-pointer file:bg-transparent file:border-0 autofill:bg-transparent bg-clip-text placeholder:text-default-500 text-sm [&::-ms-reveal]:hidden"
             data-has-end-content="true"
             data-slot="input"
             data-type="password"

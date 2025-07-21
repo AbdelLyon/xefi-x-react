@@ -2,11 +2,11 @@ import type { JSX } from "react";
 import { forwardRef } from "react";
 import type { SpinnerProps as SpinnerRootProps } from "@heroui/react";
 import { Spinner as SpinnerRoot } from "@heroui/react";
-import type { Color, Size } from "@/types/types";
+import type { Color } from "@/types";
 
 interface SpinnerProps extends Omit<SpinnerRootProps, "label" | "labelColor"> {
   color?: Color;
-  size?: Size;
+  size?: "sm" | "md" | "lg";
   disableAnimation?: boolean;
   strokeWidth?: number;
 }

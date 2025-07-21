@@ -1,0 +1,9 @@
+dist/
+node_modules/
+*.log
+*.tsbuildinfo
+.vscode/
+coverage/
+.nyc_output/
+pnpm-lock.yaml
+CHANGELOG.md

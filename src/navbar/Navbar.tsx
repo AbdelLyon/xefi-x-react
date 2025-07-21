@@ -1,10 +1,11 @@
-import type { JSX, ReactNode } from "react";
-import { forwardRef } from "react";
+import type { JSX, ReactNode } from "react"
+import { forwardRef } from "react"
 import type {
   NavbarContentProps,
   NavbarMenuProps,
   NavbarProps as NavbarRootProps,
-} from "@heroui/react";
+  PressEvent,
+} from "@heroui/react"
 import {
   Navbar as NavbarRoot,
   NavbarContent,
@@ -14,26 +15,26 @@ import {
   NavbarMenuItem,
   Link,
   Divider,
-} from "@heroui/react";
-import { mergeTailwindClasses } from "@/utils";
-import type { Item } from "@/types/navigation";
-import { useResponsive } from "@/hooks";
+} from "@heroui/react"
+import { mergeTailwindClasses } from "@/utils"
+import type { Item } from "@/types/navigation"
+import { useResponsive } from "@/hooks"
 
 export type NavbarProps = {
-  appName?: ReactNode;
-  appLogo?: ReactNode;
-  profile?: ReactNode;
-  navigationItems?: Item[];
-  menuItems?: Item[];
-  contentProps?: NavbarContentProps;
-  menuProps?: NavbarMenuProps;
-  onItemClick?: (item: Item) => void;
-  isMenuOpen?: boolean;
-  onMenuOpenChange?: (isOpen: boolean) => void;
+  appName?: ReactNode
+  appLogo?: ReactNode
+  profile?: ReactNode
+  navigationItems?: Item[]
+  menuItems?: Item[]
+  contentProps?: NavbarContentProps
+  menuProps?: NavbarMenuProps
+  onItemClick?: (item: Item) => void
+  isMenuOpen?: boolean
+  onMenuOpenChange?: (isOpen: boolean) => void
   classNames?: {
-    item?: string;
-  };
-} & Omit<NavbarRootProps, "children">;
+    item?: string
+  }
+} & Omit<NavbarRootProps, "children">
 
 export const Navbar = forwardRef<HTMLElement, NavbarProps>(
   (
@@ -52,15 +53,15 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
       onMenuOpenChange,
       ...props
     },
-    ref,
+    ref
   ): JSX.Element => {
-    const { isDesktop, isMobile, isTablet } = useResponsive();
+    const { isDesktop, isMobile, isTablet } = useResponsive()
 
-    const handleItemPress = (item: Item): void => {
-      item.onPress?.();
-      onItemClick?.(item);
-      onMenuOpenChange?.(false);
-    };
+    const handleItemPress = (item: Item, event: PressEvent): void => {
+      item.onClick?.(event)
+      onItemClick?.(item)
+      onMenuOpenChange?.(false)
+    }
 
     return (
       <NavbarRoot
@@ -108,20 +109,18 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
                   <Link
                     className={mergeTailwindClasses(
                       "p-2 hover:bg-content1 rounded-md text-foreground",
-                      {
-                        "border-l-2 border-primary bg-content1 text-primary":
-                          item.isActive,
-                      },
-                      classNames?.item,
+                      item.isActive &&
+                        "border-l-2 border-primary bg-content1 text-primary",
+                      classNames?.item
                     )}
-                    onPress={(): void => handleItemPress(item)}
+                    onPress={(ev): void => handleItemPress(item, ev)}
                   >
                     {item.startContent}
                     {item.label}
                     {item.endContent}
                   </Link>
                 </NavbarItem>
-              ),
+              )
             )}
           {profile !== null && <NavbarItem>{profile}</NavbarItem>}
         </NavbarContent>
@@ -136,11 +135,9 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
                     key={item.key}
                     className={mergeTailwindClasses(
                       "flex items-center gap-3 p-3 text-foreground hover:bg-content1 rounded-md cursor-pointer",
-                      {
-                        "border-l-2 border-primary bg-content1 text-primary":
-                          item.isActive,
-                      },
-                      classNames?.item,
+                      item.isActive &&
+                        "border-l-2 border-primary bg-content1 text-primary",
+                      classNames?.item
                     )}
                     onPress={(): void => onItemClick?.(item)}
                   >
@@ -149,13 +146,13 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
                     {item.endContent}
                   </Link>
                 </NavbarMenuItem>
-              ),
+              )
             )}
           </NavbarMenu>
         )}
       </NavbarRoot>
-    );
-  },
-);
+    )
+  }
+)
 
-Navbar.displayName = "Navbar";
+Navbar.displayName = "Navbar"

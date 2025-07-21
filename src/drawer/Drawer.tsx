@@ -7,7 +7,7 @@ import {
   DrawerFooter,
   type DrawerProps as DrawerRootProps,
 } from "@heroui/react";
-import { mergeTailwindClasses } from "@/utils/utils";
+import { mergeTailwindClasses } from "@/utils";
 import { Button, type ButtonProps } from "@/button";
 import { useDisclosure } from "@/hooks";
 
@@ -87,7 +87,7 @@ export const Drawer = ({
           <Button
             {...defaultButtonProps}
             variant="bordered"
-            onClick={close}
+            onClick={onClose}
             className={mergeTailwindClasses(
               "border-primary/50",
               buttonCloseProps?.className,

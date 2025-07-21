@@ -1,5 +1,5 @@
 import { Alert } from "@/alert";
-import type { Color } from "@/types/types";
+import type { Color } from "@/types";
 import { render } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 

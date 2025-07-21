@@ -64,9 +64,9 @@ const Card = forwardRef(
         )
       }, props), {
         children: [
-          header !== void 0 && /* @__PURE__ */ jsx(CardHeader, { className: classNames == null ? void 0 : classNames.header, children: header }),
-          /* @__PURE__ */ jsx(CardBody, { className: classNames == null ? void 0 : classNames.body, children }),
-          footer !== void 0 && /* @__PURE__ */ jsx(CardFooter, __spreadProps(__spreadValues({ className: classNames == null ? void 0 : classNames.footer }, footerProps), { children: footer }))
+          header !== void 0 && /* @__PURE__ */ jsx(CardHeader, { className: mergeTailwindClasses(classNames == null ? void 0 : classNames.header), children: header }),
+          /* @__PURE__ */ jsx(CardBody, { className: mergeTailwindClasses(classNames == null ? void 0 : classNames.body), children }),
+          footer !== void 0 && /* @__PURE__ */ jsx(CardFooter, __spreadProps(__spreadValues({ className: mergeTailwindClasses(classNames == null ? void 0 : classNames.footer) }, footerProps), { children: footer }))
         ]
       })
     );

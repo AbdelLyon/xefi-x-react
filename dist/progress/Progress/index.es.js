@@ -32,83 +32,81 @@ var __objRest = (source, exclude) => {
 import { jsxs, jsx } from "react/jsx-runtime";
 import { forwardRef } from "react";
 import { Progress as Progress$1 } from "@heroui/react";
-const defaultProps = {
-  size: "md",
-  color: "primary",
-  radius: "full",
-  minValue: 0,
-  maxValue: 100,
-  formatOptions: { style: "percent" },
-  showValueLabel: true
-};
+import { ProgressLabel } from "../ProgressLabel/index.es.js";
+import { defaultProgressFormatOptions, validateProgressValue } from "../progressUtils/index.es.js";
+import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
 const Progress = forwardRef(
   (_a, ref) => {
     var _b = _a, {
+      value = 0,
+      minValue = 0,
+      maxValue = 100,
+      color = "primary",
+      size = "md",
       label,
       labelPosition = "top",
-      containerClassName,
-      labelClassName,
-      value = 0,
-      maxValue = 100,
-      formatOptions = defaultProps.formatOptions,
       valueLabel,
-      showValueLabel = defaultProps.showValueLabel,
-      classNames
+      showValueLabel = true,
+      formatOptions = defaultProgressFormatOptions,
+      classNames = {},
+      locale,
+      isIndeterminate = false,
+      className
     } = _b, props = __objRest(_b, [
+      "value",
+      "minValue",
+      "maxValue",
+      "color",
+      "size",
       "label",
       "labelPosition",
-      "containerClassName",
-      "labelClassName",
-      "value",
-      "maxValue",
-      "formatOptions",
       "valueLabel",
       "showValueLabel",
-      "classNames"
+      "formatOptions",
+      "classNames",
+      "locale",
+      "isIndeterminate",
+      "className"
     ]);
-    const getValueLabel = () => {
-      const formattedValue = new Intl.NumberFormat(
-        void 0,
-        formatOptions
-      ).format(value / maxValue);
-      if (typeof valueLabel === "string" && valueLabel.trim() !== "") {
-        return valueLabel;
-      }
-      return formattedValue;
-    };
-    const labelComponent = labelPosition === "none" ? void 0 : /* @__PURE__ */ jsxs(
-      "div",
-      {
-        className: `
-      flex items-center justify-between
-      text-small font-medium text-default-500
-      ${labelClassName != null ? labelClassName : ""}
-      ${labelPosition === "top" ? "order-first" : "order-last"}
-    `,
-        children: [
-          label !== void 0 && /* @__PURE__ */ jsx("span", { children: label }),
-          showValueLabel && /* @__PURE__ */ jsx("span", { children: getValueLabel() })
-        ]
-      }
-    );
+    const normalizedValue = validateProgressValue(value, minValue, maxValue);
     const progressProps = __spreadProps(__spreadValues({
-      value,
+      value: normalizedValue,
+      minValue,
       maxValue,
-      formatOptions,
-      showValueLabel
+      color,
+      size,
+      isIndeterminate,
+      showValueLabel: false
     }, props), {
       classNames: __spreadProps(__spreadValues({}, classNames), {
-        base: `w-full ${typeof (classNames == null ? void 0 : classNames.base) === "string" && classNames.base}`
+        base: mergeTailwindClasses("w-full", classNames.base)
       })
     });
     return /* @__PURE__ */ jsxs(
       "div",
       {
         ref,
-        className: `flex w-full max-w-md flex-col gap-2 ${containerClassName}`,
+        className: mergeTailwindClasses(
+          "flex w-full max-w-md flex-col gap-2",
+          classNames.container,
+          className
+        ),
         children: [
-          labelComponent,
-          /* @__PURE__ */ jsx(Progress$1, __spreadValues(__spreadValues({}, defaultProps), progressProps))
+          /* @__PURE__ */ jsx(
+            ProgressLabel,
+            {
+              label,
+              value: normalizedValue,
+              maxValue,
+              valueLabel,
+              showValueLabel: showValueLabel && !isIndeterminate,
+              formatOptions,
+              position: labelPosition,
+              className: classNames.label,
+              locale
+            }
+          ),
+          /* @__PURE__ */ jsx(Progress$1, __spreadValues({}, progressProps))
         ]
       }
     );

@@ -16,7 +16,11 @@ export {
   type UseInfiniteScrollReturn,
 } from "@/hooks/useInfiniteScroll";
 
-export { useCounter } from "@/hooks/useCounter";
+export { 
+  useCounter, 
+  type UseCounterOptions, 
+  type UseCounterReturn 
+} from "@/hooks/useCounter";
 export { useDebouncedCallback } from "@/hooks/useDebouncedCallback";
 export { useDebouncedState } from "@/hooks/useDebouncedState";
 export { useDebouncedValue } from "@/hooks/useDebouncedValue";
@@ -25,13 +29,43 @@ export { usePreviousValue } from "@/hooks/usePreviousValue";
 export { useReactiveSet } from "@/hooks/useReactiveSet";
 export { useRerender } from "@/hooks/useRerender";
 export { useStateHistory } from "@/hooks/useStateHistory";
-export { useToggle } from "@/hooks/useToggle";
+export { 
+  useToggle, 
+  useBooleanToggle,
+  type ToggleAction,
+  type UseToggleOptions,
+  type UseToggleReturn 
+} from "@/hooks/useToggle";
 
 export { useMounted } from "@/hooks/useMounted";
 export { useTimeout } from "@/hooks/useTimeout";
 export { useInterval } from "@/hooks/useInterval";
 
 export { useCallbackRef } from "@/hooks/useCallbackRef";
-export { useLocalStorage } from "@/hooks/useLocalStorage";
+export { 
+  useLocalStorage,
+  type UseLocalStorageOptions,
+  type UseLocalStorageReturn 
+} from "@/hooks/useLocalStorage";
 export { useMergedRef } from "@/hooks/useMergedRef";
 export { useDisclosure } from "@/hooks/useDisclosure";
+
+export {
+  useAsyncState,
+  type AsyncState,
+  type UseAsyncStateReturn
+} from "@/hooks/useAsyncState";
+
+export {
+  useClipboard,
+  type UseClipboardOptions,
+  type UseClipboardReturn
+} from "@/hooks/useClipboard";
+
+export {
+  useKeyboard,
+  type KeyboardHandler,
+  type KeyboardShortcut,
+  type UseKeyboardOptions,
+  type UseKeyboardReturn
+} from "@/hooks/useKeyboard";

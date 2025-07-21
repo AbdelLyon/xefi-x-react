@@ -1,5 +1,5 @@
 import "@/index.css";
 export {
   Accordion,
-  type ExtendedAccordionItemProps,
+  type EnhancedAccordionItemProps
 } from "@/accordion/Accordion";

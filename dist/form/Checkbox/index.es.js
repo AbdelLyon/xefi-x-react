@@ -29,82 +29,249 @@ var __objRest = (source, exclude) => {
     }
   return target;
 };
-import { jsx } from "react/jsx-runtime";
-import { forwardRef } from "react";
+var __async = (__this, __arguments, generator) => {
+  return new Promise((resolve, reject) => {
+    var fulfilled = (value) => {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    };
+    var rejected = (value) => {
+      try {
+        step(generator.throw(value));
+      } catch (e) {
+        reject(e);
+      }
+    };
+    var step = (x) => x.done ? resolve(x.value) : Promise.resolve(x.value).then(fulfilled, rejected);
+    step((generator = generator.apply(__this, __arguments)).next());
+  });
+};
+import { jsxs, jsx } from "react/jsx-runtime";
+import { forwardRef, useState, useCallback, useMemo } from "react";
 import { CheckboxGroup as CheckboxGroup$1, Checkbox } from "@heroui/react";
 import { Checkbox as Checkbox2 } from "@heroui/react";
+import { validateCheckboxGroup } from "../checkboxConfig/index.es.js";
+import { validateComponentProps } from "../../utils/typeUtils/index.es.js";
 import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
 const CheckboxGroup = forwardRef(
   (_a, ref) => {
     var _b = _a, {
       items,
-      groupClasses,
-      itemClasses,
-      label = "Select options",
-      defaultValue
+      size = "md",
+      color = "primary",
+      state = "default",
+      orientation = "vertical",
+      spacing = "md",
+      maxSelections,
+      minSelections,
+      showSelectAll = false,
+      selectAllLabel = "Select All",
+      customValidate,
+      onValidationChange,
+      classNames,
+      validateConfig = process.env.NODE_ENV !== "production",
+      value,
+      onValueChange
     } = _b, props = __objRest(_b, [
       "items",
-      "groupClasses",
-      "itemClasses",
-      "label",
-      "defaultValue"
+      "size",
+      "color",
+      "state",
+      "orientation",
+      "spacing",
+      "maxSelections",
+      "minSelections",
+      "showSelectAll",
+      "selectAllLabel",
+      "customValidate",
+      "onValidationChange",
+      "classNames",
+      "validateConfig",
+      "value",
+      "onValueChange"
     ]);
-    const defaultGroupClasses = {
-      base: "w-full",
-      label: "text-medium font-semibold"
+    const [selectedValues, setSelectedValues] = useState(value || []);
+    const [groupState, setGroupState] = useState(state);
+    const [validationErrors, setValidationErrors] = useState([]);
+    if (validateConfig) {
+      const validation = validateComponentProps(
+        __spreadValues({ items, orientation, spacing }, props),
+        {
+          orientation: (v) => ["horizontal", "vertical"].includes(v),
+          spacing: (v) => ["sm", "md", "lg"].includes(v)
+        }
+      );
+      if (!validation.valid) {
+        console.warn(
+          "[CheckboxGroup] Configuration validation errors:",
+          validation.errors
+        );
+      }
+    }
+    const spacingClasses = {
+      sm: orientation === "horizontal" ? "gap-2" : "gap-1",
+      md: orientation === "horizontal" ? "gap-4" : "gap-2",
+      lg: orientation === "horizontal" ? "gap-6" : "gap-3"
     };
-    const defaultItemClasses = {
-      base: "w-full",
-      label: "text-small",
-      wrapper: ""
-    };
-    return /* @__PURE__ */ jsx(
-      CheckboxGroup$1,
-      __spreadProps(__spreadValues({
-        ref,
-        label,
-        defaultValue
-      }, props), {
-        classNames: {
-          base: mergeTailwindClasses(
-            defaultGroupClasses.base,
-            groupClasses == null ? void 0 : groupClasses.base
-          ),
-          label: mergeTailwindClasses(
-            defaultGroupClasses.label,
-            groupClasses == null ? void 0 : groupClasses.label
-          )
-        },
-        children: items.map(
-          (item) => {
-            var _a2, _b2;
-            return /* @__PURE__ */ jsx(
-              Checkbox,
-              __spreadProps(__spreadValues({}, item), {
-                classNames: {
-                  base: mergeTailwindClasses(
-                    defaultItemClasses.base,
-                    itemClasses == null ? void 0 : itemClasses.base,
-                    item.className
-                  ),
-                  label: mergeTailwindClasses(
-                    defaultItemClasses.label,
-                    itemClasses == null ? void 0 : itemClasses.label,
-                    (_a2 = item.classNames) == null ? void 0 : _a2.label
-                  ),
-                  wrapper: mergeTailwindClasses(
-                    defaultItemClasses.wrapper,
-                    itemClasses == null ? void 0 : itemClasses.wrapper,
-                    (_b2 = item.classNames) == null ? void 0 : _b2.wrapper
-                  )
-                },
-                children: item.label
-              }),
-              item.value
-            );
+    const validateGroup = useCallback(
+      (values) => __async(null, null, function* () {
+        let isValid = true;
+        const errors = [];
+        const builtIn = validateCheckboxGroup(values, {
+          minSelections,
+          maxSelections,
+          required: props.isRequired
+        });
+        if (!builtIn.valid) {
+          isValid = false;
+          errors.push(...builtIn.errors);
+        }
+        if (customValidate) {
+          try {
+            const result = yield customValidate(values);
+            if (typeof result === "string") {
+              isValid = false;
+              errors.push(result);
+            } else if (!result) {
+              isValid = false;
+              errors.push("Group validation failed");
+            }
+          } catch (e) {
+            isValid = false;
+            errors.push("Group validation error occurred");
           }
-        )
-      })
+        }
+        setGroupState(isValid ? "default" : "invalid");
+        setValidationErrors(errors);
+        onValidationChange == null ? void 0 : onValidationChange(isValid, errors);
+        return { isValid, errors };
+      }),
+      [
+        customValidate,
+        items,
+        minSelections,
+        maxSelections,
+        props.isRequired,
+        onValidationChange
+      ]
+    );
+    const handleValueChange = useCallback(
+      (newValues) => __async(null, null, function* () {
+        setSelectedValues(newValues);
+        yield validateGroup(newValues);
+        onValueChange == null ? void 0 : onValueChange(newValues);
+      }),
+      [validateGroup, onValueChange]
+    );
+    const handleSelectAll = useCallback(() => __async(null, null, function* () {
+      const all = items.map((i) => i.value);
+      const newValues = selectedValues.length === items.length ? [] : all;
+      yield handleValueChange(newValues);
+    }), [items, selectedValues, handleValueChange]);
+    const enhancedItems = useMemo(
+      () => items.map((item) => __spreadProps(__spreadValues({}, item), {
+        size,
+        color,
+        state: groupState
+      })),
+      [items, size, color, groupState]
+    );
+    return /* @__PURE__ */ jsxs(
+      "div",
+      {
+        className: mergeTailwindClasses(
+          "flex flex-col gap-2",
+          classNames == null ? void 0 : classNames.wrapper
+        ),
+        children: [
+          /* @__PURE__ */ jsxs(
+            CheckboxGroup$1,
+            __spreadProps(__spreadValues({
+              ref,
+              value: selectedValues,
+              onValueChange: handleValueChange,
+              className: mergeTailwindClasses(
+                "flex",
+                orientation === "horizontal" ? "flex-row flex-wrap" : "flex-col",
+                spacingClasses[spacing],
+                classNames == null ? void 0 : classNames.items
+              ),
+              classNames: {
+                wrapper: mergeTailwindClasses(
+                  "flex flex-col gap-2",
+                  classNames == null ? void 0 : classNames.wrapper
+                ),
+                label: mergeTailwindClasses(
+                  "text-medium font-semibold text-foreground-700",
+                  groupState === "invalid" && "text-danger",
+                  classNames == null ? void 0 : classNames.label
+                ),
+                description: mergeTailwindClasses(
+                  "text-small text-foreground-500",
+                  classNames == null ? void 0 : classNames.description
+                ),
+                errorMessage: mergeTailwindClasses(
+                  "text-small text-danger",
+                  classNames == null ? void 0 : classNames.errorMessage
+                )
+              }
+            }, props), {
+              children: [
+                showSelectAll && /* @__PURE__ */ jsx(
+                  Checkbox,
+                  {
+                    value: "__select_all__",
+                    "aria-label": String(selectAllLabel),
+                    size,
+                    color,
+                    isSelected: selectedValues.length === items.length,
+                    isIndeterminate: selectedValues.length > 0 && selectedValues.length < items.length,
+                    onChange: () => handleSelectAll()
+                  }
+                ),
+                enhancedItems.map((item) => {
+                  const _a2 = item, { onChange, validate } = _a2, rest = __objRest(_a2, ["onChange", "validate"]);
+                  return /* @__PURE__ */ jsx(
+                    Checkbox,
+                    __spreadProps(__spreadValues({}, rest), {
+                      isSelected: selectedValues.includes(item.value),
+                      onChange: (event) => onChange == null ? void 0 : onChange(event.target.checked),
+                      validate: (value2) => {
+                        if (!validate) {
+                          return true;
+                        }
+                        const result = validate(value2);
+                        if (result instanceof Promise) {
+                          return void 0;
+                        }
+                        if (typeof result === "string") {
+                          return result;
+                        }
+                        return result === false ? null : true;
+                      }
+                    }),
+                    item.value
+                  );
+                })
+              ]
+            })
+          ),
+          validationErrors.length > 0 && /* @__PURE__ */ jsx("div", { className: "ml-2", children: validationErrors.map((error, i) => /* @__PURE__ */ jsx(
+            "div",
+            {
+              className: mergeTailwindClasses(
+                "text-xs text-danger",
+                classNames == null ? void 0 : classNames.errorMessage
+              ),
+              children: error
+            },
+            i
+          )) })
+        ]
+      }
     );
   }
 );

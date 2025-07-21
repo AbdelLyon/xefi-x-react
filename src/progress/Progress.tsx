@@ -1,96 +1,147 @@
-import type { JSX, ReactNode } from "react";
-import { forwardRef } from "react";
-import type { ProgressProps as ProgressRootProps } from "@heroui/react";
-import { Progress as ProgressRoor } from "@heroui/react";
+import type { JSX, ReactNode } from "react"
+import { forwardRef } from "react"
+import type { ProgressProps as HeroUIProgressProps } from "@heroui/react"
+import { Progress as HeroUIProgress } from "@heroui/react"
+import { mergeTailwindClasses } from "@/utils"
+import type { BaseComponentProps, Color } from "@/types"
+import { ProgressLabel } from "./ProgressLabel"
+import {
+  validateProgressValue,
+  type ProgressFormatOptions,
+  defaultProgressFormatOptions,
+} from "./progressUtils"
 
-type AdditionalProgressProps = {
-  label?: ReactNode;
-  labelPosition?: "top" | "bottom" | "none";
-  containerClassName?: string;
-  labelClassName?: string;
-};
+/**
+ * Enhanced Progress component props
+ */
+export interface ProgressProps
+  extends Omit<
+      HeroUIProgressProps,
+      "value" | "maxValue" | "minValue" | "color" | "size"
+    >,
+    BaseComponentProps {
+  /** Progress value */
+  value?: number
+  /** Minimum value */
+  minValue?: number
+  /** Maximum value */
+  maxValue?: number
+  /** Progress color */
+  color?: Color
+  /** Progress size */
+  size?: "sm" | "md" | "lg"
+  /** Label content */
+  label?: ReactNode
+  /** Label position relative to progress bar */
+  labelPosition?: "top" | "bottom" | "none"
+  /** Custom value label (overrides formatted value) */
+  valueLabel?: string
+  /** Whether to show value label */
+  showValueLabel?: boolean
+  /** Format options for value display */
+  formatOptions?: ProgressFormatOptions
+  /** Custom styling for different parts */
+  classNames?: HeroUIProgressProps["classNames"] & {
+    container?: string
+    label?: string
+  }
+  /** Locale for number formatting */
+  locale?: string
+  /** Whether progress is indeterminate */
+  isIndeterminate?: boolean
+}
 
-type ProgressProps = {
-  classNames?: ProgressRootProps["classNames"];
-} & Omit<ProgressRootProps, "classNames"> &
-  AdditionalProgressProps;
-
-const defaultProps = {
-  size: "md",
-  color: "primary",
-  radius: "full",
-  minValue: 0,
-  maxValue: 100,
-  formatOptions: { style: "percent" } as const,
-  showValueLabel: true,
-} as const;
-
+/**
+ * Enhanced Progress component built on top of HeroUI Progress
+ * Provides advanced formatting, labeling, and validation features
+ *
+ * @example
+ * ```tsx
+ * // Basic progress
+ * <Progress value={65} label="Upload Progress" />
+ *
+ * // Progress with custom formatting
+ * <Progress
+ *   value={1250}
+ *   maxValue={2000}
+ *   label="Download"
+ *   formatOptions={{ style: "decimal", unit: "byte" }}
+ * />
+ *
+ * // Indeterminate progress
+ * <Progress
+ *   isIndeterminate
+ *   label="Processing..."
+ *   showValueLabel={false}
+ * />
+ * ```
+ */
 export const Progress = forwardRef<HTMLDivElement, ProgressProps>(
   (
     {
+      value = 0,
+      minValue = 0,
+      maxValue = 100,
+      color = "primary",
+
+      size = "md",
       label,
       labelPosition = "top",
-      containerClassName,
-      labelClassName,
-      value = 0,
-      maxValue = 100,
-      formatOptions = defaultProps.formatOptions,
       valueLabel,
-      showValueLabel = defaultProps.showValueLabel,
-      classNames,
+      showValueLabel = true,
+      formatOptions = defaultProgressFormatOptions,
+      classNames = {},
+      locale,
+      isIndeterminate = false,
+      className,
       ...props
     },
-    ref,
+    ref
   ): JSX.Element => {
-    const getValueLabel = (): string => {
-      const formattedValue = new Intl.NumberFormat(
-        undefined,
-        formatOptions,
-      ).format(value / maxValue);
+    // Validate and normalize the progress value
+    const normalizedValue = validateProgressValue(value, minValue, maxValue)
 
-      if (typeof valueLabel === "string" && valueLabel.trim() !== "") {
-        return valueLabel;
-      }
-      return formattedValue;
-    };
-
-    const labelComponent =
-      labelPosition === "none" ? undefined : (
-        <div
-          className={`
-      flex items-center justify-between
-      text-small font-medium text-default-500
-      ${labelClassName ?? ""}
-      ${labelPosition === "top" ? "order-first" : "order-last"}
-    `}
-        >
-          {label !== undefined && <span>{label}</span>}
-          {showValueLabel && <span>{getValueLabel()}</span>}
-        </div>
-      );
-
-    const progressProps = {
-      value,
+    // Prepare HeroUI Progress props
+    const progressProps: HeroUIProgressProps = {
+      value: normalizedValue,
+      minValue,
       maxValue,
-      formatOptions,
-      showValueLabel,
+      color,
+      size,
+      isIndeterminate,
+      showValueLabel: false,
       ...props,
       classNames: {
         ...classNames,
-        base: `w-full ${typeof classNames?.base === "string" && classNames.base}`,
+        base: mergeTailwindClasses("w-full", classNames.base),
       },
-    };
+    }
 
     return (
       <div
         ref={ref}
-        className={`flex w-full max-w-md flex-col gap-2 ${containerClassName}`}
+        className={mergeTailwindClasses(
+          "flex w-full max-w-md flex-col gap-2",
+          classNames.container,
+          className
+        )}
       >
-        {labelComponent}
-        <ProgressRoor {...defaultProps} {...progressProps} />
-      </div>
-    );
-  },
-);
+        <ProgressLabel
+          label={label}
+          value={normalizedValue}
+          maxValue={maxValue}
+          valueLabel={valueLabel}
+          showValueLabel={showValueLabel && !isIndeterminate}
+          formatOptions={formatOptions}
+          position={labelPosition}
+          className={classNames.label}
+          locale={locale}
+        />
 
-Progress.displayName = "Progress";
+        <HeroUIProgress {...progressProps} />
+      </div>
+    )
+  }
+)
+
+Progress.displayName = "Progress"

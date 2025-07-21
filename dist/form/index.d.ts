@@ -1,5 +1,5 @@
 export { RadioGroup } from './Radio';
-export { Checkbox, CheckboxGroup } from './Checkbox';
+export { CheckboxGroup, type CheckboxGroupProps, Checkbox } from './Checkbox';
 export { InputOtp } from './InputOpt';
 export { Input } from './Input';
 export { Textarea } from './Textarea';

@@ -1,6 +1,6 @@
 import { JSX, ReactNode } from 'react';
 import { PopoverProps, PopoverContentProps } from '@heroui/react';
-import { Radius } from '../types/types';
+import { Radius } from '../types';
 export type PropsPopover = {
     trigger: ReactNode;
     children: ReactNode;
