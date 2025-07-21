@@ -11,8 +11,7 @@
   ],
   "sideEffects": false,
   "publishConfig": {
-    "access": "restricted",
-    "@xefi:registry": "https://gitlab.xefi.fr/api/v4/projects/2481/packages/npm/"
+    "access": "public"
   },
   "repository": {
     "type": "git",
