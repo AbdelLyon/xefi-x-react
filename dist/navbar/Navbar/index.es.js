@@ -48,7 +48,6 @@ const Navbar = forwardRef(
       classNames,
       isMenuOpen,
       onMenuOpenChange,
-      isCollapsed = false,
       isSidebarCollapsed = false
     } = _b, props = __objRest(_b, [
       "appName",
@@ -62,7 +61,6 @@ const Navbar = forwardRef(
       "classNames",
       "isMenuOpen",
       "onMenuOpenChange",
-      "isCollapsed",
       "isSidebarCollapsed"
     ]);
     const { isDesktop, isMobile, isTablet } = useResponsive();
@@ -80,8 +78,8 @@ const Navbar = forwardRef(
         classNames: __spreadValues({
           base: "border-b-none dark:border-b dark:border-border shadow-lg bg-white dark:bg-content1 dark:shadow-none",
           wrapper: mergeTailwindClasses(
-            "max-w-full transition-all duration-300",
-            isDesktop ? isSidebarCollapsed || isCollapsed ? "ml-[70px]" : "ml-[270px]" : isTablet ? "ml-[70px]" : "ml-0"
+            "max-w-full transition-all duration-300 ease-out will-change-transform",
+            isDesktop ? isSidebarCollapsed ? "ml-[70px]" : "ml-[270px]" : isTablet ? "ml-[70px]" : "ml-0"
           )
         }, classNames),
         isMenuOpen,

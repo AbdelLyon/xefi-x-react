@@ -39,8 +39,32 @@ const SidebarLink = ({
             children: item.startContent
           }
         ),
-        !shouldShowCollapsed && /* @__PURE__ */ jsx("span", { className: "flex-1 font-medium", children: item.label }),
-        item.endContent !== null && !shouldShowCollapsed && /* @__PURE__ */ jsx("div", { className: "opacity-60 transition-opacity group-hover:opacity-100", children: item.endContent })
+        /* @__PURE__ */ jsx(
+          "span",
+          {
+            className: mergeTailwindClasses(
+              "flex-1 font-medium transition-all duration-300 ease-in-out overflow-hidden",
+              {
+                "opacity-100 max-w-full": !shouldShowCollapsed,
+                "opacity-0 max-w-0": shouldShowCollapsed
+              }
+            ),
+            children: item.label
+          }
+        ),
+        item.endContent !== null && /* @__PURE__ */ jsx(
+          "div",
+          {
+            className: mergeTailwindClasses(
+              "transition-all duration-300 ease-in-out overflow-hidden group-hover:opacity-100",
+              {
+                "opacity-60 max-w-full": !shouldShowCollapsed,
+                "opacity-0 max-w-0": shouldShowCollapsed
+              }
+            ),
+            children: item.endContent
+          }
+        )
       ]
     },
     item.key

@@ -43,16 +43,18 @@ const useSidebarLayout = (config = {}) => {
   const width = getWidth();
   const shouldShowCollapsed = isDesktop && isCollapsed || isTablet;
   const containerClasses = [
-    "fixed left-0 top-0 h-screen flex flex-col bg-[#181818]",
-    "border-r border-border transition-all duration-300 ease-in-out z-40",
+    "fixed left-0 top-0 h-screen flex flex-col bg-background",
+    "border-r border-divider transition-all duration-300 ease-out z-40",
+    "will-change-transform",
+    // GPU acceleration for better performance
     width
   ].join(" ");
   const navigationClasses = [
-    "flex-1 transition-all duration-300 ease-in-out",
+    "flex-1 transition-all duration-300 ease-out",
     shouldShowCollapsed ? "pt-4 px-3" : "p-4"
   ].join(" ");
   const itemContainerClasses = [
-    "flex flex-col transition-all duration-300 ease-in-out",
+    "flex flex-col transition-all duration-300 ease-out",
     shouldShowCollapsed ? "gap-3 items-center" : "gap-2"
   ].join(" ");
   return {
