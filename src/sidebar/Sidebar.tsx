@@ -1,64 +1,64 @@
-import React, { type JSX, type ReactNode } from "react";
-import { mergeTailwindClasses } from "@/utils";
-import type { Item } from "@/types/navigation";
-import type { Color } from "@/types";
-import { IconPlus } from "@tabler/icons-react";
-import { SidebarLink } from "./SidebarLink";
-import { SidebarAction } from "./SidebarAction";
-import { SidebarHeader } from "./SidebarHeader";
-import { useSidebarLayout, type SidebarLayoutConfig } from "./useSidebarLayout";
+import React, { useEffect, type JSX, type ReactNode } from "react"
+import { mergeTailwindClasses } from "@/utils"
+import type { Item } from "@/types/navigation"
+import type { Color } from "@/types"
+import { IconPlus } from "@tabler/icons-react"
+import { SidebarLink } from "./SidebarLink"
+import { SidebarAction } from "./SidebarAction"
+import { SidebarHeader } from "./SidebarHeader"
+import { useSidebarLayout, type SidebarLayoutConfig } from "./useSidebarLayout"
 
 /**
  * Props for Sidebar component
  */
 export interface SidebarProps {
   /** Navigation items to display */
-  items?: Item[];
+  items?: Item[]
   /** App logo component */
-  appLogo?: ReactNode;
+  appLogo?: ReactNode
   /** App name component */
-  appName?: ReactNode;
+  appName?: ReactNode
   /** Root className */
-  className?: string;
+  className?: string
   /** Custom CSS classes for different parts */
   classNames?: {
-    base?: string;
-    item?: string;
-    action?: string;
-  };
+    base?: string
+    item?: string
+    action?: string
+  }
   /** Background image or content */
-  bgImage?: ReactNode;
+  bgImage?: ReactNode
   /** Ref for the sidebar element */
-  ref?: React.RefObject<HTMLElement>;
+  ref?: React.RefObject<HTMLElement>
   /** Callback when item is clicked */
-  onItemClick?: (item: Item) => void;
+  onItemClick?: (item: Item) => void
   /** Action button label */
-  actionLabel?: string;
+  actionLabel?: string
   /** Action button icon */
-  actionIcon?: React.ReactElement<{ className?: string }>;
+  actionIcon?: React.ReactElement<{ className?: string }>
   /** Action button color */
-  actionColor?: Color;
+  actionColor?: Color
   /** Action button click handler */
-  actionClick?: () => void;
+  actionClick?: () => void
   /** Whether to show divider after action button */
-  showDivider?: boolean;
+  showDivider?: boolean
   /** Layout configuration */
-  layoutConfig?: Partial<SidebarLayoutConfig>;
+  layoutConfig?: Partial<SidebarLayoutConfig>
   /** Whether to show burger button */
-  showBurgerButton?: boolean;
+  showBurgerButton?: boolean
 }
 
 /**
  * Enhanced Sidebar component with responsive design and modular structure
- * 
+ *
  * @example
  * ```tsx
  * // Basic sidebar
- * <Sidebar 
- *   items={navItems} 
+ * <Sidebar
+ *   items={navItems}
  *   onItemClick={handleItemClick}
  * />
- * 
+ *
  * // Sidebar with action button
  * <Sidebar
  *   items={navItems}
@@ -67,7 +67,7 @@ export interface SidebarProps {
  *   actionIcon={<PlusIcon />}
  *   actionColor="primary"
  * />
- * 
+ *
  * // Sidebar with custom layout
  * <Sidebar
  *   items={navItems}
@@ -103,28 +103,28 @@ export const Sidebar = ({
     containerClasses,
     navigationClasses,
     itemContainerClasses,
-  } = useSidebarLayout(layoutConfig);
+  } = useSidebarLayout(layoutConfig)
 
-  // Don't render if not visible on current breakpoint
-  if (!isVisible) {
-    return null;
-  }
-
-  const shouldShowCollapsed = (isDesktop && isCollapsed) || isTablet;
+  const shouldShowCollapsed = (isDesktop && isCollapsed) || isTablet
 
   // Set CSS variable for layout communication
-  React.useEffect(() => {
-    const sidebarWidth = shouldShowCollapsed ? "70px" : "270px";
-    document.documentElement.style.setProperty("--sidebar-width", sidebarWidth);
-  }, [shouldShowCollapsed]);
+  useEffect(() => {
+    if (!isVisible) {
+      document.documentElement.style.setProperty("--sidebar-width", "0px")
+      return
+    }
+    const sidebarWidth = shouldShowCollapsed ? "70px" : "270px"
+    document.documentElement.style.setProperty("--sidebar-width", sidebarWidth)
+  }, [shouldShowCollapsed, isVisible])
+
+  if (!isVisible) {
+    return null
+  }
 
   return (
     <aside
       ref={ref}
-      className={mergeTailwindClasses(
-        containerClasses,
-        classNames.base,
-      )}
+      className={mergeTailwindClasses(containerClasses, classNames.base)}
     >
       {/* Header Section with Logo and Burger */}
       {(appLogo || appName || showBurgerButton) && (
@@ -174,5 +174,5 @@ export const Sidebar = ({
       {/* Background Image */}
       {bgImage}
     </aside>
-  );
-};
+  )
+}
