@@ -32,15 +32,19 @@ const useSidebarLayout = (config = {}) => {
   }, []);
   const isVisible = isDesktop || isTablet || isMobile && finalConfig.showOnMobile;
   const getWidth = () => {
-    if (isMobile) return finalConfig.desktopWidth;
-    if (isTablet) return finalConfig.tabletWidth;
+    if (isMobile) {
+      return finalConfig.desktopWidth;
+    }
+    if (isTablet) {
+      return finalConfig.tabletWidth;
+    }
     return isCollapsed ? finalConfig.desktopCollapsedWidth : finalConfig.desktopWidth;
   };
   const width = getWidth();
   const shouldShowCollapsed = isDesktop && isCollapsed || isTablet;
   const containerClasses = [
     "fixed left-0 top-0 h-screen flex flex-col bg-background",
-    "border-r border-divider transition-all duration-300 ease-in-out z-40",
+    "border-r border-border transition-all duration-300 ease-in-out z-40",
     width
   ].join(" ");
   const navigationClasses = [

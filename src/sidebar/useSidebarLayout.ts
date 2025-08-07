@@ -1,20 +1,20 @@
-import { useResponsive } from "@/hooks"
-import { useState, useCallback } from "react"
+import { useResponsive } from "@/hooks";
+import { useState, useCallback } from "react";
 
 /**
  * Configuration for sidebar layout
  */
 export interface SidebarLayoutConfig {
   /** Desktop sidebar width when expanded */
-  desktopWidth: string
+  desktopWidth: string;
   /** Desktop sidebar width when collapsed */
-  desktopCollapsedWidth: string
+  desktopCollapsedWidth: string;
   /** Tablet sidebar width */
-  tabletWidth: string
+  tabletWidth: string;
   /** Whether to show sidebar on mobile */
-  showOnMobile: boolean
+  showOnMobile: boolean;
   /** Whether the sidebar starts collapsed */
-  defaultCollapsed: boolean
+  defaultCollapsed: boolean;
 }
 
 /**
@@ -22,23 +22,23 @@ export interface SidebarLayoutConfig {
  */
 export interface UseSidebarLayoutReturn {
   /** Whether sidebar should be visible */
-  isVisible: boolean
+  isVisible: boolean;
   /** Whether in desktop mode */
-  isDesktop: boolean
+  isDesktop: boolean;
   /** Whether in tablet mode */
-  isTablet: boolean
+  isTablet: boolean;
   /** Whether sidebar is collapsed */
-  isCollapsed: boolean
+  isCollapsed: boolean;
   /** Toggle sidebar collapse state */
-  toggleCollapsed: () => void
+  toggleCollapsed: () => void;
   /** Current sidebar width */
-  width: string
+  width: string;
   /** CSS classes for sidebar container */
-  containerClasses: string
+  containerClasses: string;
   /** CSS classes for navigation */
-  navigationClasses: string
+  navigationClasses: string;
   /** CSS classes for item container */
-  itemContainerClasses: string
+  itemContainerClasses: string;
 }
 
 /**
@@ -50,7 +50,7 @@ const defaultConfig: SidebarLayoutConfig = {
   tabletWidth: "w-[70px]",
   showOnMobile: false,
   defaultCollapsed: false,
-}
+};
 
 /**
  * Custom hook for managing sidebar layout and responsive behavior
@@ -71,41 +71,41 @@ const defaultConfig: SidebarLayoutConfig = {
 export const useSidebarLayout = (
   config: Partial<SidebarLayoutConfig> = {},
 ): UseSidebarLayoutReturn => {
-  const finalConfig = { ...defaultConfig, ...config }
-  const { isDesktop, isTablet, isMobile } = useResponsive()
-  const [isCollapsed, setIsCollapsed] = useState(finalConfig.defaultCollapsed)
+  const finalConfig = { ...defaultConfig, ...config };
+  const { isDesktop, isTablet, isMobile } = useResponsive();
+  const [isCollapsed, setIsCollapsed] = useState(finalConfig.defaultCollapsed);
 
   const toggleCollapsed = useCallback(() => {
-    setIsCollapsed(prev => !prev)
-  }, [])
+    setIsCollapsed(prev => !prev);
+  }, []);
 
-  const isVisible = isDesktop || isTablet || (isMobile && finalConfig.showOnMobile)
-  
+  const isVisible = isDesktop || isTablet || (isMobile && finalConfig.showOnMobile);
+
   // Determine width based on device type and collapsed state
   const getWidth = () => {
-    if (isMobile) return finalConfig.desktopWidth
-    if (isTablet) return finalConfig.tabletWidth
-    return isCollapsed ? finalConfig.desktopCollapsedWidth : finalConfig.desktopWidth
-  }
-  
-  const width = getWidth()
-  const shouldShowCollapsed = (isDesktop && isCollapsed) || isTablet
-  
+    if (isMobile) { return finalConfig.desktopWidth; }
+    if (isTablet) { return finalConfig.tabletWidth; }
+    return isCollapsed ? finalConfig.desktopCollapsedWidth : finalConfig.desktopWidth;
+  };
+
+  const width = getWidth();
+  const shouldShowCollapsed = (isDesktop && isCollapsed) || isTablet;
+
   const containerClasses = [
     "fixed left-0 top-0 h-screen flex flex-col bg-background",
-    "border-r border-divider transition-all duration-300 ease-in-out z-40",
+    "border-r border-border transition-all duration-300 ease-in-out z-40",
     width,
-  ].join(" ")
+  ].join(" ");
 
   const navigationClasses = [
     "flex-1 transition-all duration-300 ease-in-out",
     shouldShowCollapsed ? "pt-4 px-3" : "p-4",
-  ].join(" ")
+  ].join(" ");
 
   const itemContainerClasses = [
     "flex flex-col transition-all duration-300 ease-in-out",
     shouldShowCollapsed ? "gap-3 items-center" : "gap-2",
-  ].join(" ")
+  ].join(" ");
 
   return {
     isVisible,
@@ -117,5 +117,5 @@ export const useSidebarLayout = (
     containerClasses,
     navigationClasses,
     itemContainerClasses,
-  }
-}
+  };
+};

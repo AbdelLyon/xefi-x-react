@@ -31,6 +31,7 @@ var __objRest = (source, exclude) => {
 };
 import { jsx } from "react/jsx-runtime";
 import { Tooltip as Tooltip$1 } from "@heroui/react";
+import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
 const Tooltip = (_a) => {
   var _b = _a, {
     trigger,
@@ -80,6 +81,10 @@ const Tooltip = (_a) => {
     __spreadProps(__spreadValues({
       content,
       size,
+      className: mergeTailwindClasses(
+        "rounded-lg border border-divider bg-content1 px-3 py-2 shadow-lg",
+        props.className
+      ),
       color,
       radius,
       shadow,

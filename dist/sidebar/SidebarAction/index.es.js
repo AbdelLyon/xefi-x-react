@@ -38,8 +38,7 @@ const SidebarAction = ({
       content: actionLabel,
       placement: "right",
       delay: 300,
-      closeDelay: 100,
-      className: "rounded-lg border border-border bg-content1 px-3 py-2 shadow-lg"
+      closeDelay: 100
     }
   ) : actionButton;
   return /* @__PURE__ */ jsxs(Fragment, { children: [

@@ -1,11 +1,12 @@
-import type { JSX, ReactNode } from "react";
-import type { TooltipProps as TooltipPropsRoot } from "@heroui/react";
-import { Tooltip as TooltipRoot } from "@heroui/react";
+import type { JSX, ReactNode } from "react"
+import type { TooltipProps as TooltipPropsRoot } from "@heroui/react"
+import { Tooltip as TooltipRoot } from "@heroui/react"
+import { mergeTailwindClasses } from "@/utils"
 
 interface TooltipProps
   extends Omit<TooltipPropsRoot, "content" | "children" | "trigger"> {
-  trigger: ReactNode;
-  content: ReactNode;
+  trigger: ReactNode
+  content: ReactNode
 }
 
 export const Tooltip = ({
@@ -35,6 +36,10 @@ export const Tooltip = ({
     <TooltipRoot
       content={content}
       size={size}
+      className={mergeTailwindClasses(
+        "rounded-lg border border-divider bg-content1 px-3 py-2 shadow-lg",
+        props.className
+      )}
       color={color}
       radius={radius}
       shadow={shadow}
@@ -56,5 +61,5 @@ export const Tooltip = ({
     >
       {trigger}
     </TooltipRoot>
-  );
-};
+  )
+}
