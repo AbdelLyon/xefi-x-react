@@ -68,7 +68,7 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
         ref={ref}
         className={className}
         classNames={{
-          base: "border-b-none dark:border-b dark:border-border shadow-lg bg-white dark:bg:content1 dark:shadow-none",
+          base: "border-b-none dark:border-b dark:border-border shadow-lg bg-white dark:bg-content1 dark:shadow-none",
           wrapper: mergeTailwindClasses(
             "max-w-full transition-all duration-300",
             isDesktop
@@ -100,7 +100,7 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
               {appName}
             </NavbarItem>
           )}
-          
+
           {isDesktop &&
             navigationItems.map(
               (item): JSX.Element => (
