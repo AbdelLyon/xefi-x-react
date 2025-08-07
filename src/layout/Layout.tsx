@@ -23,7 +23,7 @@ export const Layout = ({
   const hasSidebar = Boolean(sidebar)
 
   return (
-    <div className="relative h-full max-h-screen overflow-x-hidden bg-background">
+    <div className="relative h-full max-h-screen overflow-x-hidden">
       {/* Navbar */}
       {hasNavbar && <Navbar {...navbar} />}
 

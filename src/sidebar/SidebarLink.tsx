@@ -33,7 +33,7 @@ export const SidebarLink = ({
     <Link
       key={item.key}
       className={mergeTailwindClasses(
-        "group relative flex items-center h-11 text-foreground-600 hover:text-foreground hover:bg-default-100/50 rounded-lg cursor-pointer text-sm transition-all duration-200",
+        "group relative flex items-center px-3 h-11 text-slate-50 dark:text-slate-50 hover:text-white hover:bg-[#292b2b99] rounded-md cursor-pointer text-sm transition-all duration-200",
         {
           "bg-primary/10 text-primary border-primary/20 border": item.isActive,
           "justify-center px-2": shouldShowCollapsed,

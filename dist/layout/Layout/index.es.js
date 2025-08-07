@@ -26,7 +26,7 @@ const Layout = ({
 }) => {
   const hasNavbar = Boolean(navbar);
   const hasSidebar = Boolean(sidebar);
-  return /* @__PURE__ */ jsxs("div", { className: "relative h-full max-h-screen overflow-x-hidden bg-background", children: [
+  return /* @__PURE__ */ jsxs("div", { className: "relative h-full max-h-screen overflow-x-hidden", children: [
     hasNavbar && /* @__PURE__ */ jsx(Navbar, __spreadValues({}, navbar)),
     hasSidebar && /* @__PURE__ */ jsx(Sidebar, __spreadValues({}, sidebar)),
     /* @__PURE__ */ jsx(

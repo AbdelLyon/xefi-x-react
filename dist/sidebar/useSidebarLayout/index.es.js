@@ -43,7 +43,7 @@ const useSidebarLayout = (config = {}) => {
   const width = getWidth();
   const shouldShowCollapsed = isDesktop && isCollapsed || isTablet;
   const containerClasses = [
-    "fixed left-0 top-0 h-screen flex flex-col bg-background",
+    "fixed left-0 top-0 h-screen flex flex-col bg-[#181818]",
     "border-r border-border transition-all duration-300 ease-in-out z-40",
     width
   ].join(" ");
