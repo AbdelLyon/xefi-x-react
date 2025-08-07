@@ -1,103 +1,231 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { IconPlus, IconDownload, IconHeart, IconStar, IconShare, IconSettings, IconBell, IconUser, IconShoppingCart, IconSearch, IconArrowRight, IconCheck } from '@tabler/icons-react';
-import { Button } from './Button';
+import type { Meta, StoryObj } from "@storybook/react-vite"
+import {
+  IconPlus,
+  IconDownload,
+  IconHeart,
+  IconStar,
+  IconShare,
+  IconSettings,
+  IconBell,
+  IconUser,
+  IconShoppingCart,
+  IconSearch,
+  IconArrowRight,
+  IconCheck,
+} from "@tabler/icons-react"
+import { Button } from "./Button"
 
 const meta: Meta<typeof Button> = {
-  title: 'Components/Button',
+  title: "Components/Button",
   component: Button,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
     docs: {
       description: {
-        component: '**Button** - Composant bouton élégant avec support complet dark/light mode, animations fluides et personnalisations avancées.',
+        component:
+          "**Button** - Composant bouton élégant avec support complet dark/light mode, animations fluides et personnalisations avancées.",
       },
     },
   },
   argTypes: {
     variant: {
-      control: 'select',
-      options: ['solid', 'bordered', 'light', 'flat', 'faded', 'shadow', 'ghost'],
-      description: 'Style visuel du bouton',
+      control: "select",
+      options: [
+        "solid",
+        "bordered",
+        "light",
+        "flat",
+        "faded",
+        "shadow",
+        "ghost",
+      ],
+      description: "Style visuel du bouton",
     },
     color: {
-      control: 'select',
-      options: ['primary', 'secondary', 'success', 'warning', 'danger', 'default'],
-      description: 'Couleur thématique',
+      control: "select",
+      options: [
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "danger",
+        "default",
+      ],
+      description: "Couleur thématique",
     },
     size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
-      description: 'Taille du bouton',
+      control: "select",
+      options: ["sm", "md", "lg"],
+      description: "Taille du bouton",
+    },
+    radius: {
+      control: "select",
+      options: ["none", "sm", "md", "lg", "full"],
+      description: "Radius des coins (défaut: md)",
     },
     loading: {
-      control: 'boolean',
-      description: 'État de chargement',
+      control: "boolean",
+      description: "État de chargement",
     },
     disabled: {
-      control: 'boolean',
-      description: 'Bouton désactivé',
+      control: "boolean",
+      description: "Bouton désactivé",
     },
     fullWidth: {
-      control: 'boolean',
-      description: 'Pleine largeur',
+      control: "boolean",
+      description: "Pleine largeur",
     },
     children: {
-      control: 'text',
-      description: 'Contenu du bouton',
+      control: "text",
+      description: "Contenu du bouton",
     },
   },
-  tags: ['autodocs'],
-};
+  tags: ["autodocs"],
+}
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 
-// Container de démonstration avec fond adaptatif
-const DemoContainer = ({ children, title, description }: { children: React.ReactNode, title: string, description?: string }) => (
-  <div className="w-full max-w-6xl mx-auto p-8">
-    <div className="mb-6">
-      <h3 className="text-2xl font-bold text-foreground mb-2">{title}</h3>
-      {description && <p className="text-default-500">{description}</p>}
-    </div>
-    <div className="p-8 rounded-2xl bg-gradient-to-br from-background to-default-50 dark:from-background dark:to-default-900 border border-divider shadow-lg">
-      {children}
-    </div>
-  </div>
-);
-
+// Story par défaut - utilise le radius par défaut (md)
 export const Default: Story = {
   args: {
-    children: 'Cliquez-moi',
-    color: 'primary',
+    children: "Bouton par défaut",
+    color: "primary",
   },
-};
+}
 
+// Test spécifique du radius par défaut
+export const RadiusComparison: Story = {
+  render: () => (
+    <div className="max-w-4xl space-y-8 p-6">
+      <div>
+        <h3 className="mb-4 text-lg font-semibold text-foreground">
+          Test du radius par défaut
+        </h3>
+        <div className="flex flex-wrap items-center gap-4">
+          <Button color="primary">Sans radius explicite (défaut: md)</Button>
+          <Button color="primary" radius="md">
+            Avec radius="md" explicite
+          </Button>
+        </div>
+        <p className="mt-2 text-sm text-default-500">
+          ↑ Ces deux boutons devraient avoir exactement la même apparence
+        </p>
+      </div>
+
+      <div>
+        <h3 className="mb-4 text-lg font-semibold text-foreground">
+          Tous les radius disponibles avec style inline forcé
+        </h3>
+        <div className="flex flex-wrap items-center gap-4">
+          <Button color="primary" radius="none">
+            none (0px)
+          </Button>
+          <Button color="primary" radius="sm">
+            sm (4px)
+          </Button>
+          <Button color="primary" radius="md">
+            md (6px) - défaut
+          </Button>
+          <Button color="primary" radius="lg">
+            lg (8px)
+          </Button>
+          <Button color="primary" radius="full">
+            full (9999px)
+          </Button>
+        </div>
+        <div className="mt-4 rounded-lg bg-default-100 p-4">
+          <p className="text-sm text-default-600">
+            <strong>Debug :</strong> Chaque bouton a maintenant un style inline
+            qui force le border-radius. Ouvrez les outils de développement pour
+            voir <code>style="border-radius: Xpx"</code> sur chaque bouton.
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <h3 className="mb-4 text-lg font-semibold text-foreground">
+          Test avec différentes variantes
+        </h3>
+        <div className="grid grid-cols-5 gap-4">
+          {(["none", "sm", "md", "lg", "full"] as const).map((radiusValue) => (
+            <div key={radiusValue} className="space-y-2">
+              <h4 className="text-center text-sm font-medium">{radiusValue}</h4>
+              <Button
+                color="primary"
+                radius={radiusValue}
+                size="sm"
+                className="w-full"
+              >
+                Solid
+              </Button>
+              <Button
+                color="primary"
+                radius={radiusValue}
+                variant="bordered"
+                size="sm"
+                className="w-full"
+              >
+                Bordered
+              </Button>
+              <Button
+                color="primary"
+                radius={radiusValue}
+                variant="light"
+                size="sm"
+                className="w-full"
+              >
+                Light
+              </Button>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  ),
+  parameters: {
+    layout: "fullscreen",
+  },
+}
+
+// Showcase moderne
 export const ModernShowcase: Story = {
   render: () => (
-    <DemoContainer title="Collection Moderne" description="Boutons élégants avec design contemporain">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {/* Primary Actions */}
+    <div className="mx-auto max-w-6xl p-8">
+      <div className="mb-8">
+        <h2 className="mb-2 text-3xl font-bold text-foreground">
+          Collection de Boutons Modernes
+        </h2>
+        <p className="text-default-500">
+          Boutons élégants avec design contemporain et radius par défaut
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+        {/* Actions Principales */}
         <div className="space-y-4">
-          <h4 className="font-semibold text-foreground text-sm uppercase tracking-wider">Actions Principales</h4>
-          <Button 
-            color="primary" 
-            variant="shadow" 
+          <h4 className="text-sm font-semibold uppercase tracking-wider text-foreground">
+            Actions Principales
+          </h4>
+          <Button
+            color="primary"
+            variant="shadow"
             size="lg"
             leftIcon={<IconPlus size={18} />}
             className="w-full font-medium"
           >
             Créer
           </Button>
-          <Button 
-            color="success" 
-            variant="solid" 
+          <Button
+            color="success"
+            variant="solid"
             leftIcon={<IconDownload size={16} />}
             className="w-full"
           >
             Télécharger
           </Button>
-          <Button 
-            color="secondary" 
+          <Button
+            color="secondary"
             variant="flat"
             leftIcon={<IconShare size={16} />}
             className="w-full"
@@ -106,27 +234,29 @@ export const ModernShowcase: Story = {
           </Button>
         </div>
 
-        {/* Interactive */}
+        {/* Interactifs */}
         <div className="space-y-4">
-          <h4 className="font-semibold text-foreground text-sm uppercase tracking-wider">Interactifs</h4>
-          <Button 
-            color="danger" 
+          <h4 className="text-sm font-semibold uppercase tracking-wider text-foreground">
+            Interactifs
+          </h4>
+          <Button
+            color="danger"
             variant="bordered"
             leftIcon={<IconHeart size={16} />}
             className="w-full"
           >
             Favoris
           </Button>
-          <Button 
-            color="warning" 
+          <Button
+            color="warning"
             variant="light"
             leftIcon={<IconStar size={16} />}
             className="w-full"
           >
             Évaluer
           </Button>
-          <Button 
-            color="primary" 
+          <Button
+            color="primary"
             variant="ghost"
             leftIcon={<IconBell size={16} />}
             className="w-full"
@@ -135,27 +265,29 @@ export const ModernShowcase: Story = {
           </Button>
         </div>
 
-        {/* Utility */}
+        {/* Utilitaires */}
         <div className="space-y-4">
-          <h4 className="font-semibold text-foreground text-sm uppercase tracking-wider">Utilitaires</h4>
-          <Button 
-            color="default" 
+          <h4 className="text-sm font-semibold uppercase tracking-wider text-foreground">
+            Utilitaires
+          </h4>
+          <Button
+            color="default"
             variant="bordered"
             leftIcon={<IconSettings size={16} />}
             className="w-full"
           >
             Paramètres
           </Button>
-          <Button 
-            color="primary" 
+          <Button
+            color="primary"
             variant="flat"
             leftIcon={<IconUser size={16} />}
             className="w-full"
           >
             Profil
           </Button>
-          <Button 
-            color="success" 
+          <Button
+            color="success"
             variant="light"
             leftIcon={<IconCheck size={16} />}
             className="w-full"
@@ -166,25 +298,27 @@ export const ModernShowcase: Story = {
 
         {/* E-commerce */}
         <div className="space-y-4">
-          <h4 className="font-semibold text-foreground text-sm uppercase tracking-wider">E-commerce</h4>
-          <Button 
-            color="primary" 
+          <h4 className="text-sm font-semibold uppercase tracking-wider text-foreground">
+            E-commerce
+          </h4>
+          <Button
+            color="primary"
             variant="shadow"
             leftIcon={<IconShoppingCart size={16} />}
             className="w-full font-medium"
           >
             Ajouter au panier
           </Button>
-          <Button 
-            color="default" 
+          <Button
+            color="default"
             variant="bordered"
             leftIcon={<IconSearch size={16} />}
             className="w-full"
           >
             Rechercher
           </Button>
-          <Button 
-            color="secondary" 
+          <Button
+            color="secondary"
             variant="solid"
             rightIcon={<IconArrowRight size={16} />}
             className="w-full"
@@ -193,47 +327,22 @@ export const ModernShowcase: Story = {
           </Button>
         </div>
       </div>
-    </DemoContainer>
+    </div>
   ),
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
-};
+}
 
-export const ColorPalette: Story = {
-  render: () => (
-    <DemoContainer title="Palette de Couleurs" description="Toutes les couleurs disponibles dans les thèmes light et dark">
-      <div className="space-y-8">
-        {(['primary', 'secondary', 'success', 'warning', 'danger', 'default'] as const).map((color) => (
-          <div key={color} className="space-y-4">
-            <h4 className="font-semibold text-foreground capitalize text-lg">{color}</h4>
-            <div className="grid grid-cols-2 md:grid-cols-7 gap-3">
-              {(['solid', 'bordered', 'light', 'flat', 'faded', 'shadow', 'ghost'] as const).map((variant) => (
-                <Button
-                  key={`${color}-${variant}`}
-                  color={color}
-                  variant={variant}
-                  size="sm"
-                  className="min-w-[100px]"
-                >
-                  {variant}
-                </Button>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-    </DemoContainer>
-  ),
-  parameters: {
-    layout: 'fullscreen',
-  },
-};
-
+// États de chargement
 export const LoadingStates: Story = {
   render: () => (
-    <DemoContainer title="États de Chargement" description="Différents styles de chargement avec animations fluides">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div className="mx-auto max-w-4xl p-8">
+      <h2 className="mb-6 text-2xl font-bold text-foreground">
+        États de Chargement
+      </h2>
+
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
         <div className="space-y-4">
           <h4 className="font-semibold text-foreground">Chargement Simple</h4>
           <div className="space-y-3">
@@ -250,15 +359,35 @@ export const LoadingStates: Story = {
         </div>
 
         <div className="space-y-4">
-          <h4 className="font-semibold text-foreground">Avec Texte Personnalisé</h4>
+          <h4 className="font-semibold text-foreground">
+            Avec Texte Personnalisé
+          </h4>
           <div className="space-y-3">
-            <Button loading loadingText="Sauvegarde..." color="primary" variant="shadow" className="w-full">
+            <Button
+              loading
+              loadingText="Sauvegarde..."
+              color="primary"
+              variant="shadow"
+              className="w-full"
+            >
               Sauvegarder
             </Button>
-            <Button loading loadingText="Envoi..." color="success" variant="bordered" className="w-full">
+            <Button
+              loading
+              loadingText="Envoi..."
+              color="success"
+              variant="bordered"
+              className="w-full"
+            >
               Envoyer
             </Button>
-            <Button loading loadingText="Connexion..." color="warning" variant="flat" className="w-full">
+            <Button
+              loading
+              loadingText="Connexion..."
+              color="warning"
+              variant="flat"
+              className="w-full"
+            >
               Se connecter
             </Button>
           </div>
@@ -267,8 +396,8 @@ export const LoadingStates: Story = {
         <div className="space-y-4">
           <h4 className="font-semibold text-foreground">Avec Icônes</h4>
           <div className="space-y-3">
-            <Button 
-              loading 
+            <Button
+              loading
               loadingText="Téléchargement..."
               leftIcon={<IconDownload size={16} />}
               color="primary"
@@ -276,8 +405,8 @@ export const LoadingStates: Story = {
             >
               Télécharger
             </Button>
-            <Button 
-              loading 
+            <Button
+              loading
               loadingText="Partage..."
               leftIcon={<IconShare size={16} />}
               color="secondary"
@@ -286,9 +415,9 @@ export const LoadingStates: Story = {
             >
               Partager
             </Button>
-            <Button 
-              loading 
-              loadingText="Traitement..."
+            <Button
+              loading
+              loadingText="Validation..."
               color="success"
               variant="light"
               className="w-full"
@@ -298,121 +427,9 @@ export const LoadingStates: Story = {
           </div>
         </div>
       </div>
-    </DemoContainer>
+    </div>
   ),
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
-};
-
-export const SizeComparison: Story = {
-  render: () => (
-    <DemoContainer title="Tailles et Proportions" description="Comparaison des différentes tailles avec cohérence visuelle">
-      <div className="space-y-8">
-        {(['sm', 'md', 'lg'] as const).map((size) => (
-          <div key={size} className="space-y-4">
-            <h4 className="font-semibold text-foreground text-xl capitalize">Taille {size}</h4>
-            <div className="flex flex-wrap gap-4 items-center">
-              <Button size={size} color="primary">
-                Texte seul
-              </Button>
-              <Button size={size} color="primary" leftIcon={<IconPlus size={size === 'sm' ? 14 : size === 'md' ? 16 : 18} />}>
-                Avec icône gauche
-              </Button>
-              <Button size={size} color="primary" rightIcon={<IconArrowRight size={size === 'sm' ? 14 : size === 'md' ? 16 : 18} />}>
-                Avec icône droite
-              </Button>
-              <Button 
-                size={size} 
-                color="primary" 
-                leftIcon={<IconHeart size={size === 'sm' ? 14 : size === 'md' ? 16 : 18} />}
-                rightIcon={<IconArrowRight size={size === 'sm' ? 14 : size === 'md' ? 16 : 18} />}
-              >
-                Icônes des deux côtés
-              </Button>
-              <Button size={size} color="primary" variant="bordered" loading>
-                Chargement
-              </Button>
-            </div>
-          </div>
-        ))}
-      </div>
-    </DemoContainer>
-  ),
-  parameters: {
-    layout: 'fullscreen',
-  },
-};
-
-export const InteractiveDemo: Story = {
-  render: () => (
-    <DemoContainer title="Démonstration Interactive" description="Testez les interactions et animations">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="space-y-6">
-          <h4 className="font-semibold text-foreground text-lg">Actions de Base</h4>
-          <div className="space-y-4">
-            <Button 
-              color="primary" 
-              variant="shadow"
-              size="lg"
-              onClick={() => alert('Bouton Primary cliqué!')}
-              leftIcon={<IconCheck size={18} />}
-              className="w-full"
-            >
-              Action Principale
-            </Button>
-            <Button 
-              color="secondary" 
-              variant="bordered"
-              onClick={() => alert('Action secondaire!')}
-              className="w-full"
-            >
-              Action Secondaire
-            </Button>
-            <Button 
-              color="danger" 
-              variant="light"
-              onClick={() => confirm('Êtes-vous sûr de vouloir supprimer?')}
-              className="w-full"
-            >
-              Action Dangereuse
-            </Button>
-          </div>
-        </div>
-
-        <div className="space-y-6">
-          <h4 className="font-semibold text-foreground text-lg">États Spéciaux</h4>
-          <div className="space-y-4">
-            <Button 
-              color="success" 
-              variant="flat"
-              fullWidth
-              leftIcon={<IconDownload size={16} />}
-            >
-              Pleine largeur
-            </Button>
-            <Button 
-              color="warning" 
-              variant="bordered"
-              disabled
-              className="w-full"
-            >
-              Bouton désactivé
-            </Button>
-            <Button 
-              color="default" 
-              variant="ghost"
-              className="w-full"
-              disableRipple
-            >
-              Sans effet ripple
-            </Button>
-          </div>
-        </div>
-      </div>
-    </DemoContainer>
-  ),
-  parameters: {
-    layout: 'fullscreen',
-  },
-};
+}

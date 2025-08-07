@@ -1,0 +1,110 @@
+/* Solution complète pour les radius des boutons HeroUI */
+
+/* Variables CSS globales pour HeroUI */
+:root {
+  --heroui-radius-small: 4px;
+  --heroui-radius-medium: 6px;
+  --heroui-radius-large: 8px;
+  --radius-small: 4px;
+  --radius-medium: 6px;
+  --radius-large: 8px;
+}
+
+/* Ciblage direct des boutons HeroUI par data-attributes */
+button[data-slot="base"][data-radius="none"],
+button[data-radius="none"] {
+  border-radius: 0px !important;
+}
+
+button[data-slot="base"][data-radius="sm"],
+button[data-radius="sm"] {
+  border-radius: 4px !important;
+}
+
+button[data-slot="base"][data-radius="md"],
+button[data-radius="md"] {
+  border-radius: 6px !important;
+}
+
+button[data-slot="base"][data-radius="lg"],
+button[data-radius="lg"] {
+  border-radius: 8px !important;
+}
+
+button[data-slot="base"][data-radius="full"],
+button[data-radius="full"] {
+  border-radius: 9999px !important;
+}
+
+/* Ciblage par classes CSS générées par HeroUI */
+.data-\[radius\=none\]\:rounded-none {
+  border-radius: 0px !important;
+}
+
+.data-\[radius\=sm\]\:rounded-small {
+  border-radius: 4px !important;
+}
+
+.data-\[radius\=md\]\:rounded-medium {
+  border-radius: 6px !important;
+}
+
+.data-\[radius\=lg\]\:rounded-large {
+  border-radius: 8px !important;
+}
+
+.data-\[radius\=full\]\:rounded-full {
+  border-radius: 9999px !important;
+}
+
+/* Classes Tailwind de base */
+.rounded-none { border-radius: 0px !important; }
+.rounded-small { border-radius: 4px !important; }
+.rounded-medium { border-radius: 6px !important; }
+.rounded-large { border-radius: 8px !important; }
+.rounded-sm { border-radius: 4px !important; }
+.rounded-md { border-radius: 6px !important; }
+.rounded-lg { border-radius: 8px !important; }
+.rounded-full { border-radius: 9999px !important; }
+
+/* Solution de dernier recours - ciblage de tous les boutons avec attribut radius */
+button[radius="none"] {
+  border-radius: 0px !important;
+}
+
+button[radius="sm"] {
+  border-radius: 4px !important;
+}
+
+button[radius="md"] {
+  border-radius: 6px !important;
+}
+
+button[radius="lg"] {
+  border-radius: 8px !important;
+}
+
+button[radius="full"] {
+  border-radius: 9999px !important;
+}
+
+/* Classes spécifiques HeroUI générées dynamiquement */
+[class*="radius-none"] {
+  border-radius: 0px !important;
+}
+
+[class*="radius-sm"] {
+  border-radius: 4px !important;
+}
+
+[class*="radius-md"] {
+  border-radius: 6px !important;
+}
+
+[class*="radius-lg"] {
+  border-radius: 8px !important;
+}
+
+[class*="radius-full"] {
+  border-radius: 9999px !important;
+}

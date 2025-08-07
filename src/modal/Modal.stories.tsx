@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { Modal } from './Modal';
 import { Button } from '../button/Button';
@@ -8,19 +8,13 @@ import {
   IconEdit, 
   IconAlertTriangle, 
   IconCheck, 
-  IconX,
   IconUser,
   IconSettings,
   IconShield,
   IconCreditCard,
   IconBell,
-  IconPhoto,
-  IconUpload,
-  IconDownload,
   IconShare,
-  IconHeart,
-  IconStar,
-  IconEye
+  IconHeart
 } from '@tabler/icons-react';
 
 const meta: Meta<typeof Modal> = {
@@ -129,7 +123,7 @@ export const ModernShowcase: Story = {
           buttonActionLabel="Supprimer"
           buttonActionProps={{
             color: 'danger',
-            leftIcon: <IconTrash size={16} />,
+            startContent: <IconTrash size={16} />,
           }}
           onAction={() => {
             alert('Élément supprimé avec succès !');
@@ -167,7 +161,7 @@ export const ModernShowcase: Story = {
           <div className="py-4">
             <div className="flex items-center gap-4 mb-6">
               <Avatar 
-                size="xl" 
+                size="lg" 
                 src="https://i.pravatar.cc/150?u=modal-user"
                 className="ring-4 ring-primary-100 dark:ring-primary-900"
               />
@@ -420,7 +414,7 @@ export const InteractiveDemo: Story = {
           buttonActionLabel="Sauvegarder les modifications"
           buttonActionProps={{
             color: 'primary',
-            leftIcon: <IconCheck size={16} />,
+            startContent: <IconCheck size={16} />,
           }}
           onAction={() => {
             alert(`Profil sauvegardé !\nNom: ${name || 'Non défini'}\nEmail: ${email || 'Non défini'}\nBio: ${bio || 'Non définie'}`);

@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 declare const IntroductionComponent: () => import("react/jsx-runtime").JSX.Element;
 declare const meta: Meta<typeof IntroductionComponent>;
 export default meta;

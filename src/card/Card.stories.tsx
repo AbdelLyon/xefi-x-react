@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Card } from './Card';
 import { Button } from '../button/Button';
 import { Avatar } from '../avatar/Avatar';
@@ -16,9 +16,7 @@ import {
   IconMessage,
   IconThumbUp,
   IconTrendingUp,
-  IconShield,
-  IconCreditCard,
-  IconGift
+  IconShield
 } from '@tabler/icons-react';
 
 const meta: Meta<typeof Card> = {

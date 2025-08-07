@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Button } from '../button/Button';
 import { Card } from '../card/Card';
 import { Avatar } from '../avatar/Avatar';
@@ -12,15 +12,11 @@ import {
   IconLeaf,
   IconBolt,
   IconHeart,
-  IconStar,
   IconDownload,
   IconBrandGithub,
   IconBook,
   IconRocket,
   IconSettings,
-  IconUsers,
-  IconTrendingUp,
-  IconShield,
   IconBrandReact,
   IconBrandTypescript,
   IconBrandTailwind

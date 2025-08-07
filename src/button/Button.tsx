@@ -41,6 +41,8 @@ export interface ButtonProps
   color?: Color
   /** Size of the button */
   size?: Size
+  /** Border radius of the button */
+  radius?: "none" | "sm" | "md" | "lg" | "full"
   /** Whether button is in loading state */
   loading?: boolean
   /** Icon to display on the left side */
@@ -90,6 +92,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       variant = "solid",
       color = "primary",
       size = "md",
+      radius = "md",
       loading = false,
       leftIcon,
       rightIcon,
@@ -131,6 +134,19 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     // Determine content based on loading state
     const buttonContent = loading && loadingText ? loadingText : children
 
+    // Map des radius pour forcer via style inline si nécessaire
+    const radiusToPixels = {
+      none: "0px",
+      sm: "4px", 
+      md: "6px",
+      lg: "8px",
+      full: "9999px",
+    } as const
+
+    const inlineStyle = {
+      borderRadius: radiusToPixels[radius],
+    }
+
     return (
       <HeroUIButton
         ref={ref}
@@ -138,6 +154,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         onPress={handlePress}
         color={color}
         size={size as "sm" | "md" | "lg"}
+        radius={radius}
         isDisabled={isDisabled}
         disableRipple={disableRipple || loading}
         disableAnimation={disableAnimation}
@@ -148,6 +165,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           loading && "cursor-wait relative",
           className
         )}
+        style={inlineStyle}
         {...props}
       >
         {buttonContent}

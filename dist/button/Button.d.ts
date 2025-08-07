@@ -11,6 +11,8 @@ export interface ButtonProps extends Omit<HeroUIButtonProps, "color" | "variant"
     color?: Color;
     /** Size of the button */
     size?: Size;
+    /** Border radius of the button */
+    radius?: "none" | "sm" | "md" | "lg" | "full";
     /** Whether button is in loading state */
     loading?: boolean;
     /** Icon to display on the left side */

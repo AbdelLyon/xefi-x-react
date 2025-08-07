@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState, useEffect } from 'react';
 import { Button } from '../button/Button';
 import { Card } from '../card/Card';
@@ -10,8 +10,6 @@ import {
   useLocalStorage, 
   useClipboard, 
   useDisclosure,
-  useTimeout,
-  useInterval,
   useMediaQuery
 } from './index';
 import {
@@ -27,7 +25,6 @@ import {
   IconHeart,
   IconEye,
   IconSettings,
-  IconUser,
   IconVolume,
   IconDevices,
   IconPhone
@@ -550,7 +547,7 @@ export const UseClipboardShowcase: Story = {
 export const MultipleHooksShowcase: Story = {
   render: () => {
     const MultiHooksExample = () => {
-      const { isOpen, onOpenChange, onOpen, onClose } = useDisclosure();
+      const { isOpen, onOpenChange, onClose } = useDisclosure();
       const volume = useCounter(50, { min: 0, max: 100 });
       const autoSave = useToggle({ values: [false, true], initialValue: true });
       const username = useLocalStorage('demo-username', 'Utilisateur');
