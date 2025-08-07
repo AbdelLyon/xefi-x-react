@@ -92,7 +92,7 @@ export const useSidebarLayout = (
   const shouldShowCollapsed = (isDesktop && isCollapsed) || isTablet
   
   const containerClasses = [
-    "fixed left-0 h-screen flex flex-col bg-gradient-to-b from-background to-background/95",
+    "fixed left-0 top-0 h-screen flex flex-col bg-gradient-to-b from-background to-background/95",
     "border-r border-divider backdrop-blur-sm transition-all duration-300 ease-in-out z-40",
     "shadow-lg shadow-black/5",
     width,

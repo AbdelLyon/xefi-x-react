@@ -84,24 +84,8 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
           </NavbarContent>
         )}
 
-        {!isMobile && (appName !== null || appLogo !== null) && (
-          <NavbarContent justify="start">
-            {!isTablet && appLogo !== null && (
-              <NavbarItem className="relative w-[247px] text-foreground">
-                {appLogo}
-                <Divider
-                  orientation="vertical"
-                  className="absolute right-[1px] top-1/2 h-[80%] -translate-y-1/2 transform bg-border-200 dark:border-border"
-                />
-              </NavbarItem>
-            )}
-            {appName !== null && (
-              <NavbarItem className="text-foreground">{appName}</NavbarItem>
-            )}
-          </NavbarContent>
-        )}
 
-        <NavbarContent justify="end" {...contentProps}>
+        <NavbarContent justify="start" {...contentProps}>
           {isDesktop &&
             navigationItems.map(
               (item): JSX.Element => (
@@ -122,6 +106,9 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
                 </NavbarItem>
               )
             )}
+        </NavbarContent>
+
+        <NavbarContent justify="end">
           {profile !== null && <NavbarItem>{profile}</NavbarItem>}
         </NavbarContent>
 

@@ -5,7 +5,7 @@ import type { Color } from "@/types";
 import { IconPlus } from "@tabler/icons-react";
 import { SidebarLink } from "./SidebarLink";
 import { SidebarAction } from "./SidebarAction";
-import { SidebarBurgerButton } from "./SidebarBurgerButton";
+import { SidebarHeader } from "./SidebarHeader";
 import { useSidebarLayout, type SidebarLayoutConfig } from "./useSidebarLayout";
 
 /**
@@ -14,6 +14,10 @@ import { useSidebarLayout, type SidebarLayoutConfig } from "./useSidebarLayout";
 export interface SidebarProps {
   /** Navigation items to display */
   items?: Item[];
+  /** App logo component */
+  appLogo?: ReactNode;
+  /** App name component */
+  appName?: ReactNode;
   /** Root className */
   className?: string;
   /** Custom CSS classes for different parts */
@@ -76,6 +80,8 @@ export interface SidebarProps {
  */
 export const Sidebar = ({
   items = [],
+  appLogo,
+  appName,
   classNames = {},
   bgImage,
   onItemClick,
@@ -114,13 +120,16 @@ export const Sidebar = ({
         classNames.base,
       )}
     >
-      {/* Burger Button Section */}
-      {showBurgerButton && (
-        <SidebarBurgerButton
+      {/* Header Section with Logo and Burger */}
+      {(appLogo || appName || showBurgerButton) && (
+        <SidebarHeader
+          appLogo={appLogo}
+          appName={appName}
           isCollapsed={shouldShowCollapsed}
           onToggle={toggleCollapsed}
           isDesktop={isDesktop}
           isTablet={isTablet}
+          showBurgerButton={showBurgerButton}
         />
       )}
 

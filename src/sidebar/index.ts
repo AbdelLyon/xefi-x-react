@@ -4,6 +4,7 @@ export { Sidebar, type SidebarProps } from "./Sidebar";
 export { SidebarLink, type SidebarLinkProps } from "./SidebarLink";
 export { SidebarAction, type SidebarActionProps } from "./SidebarAction";
 export { SidebarBurgerButton, type SidebarBurgerButtonProps } from "./SidebarBurgerButton";
+export { SidebarHeader, type SidebarHeaderProps } from "./SidebarHeader";
 export { 
   useSidebarLayout, 
   type SidebarLayoutConfig, 

@@ -8,6 +8,10 @@ import { SidebarLayoutConfig } from './useSidebarLayout';
 export interface SidebarProps {
     /** Navigation items to display */
     items?: Item[];
+    /** App logo component */
+    appLogo?: ReactNode;
+    /** App name component */
+    appName?: ReactNode;
     /** Root className */
     className?: string;
     /** Custom CSS classes for different parts */
@@ -69,4 +73,4 @@ export interface SidebarProps {
  * />
  * ```
  */
-export declare const Sidebar: ({ items, classNames, bgImage, onItemClick, ref, actionLabel, actionIcon, actionColor, actionClick, showDivider, layoutConfig, showBurgerButton, }: SidebarProps) => JSX.Element | null;
+export declare const Sidebar: ({ items, appLogo, appName, classNames, bgImage, onItemClick, ref, actionLabel, actionIcon, actionColor, actionClick, showDivider, layoutConfig, showBurgerButton, }: SidebarProps) => JSX.Element | null;

@@ -2,11 +2,13 @@ import { jsxs, jsx } from "react/jsx-runtime";
 import { IconPlus } from "@tabler/icons-react";
 import { SidebarLink } from "../SidebarLink/index.es.js";
 import { SidebarAction } from "../SidebarAction/index.es.js";
-import { SidebarBurgerButton } from "../SidebarBurgerButton/index.es.js";
+import { SidebarHeader } from "../SidebarHeader/index.es.js";
 import { useSidebarLayout } from "../useSidebarLayout/index.es.js";
 import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
 const Sidebar = ({
   items = [],
+  appLogo,
+  appName,
   classNames = {},
   bgImage,
   onItemClick,
@@ -42,13 +44,16 @@ const Sidebar = ({
         classNames.base
       ),
       children: [
-        showBurgerButton && /* @__PURE__ */ jsx(
-          SidebarBurgerButton,
+        (appLogo || appName || showBurgerButton) && /* @__PURE__ */ jsx(
+          SidebarHeader,
           {
+            appLogo,
+            appName,
             isCollapsed: shouldShowCollapsed,
             onToggle: toggleCollapsed,
             isDesktop,
-            isTablet
+            isTablet,
+            showBurgerButton
           }
         ),
         actionClick && /* @__PURE__ */ jsx(

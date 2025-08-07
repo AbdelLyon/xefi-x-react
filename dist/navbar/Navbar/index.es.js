@@ -31,7 +31,7 @@ var __objRest = (source, exclude) => {
 };
 import { jsxs, jsx } from "react/jsx-runtime";
 import { forwardRef } from "react";
-import { Navbar as Navbar$1, NavbarContent, NavbarMenuToggle, NavbarItem, Divider, Link, NavbarMenu, NavbarMenuItem } from "@heroui/react";
+import { Navbar as Navbar$1, NavbarContent, NavbarMenuToggle, NavbarItem, Link, NavbarMenu, NavbarMenuItem } from "@heroui/react";
 import { useResponsive } from "../../hooks/useResponsive/index.es.js";
 import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
 const Navbar = forwardRef(
@@ -63,7 +63,7 @@ const Navbar = forwardRef(
       "isMenuOpen",
       "onMenuOpenChange"
     ]);
-    const { isDesktop, isMobile, isTablet } = useResponsive();
+    const { isDesktop, isMobile } = useResponsive();
     const handleItemPress = (item, event) => {
       var _a2;
       (_a2 = item.onClick) == null ? void 0 : _a2.call(item, event);
@@ -89,40 +89,25 @@ const Navbar = forwardRef(
               "aria-label": isMenuOpen === true ? "Close menu" : "Open menu"
             }
           ) }),
-          !isMobile && (appName !== null || appLogo !== null) && /* @__PURE__ */ jsxs(NavbarContent, { justify: "start", children: [
-            !isTablet && appLogo !== null && /* @__PURE__ */ jsxs(NavbarItem, { className: "relative w-[247px] text-foreground", children: [
-              appLogo,
-              /* @__PURE__ */ jsx(
-                Divider,
-                {
-                  orientation: "vertical",
-                  className: "absolute right-[1px] top-1/2 h-[80%] -translate-y-1/2 transform bg-border-200 dark:border-border"
-                }
-              )
-            ] }),
-            appName !== null && /* @__PURE__ */ jsx(NavbarItem, { className: "text-foreground", children: appName })
-          ] }),
-          /* @__PURE__ */ jsxs(NavbarContent, __spreadProps(__spreadValues({ justify: "end" }, contentProps), { children: [
-            isDesktop && navigationItems.map(
-              (item) => /* @__PURE__ */ jsx(NavbarItem, { children: /* @__PURE__ */ jsxs(
-                Link,
-                {
-                  className: mergeTailwindClasses(
-                    "p-2 hover:bg-content1 rounded-md text-foreground",
-                    item.isActive && "border-l-2 border-primary bg-content1 text-primary",
-                    classNames == null ? void 0 : classNames.item
-                  ),
-                  onPress: (ev) => handleItemPress(item, ev),
-                  children: [
-                    item.startContent,
-                    item.label,
-                    item.endContent
-                  ]
-                }
-              ) }, item.key)
-            ),
-            profile !== null && /* @__PURE__ */ jsx(NavbarItem, { children: profile })
-          ] })),
+          /* @__PURE__ */ jsx(NavbarContent, __spreadProps(__spreadValues({ justify: "start" }, contentProps), { children: isDesktop && navigationItems.map(
+            (item) => /* @__PURE__ */ jsx(NavbarItem, { children: /* @__PURE__ */ jsxs(
+              Link,
+              {
+                className: mergeTailwindClasses(
+                  "p-2 hover:bg-content1 rounded-md text-foreground",
+                  item.isActive && "border-l-2 border-primary bg-content1 text-primary",
+                  classNames == null ? void 0 : classNames.item
+                ),
+                onPress: (ev) => handleItemPress(item, ev),
+                children: [
+                  item.startContent,
+                  item.label,
+                  item.endContent
+                ]
+              }
+            ) }, item.key)
+          ) })),
+          /* @__PURE__ */ jsx(NavbarContent, { justify: "end", children: profile !== null && /* @__PURE__ */ jsx(NavbarItem, { children: profile }) }),
           !isDesktop && /* @__PURE__ */ jsx(NavbarMenu, __spreadProps(__spreadValues({}, menuProps), { children: menuItems.map(
             (item) => /* @__PURE__ */ jsx(NavbarMenuItem, { children: /* @__PURE__ */ jsxs(
               Link,
