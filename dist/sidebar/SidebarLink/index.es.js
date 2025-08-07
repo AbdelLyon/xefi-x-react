@@ -1,7 +1,35 @@
-import { jsxs, jsx } from "react/jsx-runtime";
+import { jsxs, jsx, Fragment } from "react/jsx-runtime";
 import { Link } from "@heroui/react";
+import { useState, useEffect } from "react";
 import { Tooltip } from "../../tooltip/Tooltip/index.es.js";
 import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
+const TypewriterText = ({
+  text,
+  shouldShow,
+  delay = 500
+}) => {
+  const [displayedText, setDisplayedText] = useState("");
+  useEffect(() => {
+    if (!shouldShow || !text) {
+      setDisplayedText("");
+      return;
+    }
+    const timeout = setTimeout(() => {
+      let index = 0;
+      const timer = setInterval(() => {
+        if (index <= text.length) {
+          setDisplayedText(text.slice(0, index));
+          index++;
+        } else {
+          clearInterval(timer);
+        }
+      }, 50);
+      return () => clearInterval(timer);
+    }, delay);
+    return () => clearTimeout(timeout);
+  }, [text, shouldShow, delay]);
+  return /* @__PURE__ */ jsx(Fragment, { children: displayedText });
+};
 const SidebarLink = ({
   item,
   isDesktop,
@@ -39,8 +67,27 @@ const SidebarLink = ({
             children: item.startContent
           }
         ),
-        /* @__PURE__ */ jsx("span", { className: `flex-1 font-medium transition-opacity delay-300 duration-400 ${!shouldShowCollapsed ? "opacity-100" : "opacity-0"}`, children: item.label }),
-        item.endContent !== null && !shouldShowCollapsed && /* @__PURE__ */ jsx("div", { className: "opacity-60 transition-opacity delay-200 duration-300 group-hover:opacity-100", children: item.endContent })
+        !shouldShowCollapsed && /* @__PURE__ */ jsx("span", { className: "flex-1 font-medium", children: /* @__PURE__ */ jsx(
+          TypewriterText,
+          {
+            text: item.label,
+            shouldShow: !shouldShowCollapsed,
+            delay: 500
+          }
+        ) }),
+        item.endContent !== null && /* @__PURE__ */ jsx(
+          "div",
+          {
+            className: mergeTailwindClasses(
+              "transition-all duration-300 ease-in-out overflow-hidden group-hover:opacity-100",
+              {
+                "opacity-60 max-w-full": !shouldShowCollapsed,
+                "opacity-0 max-w-0": shouldShowCollapsed
+              }
+            ),
+            children: item.endContent
+          }
+        )
       ]
     },
     item.key

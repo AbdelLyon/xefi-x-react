@@ -3,6 +3,47 @@ import { Link } from "@heroui/react"
 import { mergeTailwindClasses } from "@/utils"
 import type { Item } from "@/types/navigation"
 import { Tooltip } from "@/tooltip"
+import { useState, useEffect } from "react"
+
+/**
+ * Component for typewriter effect
+ */
+const TypewriterText = ({
+  text,
+  shouldShow,
+  delay = 500,
+}: {
+  text?: string
+  shouldShow: boolean
+  delay?: number
+}) => {
+  const [displayedText, setDisplayedText] = useState("")
+
+  useEffect(() => {
+    if (!shouldShow || !text) {
+      setDisplayedText("")
+      return
+    }
+
+    const timeout = setTimeout(() => {
+      let index = 0
+      const timer = setInterval(() => {
+        if (index <= text.length) {
+          setDisplayedText(text.slice(0, index))
+          index++
+        } else {
+          clearInterval(timer)
+        }
+      }, 50) // 50ms entre chaque lettre
+
+      return () => clearInterval(timer)
+    }, delay)
+
+    return () => clearTimeout(timeout)
+  }, [text, shouldShow, delay])
+
+  return <>{displayedText}</>
+}
 
 /**
  * Props for SidebarLink component
@@ -56,14 +97,26 @@ export const SidebarLink = ({
         {item.startContent}
       </div>
 
-      <span className={`flex-1 font-medium transition-opacity delay-300 duration-400 ${
-        !shouldShowCollapsed ? 'opacity-100' : 'opacity-0'
-      }`}>
-        {item.label}
-      </span>
+      {!shouldShowCollapsed && (
+        <span className="flex-1 font-medium">
+          <TypewriterText
+            text={item.label}
+            shouldShow={!shouldShowCollapsed}
+            delay={500}
+          />
+        </span>
+      )}
 
-      {item.endContent !== null && !shouldShowCollapsed && (
-        <div className="opacity-60 transition-opacity delay-200 duration-300 group-hover:opacity-100">
+      {item.endContent !== null && (
+        <div
+          className={mergeTailwindClasses(
+            "transition-all duration-300 ease-in-out overflow-hidden group-hover:opacity-100",
+            {
+              "opacity-60 max-w-full": !shouldShowCollapsed,
+              "opacity-0 max-w-0": shouldShowCollapsed,
+            }
+          )}
+        >
           {item.endContent}
         </div>
       )}
