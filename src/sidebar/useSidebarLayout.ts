@@ -92,19 +92,18 @@ export const useSidebarLayout = (
   const shouldShowCollapsed = (isDesktop && isCollapsed) || isTablet;
 
   const containerClasses = [
-    "fixed left-0 top-0 h-screen flex flex-col bg-background",
-    "border-r border-divider transition-all duration-300 ease-out z-40",
-    "will-change-transform", // GPU acceleration for better performance
+    "fixed left-0 top-0 h-screen flex flex-col bg-[#181818]",
+    "border-r border-border transition-all duration-500 ease-out z-40",
     width,
   ].join(" ");
 
   const navigationClasses = [
-    "flex-1 transition-all duration-300 ease-out",
+    "flex-1 transition-all duration-300 ease-in-out",
     shouldShowCollapsed ? "pt-4 px-3" : "p-4",
   ].join(" ");
 
   const itemContainerClasses = [
-    "flex flex-col transition-all duration-300 ease-out",
+    "flex flex-col transition-all duration-300 ease-in-out",
     shouldShowCollapsed ? "gap-3 items-center" : "gap-2",
   ].join(" ");
 

@@ -71,7 +71,7 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
         classNames={{
           base: "border-b-none dark:border-b dark:border-border shadow-lg bg-white dark:bg-content1 dark:shadow-none",
           wrapper: mergeTailwindClasses(
-            "max-w-full transition-all duration-300 ease-out will-change-transform",
+            "max-w-full transition-all duration-300",
             isDesktop
               ? isSidebarCollapsed
                 ? "ml-[70px]"

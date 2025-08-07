@@ -78,7 +78,7 @@ const Navbar = forwardRef(
         classNames: __spreadValues({
           base: "border-b-none dark:border-b dark:border-border shadow-lg bg-white dark:bg-content1 dark:shadow-none",
           wrapper: mergeTailwindClasses(
-            "max-w-full transition-all duration-300 ease-out will-change-transform",
+            "max-w-full transition-all duration-300",
             isDesktop ? isSidebarCollapsed ? "ml-[70px]" : "ml-[270px]" : isTablet ? "ml-[70px]" : "ml-0"
           )
         }, classNames),

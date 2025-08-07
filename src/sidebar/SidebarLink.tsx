@@ -56,28 +56,14 @@ export const SidebarLink = ({
         {item.startContent}
       </div>
 
-      <span 
-        className={mergeTailwindClasses(
-          "flex-1 font-medium transition-all duration-300 ease-in-out overflow-hidden",
-          {
-            "opacity-100 max-w-full": !shouldShowCollapsed,
-            "opacity-0 max-w-0": shouldShowCollapsed,
-          }
-        )}
-      >
-        {item.label}
-      </span>
+      {!shouldShowCollapsed && (
+        <span className="flex-1 font-medium transition-opacity delay-300 duration-400">
+          {item.label}
+        </span>
+      )}
 
-      {item.endContent !== null && (
-        <div 
-          className={mergeTailwindClasses(
-            "transition-all duration-300 ease-in-out overflow-hidden group-hover:opacity-100",
-            {
-              "opacity-60 max-w-full": !shouldShowCollapsed,
-              "opacity-0 max-w-0": shouldShowCollapsed,
-            }
-          )}
-        >
+      {item.endContent !== null && !shouldShowCollapsed && (
+        <div className="opacity-60 transition-opacity delay-200 duration-300 group-hover:opacity-100">
           {item.endContent}
         </div>
       )}
