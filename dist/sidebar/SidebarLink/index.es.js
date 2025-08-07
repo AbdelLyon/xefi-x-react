@@ -72,7 +72,7 @@ const SidebarLink = ({
           {
             text: item.label,
             shouldShow: !shouldShowCollapsed,
-            delay: 500
+            delay: 300
           }
         ) }),
         item.endContent !== null && /* @__PURE__ */ jsx(

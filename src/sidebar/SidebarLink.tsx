@@ -102,7 +102,7 @@ export const SidebarLink = ({
           <TypewriterText
             text={item.label}
             shouldShow={!shouldShowCollapsed}
-            delay={500}
+            delay={300}
           />
         </span>
       )}
