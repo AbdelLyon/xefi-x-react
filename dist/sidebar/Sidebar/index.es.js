@@ -1,5 +1,5 @@
 import { jsxs, jsx } from "react/jsx-runtime";
-import React from "react";
+import { useEffect } from "react";
 import { IconPlus } from "@tabler/icons-react";
 import { SidebarLink } from "../SidebarLink/index.es.js";
 import { SidebarAction } from "../SidebarAction/index.es.js";
@@ -32,22 +32,23 @@ const Sidebar = ({
     navigationClasses,
     itemContainerClasses
   } = useSidebarLayout(layoutConfig);
+  const shouldShowCollapsed = isDesktop && isCollapsed || isTablet;
+  useEffect(() => {
+    if (!isVisible) {
+      document.documentElement.style.setProperty("--sidebar-width", "0px");
+      return;
+    }
+    const sidebarWidth = shouldShowCollapsed ? "70px" : "270px";
+    document.documentElement.style.setProperty("--sidebar-width", sidebarWidth);
+  }, [shouldShowCollapsed, isVisible]);
   if (!isVisible) {
     return null;
   }
-  const shouldShowCollapsed = isDesktop && isCollapsed || isTablet;
-  React.useEffect(() => {
-    const sidebarWidth = shouldShowCollapsed ? "70px" : "270px";
-    document.documentElement.style.setProperty("--sidebar-width", sidebarWidth);
-  }, [shouldShowCollapsed]);
   return /* @__PURE__ */ jsxs(
     "aside",
     {
       ref,
-      className: mergeTailwindClasses(
-        containerClasses,
-        classNames.base
-      ),
+      className: mergeTailwindClasses(containerClasses, classNames.base),
       children: [
         (appLogo || appName || showBurgerButton) && /* @__PURE__ */ jsx(
           SidebarHeader,
