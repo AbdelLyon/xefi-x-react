@@ -58,7 +58,7 @@ export const SidebarBurgerButton: React.FC<SidebarBurgerButtonProps> = ({
       >
         <div className="relative size-4">
           <div className="absolute inset-0 transition-all duration-300">
-            <IconMenu2 size={16} />
+            <IconMenu2 size={17} />
           </div>
         </div>
       </Button>
