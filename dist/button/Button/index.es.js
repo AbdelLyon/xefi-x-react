@@ -90,6 +90,16 @@ const Button = forwardRef(
       }
     );
     const buttonContent = loading && loadingText ? loadingText : children;
+    const radiusToPixels = {
+      none: "0px",
+      sm: "4px",
+      md: "6px",
+      lg: "8px",
+      full: "9999px"
+    };
+    const inlineStyle = {
+      borderRadius: radiusToPixels[radius]
+    };
     return /* @__PURE__ */ jsx(
       Button$1,
       __spreadProps(__spreadValues({
@@ -108,7 +118,8 @@ const Button = forwardRef(
           fullWidth && "w-full",
           loading && "cursor-wait relative",
           className
-        )
+        ),
+        style: inlineStyle
       }, props), {
         children: buttonContent
       })

@@ -1,15 +1,20 @@
 import { useResponsive } from "@/hooks"
+import { useState, useCallback } from "react"
 
 /**
  * Configuration for sidebar layout
  */
 export interface SidebarLayoutConfig {
-  /** Desktop sidebar width */
+  /** Desktop sidebar width when expanded */
   desktopWidth: string
+  /** Desktop sidebar width when collapsed */
+  desktopCollapsedWidth: string
   /** Tablet sidebar width */
   tabletWidth: string
   /** Whether to show sidebar on mobile */
   showOnMobile: boolean
+  /** Whether the sidebar starts collapsed */
+  defaultCollapsed: boolean
 }
 
 /**
@@ -22,6 +27,10 @@ export interface UseSidebarLayoutReturn {
   isDesktop: boolean
   /** Whether in tablet mode */
   isTablet: boolean
+  /** Whether sidebar is collapsed */
+  isCollapsed: boolean
+  /** Toggle sidebar collapse state */
+  toggleCollapsed: () => void
   /** Current sidebar width */
   width: string
   /** CSS classes for sidebar container */
@@ -37,8 +46,10 @@ export interface UseSidebarLayoutReturn {
  */
 const defaultConfig: SidebarLayoutConfig = {
   desktopWidth: "w-[270px]",
+  desktopCollapsedWidth: "w-[70px]",
   tabletWidth: "w-[70px]",
   showOnMobile: false,
+  defaultCollapsed: false,
 }
 
 /**
@@ -62,30 +73,47 @@ export const useSidebarLayout = (
 ): UseSidebarLayoutReturn => {
   const finalConfig = { ...defaultConfig, ...config }
   const { isDesktop, isTablet, isMobile } = useResponsive()
+  const [isCollapsed, setIsCollapsed] = useState(finalConfig.defaultCollapsed)
+
+  const toggleCollapsed = useCallback(() => {
+    setIsCollapsed(prev => !prev)
+  }, [])
 
   const isVisible = isDesktop || isTablet || (isMobile && finalConfig.showOnMobile)
   
-  const width = isDesktop ? finalConfig.desktopWidth : finalConfig.tabletWidth
+  // Determine width based on device type and collapsed state
+  const getWidth = () => {
+    if (isMobile) return finalConfig.desktopWidth
+    if (isTablet) return finalConfig.tabletWidth
+    return isCollapsed ? finalConfig.desktopCollapsedWidth : finalConfig.desktopWidth
+  }
+  
+  const width = getWidth()
+  const shouldShowCollapsed = (isDesktop && isCollapsed) || isTablet
   
   const containerClasses = [
-    "fixed left-0 h-screen flex flex-col bg-[#181818] border-r border-border",
+    "fixed left-0 h-screen flex flex-col bg-gradient-to-b from-background to-background/95",
+    "border-r border-divider backdrop-blur-sm transition-all duration-300 ease-in-out z-40",
+    "shadow-lg shadow-black/5",
     width,
   ].join(" ")
 
   const navigationClasses = [
-    "flex-1",
-    isDesktop ? "p-4" : "pt-2 px-2",
+    "flex-1 transition-all duration-300 ease-in-out",
+    shouldShowCollapsed ? "pt-4 px-3" : "p-4",
   ].join(" ")
 
   const itemContainerClasses = [
-    "flex flex-col",
-    isDesktop ? "gap-2" : "gap-4 items-center",
+    "flex flex-col transition-all duration-300 ease-in-out",
+    shouldShowCollapsed ? "gap-3 items-center" : "gap-2",
   ].join(" ")
 
   return {
     isVisible,
     isDesktop,
     isTablet,
+    isCollapsed,
+    toggleCollapsed,
     width,
     containerClasses,
     navigationClasses,

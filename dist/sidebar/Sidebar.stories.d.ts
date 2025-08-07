@@ -1,0 +1,11 @@
+import { Meta, StoryObj } from '@storybook/react-vite';
+import { Sidebar } from './Sidebar';
+declare const meta: Meta<typeof Sidebar>;
+export default meta;
+type Story = StoryObj<typeof meta>;
+export declare const Default: Story;
+export declare const DashboardSidebar: Story;
+export declare const EcommerceSidebar: Story;
+export declare const MediaSidebar: Story;
+export declare const ProjectSidebar: Story;
+export declare const MinimalSidebar: Story;

@@ -1,0 +1,16 @@
+import { Meta, StoryObj } from '@storybook/react-vite';
+import { Badge } from './Badge';
+declare const meta: Meta<typeof Badge>;
+export default meta;
+type Story = StoryObj<typeof meta>;
+export declare const Default: Story;
+export declare const WithContent: Story;
+export declare const Colors: Story;
+export declare const Variants: Story;
+export declare const Sizes: Story;
+export declare const Shapes: Story;
+export declare const DotBadges: Story;
+export declare const CounterBadges: Story;
+export declare const Placements: Story;
+export declare const VisibilityStates: Story;
+export declare const UIShowcase: Story;

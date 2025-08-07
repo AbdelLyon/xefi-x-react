@@ -1,6 +1,6 @@
-import { jsxs, Fragment, jsx } from "react/jsx-runtime";
-import { cloneElement } from "react";
+import { jsx, jsxs, Fragment } from "react/jsx-runtime";
 import { Button, Divider } from "@heroui/react";
+import { Tooltip } from "../../tooltip/Tooltip/index.es.js";
 import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
 const SidebarAction = ({
   actionLabel,
@@ -9,49 +9,55 @@ const SidebarAction = ({
   actionClick,
   isDesktop,
   isTablet,
+  isCollapsed = false,
   showDivider,
   className
 }) => {
-  var _a, _b;
-  const desktopIcon = cloneElement(actionIcon, {
-    className: mergeTailwindClasses(
-      "text-primary",
-      ((_a = actionIcon.props) == null ? void 0 : _a.className) || ""
-    )
-  });
-  const tabletIcon = cloneElement(actionIcon, {
-    className: mergeTailwindClasses(
-      "text-white",
-      ((_b = actionIcon.props) == null ? void 0 : _b.className) || ""
-    )
-  });
+  const shouldShowCollapsed = isTablet || isDesktop && isCollapsed;
+  const actionButton = /* @__PURE__ */ jsx(
+    Button,
+    {
+      color: actionColor,
+      className: mergeTailwindClasses(
+        "transition-all duration-300 font-medium rounded-lg",
+        {
+          "w-[90%] h-10 justify-start gap-3 px-4": !shouldShowCollapsed,
+          "size-10 min-w-10 p-0": shouldShowCollapsed
+        },
+        className
+      ),
+      startContent: !shouldShowCollapsed ? actionIcon : void 0,
+      onPress: actionClick,
+      children: !shouldShowCollapsed ? actionLabel : actionIcon
+    }
+  );
+  const buttonWithTooltip = shouldShowCollapsed ? /* @__PURE__ */ jsx(
+    Tooltip,
+    {
+      content: actionLabel,
+      placement: "right",
+      delay: 300,
+      closeDelay: 100,
+      className: "bg-content1 border border-divider px-3 py-2 shadow-lg rounded-lg",
+      children: actionButton
+    }
+  ) : actionButton;
   return /* @__PURE__ */ jsxs(Fragment, { children: [
-    /* @__PURE__ */ jsx("div", { className: "mt-6 flex justify-center", children: /* @__PURE__ */ jsx(
-      Button,
+    /* @__PURE__ */ jsx("div", { className: mergeTailwindClasses(
+      "flex transition-all duration-300",
       {
-        color: actionColor,
-        radius: "none",
-        className: mergeTailwindClasses(
-          "transition-all h-10 rounded-md mb-6 font-semibold",
-          {
-            "w-[90%] justify-start px-3": isDesktop,
-            "size-10 p-0 flex items-center justify-center": isTablet
-          },
-          className
-        ),
-        startContent: isDesktop ? /* @__PURE__ */ jsx("div", { className: "mr-2 rounded-sm bg-white", children: desktopIcon }) : null,
-        onPress: actionClick,
-        children: isDesktop ? actionLabel : /* @__PURE__ */ jsx("div", { className: "flex items-center justify-center rounded-sm", children: tabletIcon })
+        "justify-center mb-4 mt-4": shouldShowCollapsed,
+        "justify-center mb-6 mt-6": !shouldShowCollapsed
       }
-    ) }),
+    ), children: buttonWithTooltip }),
     showDivider && /* @__PURE__ */ jsx(
       Divider,
       {
         className: mergeTailwindClasses(
-          "border bg-[#39393893] mx-auto mb-3",
+          "bg-divider/50 mx-auto mb-4 transition-all duration-300",
           {
-            "w-[90%]": isDesktop,
-            "w-10": isTablet
+            "w-[90%]": !shouldShowCollapsed,
+            "w-10": shouldShowCollapsed
           }
         )
       }

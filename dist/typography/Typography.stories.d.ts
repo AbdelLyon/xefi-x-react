@@ -1,0 +1,14 @@
+import { Meta, StoryObj } from '@storybook/react-vite';
+import { Typography } from './Typography';
+declare const meta: Meta<typeof Typography>;
+export default meta;
+type Story = StoryObj<typeof meta>;
+export declare const Default: Story;
+export declare const Headings: Story;
+export declare const TextVariants: Story;
+export declare const FontWeights: Story;
+export declare const TextAlignments: Story;
+export declare const Colors: Story;
+export declare const Truncation: Story;
+export declare const SemanticElements: Story;
+export declare const ArticleInterface: Story;

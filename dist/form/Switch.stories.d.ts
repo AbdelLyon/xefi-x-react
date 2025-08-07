@@ -1,0 +1,13 @@
+import { Meta, StoryObj } from '@storybook/react-vite';
+import { Switch } from './Switch';
+declare const meta: Meta<typeof Switch>;
+export default meta;
+type Story = StoryObj<typeof meta>;
+export declare const Default: Story;
+export declare const Sizes: Story;
+export declare const Colors: Story;
+export declare const WithIcons: Story;
+export declare const CustomSizes: Story;
+export declare const States: Story;
+export declare const SettingsPanel: Story;
+export declare const InteractiveDemo: Story;

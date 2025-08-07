@@ -1,0 +1,14 @@
+import { Meta, StoryObj } from '@storybook/react-vite';
+import { CheckboxGroup } from './Checkbox';
+declare const meta: Meta<typeof CheckboxGroup>;
+export default meta;
+type Story = StoryObj<typeof meta>;
+export declare const Default: Story;
+export declare const SingleCheckbox: Story;
+export declare const Sizes: Story;
+export declare const Colors: Story;
+export declare const WithIcons: Story;
+export declare const Orientations: Story;
+export declare const WithValidation: Story;
+export declare const PermissionsPanel: Story;
+export declare const States: Story;

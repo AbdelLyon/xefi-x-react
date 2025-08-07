@@ -1,0 +1,12 @@
+import { Meta, StoryObj } from '@storybook/react-vite';
+import { Alert } from './Alert';
+declare const meta: Meta<typeof Alert>;
+export default meta;
+type Story = StoryObj<typeof meta>;
+export declare const Default: Story;
+export declare const ColorsShowcase: Story;
+export declare const VariantsShowcase: Story;
+export declare const WithActions: Story;
+export declare const AutoDismiss: Story;
+export declare const SystemNotifications: Story;
+export declare const CustomStyling: Story;

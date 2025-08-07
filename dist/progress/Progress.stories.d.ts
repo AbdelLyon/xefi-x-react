@@ -1,0 +1,17 @@
+import { Meta, StoryObj } from '@storybook/react-vite';
+import { Progress } from './Progress';
+declare const meta: Meta<typeof Progress>;
+export default meta;
+type Story = StoryObj<typeof meta>;
+export declare const Default: Story;
+export declare const LinearColors: Story;
+export declare const LinearSizes: Story;
+export declare const LinearStates: Story;
+export declare const LinearFormatting: Story;
+export declare const LinearLabelPositions: Story;
+export declare const CircularBasic: Story;
+export declare const CircularColors: Story;
+export declare const CircularCustomValues: Story;
+export declare const CircularAutoIncrement: Story;
+export declare const AnimatedProgress: Story;
+export declare const SystemShowcase: Story;

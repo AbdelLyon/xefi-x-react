@@ -1,0 +1,14 @@
+import { Meta, StoryObj } from '@storybook/react-vite';
+import { RadioGroup } from './Radio';
+declare const meta: Meta<typeof RadioGroup>;
+export default meta;
+type Story = StoryObj<typeof meta>;
+export declare const Default: Story;
+export declare const PaymentMethods: Story;
+export declare const ShippingOptions: Story;
+export declare const Sizes: Story;
+export declare const Colors: Story;
+export declare const Orientations: Story;
+export declare const DevicePlatform: Story;
+export declare const SatisfactionSurvey: Story;
+export declare const States: Story;

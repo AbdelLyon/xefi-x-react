@@ -3,6 +3,7 @@ import { cloneElement } from "react"
 import { Button, Divider } from "@heroui/react"
 import { mergeTailwindClasses } from "@/utils"
 import type { Color } from "@/types"
+import { Tooltip } from "@/tooltip"
 
 /**
  * Props for SidebarAction component
@@ -14,6 +15,7 @@ export interface SidebarActionProps {
   actionClick: () => void
   isDesktop: boolean
   isTablet: boolean
+  isCollapsed?: boolean
   showDivider: boolean
   className?: string
 }
@@ -28,62 +30,61 @@ export const SidebarAction = ({
   actionClick,
   isDesktop,
   isTablet,
+  isCollapsed = false,
   showDivider,
   className,
 }: SidebarActionProps): JSX.Element => {
-  // Clone icon with appropriate styling for each mode
-  const desktopIcon = cloneElement(actionIcon, {
-    className: mergeTailwindClasses(
-      "text-primary",
-      actionIcon.props?.className || "",
-    ),
-  })
+  const shouldShowCollapsed = isTablet || (isDesktop && isCollapsed);
+  
+  const actionButton = (
+    <Button
+      color={actionColor}
+      className={mergeTailwindClasses(
+        "transition-all duration-300 font-medium rounded-lg",
+        {
+          "w-[90%] h-10 justify-start gap-3 px-4": !shouldShowCollapsed,
+          "size-10 min-w-10 p-0": shouldShowCollapsed,
+        },
+        className,
+      )}
+      startContent={!shouldShowCollapsed ? actionIcon : undefined}
+      onPress={actionClick}
+    >
+      {!shouldShowCollapsed ? actionLabel : actionIcon}
+    </Button>
+  );
 
-  const tabletIcon = cloneElement(actionIcon, {
-    className: mergeTailwindClasses(
-      "text-white",
-      actionIcon.props?.className || "",
-    ),
-  })
+  const buttonWithTooltip = shouldShowCollapsed ? (
+    <Tooltip
+      content={actionLabel}
+      placement="right"
+      delay={300}
+      closeDelay={100}
+      className="bg-content1 border border-divider px-3 py-2 shadow-lg rounded-lg"
+    >
+      {actionButton}
+    </Tooltip>
+  ) : actionButton;
 
   return (
     <>
-      <div className="mt-6 flex justify-center">
-        <Button
-          color={actionColor}
-          radius="none"
-          className={mergeTailwindClasses(
-            "transition-all h-10 rounded-md mb-6 font-semibold",
-            {
-              "w-[90%] justify-start px-3": isDesktop,
-              "size-10 p-0 flex items-center justify-center": isTablet,
-            },
-            className,
-          )}
-          startContent={
-            isDesktop ? (
-              <div className="mr-2 rounded-sm bg-white">{desktopIcon}</div>
-            ) : null
-          }
-          onPress={actionClick}
-        >
-          {isDesktop ? (
-            actionLabel
-          ) : (
-            <div className="flex items-center justify-center rounded-sm">
-              {tabletIcon}
-            </div>
-          )}
-        </Button>
+      <div className={mergeTailwindClasses(
+        "flex transition-all duration-300",
+        {
+          "justify-center mb-4 mt-4": shouldShowCollapsed,
+          "justify-center mb-6 mt-6": !shouldShowCollapsed,
+        }
+      )}>
+        {buttonWithTooltip}
       </div>
       
       {showDivider && (
         <Divider
           className={mergeTailwindClasses(
-            "border bg-[#39393893] mx-auto mb-3",
+            "bg-divider/50 mx-auto mb-4 transition-all duration-300",
             {
-              "w-[90%]": isDesktop,
-              "w-10": isTablet,
+              "w-[90%]": !shouldShowCollapsed,
+              "w-10": shouldShowCollapsed,
             },
           )}
         />

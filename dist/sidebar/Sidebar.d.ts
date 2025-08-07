@@ -36,6 +36,8 @@ export interface SidebarProps {
     showDivider?: boolean;
     /** Layout configuration */
     layoutConfig?: Partial<SidebarLayoutConfig>;
+    /** Whether to show burger button */
+    showBurgerButton?: boolean;
 }
 /**
  * Enhanced Sidebar component with responsive design and modular structure
@@ -67,4 +69,4 @@ export interface SidebarProps {
  * />
  * ```
  */
-export declare const Sidebar: ({ items, classNames, bgImage, onItemClick, ref, actionLabel, actionIcon, actionColor, actionClick, showDivider, layoutConfig, }: SidebarProps) => JSX.Element | null;
+export declare const Sidebar: ({ items, classNames, bgImage, onItemClick, ref, actionLabel, actionIcon, actionColor, actionClick, showDivider, layoutConfig, showBurgerButton, }: SidebarProps) => JSX.Element | null;

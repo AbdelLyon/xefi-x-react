@@ -5,6 +5,7 @@ import type { Color } from "@/types";
 import { IconPlus } from "@tabler/icons-react";
 import { SidebarLink } from "./SidebarLink";
 import { SidebarAction } from "./SidebarAction";
+import { SidebarBurgerButton } from "./SidebarBurgerButton";
 import { useSidebarLayout, type SidebarLayoutConfig } from "./useSidebarLayout";
 
 /**
@@ -39,6 +40,8 @@ export interface SidebarProps {
   showDivider?: boolean;
   /** Layout configuration */
   layoutConfig?: Partial<SidebarLayoutConfig>;
+  /** Whether to show burger button */
+  showBurgerButton?: boolean;
 }
 
 /**
@@ -83,11 +86,14 @@ export const Sidebar = ({
   actionClick,
   showDivider = true,
   layoutConfig,
+  showBurgerButton = true,
 }: SidebarProps): JSX.Element | null => {
   const {
     isVisible,
     isDesktop,
     isTablet,
+    isCollapsed,
+    toggleCollapsed,
     containerClasses,
     navigationClasses,
     itemContainerClasses,
@@ -98,6 +104,8 @@ export const Sidebar = ({
     return null;
   }
 
+  const shouldShowCollapsed = (isDesktop && isCollapsed) || isTablet;
+
   return (
     <aside
       ref={ref}
@@ -106,6 +114,16 @@ export const Sidebar = ({
         classNames.base,
       )}
     >
+      {/* Burger Button Section */}
+      {showBurgerButton && (
+        <SidebarBurgerButton
+          isCollapsed={shouldShowCollapsed}
+          onToggle={toggleCollapsed}
+          isDesktop={isDesktop}
+          isTablet={isTablet}
+        />
+      )}
+
       {/* Action Button Section */}
       {actionClick && (
         <SidebarAction
@@ -115,6 +133,7 @@ export const Sidebar = ({
           actionClick={actionClick}
           isDesktop={isDesktop}
           isTablet={isTablet}
+          isCollapsed={isCollapsed}
           showDivider={showDivider}
           className={classNames.action}
         />
@@ -129,6 +148,7 @@ export const Sidebar = ({
               item={item}
               isDesktop={isDesktop}
               isTablet={isTablet}
+              isCollapsed={isCollapsed}
               onItemClick={onItemClick}
               className={classNames.item}
             />

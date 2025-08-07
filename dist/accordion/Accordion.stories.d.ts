@@ -1,0 +1,13 @@
+import { Meta, StoryObj } from '@storybook/react-vite';
+import { Accordion } from './Accordion';
+declare const meta: Meta<typeof Accordion>;
+export default meta;
+type Story = StoryObj<typeof meta>;
+export declare const Default: Story;
+export declare const VariantsShowcase: Story;
+export declare const SizesShowcase: Story;
+export declare const WithIcons: Story;
+export declare const FAQ: Story;
+export declare const ContactInfo: Story;
+export declare const TechnicalDocs: Story;
+export declare const CompactMode: Story;

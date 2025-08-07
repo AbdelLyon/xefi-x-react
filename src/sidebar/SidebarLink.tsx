@@ -11,6 +11,7 @@ export interface SidebarLinkProps {
   item: Item
   isDesktop: boolean
   isTablet: boolean
+  isCollapsed?: boolean
   onItemClick?: (item: Item) => void
   className?: string
 }
@@ -22,61 +23,60 @@ export const SidebarLink = ({
   item,
   isDesktop,
   isTablet,
+  isCollapsed = false,
   onItemClick,
   className,
 }: SidebarLinkProps): JSX.Element => {
+  const shouldShowCollapsed = isTablet || (isDesktop && isCollapsed);
+  
   const linkContent = (
     <Link
       key={item.key}
       className={mergeTailwindClasses(
-        "flex items-center px-3 h-11 text-slate-50 dark:text-slate-50 hover:text-white hover:bg-[#292b2b99] rounded-md cursor-pointer text-sm transition-all duration-200",
+        "group relative flex items-center h-11 text-foreground-600 hover:text-foreground hover:bg-default-100/50 rounded-lg cursor-pointer text-sm transition-all duration-200",
         {
-          "border-l-2 border-primary bg-[#292b2b99] text-white": item.isActive,
-          "border-l-0 border-l-primary justify-center": isTablet && item.isActive,
-          "gap-3 px-3": isDesktop,
-          "w-full flex justify-center": isTablet,
+          "bg-primary/10 text-primary border-primary/20 border": item.isActive,
+          "justify-center px-2": shouldShowCollapsed,
+          "gap-3 px-3": !shouldShowCollapsed,
         },
         className,
       )}
       onPress={() => onItemClick?.(item)}
     >
-      <div
-        className={mergeTailwindClasses({
-          "": isDesktop,
-          "flex items-center justify-center size-9": isTablet && !item.isActive,
-          "flex items-center justify-center size-9 bg-primary/10":
-            isTablet && item.isActive,
-        })}
-      >
+      <div className={mergeTailwindClasses(
+        "flex items-center justify-center transition-all duration-200",
+        {
+          "size-8 rounded-md": shouldShowCollapsed,
+          "size-5": !shouldShowCollapsed,
+          "bg-primary/20": shouldShowCollapsed && item.isActive,
+        }
+      )}>
         {item.startContent}
       </div>
       
-      {isDesktop && item.label}
+      {!shouldShowCollapsed && (
+        <span className="flex-1 font-medium">{item.label}</span>
+      )}
       
-      {item.endContent !== null && (
-        <div
-          className={mergeTailwindClasses({
-            "": isDesktop,
-            "absolute right-1 top-1": isTablet,
-          })}
-        >
+      {item.endContent !== null && !shouldShowCollapsed && (
+        <div className="opacity-60 group-hover:opacity-100 transition-opacity">
           {item.endContent}
         </div>
       )}
     </Link>
   )
 
-  // Wrap in tooltip for tablet mode
-  if (isTablet) {
+  // Wrap in tooltip for collapsed mode
+  if (shouldShowCollapsed) {
     return (
       <Tooltip
         trigger={linkContent}
         key={item.key}
         content={item.label}
         placement="right"
-        delay={0}
-        closeDelay={0}
-        className="border border-border px-2 py-1 shadow-lg"
+        delay={300}
+        closeDelay={100}
+        className="bg-content1 border border-divider px-3 py-2 shadow-lg rounded-lg"
       />
     )
   }

@@ -10,10 +10,11 @@ export interface SidebarActionProps {
     actionClick: () => void;
     isDesktop: boolean;
     isTablet: boolean;
+    isCollapsed?: boolean;
     showDivider: boolean;
     className?: string;
 }
 /**
  * Sidebar action button with responsive design
  */
-export declare const SidebarAction: ({ actionLabel, actionIcon, actionColor, actionClick, isDesktop, isTablet, showDivider, className, }: SidebarActionProps) => JSX.Element;
+export declare const SidebarAction: ({ actionLabel, actionIcon, actionColor, actionClick, isDesktop, isTablet, isCollapsed, showDivider, className, }: SidebarActionProps) => JSX.Element;

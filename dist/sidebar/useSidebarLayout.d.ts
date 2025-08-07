@@ -2,12 +2,16 @@
  * Configuration for sidebar layout
  */
 export interface SidebarLayoutConfig {
-    /** Desktop sidebar width */
+    /** Desktop sidebar width when expanded */
     desktopWidth: string;
+    /** Desktop sidebar width when collapsed */
+    desktopCollapsedWidth: string;
     /** Tablet sidebar width */
     tabletWidth: string;
     /** Whether to show sidebar on mobile */
     showOnMobile: boolean;
+    /** Whether the sidebar starts collapsed */
+    defaultCollapsed: boolean;
 }
 /**
  * Return type for sidebar layout hook
@@ -19,6 +23,10 @@ export interface UseSidebarLayoutReturn {
     isDesktop: boolean;
     /** Whether in tablet mode */
     isTablet: boolean;
+    /** Whether sidebar is collapsed */
+    isCollapsed: boolean;
+    /** Toggle sidebar collapse state */
+    toggleCollapsed: () => void;
     /** Current sidebar width */
     width: string;
     /** CSS classes for sidebar container */

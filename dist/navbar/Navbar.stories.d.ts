@@ -1,0 +1,12 @@
+import { Meta, StoryObj } from '@storybook/react-vite';
+import { Navbar } from './Navbar';
+declare const meta: Meta<typeof Navbar>;
+export default meta;
+type Story = StoryObj<typeof meta>;
+export declare const Default: Story;
+export declare const WithLogo: Story;
+export declare const EcommerceNavbar: Story;
+export declare const DashboardNavbar: Story;
+export declare const BlogNavbar: Story;
+export declare const CompleteNavbar: Story;
+export declare const MinimalNavbar: Story;
