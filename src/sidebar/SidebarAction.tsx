@@ -1,5 +1,4 @@
 import type { JSX } from "react"
-import { cloneElement } from "react"
 import { Button, Divider } from "@heroui/react"
 import { mergeTailwindClasses } from "@/utils"
 import type { Color } from "@/types"
@@ -34,8 +33,8 @@ export const SidebarAction = ({
   showDivider,
   className,
 }: SidebarActionProps): JSX.Element => {
-  const shouldShowCollapsed = isTablet || (isDesktop && isCollapsed);
-  
+  const shouldShowCollapsed = isTablet || (isDesktop && isCollapsed)
+
   const actionButton = (
     <Button
       color={actionColor}
@@ -43,47 +42,48 @@ export const SidebarAction = ({
         "transition-all duration-300 font-medium rounded-lg",
         {
           "w-[90%] h-10 justify-start gap-3 px-4": !shouldShowCollapsed,
-          "size-10 min-w-10 p-0 flex items-center justify-center": shouldShowCollapsed,
+          "size-10 min-w-10 p-0 flex items-center justify-center":
+            shouldShowCollapsed,
         },
-        className,
+        className
       )}
       startContent={!shouldShowCollapsed ? actionIcon : undefined}
       onPress={actionClick}
     >
       {shouldShowCollapsed ? (
-        <div className="flex items-center justify-center w-5 h-5">
+        <div className="flex size-5 items-center justify-center">
           {actionIcon}
         </div>
       ) : (
         actionLabel
       )}
     </Button>
-  );
+  )
 
   const buttonWithTooltip = shouldShowCollapsed ? (
     <Tooltip
+      trigger={actionButton}
       content={actionLabel}
       placement="right"
       delay={300}
       closeDelay={100}
-      className="bg-content1 border border-divider px-3 py-2 shadow-lg rounded-lg"
-    >
-      {actionButton}
-    </Tooltip>
-  ) : actionButton;
+      className="rounded-lg border border-border bg-content1 px-3 py-2 shadow-lg"
+    />
+  ) : (
+    actionButton
+  )
 
   return (
     <>
-      <div className={mergeTailwindClasses(
-        "flex transition-all duration-300",
-        {
+      <div
+        className={mergeTailwindClasses("flex transition-all duration-300", {
           "justify-center mb-4 mt-4": shouldShowCollapsed,
           "justify-center mb-6 mt-6": !shouldShowCollapsed,
-        }
-      )}>
+        })}
+      >
         {buttonWithTooltip}
       </div>
-      
+
       {showDivider && (
         <Divider
           className={mergeTailwindClasses(
@@ -91,7 +91,7 @@ export const SidebarAction = ({
             {
               "w-[90%]": !shouldShowCollapsed,
               "w-10": shouldShowCollapsed,
-            },
+            }
           )}
         />
       )}

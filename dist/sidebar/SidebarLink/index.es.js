@@ -25,16 +25,22 @@ const SidebarLink = ({
       ),
       onPress: () => onItemClick == null ? void 0 : onItemClick(item),
       children: [
-        /* @__PURE__ */ jsx("div", { className: mergeTailwindClasses(
-          "flex items-center justify-center transition-all duration-200",
+        /* @__PURE__ */ jsx(
+          "div",
           {
-            "size-8 rounded-md": shouldShowCollapsed,
-            "size-5": !shouldShowCollapsed,
-            "bg-primary/20": shouldShowCollapsed && item.isActive
+            className: mergeTailwindClasses(
+              "flex items-center justify-center transition-all duration-200",
+              {
+                "size-8 rounded-md": shouldShowCollapsed,
+                "size-5": !shouldShowCollapsed,
+                "bg-primary/20": shouldShowCollapsed && item.isActive
+              }
+            ),
+            children: item.startContent
           }
-        ), children: item.startContent }),
+        ),
         !shouldShowCollapsed && /* @__PURE__ */ jsx("span", { className: "flex-1 font-medium", children: item.label }),
-        item.endContent !== null && !shouldShowCollapsed && /* @__PURE__ */ jsx("div", { className: "opacity-60 group-hover:opacity-100 transition-opacity", children: item.endContent })
+        item.endContent !== null && !shouldShowCollapsed && /* @__PURE__ */ jsx("div", { className: "opacity-60 transition-opacity group-hover:opacity-100", children: item.endContent })
       ]
     },
     item.key
@@ -48,7 +54,7 @@ const SidebarLink = ({
         placement: "right",
         delay: 300,
         closeDelay: 100,
-        className: "bg-content1 border border-divider px-3 py-2 shadow-lg rounded-lg"
+        className: "rounded-lg border border-border bg-content1 px-3 py-2 shadow-lg"
       },
       item.key
     );

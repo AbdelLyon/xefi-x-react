@@ -28,28 +28,31 @@ const SidebarAction = ({
       ),
       startContent: !shouldShowCollapsed ? actionIcon : void 0,
       onPress: actionClick,
-      children: shouldShowCollapsed ? /* @__PURE__ */ jsx("div", { className: "flex items-center justify-center w-5 h-5", children: actionIcon }) : actionLabel
+      children: shouldShowCollapsed ? /* @__PURE__ */ jsx("div", { className: "flex size-5 items-center justify-center", children: actionIcon }) : actionLabel
     }
   );
   const buttonWithTooltip = shouldShowCollapsed ? /* @__PURE__ */ jsx(
     Tooltip,
     {
+      trigger: actionButton,
       content: actionLabel,
       placement: "right",
       delay: 300,
       closeDelay: 100,
-      className: "bg-content1 border border-divider px-3 py-2 shadow-lg rounded-lg",
-      children: actionButton
+      className: "rounded-lg border border-border bg-content1 px-3 py-2 shadow-lg"
     }
   ) : actionButton;
   return /* @__PURE__ */ jsxs(Fragment, { children: [
-    /* @__PURE__ */ jsx("div", { className: mergeTailwindClasses(
-      "flex transition-all duration-300",
+    /* @__PURE__ */ jsx(
+      "div",
       {
-        "justify-center mb-4 mt-4": shouldShowCollapsed,
-        "justify-center mb-6 mt-6": !shouldShowCollapsed
+        className: mergeTailwindClasses("flex transition-all duration-300", {
+          "justify-center mb-4 mt-4": shouldShowCollapsed,
+          "justify-center mb-6 mt-6": !shouldShowCollapsed
+        }),
+        children: buttonWithTooltip
       }
-    ), children: buttonWithTooltip }),
+    ),
     showDivider && /* @__PURE__ */ jsx(
       Divider,
       {

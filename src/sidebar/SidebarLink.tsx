@@ -27,8 +27,8 @@ export const SidebarLink = ({
   onItemClick,
   className,
 }: SidebarLinkProps): JSX.Element => {
-  const shouldShowCollapsed = isTablet || (isDesktop && isCollapsed);
-  
+  const shouldShowCollapsed = isTablet || (isDesktop && isCollapsed)
+
   const linkContent = (
     <Link
       key={item.key}
@@ -39,27 +39,29 @@ export const SidebarLink = ({
           "justify-center px-2": shouldShowCollapsed,
           "gap-3 px-3": !shouldShowCollapsed,
         },
-        className,
+        className
       )}
       onPress={() => onItemClick?.(item)}
     >
-      <div className={mergeTailwindClasses(
-        "flex items-center justify-center transition-all duration-200",
-        {
-          "size-8 rounded-md": shouldShowCollapsed,
-          "size-5": !shouldShowCollapsed,
-          "bg-primary/20": shouldShowCollapsed && item.isActive,
-        }
-      )}>
+      <div
+        className={mergeTailwindClasses(
+          "flex items-center justify-center transition-all duration-200",
+          {
+            "size-8 rounded-md": shouldShowCollapsed,
+            "size-5": !shouldShowCollapsed,
+            "bg-primary/20": shouldShowCollapsed && item.isActive,
+          }
+        )}
+      >
         {item.startContent}
       </div>
-      
+
       {!shouldShowCollapsed && (
         <span className="flex-1 font-medium">{item.label}</span>
       )}
-      
+
       {item.endContent !== null && !shouldShowCollapsed && (
-        <div className="opacity-60 group-hover:opacity-100 transition-opacity">
+        <div className="opacity-60 transition-opacity group-hover:opacity-100">
           {item.endContent}
         </div>
       )}
@@ -76,7 +78,7 @@ export const SidebarLink = ({
         placement="right"
         delay={300}
         closeDelay={100}
-        className="bg-content1 border border-divider px-3 py-2 shadow-lg rounded-lg"
+        className="rounded-lg border border-border bg-content1 px-3 py-2 shadow-lg"
       />
     )
   }
