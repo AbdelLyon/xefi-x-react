@@ -20,9 +20,6 @@ export const Layout = ({
   sidebar,
   className,
 }: LayoutProps): JSX.Element => {
-  const isDesktop = useMediaQuery("(min-width: 1024px)");
-  const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1023px)");
-
   const hasNavbar = Boolean(navbar);
   const hasSidebar = Boolean(sidebar);
 
@@ -31,25 +28,24 @@ export const Layout = ({
       {/* Navbar */}
       {hasNavbar && <Navbar {...navbar} />}
 
-      <div className="flex">
-        {hasSidebar && <Sidebar {...sidebar} />}
+      {hasSidebar && <Sidebar {...sidebar} />}
 
-        <main
-          className={mergeTailwindClasses(
-            "flex-1 overflow-hidden transition-all duration-200 mb-4",
-            {
-              "pt-4": hasNavbar,
-              "ml-0": !hasSidebar || (!isTablet && !isDesktop),
-              "ml-[90px]": hasSidebar && isTablet,
-              "ml-[270px]": hasSidebar && isDesktop,
-              "px-4 sm:px-6 md:px-8 lg:px-12": true,
-            },
-            className,
-          )}
-        >
+      <main
+        className={mergeTailwindClasses(
+          "transition-all duration-300 h-full overflow-y-auto",
+          {
+            "pt-16": hasNavbar, // Espace pour la navbar fixe
+          },
+          className,
+        )}
+        style={{
+          marginLeft: hasSidebar ? "var(--sidebar-width, 270px)" : "0px",
+        }}
+      >
+        <div className="container mx-auto px-6 py-6 max-w-none">
           {children}
-        </main>
-      </div>
+        </div>
+      </main>
     </div>
   );
 };

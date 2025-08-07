@@ -1,4 +1,5 @@
 import { jsxs, jsx } from "react/jsx-runtime";
+import React from "react";
 import { IconPlus } from "@tabler/icons-react";
 import { SidebarLink } from "../SidebarLink/index.es.js";
 import { SidebarAction } from "../SidebarAction/index.es.js";
@@ -35,6 +36,10 @@ const Sidebar = ({
     return null;
   }
   const shouldShowCollapsed = isDesktop && isCollapsed || isTablet;
+  React.useEffect(() => {
+    const sidebarWidth = shouldShowCollapsed ? "70px" : "270px";
+    document.documentElement.style.setProperty("--sidebar-width", sidebarWidth);
+  }, [shouldShowCollapsed]);
   return /* @__PURE__ */ jsxs(
     "aside",
     {

@@ -22,13 +22,13 @@ const SidebarAction = ({
         "transition-all duration-300 font-medium rounded-lg",
         {
           "w-[90%] h-10 justify-start gap-3 px-4": !shouldShowCollapsed,
-          "size-10 min-w-10 p-0": shouldShowCollapsed
+          "size-10 min-w-10 p-0 flex items-center justify-center": shouldShowCollapsed
         },
         className
       ),
       startContent: !shouldShowCollapsed ? actionIcon : void 0,
       onPress: actionClick,
-      children: !shouldShowCollapsed ? actionLabel : actionIcon
+      children: shouldShowCollapsed ? /* @__PURE__ */ jsx("div", { className: "flex items-center justify-center w-5 h-5", children: actionIcon }) : actionLabel
     }
   );
   const buttonWithTooltip = shouldShowCollapsed ? /* @__PURE__ */ jsx(

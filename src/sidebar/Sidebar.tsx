@@ -112,6 +112,12 @@ export const Sidebar = ({
 
   const shouldShowCollapsed = (isDesktop && isCollapsed) || isTablet;
 
+  // Set CSS variable for layout communication
+  React.useEffect(() => {
+    const sidebarWidth = shouldShowCollapsed ? "70px" : "270px";
+    document.documentElement.style.setProperty("--sidebar-width", sidebarWidth);
+  }, [shouldShowCollapsed]);
+
   return (
     <aside
       ref={ref}
