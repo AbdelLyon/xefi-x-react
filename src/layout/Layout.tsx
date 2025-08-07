@@ -22,31 +22,14 @@ export const Layout = ({
 }: LayoutProps): JSX.Element => {
   const hasNavbar = Boolean(navbar)
   const hasSidebar = Boolean(sidebar)
-  const { isVisible, isDesktop, isTablet, isCollapsed, toggleCollapsed } =
-    useSidebarLayout(sidebar?.layoutConfig)
+  const config = useSidebarLayout(sidebar?.layoutConfig)
 
   return (
     <div className="relative h-full max-h-screen overflow-x-hidden">
       {/* Navbar */}
-      {hasNavbar && (
-        <Navbar
-          isDesktop={isDesktop}
-          isTablet={isTablet}
-          isCollapsed={isCollapsed}
-          {...navbar}
-        />
-      )}
+      {hasNavbar && <Navbar isCollapsed={config.isCollapsed} {...navbar} />}
 
-      {hasSidebar && (
-        <Sidebar
-          isVisible={isVisible}
-          isDesktop={isDesktop}
-          isTablet={isTablet}
-          isCollapsed={isCollapsed}
-          toggleCollapsed={toggleCollapsed}
-          {...sidebar}
-        />
-      )}
+      {hasSidebar && <Sidebar {...sidebar} config={config} />}
 
       <main
         className={mergeTailwindClasses(

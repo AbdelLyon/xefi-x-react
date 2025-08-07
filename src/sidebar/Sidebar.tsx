@@ -6,6 +6,7 @@ import { IconPlus } from "@tabler/icons-react"
 import { SidebarLink } from "./SidebarLink"
 import { SidebarAction } from "./SidebarAction"
 import { SidebarHeader } from "./SidebarHeader"
+import type { UseSidebarLayoutReturn } from "./useSidebarLayout"
 import { type SidebarLayoutConfig } from "./useSidebarLayout"
 
 /**
@@ -14,14 +15,6 @@ import { type SidebarLayoutConfig } from "./useSidebarLayout"
 export interface SidebarProps {
   /** Navigation items to display */
   items?: Item[]
-  isVisible?: boolean
-  isDesktop?: boolean
-  isTablet?: boolean
-  isCollapsed?: boolean
-  toggleCollapsed: () => void
-  containerClasses: string
-  navigationClasses: string
-  itemContainerClasses: string
   /** App logo component */
   appLogo?: ReactNode
   /** Root className */
@@ -53,6 +46,7 @@ export interface SidebarProps {
   layoutConfig?: Partial<SidebarLayoutConfig>
   /** Whether to show burger button */
   showBurgerButton?: boolean
+  config: UseSidebarLayoutReturn
 }
 
 /**
@@ -97,46 +91,40 @@ export const Sidebar = ({
   actionColor = "primary",
   actionClick,
   showDivider = true,
-  isVisible,
-  isDesktop,
-  isTablet,
-  isCollapsed,
-  toggleCollapsed,
-  containerClasses,
-  navigationClasses,
-  itemContainerClasses,
+  config,
 
   showBurgerButton = true,
-}: Partial<SidebarProps>): JSX.Element | null => {
-  const shouldShowCollapsed = (isDesktop && isCollapsed) || isTablet
+}: SidebarProps): JSX.Element | null => {
+  const shouldShowCollapsed =
+    (config.isDesktop && config.isCollapsed) || config.isTablet
 
   // Set CSS variable for layout communication
   useEffect(() => {
-    if (!isVisible) {
+    if (!config.isVisible) {
       document.documentElement.style.setProperty("--sidebar-width", "0px")
       return
     }
     const sidebarWidth = shouldShowCollapsed ? "70px" : "270px"
     document.documentElement.style.setProperty("--sidebar-width", sidebarWidth)
-  }, [shouldShowCollapsed, isVisible])
+  }, [shouldShowCollapsed, config.isVisible])
 
-  if (!isVisible) {
+  if (!config.isVisible) {
     return null
   }
 
   return (
     <aside
       ref={ref}
-      className={mergeTailwindClasses(containerClasses, classNames.base)}
+      className={mergeTailwindClasses(config.containerClasses, classNames.base)}
     >
       {/* Header Section with Logo and Burger */}
       {(appLogo || showBurgerButton) && (
         <SidebarHeader
           appLogo={appLogo}
           isCollapsed={shouldShowCollapsed}
-          onToggle={toggleCollapsed}
-          isDesktop={isDesktop}
-          isTablet={isTablet}
+          onToggle={config.toggleCollapsed}
+          isDesktop={config.isDesktop}
+          isTablet={config.isTablet}
           showBurgerButton={showBurgerButton}
         />
       )}
@@ -148,24 +136,24 @@ export const Sidebar = ({
           actionIcon={actionIcon}
           actionColor={actionColor}
           actionClick={actionClick}
-          isDesktop={isDesktop}
-          isTablet={isTablet}
-          isCollapsed={isCollapsed}
+          isDesktop={config.isDesktop}
+          isTablet={config.isTablet}
+          isCollapsed={config.isCollapsed}
           showDivider={showDivider}
           className={classNames.action}
         />
       )}
 
       {/* Navigation Section */}
-      <nav className={navigationClasses}>
-        <div className={itemContainerClasses}>
+      <nav className={config.navigationClasses}>
+        <div className={config.itemContainerClasses}>
           {items.map((item) => (
             <SidebarLink
               key={item.key}
               item={item}
-              isDesktop={isDesktop}
-              isTablet={isTablet}
-              isCollapsed={isCollapsed}
+              isDesktop={config.isDesktop}
+              isTablet={config.isTablet}
+              isCollapsed={config.isCollapsed}
               onItemClick={onItemClick}
               className={classNames.item}
             />

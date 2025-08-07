@@ -17,42 +17,35 @@ const Sidebar = ({
   actionColor = "primary",
   actionClick,
   showDivider = true,
-  isVisible,
-  isDesktop,
-  isTablet,
-  isCollapsed,
-  toggleCollapsed,
-  containerClasses,
-  navigationClasses,
-  itemContainerClasses,
+  config,
   showBurgerButton = true
 }) => {
-  const shouldShowCollapsed = isDesktop && isCollapsed || isTablet;
+  const shouldShowCollapsed = config.isDesktop && config.isCollapsed || config.isTablet;
   useEffect(() => {
-    if (!isVisible) {
+    if (!config.isVisible) {
       document.documentElement.style.setProperty("--sidebar-width", "0px");
       return;
     }
     const sidebarWidth = shouldShowCollapsed ? "70px" : "270px";
     document.documentElement.style.setProperty("--sidebar-width", sidebarWidth);
-  }, [shouldShowCollapsed, isVisible]);
-  if (!isVisible) {
+  }, [shouldShowCollapsed, config.isVisible]);
+  if (!config.isVisible) {
     return null;
   }
   return /* @__PURE__ */ jsxs(
     "aside",
     {
       ref,
-      className: mergeTailwindClasses(containerClasses, classNames.base),
+      className: mergeTailwindClasses(config.containerClasses, classNames.base),
       children: [
         (appLogo || showBurgerButton) && /* @__PURE__ */ jsx(
           SidebarHeader,
           {
             appLogo,
             isCollapsed: shouldShowCollapsed,
-            onToggle: toggleCollapsed,
-            isDesktop,
-            isTablet,
+            onToggle: config.toggleCollapsed,
+            isDesktop: config.isDesktop,
+            isTablet: config.isTablet,
             showBurgerButton
           }
         ),
@@ -63,20 +56,20 @@ const Sidebar = ({
             actionIcon,
             actionColor,
             actionClick,
-            isDesktop,
-            isTablet,
-            isCollapsed,
+            isDesktop: config.isDesktop,
+            isTablet: config.isTablet,
+            isCollapsed: config.isCollapsed,
             showDivider,
             className: classNames.action
           }
         ),
-        /* @__PURE__ */ jsx("nav", { className: navigationClasses, children: /* @__PURE__ */ jsx("div", { className: itemContainerClasses, children: items.map((item) => /* @__PURE__ */ jsx(
+        /* @__PURE__ */ jsx("nav", { className: config.navigationClasses, children: /* @__PURE__ */ jsx("div", { className: config.itemContainerClasses, children: items.map((item) => /* @__PURE__ */ jsx(
           SidebarLink,
           {
             item,
-            isDesktop,
-            isTablet,
-            isCollapsed,
+            isDesktop: config.isDesktop,
+            isTablet: config.isTablet,
+            isCollapsed: config.isCollapsed,
             onItemClick,
             className: classNames.item
           },

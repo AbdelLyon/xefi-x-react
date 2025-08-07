@@ -1,21 +1,13 @@
 import { default as React, JSX, ReactNode } from 'react';
 import { Item } from '../types/navigation';
 import { Color } from '../types';
-import { SidebarLayoutConfig } from './useSidebarLayout';
+import { UseSidebarLayoutReturn, SidebarLayoutConfig } from './useSidebarLayout';
 /**
  * Props for Sidebar component
  */
 export interface SidebarProps {
     /** Navigation items to display */
     items?: Item[];
-    isVisible?: boolean;
-    isDesktop?: boolean;
-    isTablet?: boolean;
-    isCollapsed?: boolean;
-    toggleCollapsed: () => void;
-    containerClasses: string;
-    navigationClasses: string;
-    itemContainerClasses: string;
     /** App logo component */
     appLogo?: ReactNode;
     /** Root className */
@@ -49,6 +41,7 @@ export interface SidebarProps {
     layoutConfig?: Partial<SidebarLayoutConfig>;
     /** Whether to show burger button */
     showBurgerButton?: boolean;
+    config: UseSidebarLayoutReturn;
 }
 /**
  * Enhanced Sidebar component with responsive design and modular structure
@@ -80,4 +73,4 @@ export interface SidebarProps {
  * />
  * ```
  */
-export declare const Sidebar: ({ items, appLogo, classNames, bgImage, onItemClick, ref, actionLabel, actionIcon, actionColor, actionClick, showDivider, isVisible, isDesktop, isTablet, isCollapsed, toggleCollapsed, containerClasses, navigationClasses, itemContainerClasses, showBurgerButton, }: Partial<SidebarProps>) => JSX.Element | null;
+export declare const Sidebar: ({ items, appLogo, classNames, bgImage, onItemClick, ref, actionLabel, actionIcon, actionColor, actionClick, showDivider, config, showBurgerButton, }: SidebarProps) => JSX.Element | null;

@@ -9,14 +9,11 @@ export type NavbarProps = {
     contentProps?: NavbarContentProps;
     menuProps?: NavbarMenuProps;
     onItemClick?: (item: Item) => void;
-    isDesktop?: boolean;
-    isTablet?: boolean;
-    isCollapsed?: boolean;
     isMenuOpen?: boolean;
-    isMobile?: boolean;
     onMenuOpenChange?: (isOpen: boolean) => void;
     /** Whether the sidebar is collapsed on desktop */
     isSidebarCollapsed?: boolean;
+    isCollapsed?: boolean;
     classNames?: {
         item?: string;
     };

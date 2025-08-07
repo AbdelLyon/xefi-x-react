@@ -60,7 +60,6 @@ const useSidebarLayout = (config = {}) => {
     isDesktop,
     isTablet,
     isCollapsed,
-    isMobile,
     toggleCollapsed,
     width,
     containerClasses,

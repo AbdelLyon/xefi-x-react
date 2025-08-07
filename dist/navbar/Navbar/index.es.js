@@ -32,6 +32,7 @@ var __objRest = (source, exclude) => {
 import { jsxs, jsx } from "react/jsx-runtime";
 import { forwardRef } from "react";
 import { Navbar as Navbar$1, NavbarContent, NavbarMenuToggle, NavbarItem, Link, NavbarMenu, NavbarMenuItem } from "@heroui/react";
+import { useResponsive } from "../../hooks/useResponsive/index.es.js";
 import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
 const Navbar = forwardRef(
   (_a, ref) => {
@@ -47,10 +48,7 @@ const Navbar = forwardRef(
       classNames,
       isMenuOpen,
       onMenuOpenChange,
-      isDesktop,
-      isTablet,
-      isCollapsed,
-      isMobile,
+      isCollapsed = false,
       isSidebarCollapsed = false
     } = _b, props = __objRest(_b, [
       "appName",
@@ -64,12 +62,10 @@ const Navbar = forwardRef(
       "classNames",
       "isMenuOpen",
       "onMenuOpenChange",
-      "isDesktop",
-      "isTablet",
       "isCollapsed",
-      "isMobile",
       "isSidebarCollapsed"
     ]);
+    const { isDesktop, isMobile, isTablet } = useResponsive();
     const handleItemPress = (item, event) => {
       var _a2;
       (_a2 = item.onClick) == null ? void 0 : _a2.call(item, event);

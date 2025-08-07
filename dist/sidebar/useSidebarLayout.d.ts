@@ -25,8 +25,6 @@ export interface UseSidebarLayoutReturn {
     isTablet: boolean;
     /** Whether sidebar is collapsed */
     isCollapsed: boolean;
-    /** Whether in mobile mode */
-    isMobile: boolean;
     /** Toggle sidebar collapse state */
     toggleCollapsed: () => void;
     /** Current sidebar width */

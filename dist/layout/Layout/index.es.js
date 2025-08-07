@@ -1,4 +1,6 @@
 var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __propIsEnum = Object.prototype.propertyIsEnumerable;
@@ -14,6 +16,7 @@ var __spreadValues = (a, b) => {
     }
   return a;
 };
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { jsxs, jsx } from "react/jsx-runtime";
 import { Navbar } from "../../navbar/Navbar/index.es.js";
 import { Sidebar } from "../../sidebar/Sidebar/index.es.js";
@@ -27,26 +30,10 @@ const Layout = ({
 }) => {
   const hasNavbar = Boolean(navbar);
   const hasSidebar = Boolean(sidebar);
-  const { isVisible, isDesktop, isTablet, isCollapsed, toggleCollapsed } = useSidebarLayout(sidebar == null ? void 0 : sidebar.layoutConfig);
+  const config = useSidebarLayout(sidebar == null ? void 0 : sidebar.layoutConfig);
   return /* @__PURE__ */ jsxs("div", { className: "relative h-full max-h-screen overflow-x-hidden", children: [
-    hasNavbar && /* @__PURE__ */ jsx(
-      Navbar,
-      __spreadValues({
-        isDesktop,
-        isTablet,
-        isCollapsed
-      }, navbar)
-    ),
-    hasSidebar && /* @__PURE__ */ jsx(
-      Sidebar,
-      __spreadValues({
-        isVisible,
-        isDesktop,
-        isTablet,
-        isCollapsed,
-        toggleCollapsed
-      }, sidebar)
-    ),
+    hasNavbar && /* @__PURE__ */ jsx(Navbar, __spreadValues({ isCollapsed: config.isCollapsed }, navbar)),
+    hasSidebar && /* @__PURE__ */ jsx(Sidebar, __spreadProps(__spreadValues({}, sidebar), { config })),
     /* @__PURE__ */ jsx(
       "main",
       {
