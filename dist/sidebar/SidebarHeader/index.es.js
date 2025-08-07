@@ -4,7 +4,6 @@ import { SidebarBurgerButton } from "../SidebarBurgerButton/index.es.js";
 import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
 const SidebarHeader = ({
   appLogo,
-  appName,
   isCollapsed,
   onToggle,
   isDesktop,
@@ -34,11 +33,8 @@ const SidebarHeader = ({
               }
             ),
             children: [
-              !shouldShowCollapsed && /* @__PURE__ */ jsxs("div", { className: "flex items-center gap-2 text-foreground", children: [
-                appLogo,
-                appName
-              ] }),
-              shouldShowCollapsed && /* @__PURE__ */ jsx("div", { className: "flex items-center font-medium text-foreground", children: appName }),
+              !shouldShowCollapsed && appLogo && /* @__PURE__ */ jsx("div", { className: "flex items-center text-foreground", children: appLogo }),
+              shouldShowCollapsed && appLogo && /* @__PURE__ */ jsx("div", { className: "flex items-center text-foreground", children: appLogo }),
               showBurgerButton && /* @__PURE__ */ jsx(
                 SidebarBurgerButton,
                 {

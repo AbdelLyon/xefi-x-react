@@ -37,6 +37,7 @@ import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
 const Navbar = forwardRef(
   (_a, ref) => {
     var _b = _a, {
+      appName,
       profile,
       navigationItems = [],
       menuItems = [],
@@ -49,6 +50,7 @@ const Navbar = forwardRef(
       onMenuOpenChange,
       isSidebarCollapsed = false
     } = _b, props = __objRest(_b, [
+      "appName",
       "profile",
       "navigationItems",
       "menuItems",
@@ -90,24 +92,27 @@ const Navbar = forwardRef(
               "aria-label": isMenuOpen === true ? "Close menu" : "Open menu"
             }
           ) }),
-          /* @__PURE__ */ jsx(NavbarContent, __spreadProps(__spreadValues({ justify: "start" }, contentProps), { children: isDesktop && navigationItems.map(
-            (item) => /* @__PURE__ */ jsx(NavbarItem, { children: /* @__PURE__ */ jsxs(
-              Link,
-              {
-                className: mergeTailwindClasses(
-                  "p-2 hover:bg-content1 rounded-md text-foreground",
-                  item.isActive && "border-l-2 border-primary bg-content1 text-primary",
-                  classNames == null ? void 0 : classNames.item
-                ),
-                onPress: (ev) => handleItemPress(item, ev),
-                children: [
-                  item.startContent,
-                  item.label,
-                  item.endContent
-                ]
-              }
-            ) }, item.key)
-          ) })),
+          /* @__PURE__ */ jsxs(NavbarContent, __spreadProps(__spreadValues({ justify: "start" }, contentProps), { children: [
+            appName && /* @__PURE__ */ jsx(NavbarItem, { className: "font-semibold text-foreground", children: appName }),
+            isDesktop && navigationItems.map(
+              (item) => /* @__PURE__ */ jsx(NavbarItem, { children: /* @__PURE__ */ jsxs(
+                Link,
+                {
+                  className: mergeTailwindClasses(
+                    "p-2 hover:bg-content1 rounded-md text-foreground",
+                    item.isActive && "border-l-2 border-primary bg-content1 text-primary",
+                    classNames == null ? void 0 : classNames.item
+                  ),
+                  onPress: (ev) => handleItemPress(item, ev),
+                  children: [
+                    item.startContent,
+                    item.label,
+                    item.endContent
+                  ]
+                }
+              ) }, item.key)
+            )
+          ] })),
           /* @__PURE__ */ jsx(NavbarContent, { justify: "end", children: profile !== null && /* @__PURE__ */ jsx(NavbarItem, { children: profile }) }),
           !isDesktop && /* @__PURE__ */ jsx(NavbarMenu, __spreadProps(__spreadValues({}, menuProps), { children: menuItems.map(
             (item) => /* @__PURE__ */ jsx(NavbarMenuItem, { children: /* @__PURE__ */ jsxs(

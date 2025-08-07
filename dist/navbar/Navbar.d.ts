@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { NavbarContentProps, NavbarMenuProps, NavbarProps as NavbarRootProps } from '@heroui/react';
 import { Item } from '../types/navigation';
 export type NavbarProps = {
+    appName?: ReactNode;
     profile?: ReactNode;
     navigationItems?: Item[];
     menuItems?: Item[];

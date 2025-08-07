@@ -16,8 +16,6 @@ export interface SidebarProps {
   items?: Item[]
   /** App logo component */
   appLogo?: ReactNode
-  /** App name component */
-  appName?: ReactNode
   /** Root className */
   className?: string
   /** Custom CSS classes for different parts */
@@ -82,7 +80,6 @@ export interface SidebarProps {
 export const Sidebar = ({
   items = [],
   appLogo,
-  appName,
   classNames = {},
   bgImage,
   onItemClick,
@@ -128,16 +125,14 @@ export const Sidebar = ({
       className={mergeTailwindClasses(containerClasses, classNames.base)}
     >
       {/* Header Section with Logo and Burger */}
-      {(appLogo || appName || showBurgerButton) && (
+      {(appLogo || showBurgerButton) && (
         <SidebarHeader
           appLogo={appLogo}
-          appName={appName}
           isCollapsed={shouldShowCollapsed}
           onToggle={toggleCollapsed}
           isDesktop={isDesktop}
           isTablet={isTablet}
           showBurgerButton={showBurgerButton}
-          className={classNames.sidebarHeader}
         />
       )}
 

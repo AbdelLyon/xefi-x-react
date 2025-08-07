@@ -9,8 +9,6 @@ import { SidebarBurgerButton } from "./SidebarBurgerButton"
 export interface SidebarHeaderProps {
   /** App logo component */
   appLogo?: ReactNode
-  /** App name component */
-  appName?: ReactNode
   /** Whether the sidebar is collapsed */
   isCollapsed: boolean
   /** Toggle function for sidebar collapse state */
@@ -41,7 +39,6 @@ export interface SidebarHeaderProps {
  */
 export const SidebarHeader: React.FC<SidebarHeaderProps> = ({
   appLogo,
-  appName,
   isCollapsed,
   onToggle,
   isDesktop,
@@ -69,18 +66,17 @@ export const SidebarHeader: React.FC<SidebarHeaderProps> = ({
           }
         )}
       >
-        {/* Logo/Name section - Mode expanded */}
-        {!shouldShowCollapsed && (
-          <div className="flex items-center gap-2 text-foreground">
+        {/* Logo section - Mode expanded */}
+        {!shouldShowCollapsed && appLogo && (
+          <div className="flex items-center text-foreground">
             {appLogo}
-            {appName}
           </div>
         )}
-
-        {/* Name only in collapsed mode (no logo) */}
-        {shouldShowCollapsed && (
-          <div className="flex items-center font-medium text-foreground">
-            {appName}
+        
+        {/* Logo in collapsed mode (if provided) */}
+        {shouldShowCollapsed && appLogo && (
+          <div className="flex items-center text-foreground">
+            {appLogo}
           </div>
         )}
 

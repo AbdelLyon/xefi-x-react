@@ -20,6 +20,7 @@ import type { Item } from "@/types/navigation"
 import { useResponsive } from "@/hooks"
 
 export type NavbarProps = {
+  appName?: ReactNode
   profile?: ReactNode
   navigationItems?: Item[]
   menuItems?: Item[]
@@ -38,6 +39,7 @@ export type NavbarProps = {
 export const Navbar = forwardRef<HTMLElement, NavbarProps>(
   (
     {
+      appName,
       profile,
       navigationItems = [],
       menuItems = [],
@@ -92,6 +94,13 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
         )}
 
         <NavbarContent justify="start" {...contentProps}>
+          {/* App Name - always visible on the left */}
+          {appName && (
+            <NavbarItem className="font-semibold text-foreground">
+              {appName}
+            </NavbarItem>
+          )}
+          
           {isDesktop &&
             navigationItems.map(
               (item): JSX.Element => (

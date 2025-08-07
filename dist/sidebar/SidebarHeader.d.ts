@@ -5,8 +5,6 @@ import { default as React, ReactNode } from 'react';
 export interface SidebarHeaderProps {
     /** App logo component */
     appLogo?: ReactNode;
-    /** App name component */
-    appName?: ReactNode;
     /** Whether the sidebar is collapsed */
     isCollapsed: boolean;
     /** Toggle function for sidebar collapse state */

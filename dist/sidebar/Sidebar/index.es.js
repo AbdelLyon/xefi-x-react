@@ -9,7 +9,6 @@ import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
 const Sidebar = ({
   items = [],
   appLogo,
-  appName,
   classNames = {},
   bgImage,
   onItemClick,
@@ -50,17 +49,15 @@ const Sidebar = ({
       ref,
       className: mergeTailwindClasses(containerClasses, classNames.base),
       children: [
-        (appLogo || appName || showBurgerButton) && /* @__PURE__ */ jsx(
+        (appLogo || showBurgerButton) && /* @__PURE__ */ jsx(
           SidebarHeader,
           {
             appLogo,
-            appName,
             isCollapsed: shouldShowCollapsed,
             onToggle: toggleCollapsed,
             isDesktop,
             isTablet,
-            showBurgerButton,
-            className: classNames.sidebarHeader
+            showBurgerButton
           }
         ),
         actionClick && /* @__PURE__ */ jsx(
