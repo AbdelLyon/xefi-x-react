@@ -66,7 +66,7 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
         ref={ref}
         className={className}
         classNames={{
-          base: "bg-white dark:bg-background",
+          base: "border-b-none dark:border-b dark:border-border shadow-lg bg-gradient-to-b from-background via-background/50 to-content1/30 dark:shadow-none",
           wrapper: mergeTailwindClasses(
             "max-w-full transition-all duration-300",
             isDesktop

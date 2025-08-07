@@ -59,7 +59,8 @@ const Sidebar = ({
             onToggle: toggleCollapsed,
             isDesktop,
             isTablet,
-            showBurgerButton
+            showBurgerButton,
+            className: classNames.sidebarHeader
           }
         ),
         actionClick && /* @__PURE__ */ jsx(

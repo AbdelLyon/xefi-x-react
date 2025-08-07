@@ -19,6 +19,7 @@ export interface SidebarProps {
         base?: string;
         item?: string;
         action?: string;
+        sidebarHeader?: string;
     };
     /** Background image or content */
     bgImage?: ReactNode;

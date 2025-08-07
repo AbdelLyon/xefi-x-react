@@ -54,7 +54,7 @@ export const SidebarHeader: React.FC<SidebarHeaderProps> = ({
   return (
     <div
       className={mergeTailwindClasses(
-        "flex flex-col items-center justify-center",
+        "flex flex-col items-center justify-center border-b-none dark:border-b dark:border-border shadow-lg bg-gradient-to-b from-background via-background/50 to-content1/30 dark:shadow-non",
         className
       )}
     >

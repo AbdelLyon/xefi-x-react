@@ -25,6 +25,7 @@ export interface SidebarProps {
     base?: string
     item?: string
     action?: string
+    sidebarHeader?: string
   }
   /** Background image or content */
   bgImage?: ReactNode
@@ -136,6 +137,7 @@ export const Sidebar = ({
           isDesktop={isDesktop}
           isTablet={isTablet}
           showBurgerButton={showBurgerButton}
+          className={classNames.sidebarHeader}
         />
       )}
 
