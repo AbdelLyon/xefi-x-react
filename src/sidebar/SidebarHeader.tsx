@@ -1,33 +1,33 @@
-import React, { type ReactNode } from "react";
-import { Divider } from "@heroui/react";
-import { mergeTailwindClasses } from "@/utils";
-import { SidebarBurgerButton } from "./SidebarBurgerButton";
+import React, { type ReactNode } from "react"
+import { Divider } from "@heroui/react"
+import { mergeTailwindClasses } from "@/utils"
+import { SidebarBurgerButton } from "./SidebarBurgerButton"
 
 /**
  * Props for SidebarHeader component
  */
 export interface SidebarHeaderProps {
   /** App logo component */
-  appLogo?: ReactNode;
+  appLogo?: ReactNode
   /** App name component */
-  appName?: ReactNode;
+  appName?: ReactNode
   /** Whether the sidebar is collapsed */
-  isCollapsed: boolean;
+  isCollapsed: boolean
   /** Toggle function for sidebar collapse state */
-  onToggle: () => void;
+  onToggle: () => void
   /** Whether in desktop mode */
-  isDesktop: boolean;
+  isDesktop: boolean
   /** Whether in tablet mode */
-  isTablet: boolean;
+  isTablet: boolean
   /** Whether to show burger button */
-  showBurgerButton?: boolean;
+  showBurgerButton?: boolean
   /** Custom className */
-  className?: string;
+  className?: string
 }
 
 /**
  * Sidebar header component containing logo and burger button
- * 
+ *
  * @example
  * ```tsx
  * <SidebarHeader
@@ -49,18 +49,16 @@ export const SidebarHeader: React.FC<SidebarHeaderProps> = ({
   showBurgerButton = true,
   className,
 }) => {
-  const shouldShowCollapsed = isTablet || (isDesktop && isCollapsed);
-  
+  const shouldShowCollapsed = isTablet || (isDesktop && isCollapsed)
+
   return (
     <div className={mergeTailwindClasses("flex flex-col", className)}>
       {/* Header content with logo and burger */}
-      <div className={mergeTailwindClasses(
-        "flex items-center transition-all duration-300",
-        {
-          "justify-between p-3": shouldShowCollapsed,
-          "justify-between p-4": !shouldShowCollapsed,
-        }
-      )}>
+      <div
+        className={mergeTailwindClasses(
+          "flex items-center transition-all duration-300"
+        )}
+      >
         {/* Logo/Name section - Mode expanded */}
         {!shouldShowCollapsed && (
           <div className="flex items-center gap-2 text-foreground">
@@ -68,14 +66,14 @@ export const SidebarHeader: React.FC<SidebarHeaderProps> = ({
             {appName}
           </div>
         )}
-        
+
         {/* Name only in collapsed mode (no logo) */}
         {shouldShowCollapsed && (
-          <div className="flex items-center text-foreground font-medium">
+          <div className="flex items-center font-medium text-foreground">
             {appName}
           </div>
         )}
-        
+
         {/* Burger button - always visible when showBurgerButton is true */}
         {showBurgerButton && (
           <SidebarBurgerButton
@@ -86,9 +84,9 @@ export const SidebarHeader: React.FC<SidebarHeaderProps> = ({
           />
         )}
       </div>
-      
+
       {/* Divider */}
       <Divider className="bg-divider/50" />
     </div>
-  );
-};
+  )
+}

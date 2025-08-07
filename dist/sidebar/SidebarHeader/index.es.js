@@ -14,28 +14,30 @@ const SidebarHeader = ({
 }) => {
   const shouldShowCollapsed = isTablet || isDesktop && isCollapsed;
   return /* @__PURE__ */ jsxs("div", { className: mergeTailwindClasses("flex flex-col", className), children: [
-    /* @__PURE__ */ jsxs("div", { className: mergeTailwindClasses(
-      "flex items-center transition-all duration-300",
+    /* @__PURE__ */ jsxs(
+      "div",
       {
-        "justify-between p-3": shouldShowCollapsed,
-        "justify-between p-4": !shouldShowCollapsed
+        className: mergeTailwindClasses(
+          "flex items-center transition-all duration-300"
+        ),
+        children: [
+          !shouldShowCollapsed && /* @__PURE__ */ jsxs("div", { className: "flex items-center gap-2 text-foreground", children: [
+            appLogo,
+            appName
+          ] }),
+          shouldShowCollapsed && /* @__PURE__ */ jsx("div", { className: "flex items-center font-medium text-foreground", children: appName }),
+          showBurgerButton && /* @__PURE__ */ jsx(
+            SidebarBurgerButton,
+            {
+              isCollapsed,
+              onToggle,
+              isDesktop,
+              isTablet
+            }
+          )
+        ]
       }
-    ), children: [
-      !shouldShowCollapsed && /* @__PURE__ */ jsxs("div", { className: "flex items-center gap-2 text-foreground", children: [
-        appLogo,
-        appName
-      ] }),
-      shouldShowCollapsed && /* @__PURE__ */ jsx("div", { className: "flex items-center text-foreground font-medium", children: appName }),
-      showBurgerButton && /* @__PURE__ */ jsx(
-        SidebarBurgerButton,
-        {
-          isCollapsed,
-          onToggle,
-          isDesktop,
-          isTablet
-        }
-      )
-    ] }),
+    ),
     /* @__PURE__ */ jsx(Divider, { className: "bg-divider/50" })
   ] });
 };
