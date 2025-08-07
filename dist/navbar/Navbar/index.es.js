@@ -123,7 +123,7 @@ const Navbar = forwardRef(
                   item.isActive && "border-l-2 border-primary bg-content1 text-primary",
                   classNames == null ? void 0 : classNames.item
                 ),
-                onPress: () => onItemClick == null ? void 0 : onItemClick(item),
+                onPress: (event) => handleItemPress(item, event),
                 children: [
                   item.startContent,
                   item.label,

@@ -142,7 +142,7 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
                         "border-l-2 border-primary bg-content1 text-primary",
                       classNames?.item
                     )}
-                    onPress={(): void => onItemClick?.(item)}
+                    onPress={(event): void => handleItemPress(item, event)}
                   >
                     {item.startContent}
                     {item.label}
