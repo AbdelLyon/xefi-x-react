@@ -39,7 +39,7 @@ const SidebarLink = ({
             children: item.startContent
           }
         ),
-        !shouldShowCollapsed && /* @__PURE__ */ jsx("span", { className: "flex-1 font-medium transition-opacity delay-300 duration-400", children: item.label }),
+        /* @__PURE__ */ jsx("span", { className: `flex-1 font-medium transition-opacity delay-300 duration-400 ${!shouldShowCollapsed ? "opacity-100" : "opacity-0"}`, children: item.label }),
         item.endContent !== null && !shouldShowCollapsed && /* @__PURE__ */ jsx("div", { className: "opacity-60 transition-opacity delay-200 duration-300 group-hover:opacity-100", children: item.endContent })
       ]
     },

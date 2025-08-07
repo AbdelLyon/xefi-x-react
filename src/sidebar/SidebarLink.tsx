@@ -56,11 +56,11 @@ export const SidebarLink = ({
         {item.startContent}
       </div>
 
-      {!shouldShowCollapsed && (
-        <span className="flex-1 font-medium transition-opacity delay-300 duration-400">
-          {item.label}
-        </span>
-      )}
+      <span className={`flex-1 font-medium transition-opacity delay-300 duration-400 ${
+        !shouldShowCollapsed ? 'opacity-100' : 'opacity-0'
+      }`}>
+        {item.label}
+      </span>
 
       {item.endContent !== null && !shouldShowCollapsed && (
         <div className="opacity-60 transition-opacity delay-200 duration-300 group-hover:opacity-100">
