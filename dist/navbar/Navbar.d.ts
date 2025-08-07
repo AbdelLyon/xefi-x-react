@@ -2,8 +2,6 @@ import { ReactNode } from 'react';
 import { NavbarContentProps, NavbarMenuProps, NavbarProps as NavbarRootProps } from '@heroui/react';
 import { Item } from '../types/navigation';
 export type NavbarProps = {
-    appName?: ReactNode;
-    appLogo?: ReactNode;
     profile?: ReactNode;
     navigationItems?: Item[];
     menuItems?: Item[];
@@ -12,6 +10,8 @@ export type NavbarProps = {
     onItemClick?: (item: Item) => void;
     isMenuOpen?: boolean;
     onMenuOpenChange?: (isOpen: boolean) => void;
+    /** Whether the sidebar is collapsed on desktop */
+    isSidebarCollapsed?: boolean;
     classNames?: {
         item?: string;
     };

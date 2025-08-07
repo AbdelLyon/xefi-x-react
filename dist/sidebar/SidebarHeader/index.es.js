@@ -17,7 +17,7 @@ const SidebarHeader = ({
     /* @__PURE__ */ jsxs("div", { className: mergeTailwindClasses(
       "flex items-center transition-all duration-300",
       {
-        "justify-center p-3": shouldShowCollapsed,
+        "justify-between p-3": shouldShowCollapsed,
         "justify-between p-4": !shouldShowCollapsed
       }
     ), children: [
@@ -25,8 +25,8 @@ const SidebarHeader = ({
         appLogo,
         appName
       ] }),
-      shouldShowCollapsed && appLogo && /* @__PURE__ */ jsx("div", { className: "flex items-center justify-center", children: appLogo }),
-      showBurgerButton && !shouldShowCollapsed && /* @__PURE__ */ jsx(
+      shouldShowCollapsed && /* @__PURE__ */ jsx("div", { className: "flex items-center text-foreground font-medium", children: appName }),
+      showBurgerButton && /* @__PURE__ */ jsx(
         SidebarBurgerButton,
         {
           isCollapsed,

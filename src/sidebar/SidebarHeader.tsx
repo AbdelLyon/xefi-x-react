@@ -57,11 +57,11 @@ export const SidebarHeader: React.FC<SidebarHeaderProps> = ({
       <div className={mergeTailwindClasses(
         "flex items-center transition-all duration-300",
         {
-          "justify-center p-3": shouldShowCollapsed,
+          "justify-between p-3": shouldShowCollapsed,
           "justify-between p-4": !shouldShowCollapsed,
         }
       )}>
-        {/* Logo/Name section */}
+        {/* Logo/Name section - Mode expanded */}
         {!shouldShowCollapsed && (
           <div className="flex items-center gap-2 text-foreground">
             {appLogo}
@@ -69,15 +69,15 @@ export const SidebarHeader: React.FC<SidebarHeaderProps> = ({
           </div>
         )}
         
-        {/* Collapsed logo (only show logo, no name) */}
-        {shouldShowCollapsed && appLogo && (
-          <div className="flex items-center justify-center">
-            {appLogo}
+        {/* Name only in collapsed mode (no logo) */}
+        {shouldShowCollapsed && (
+          <div className="flex items-center text-foreground font-medium">
+            {appName}
           </div>
         )}
         
-        {/* Burger button */}
-        {showBurgerButton && !shouldShowCollapsed && (
+        {/* Burger button - always visible when showBurgerButton is true */}
+        {showBurgerButton && (
           <SidebarBurgerButton
             isCollapsed={isCollapsed}
             onToggle={onToggle}

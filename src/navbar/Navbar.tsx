@@ -21,8 +21,6 @@ import type { Item } from "@/types/navigation"
 import { useResponsive } from "@/hooks"
 
 export type NavbarProps = {
-  appName?: ReactNode
-  appLogo?: ReactNode
   profile?: ReactNode
   navigationItems?: Item[]
   menuItems?: Item[]
@@ -31,6 +29,8 @@ export type NavbarProps = {
   onItemClick?: (item: Item) => void
   isMenuOpen?: boolean
   onMenuOpenChange?: (isOpen: boolean) => void
+  /** Whether the sidebar is collapsed on desktop */
+  isSidebarCollapsed?: boolean
   classNames?: {
     item?: string
   }
@@ -39,8 +39,6 @@ export type NavbarProps = {
 export const Navbar = forwardRef<HTMLElement, NavbarProps>(
   (
     {
-      appName,
-      appLogo,
       profile,
       navigationItems = [],
       menuItems = [],
@@ -51,6 +49,7 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
       classNames,
       isMenuOpen,
       onMenuOpenChange,
+      isSidebarCollapsed = false,
       ...props
     },
     ref
@@ -69,7 +68,11 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
         className={className}
         classNames={{
           base: "bg-white dark:bg-background",
-          wrapper: "max-w-full",
+          wrapper: mergeTailwindClasses(
+            "max-w-full transition-all duration-300",
+            isDesktop ? (isSidebarCollapsed ? "pl-[70px]" : "pl-[270px]") : 
+            isTablet ? "pl-[70px]" : "pl-0"
+          ),
           ...classNames,
         }}
         isMenuOpen={isMenuOpen}

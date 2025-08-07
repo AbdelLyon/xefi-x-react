@@ -37,8 +37,6 @@ import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
 const Navbar = forwardRef(
   (_a, ref) => {
     var _b = _a, {
-      appName,
-      appLogo,
       profile,
       navigationItems = [],
       menuItems = [],
@@ -48,10 +46,9 @@ const Navbar = forwardRef(
       className,
       classNames,
       isMenuOpen,
-      onMenuOpenChange
+      onMenuOpenChange,
+      isSidebarCollapsed = false
     } = _b, props = __objRest(_b, [
-      "appName",
-      "appLogo",
       "profile",
       "navigationItems",
       "menuItems",
@@ -61,9 +58,10 @@ const Navbar = forwardRef(
       "className",
       "classNames",
       "isMenuOpen",
-      "onMenuOpenChange"
+      "onMenuOpenChange",
+      "isSidebarCollapsed"
     ]);
-    const { isDesktop, isMobile } = useResponsive();
+    const { isDesktop, isMobile, isTablet } = useResponsive();
     const handleItemPress = (item, event) => {
       var _a2;
       (_a2 = item.onClick) == null ? void 0 : _a2.call(item, event);
@@ -77,7 +75,10 @@ const Navbar = forwardRef(
         className,
         classNames: __spreadValues({
           base: "bg-white dark:bg-background",
-          wrapper: "max-w-full"
+          wrapper: mergeTailwindClasses(
+            "max-w-full transition-all duration-300",
+            isDesktop ? isSidebarCollapsed ? "pl-[70px]" : "pl-[270px]" : isTablet ? "pl-[70px]" : "pl-0"
+          )
         }, classNames),
         isMenuOpen,
         onMenuOpenChange
