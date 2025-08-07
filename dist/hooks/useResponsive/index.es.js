@@ -1,7 +1,7 @@
 import { useMediaQuery } from "../useMediaQuery/index.es.js";
 const MEDIA_QUERIES = {
-  desktop: "(min-width: 1024px)",
-  tablet: "(min-width: 768px) and (max-width: 1023px)"
+  desktop: "(min-width: 1281px)",
+  tablet: "(min-width: 768px) and (max-width: 1280px)"
 };
 const useResponsive = (customQuery) => {
   const isDesktop = useMediaQuery(MEDIA_QUERIES.desktop, {
