@@ -66,13 +66,8 @@ export const SidebarHeader: React.FC<SidebarHeaderProps> = ({
           }
         )}
       >
-        {/* Logo section - Mode expanded */}
-        {!shouldShowCollapsed && appLogo && (
-          <div className="flex items-center text-foreground">{appLogo}</div>
-        )}
-
-        {/* Logo in collapsed mode (if provided) */}
-        {shouldShowCollapsed && appLogo && (
+        {/* Logo section - Only show in desktop expanded mode */}
+        {isDesktop && !isCollapsed && appLogo && (
           <div className="flex items-center text-foreground">{appLogo}</div>
         )}
 

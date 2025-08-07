@@ -33,8 +33,7 @@ const SidebarHeader = ({
               }
             ),
             children: [
-              !shouldShowCollapsed && appLogo && /* @__PURE__ */ jsx("div", { className: "flex items-center text-foreground", children: appLogo }),
-              shouldShowCollapsed && appLogo && /* @__PURE__ */ jsx("div", { className: "flex items-center text-foreground", children: appLogo }),
+              isDesktop && !isCollapsed && appLogo && /* @__PURE__ */ jsx("div", { className: "flex items-center text-foreground", children: appLogo }),
               showBurgerButton && /* @__PURE__ */ jsx(
                 SidebarBurgerButton,
                 {
