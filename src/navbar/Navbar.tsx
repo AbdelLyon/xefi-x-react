@@ -73,11 +73,11 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
             "max-w-full transition-all duration-300",
             isDesktop
               ? isSidebarCollapsed
-                ? "pl-[70px]"
-                : "pl-[270px]"
+                ? "ml-[70px]"
+                : "ml-[270px]"
               : isTablet
-                ? "pl-[70px]"
-                : "pl-0"
+                ? "ml-[70px]"
+                : "ml-0"
           ),
           ...classNames,
         }}
