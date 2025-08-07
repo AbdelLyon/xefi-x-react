@@ -6,50 +6,37 @@ import { Tooltip } from "@/tooltip"
 import { useState, useEffect } from "react"
 
 /**
- * Component for typewriter effect
+ * Component for delayed fade-in text
  */
-const TypewriterText = ({
+const DelayedText = ({
   text,
   shouldShow,
-  delay = 500,
+  delay = 100,
 }: {
   text?: string
   shouldShow: boolean
   delay?: number
 }) => {
-  const [displayedText, setDisplayedText] = useState("")
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    if (!shouldShow || !text) {
-      setDisplayedText("")
+    if (!shouldShow) {
       setIsVisible(false)
       return
     }
 
     const timeout = setTimeout(() => {
       setIsVisible(true)
-      let index = 0
-      const timer = setInterval(() => {
-        if (index <= text.length) {
-          setDisplayedText(text.slice(0, index))
-          index++
-        } else {
-          clearInterval(timer)
-        }
-      }, 50) // 50ms entre chaque lettre
-
-      return () => clearInterval(timer)
     }, delay)
 
     return () => clearTimeout(timeout)
-  }, [text, shouldShow, delay])
+  }, [shouldShow, delay])
 
   return (
     <span
-      className={`transition-opacity duration-500 ${isVisible ? "opacity-100" : "opacity-0"}`}
+      className={`transition-opacity duration-300 ${isVisible ? "opacity-100" : "opacity-0"}`}
     >
-      {displayedText}
+      {text}
     </span>
   )
 }
@@ -108,11 +95,7 @@ export const SidebarLink = ({
 
       {!shouldShowCollapsed && (
         <span className="flex-1 font-medium">
-          <TypewriterText
-            text={item.label}
-            shouldShow={!shouldShowCollapsed}
-            delay={0}
-          />
+          <DelayedText text={item.label} shouldShow={!shouldShowCollapsed} delay={100} />
         </span>
       )}
 

@@ -3,39 +3,27 @@ import { Link } from "@heroui/react";
 import { useState, useEffect } from "react";
 import { Tooltip } from "../../tooltip/Tooltip/index.es.js";
 import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
-const TypewriterText = ({
+const DelayedText = ({
   text,
   shouldShow,
-  delay = 500
+  delay = 100
 }) => {
-  const [displayedText, setDisplayedText] = useState("");
   const [isVisible, setIsVisible] = useState(false);
   useEffect(() => {
-    if (!shouldShow || !text) {
-      setDisplayedText("");
+    if (!shouldShow) {
       setIsVisible(false);
       return;
     }
     const timeout = setTimeout(() => {
       setIsVisible(true);
-      let index = 0;
-      const timer = setInterval(() => {
-        if (index <= text.length) {
-          setDisplayedText(text.slice(0, index));
-          index++;
-        } else {
-          clearInterval(timer);
-        }
-      }, 50);
-      return () => clearInterval(timer);
     }, delay);
     return () => clearTimeout(timeout);
-  }, [text, shouldShow, delay]);
+  }, [shouldShow, delay]);
   return /* @__PURE__ */ jsx(
     "span",
     {
-      className: `transition-opacity duration-500 ${isVisible ? "opacity-100" : "opacity-0"}`,
-      children: displayedText
+      className: `transition-opacity duration-300 ${isVisible ? "opacity-100" : "opacity-0"}`,
+      children: text
     }
   );
 };
@@ -76,14 +64,7 @@ const SidebarLink = ({
             children: item.startContent
           }
         ),
-        !shouldShowCollapsed && /* @__PURE__ */ jsx("span", { className: "flex-1 font-medium", children: /* @__PURE__ */ jsx(
-          TypewriterText,
-          {
-            text: item.label,
-            shouldShow: !shouldShowCollapsed,
-            delay: 0
-          }
-        ) }),
+        !shouldShowCollapsed && /* @__PURE__ */ jsx("span", { className: "flex-1 font-medium", children: /* @__PURE__ */ jsx(DelayedText, { text: item.label, shouldShow: !shouldShowCollapsed, delay: 100 }) }),
         item.endContent !== null && /* @__PURE__ */ jsx(
           "div",
           {
