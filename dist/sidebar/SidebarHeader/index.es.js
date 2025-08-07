@@ -13,39 +13,48 @@ const SidebarHeader = ({
   className
 }) => {
   const shouldShowCollapsed = isTablet || isDesktop && isCollapsed;
-  return /* @__PURE__ */ jsxs("div", { className: mergeTailwindClasses("flex flex-col", className), children: [
-    /* @__PURE__ */ jsxs(
-      "div",
-      {
-        className: mergeTailwindClasses(
-          "flex items-center justify-between transition-all duration-300",
-          "h-16 px-4",
-          // Height 16 (64px) to match Hero UI navbar height
+  return /* @__PURE__ */ jsxs(
+    "div",
+    {
+      className: mergeTailwindClasses(
+        "flex flex-col items-center justify-center",
+        className
+      ),
+      children: [
+        /* @__PURE__ */ jsxs(
+          "div",
           {
-            "px-3": shouldShowCollapsed,
-            "px-4": !shouldShowCollapsed
+            className: mergeTailwindClasses(
+              "flex items-center justify-between transition-all duration-300",
+              "h-16 px-4",
+              // Height 16 (64px) to match Hero UI navbar height
+              {
+                "px-3": shouldShowCollapsed,
+                "px-4": !shouldShowCollapsed
+              }
+            ),
+            children: [
+              !shouldShowCollapsed && /* @__PURE__ */ jsxs("div", { className: "flex items-center gap-2 text-foreground", children: [
+                appLogo,
+                appName
+              ] }),
+              shouldShowCollapsed && /* @__PURE__ */ jsx("div", { className: "flex items-center font-medium text-foreground", children: appName }),
+              showBurgerButton && /* @__PURE__ */ jsx(
+                SidebarBurgerButton,
+                {
+                  isCollapsed,
+                  onToggle,
+                  isDesktop,
+                  isTablet
+                }
+              )
+            ]
           }
         ),
-        children: [
-          !shouldShowCollapsed && /* @__PURE__ */ jsxs("div", { className: "flex items-center gap-2 text-foreground", children: [
-            appLogo,
-            appName
-          ] }),
-          shouldShowCollapsed && /* @__PURE__ */ jsx("div", { className: "flex items-center font-medium text-foreground", children: appName }),
-          showBurgerButton && /* @__PURE__ */ jsx(
-            SidebarBurgerButton,
-            {
-              isCollapsed,
-              onToggle,
-              isDesktop,
-              isTablet
-            }
-          )
-        ]
-      }
-    ),
-    /* @__PURE__ */ jsx(Divider, { className: "bg-divider/50" })
-  ] });
+        /* @__PURE__ */ jsx(Divider, { className: "bg-divider/50" })
+      ]
+    }
+  );
 };
 export {
   SidebarHeader

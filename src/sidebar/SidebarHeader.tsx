@@ -52,7 +52,12 @@ export const SidebarHeader: React.FC<SidebarHeaderProps> = ({
   const shouldShowCollapsed = isTablet || (isDesktop && isCollapsed)
 
   return (
-    <div className={mergeTailwindClasses("flex flex-col", className)}>
+    <div
+      className={mergeTailwindClasses(
+        "flex flex-col items-center justify-center",
+        className
+      )}
+    >
       {/* Header content with logo and burger - Same height as navbar */}
       <div
         className={mergeTailwindClasses(

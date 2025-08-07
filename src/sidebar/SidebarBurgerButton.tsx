@@ -1,6 +1,6 @@
 import React from "react"
 import { Button } from "@heroui/react"
-import { IconMenu3 } from "@tabler/icons-react"
+import { IconMenu2 } from "@tabler/icons-react"
 
 /**
  * Props for SidebarBurgerButton component
@@ -58,7 +58,7 @@ export const SidebarBurgerButton: React.FC<SidebarBurgerButtonProps> = ({
       >
         <div className="relative size-4">
           <div className="absolute inset-0 transition-all duration-300">
-            <IconMenu3 size={16} />
+            <IconMenu2 size={16} />
           </div>
         </div>
       </Button>
