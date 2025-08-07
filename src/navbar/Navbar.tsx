@@ -14,7 +14,6 @@ import {
   NavbarItem,
   NavbarMenuItem,
   Link,
-  Divider,
 } from "@heroui/react"
 import { mergeTailwindClasses } from "@/utils"
 import type { Item } from "@/types/navigation"
@@ -70,8 +69,13 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
           base: "bg-white dark:bg-background",
           wrapper: mergeTailwindClasses(
             "max-w-full transition-all duration-300",
-            isDesktop ? (isSidebarCollapsed ? "pl-[70px]" : "pl-[270px]") : 
-            isTablet ? "pl-[70px]" : "pl-0"
+            isDesktop
+              ? isSidebarCollapsed
+                ? "pl-[70px]"
+                : "pl-[270px]"
+              : isTablet
+                ? "pl-[70px]"
+                : "pl-0"
           ),
           ...classNames,
         }}
@@ -86,7 +90,6 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
             />
           </NavbarContent>
         )}
-
 
         <NavbarContent justify="start" {...contentProps}>
           {isDesktop &&

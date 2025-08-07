@@ -18,7 +18,13 @@ const SidebarHeader = ({
       "div",
       {
         className: mergeTailwindClasses(
-          "flex items-center transition-all duration-300"
+          "flex items-center justify-between transition-all duration-300",
+          "h-16 px-4",
+          // Height 16 (64px) to match Hero UI navbar height
+          {
+            "px-3": shouldShowCollapsed,
+            "px-4": !shouldShowCollapsed
+          }
         ),
         children: [
           !shouldShowCollapsed && /* @__PURE__ */ jsxs("div", { className: "flex items-center gap-2 text-foreground", children: [

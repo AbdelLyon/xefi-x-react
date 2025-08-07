@@ -1,18 +1,17 @@
 export type LayoutProps = {
-  children: React.ReactNode;
-  navbar?: NavbarProps;
-  sidebar?: SidebarProps;
-  className?: string;
-};
+  children: React.ReactNode
+  navbar?: NavbarProps
+  sidebar?: SidebarProps
+  className?: string
+}
 
-import { useMediaQuery } from "@/hooks/useMediaQuery";
-import type { NavbarProps } from "@/navbar/Navbar";
-import { Navbar } from "@/navbar/Navbar";
-import type { SidebarProps } from "@/sidebar/Sidebar";
-import { Sidebar } from "@/sidebar/Sidebar";
+import type { NavbarProps } from "@/navbar/Navbar"
+import { Navbar } from "@/navbar/Navbar"
+import type { SidebarProps } from "@/sidebar/Sidebar"
+import { Sidebar } from "@/sidebar/Sidebar"
 
-import { mergeTailwindClasses } from "@/utils";
-import type { JSX } from "react";
+import { mergeTailwindClasses } from "@/utils"
+import type { JSX } from "react"
 
 export const Layout = ({
   children,
@@ -20,8 +19,8 @@ export const Layout = ({
   sidebar,
   className,
 }: LayoutProps): JSX.Element => {
-  const hasNavbar = Boolean(navbar);
-  const hasSidebar = Boolean(sidebar);
+  const hasNavbar = Boolean(navbar)
+  const hasSidebar = Boolean(sidebar)
 
   return (
     <div className="relative h-full max-h-screen overflow-x-hidden bg-background">
@@ -36,16 +35,14 @@ export const Layout = ({
           {
             "pt-16": hasNavbar, // Espace pour la navbar fixe
           },
-          className,
+          className
         )}
         style={{
           marginLeft: hasSidebar ? "var(--sidebar-width, 270px)" : "0px",
         }}
       >
-        <div className="container mx-auto px-6 py-6 max-w-none">
-          {children}
-        </div>
+        <div className="container mx-auto max-w-none p-6">{children}</div>
       </main>
     </div>
-  );
-};
+  )
+}

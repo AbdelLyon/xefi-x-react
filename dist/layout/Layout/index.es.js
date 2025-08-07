@@ -43,7 +43,7 @@ const Layout = ({
         style: {
           marginLeft: hasSidebar ? "var(--sidebar-width, 270px)" : "0px"
         },
-        children: /* @__PURE__ */ jsx("div", { className: "container mx-auto px-6 py-6 max-w-none", children })
+        children: /* @__PURE__ */ jsx("div", { className: "container mx-auto max-w-none p-6", children })
       }
     )
   ] });

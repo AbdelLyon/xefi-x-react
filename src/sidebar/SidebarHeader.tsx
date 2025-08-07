@@ -53,10 +53,15 @@ export const SidebarHeader: React.FC<SidebarHeaderProps> = ({
 
   return (
     <div className={mergeTailwindClasses("flex flex-col", className)}>
-      {/* Header content with logo and burger */}
+      {/* Header content with logo and burger - Same height as navbar */}
       <div
         className={mergeTailwindClasses(
-          "flex items-center transition-all duration-300"
+          "flex items-center justify-between transition-all duration-300",
+          "h-16 px-4", // Height 16 (64px) to match Hero UI navbar height
+          {
+            "px-3": shouldShowCollapsed,
+            "px-4": !shouldShowCollapsed,
+          }
         )}
       >
         {/* Logo/Name section - Mode expanded */}
