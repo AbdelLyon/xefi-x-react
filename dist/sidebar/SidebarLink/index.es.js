@@ -1,4 +1,4 @@
-import { jsxs, jsx, Fragment } from "react/jsx-runtime";
+import { jsxs, jsx } from "react/jsx-runtime";
 import { Link } from "@heroui/react";
 import { useState, useEffect } from "react";
 import { Tooltip } from "../../tooltip/Tooltip/index.es.js";
@@ -9,12 +9,15 @@ const TypewriterText = ({
   delay = 500
 }) => {
   const [displayedText, setDisplayedText] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
   useEffect(() => {
     if (!shouldShow || !text) {
       setDisplayedText("");
+      setIsVisible(false);
       return;
     }
     const timeout = setTimeout(() => {
+      setIsVisible(true);
       let index = 0;
       const timer = setInterval(() => {
         if (index <= text.length) {
@@ -28,7 +31,13 @@ const TypewriterText = ({
     }, delay);
     return () => clearTimeout(timeout);
   }, [text, shouldShow, delay]);
-  return /* @__PURE__ */ jsx(Fragment, { children: displayedText });
+  return /* @__PURE__ */ jsx(
+    "span",
+    {
+      className: `transition-opacity duration-500 ${isVisible ? "opacity-100" : "opacity-0"}`,
+      children: displayedText
+    }
+  );
 };
 const SidebarLink = ({
   item,
@@ -45,7 +54,7 @@ const SidebarLink = ({
       className: mergeTailwindClasses(
         "group relative flex items-center px-3 h-11 text-slate-50 dark:text-slate-50 hover:text-white hover:bg-[#292b2b99] rounded-md cursor-pointer text-sm transition-all duration-200",
         {
-          "bg-primary/10 text-primary border-primary/20 border": item.isActive,
+          "bg-primary/5 text-primary border-primary/10 border": item.isActive,
           "justify-center px-2": shouldShowCollapsed,
           "gap-3 px-3": !shouldShowCollapsed
         },
@@ -72,7 +81,7 @@ const SidebarLink = ({
           {
             text: item.label,
             shouldShow: !shouldShowCollapsed,
-            delay: 300
+            delay: 0
           }
         ) }),
         item.endContent !== null && /* @__PURE__ */ jsx(

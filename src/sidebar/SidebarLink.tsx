@@ -18,14 +18,17 @@ const TypewriterText = ({
   delay?: number
 }) => {
   const [displayedText, setDisplayedText] = useState("")
+  const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
     if (!shouldShow || !text) {
       setDisplayedText("")
+      setIsVisible(false)
       return
     }
 
     const timeout = setTimeout(() => {
+      setIsVisible(true)
       let index = 0
       const timer = setInterval(() => {
         if (index <= text.length) {
@@ -42,7 +45,13 @@ const TypewriterText = ({
     return () => clearTimeout(timeout)
   }, [text, shouldShow, delay])
 
-  return <>{displayedText}</>
+  return (
+    <span
+      className={`transition-opacity duration-500 ${isVisible ? "opacity-100" : "opacity-0"}`}
+    >
+      {displayedText}
+    </span>
+  )
 }
 
 /**
@@ -76,7 +85,7 @@ export const SidebarLink = ({
       className={mergeTailwindClasses(
         "group relative flex items-center px-3 h-11 text-slate-50 dark:text-slate-50 hover:text-white hover:bg-[#292b2b99] rounded-md cursor-pointer text-sm transition-all duration-200",
         {
-          "bg-primary/10 text-primary border-primary/20 border": item.isActive,
+          "bg-primary/5 text-primary border-primary/10 border": item.isActive,
           "justify-center px-2": shouldShowCollapsed,
           "gap-3 px-3": !shouldShowCollapsed,
         },
@@ -102,7 +111,7 @@ export const SidebarLink = ({
           <TypewriterText
             text={item.label}
             shouldShow={!shouldShowCollapsed}
-            delay={300}
+            delay={0}
           />
         </span>
       )}
