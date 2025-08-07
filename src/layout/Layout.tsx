@@ -7,6 +7,7 @@ export type LayoutProps = {
 
 import type { NavbarProps } from "@/navbar/Navbar"
 import { Navbar } from "@/navbar/Navbar"
+import { useSidebarLayout } from "@/sidebar"
 import type { SidebarProps } from "@/sidebar/Sidebar"
 import { Sidebar } from "@/sidebar/Sidebar"
 
@@ -21,13 +22,31 @@ export const Layout = ({
 }: LayoutProps): JSX.Element => {
   const hasNavbar = Boolean(navbar)
   const hasSidebar = Boolean(sidebar)
+  const { isVisible, isDesktop, isTablet, isCollapsed, toggleCollapsed } =
+    useSidebarLayout(sidebar?.layoutConfig)
 
   return (
     <div className="relative h-full max-h-screen overflow-x-hidden">
       {/* Navbar */}
-      {hasNavbar && <Navbar {...navbar} />}
+      {hasNavbar && (
+        <Navbar
+          isDesktop={isDesktop}
+          isTablet={isTablet}
+          isCollapsed={isCollapsed}
+          {...navbar}
+        />
+      )}
 
-      {hasSidebar && <Sidebar {...sidebar} />}
+      {hasSidebar && (
+        <Sidebar
+          isVisible={isVisible}
+          isDesktop={isDesktop}
+          isTablet={isTablet}
+          isCollapsed={isCollapsed}
+          toggleCollapsed={toggleCollapsed}
+          {...sidebar}
+        />
+      )}
 
       <main
         className={mergeTailwindClasses(

@@ -6,7 +6,7 @@ import { IconPlus } from "@tabler/icons-react"
 import { SidebarLink } from "./SidebarLink"
 import { SidebarAction } from "./SidebarAction"
 import { SidebarHeader } from "./SidebarHeader"
-import { useSidebarLayout, type SidebarLayoutConfig } from "./useSidebarLayout"
+import { type SidebarLayoutConfig } from "./useSidebarLayout"
 
 /**
  * Props for Sidebar component
@@ -14,6 +14,14 @@ import { useSidebarLayout, type SidebarLayoutConfig } from "./useSidebarLayout"
 export interface SidebarProps {
   /** Navigation items to display */
   items?: Item[]
+  isVisible?: boolean
+  isDesktop?: boolean
+  isTablet?: boolean
+  isCollapsed?: boolean
+  toggleCollapsed: () => void
+  containerClasses: string
+  navigationClasses: string
+  itemContainerClasses: string
   /** App logo component */
   appLogo?: ReactNode
   /** Root className */
@@ -89,20 +97,17 @@ export const Sidebar = ({
   actionColor = "primary",
   actionClick,
   showDivider = true,
-  layoutConfig,
-  showBurgerButton = true,
-}: SidebarProps): JSX.Element | null => {
-  const {
-    isVisible,
-    isDesktop,
-    isTablet,
-    isCollapsed,
-    toggleCollapsed,
-    containerClasses,
-    navigationClasses,
-    itemContainerClasses,
-  } = useSidebarLayout(layoutConfig)
+  isVisible,
+  isDesktop,
+  isTablet,
+  isCollapsed,
+  toggleCollapsed,
+  containerClasses,
+  navigationClasses,
+  itemContainerClasses,
 
+  showBurgerButton = true,
+}: Partial<SidebarProps>): JSX.Element | null => {
   const shouldShowCollapsed = (isDesktop && isCollapsed) || isTablet
 
   // Set CSS variable for layout communication

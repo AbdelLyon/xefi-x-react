@@ -17,7 +17,6 @@ import {
 } from "@heroui/react"
 import { mergeTailwindClasses } from "@/utils"
 import type { Item } from "@/types/navigation"
-import { useResponsive } from "@/hooks"
 
 export type NavbarProps = {
   appName?: ReactNode
@@ -27,7 +26,12 @@ export type NavbarProps = {
   contentProps?: NavbarContentProps
   menuProps?: NavbarMenuProps
   onItemClick?: (item: Item) => void
+  isDesktop?: boolean
+  isTablet?: boolean
+  isCollapsed?: boolean
   isMenuOpen?: boolean
+  isMobile?: boolean
+
   onMenuOpenChange?: (isOpen: boolean) => void
   /** Whether the sidebar is collapsed on desktop */
   isSidebarCollapsed?: boolean
@@ -50,13 +54,16 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
       classNames,
       isMenuOpen,
       onMenuOpenChange,
+      isDesktop,
+      isTablet,
+      isCollapsed,
+      isMobile,
       isSidebarCollapsed = false,
+
       ...props
     },
     ref
   ): JSX.Element => {
-    const { isDesktop, isMobile, isTablet } = useResponsive()
-
     const handleItemPress = (item: Item, event: PressEvent): void => {
       item.onClick?.(event)
       onItemClick?.(item)
@@ -72,7 +79,7 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
           wrapper: mergeTailwindClasses(
             "max-w-full transition-all duration-300",
             isDesktop
-              ? isSidebarCollapsed
+              ? isSidebarCollapsed || isCollapsed
                 ? "ml-[70px]"
                 : "ml-[270px]"
               : isTablet

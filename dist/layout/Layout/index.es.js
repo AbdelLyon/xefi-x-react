@@ -17,6 +17,7 @@ var __spreadValues = (a, b) => {
 import { jsxs, jsx } from "react/jsx-runtime";
 import { Navbar } from "../../navbar/Navbar/index.es.js";
 import { Sidebar } from "../../sidebar/Sidebar/index.es.js";
+import { useSidebarLayout } from "../../sidebar/useSidebarLayout/index.es.js";
 import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
 const Layout = ({
   children,
@@ -26,9 +27,26 @@ const Layout = ({
 }) => {
   const hasNavbar = Boolean(navbar);
   const hasSidebar = Boolean(sidebar);
+  const { isVisible, isDesktop, isTablet, isCollapsed, toggleCollapsed } = useSidebarLayout(sidebar == null ? void 0 : sidebar.layoutConfig);
   return /* @__PURE__ */ jsxs("div", { className: "relative h-full max-h-screen overflow-x-hidden", children: [
-    hasNavbar && /* @__PURE__ */ jsx(Navbar, __spreadValues({}, navbar)),
-    hasSidebar && /* @__PURE__ */ jsx(Sidebar, __spreadValues({}, sidebar)),
+    hasNavbar && /* @__PURE__ */ jsx(
+      Navbar,
+      __spreadValues({
+        isDesktop,
+        isTablet,
+        isCollapsed
+      }, navbar)
+    ),
+    hasSidebar && /* @__PURE__ */ jsx(
+      Sidebar,
+      __spreadValues({
+        isVisible,
+        isDesktop,
+        isTablet,
+        isCollapsed,
+        toggleCollapsed
+      }, sidebar)
+    ),
     /* @__PURE__ */ jsx(
       "main",
       {

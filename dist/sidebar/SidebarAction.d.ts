@@ -8,8 +8,8 @@ export interface SidebarActionProps {
     actionIcon: JSX.Element;
     actionColor: Color;
     actionClick: () => void;
-    isDesktop: boolean;
-    isTablet: boolean;
+    isDesktop?: boolean;
+    isTablet?: boolean;
     isCollapsed?: boolean;
     showDivider: boolean;
     className?: string;

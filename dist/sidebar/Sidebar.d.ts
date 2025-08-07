@@ -8,6 +8,14 @@ import { SidebarLayoutConfig } from './useSidebarLayout';
 export interface SidebarProps {
     /** Navigation items to display */
     items?: Item[];
+    isVisible?: boolean;
+    isDesktop?: boolean;
+    isTablet?: boolean;
+    isCollapsed?: boolean;
+    toggleCollapsed: () => void;
+    containerClasses: string;
+    navigationClasses: string;
+    itemContainerClasses: string;
     /** App logo component */
     appLogo?: ReactNode;
     /** Root className */
@@ -72,4 +80,4 @@ export interface SidebarProps {
  * />
  * ```
  */
-export declare const Sidebar: ({ items, appLogo, classNames, bgImage, onItemClick, ref, actionLabel, actionIcon, actionColor, actionClick, showDivider, layoutConfig, showBurgerButton, }: SidebarProps) => JSX.Element | null;
+export declare const Sidebar: ({ items, appLogo, classNames, bgImage, onItemClick, ref, actionLabel, actionIcon, actionColor, actionClick, showDivider, isVisible, isDesktop, isTablet, isCollapsed, toggleCollapsed, containerClasses, navigationClasses, itemContainerClasses, showBurgerButton, }: Partial<SidebarProps>) => JSX.Element | null;

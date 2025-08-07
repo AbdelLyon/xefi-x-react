@@ -10,13 +10,13 @@ export interface SidebarHeaderProps {
   /** App logo component */
   appLogo?: ReactNode
   /** Whether the sidebar is collapsed */
-  isCollapsed: boolean
+  isCollapsed?: boolean
   /** Toggle function for sidebar collapse state */
-  onToggle: () => void
+  onToggle?: () => void
   /** Whether in desktop mode */
-  isDesktop: boolean
+  isDesktop?: boolean
   /** Whether in tablet mode */
-  isTablet: boolean
+  isTablet?: boolean
   /** Whether to show burger button */
   showBurgerButton?: boolean
   /** Custom className */

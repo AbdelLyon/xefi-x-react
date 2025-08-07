@@ -5,8 +5,8 @@ import { Item } from '../types/navigation';
  */
 export interface SidebarLinkProps {
     item: Item;
-    isDesktop: boolean;
-    isTablet: boolean;
+    isDesktop?: boolean;
+    isTablet?: boolean;
     isCollapsed?: boolean;
     onItemClick?: (item: Item) => void;
     className?: string;

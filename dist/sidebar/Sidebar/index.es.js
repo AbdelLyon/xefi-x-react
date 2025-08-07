@@ -4,7 +4,6 @@ import { IconPlus } from "@tabler/icons-react";
 import { SidebarLink } from "../SidebarLink/index.es.js";
 import { SidebarAction } from "../SidebarAction/index.es.js";
 import { SidebarHeader } from "../SidebarHeader/index.es.js";
-import { useSidebarLayout } from "../useSidebarLayout/index.es.js";
 import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
 const Sidebar = ({
   items = [],
@@ -18,19 +17,16 @@ const Sidebar = ({
   actionColor = "primary",
   actionClick,
   showDivider = true,
-  layoutConfig,
+  isVisible,
+  isDesktop,
+  isTablet,
+  isCollapsed,
+  toggleCollapsed,
+  containerClasses,
+  navigationClasses,
+  itemContainerClasses,
   showBurgerButton = true
 }) => {
-  const {
-    isVisible,
-    isDesktop,
-    isTablet,
-    isCollapsed,
-    toggleCollapsed,
-    containerClasses,
-    navigationClasses,
-    itemContainerClasses
-  } = useSidebarLayout(layoutConfig);
   const shouldShowCollapsed = isDesktop && isCollapsed || isTablet;
   useEffect(() => {
     if (!isVisible) {

@@ -32,7 +32,6 @@ var __objRest = (source, exclude) => {
 import { jsxs, jsx } from "react/jsx-runtime";
 import { forwardRef } from "react";
 import { Navbar as Navbar$1, NavbarContent, NavbarMenuToggle, NavbarItem, Link, NavbarMenu, NavbarMenuItem } from "@heroui/react";
-import { useResponsive } from "../../hooks/useResponsive/index.es.js";
 import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
 const Navbar = forwardRef(
   (_a, ref) => {
@@ -48,6 +47,10 @@ const Navbar = forwardRef(
       classNames,
       isMenuOpen,
       onMenuOpenChange,
+      isDesktop,
+      isTablet,
+      isCollapsed,
+      isMobile,
       isSidebarCollapsed = false
     } = _b, props = __objRest(_b, [
       "appName",
@@ -61,9 +64,12 @@ const Navbar = forwardRef(
       "classNames",
       "isMenuOpen",
       "onMenuOpenChange",
+      "isDesktop",
+      "isTablet",
+      "isCollapsed",
+      "isMobile",
       "isSidebarCollapsed"
     ]);
-    const { isDesktop, isMobile, isTablet } = useResponsive();
     const handleItemPress = (item, event) => {
       var _a2;
       (_a2 = item.onClick) == null ? void 0 : _a2.call(item, event);
@@ -79,7 +85,7 @@ const Navbar = forwardRef(
           base: "border-b-none dark:border-b dark:border-border shadow-lg bg-white dark:bg-content1 dark:shadow-none",
           wrapper: mergeTailwindClasses(
             "max-w-full transition-all duration-300",
-            isDesktop ? isSidebarCollapsed ? "ml-[70px]" : "ml-[270px]" : isTablet ? "ml-[70px]" : "ml-0"
+            isDesktop ? isSidebarCollapsed || isCollapsed ? "ml-[70px]" : "ml-[270px]" : isTablet ? "ml-[70px]" : "ml-0"
           )
         }, classNames),
         isMenuOpen,

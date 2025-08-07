@@ -4,13 +4,13 @@ import { default as React } from 'react';
  */
 export interface SidebarBurgerButtonProps {
     /** Whether the sidebar is collapsed */
-    isCollapsed: boolean;
+    isCollapsed?: boolean;
     /** Toggle function for sidebar collapse state */
-    onToggle: () => void;
+    onToggle?: () => void;
     /** Whether in desktop mode */
-    isDesktop: boolean;
+    isDesktop?: boolean;
     /** Whether in tablet mode */
-    isTablet: boolean;
+    isTablet?: boolean;
     /** Custom className */
     className?: string;
 }
