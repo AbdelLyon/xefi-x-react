@@ -145,35 +145,23 @@ function DataGrid(_a) {
       }
     );
   }
-  const paginationComponent = paginationType === "paginated" && /* @__PURE__ */ jsxs("div", { className: "flex flex-col gap-4 py-4", children: [
-    showRowsPerPageSelector && /* @__PURE__ */ jsxs("div", { className: "flex items-center justify-between", children: [
-      /* @__PURE__ */ jsxs("div", { className: "flex items-center gap-2", children: [
-        /* @__PURE__ */ jsx("span", { className: "text-[0.8125rem] opacity-70", children: "Lignes par page:" }),
-        /* @__PURE__ */ jsx(
-          Select,
-          {
-            size: "sm",
-            selectedKeys: [pagination.rowsPerPage.toString()],
-            onSelectionChange: (keys) => {
-              const selected = Array.from(keys)[0];
-              pagination.setRowsPerPage(Number(selected));
-            },
-            className: "w-20",
-            "aria-label": "Sélectionner le nombre de lignes par page",
-            children: rowsPerPageOptions.map((option) => /* @__PURE__ */ jsx(SelectItem, { children: option.toString() }, option.toString()))
-          }
-        )
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "flex items-center gap-4", children: /* @__PURE__ */ jsxs("span", { className: "text-[0.8125rem] opacity-70", children: [
-        "Affichage ",
-        pagination.startIndex + 1,
-        "-",
-        pagination.endIndex,
-        " de",
-        " ",
-        totalItems != null ? totalItems : rows.length,
-        " résultats"
-      ] }) })
+  const paginationComponent = paginationType === "paginated" && /* @__PURE__ */ jsxs("div", { className: "mt-4 flex items-center justify-between", children: [
+    showRowsPerPageSelector && /* @__PURE__ */ jsxs("div", { className: "flex items-center gap-2", children: [
+      /* @__PURE__ */ jsx("span", { className: "text-muted-foreground text-[0.8125rem]", children: "Lignes par page:" }),
+      /* @__PURE__ */ jsx(
+        Select,
+        {
+          size: "sm",
+          selectedKeys: [pagination.rowsPerPage.toString()],
+          onSelectionChange: (keys) => {
+            const selected = Array.from(keys)[0];
+            pagination.setRowsPerPage(Number(selected));
+          },
+          className: "w-20",
+          "aria-label": "Sélectionner le nombre de lignes par page",
+          children: rowsPerPageOptions.map((option) => /* @__PURE__ */ jsx(SelectItem, { children: option.toString() }, option.toString()))
+        }
+      )
     ] }),
     /* @__PURE__ */ jsx("div", { className: "flex justify-center", children: /* @__PURE__ */ jsx(
       Pagination,
@@ -191,9 +179,19 @@ function DataGrid(_a) {
         },
         "aria-label": "Navigation de pagination"
       }
-    ) })
+    ) }),
+    /* @__PURE__ */ jsx("div", { className: "flex items-center", children: /* @__PURE__ */ jsxs("span", { className: "text-muted-foreground text-[0.8125rem]", children: [
+      "Affichage ",
+      pagination.startIndex + 1,
+      "-",
+      pagination.endIndex,
+      " de",
+      " ",
+      totalItems != null ? totalItems : rows.length,
+      " résultats"
+    ] }) })
   ] });
-  return /* @__PURE__ */ jsxs("div", { className: "flex flex-col gap-4", children: [
+  return /* @__PURE__ */ jsxs("div", { className: "flex flex-col", children: [
     /* @__PURE__ */ jsxs(
       Table,
       __spreadProps(__spreadValues({}, props), {
@@ -252,7 +250,7 @@ function DataGrid(_a) {
             "span",
             {
               className: mergeTailwindClasses(
-                "text-[0.8125rem] opacity-70 transition-all duration-500",
+                "text-[0.8125rem] text-muted-foreground transition-all duration-500",
                 isFetching ? "opacity-100" : "opacity-70"
               ),
               children: isFetching ? "Chargement..." : "Scroll pour plus"

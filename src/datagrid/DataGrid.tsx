@@ -110,38 +110,33 @@ export function DataGrid<T extends { id: string | number }>({
   }
 
   const paginationComponent = paginationType === "paginated" && (
-    <div className="flex flex-col gap-4 py-4">
+    <div className="mt-4 flex items-center justify-between">
+      {/* Sélecteur lignes par page - à gauche */}
       {showRowsPerPageSelector && (
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="text-[0.8125rem] opacity-70">
-              Lignes par page:
-            </span>
-            <Select
-              size="sm"
-              selectedKeys={[pagination.rowsPerPage.toString()]}
-              onSelectionChange={(keys) => {
-                const selected = Array.from(keys)[0] as string
-                pagination.setRowsPerPage(Number(selected))
-              }}
-              className="w-20"
-              aria-label="Sélectionner le nombre de lignes par page"
-            >
-              {rowsPerPageOptions.map((option) => (
-                <SelectItem key={option.toString()}>
-                  {option.toString()}
-                </SelectItem>
-              ))}
-            </Select>
-          </div>
-          <div className="flex items-center gap-4">
-            <span className="text-[0.8125rem] opacity-70">
-              Affichage {pagination.startIndex + 1}-{pagination.endIndex} de{" "}
-              {totalItems ?? rows.length} résultats
-            </span>
-          </div>
+        <div className="flex items-center gap-2">
+          <span className="text-muted-foreground text-[0.8125rem]">
+            Lignes par page:
+          </span>
+          <Select
+            size="sm"
+            selectedKeys={[pagination.rowsPerPage.toString()]}
+            onSelectionChange={(keys) => {
+              const selected = Array.from(keys)[0] as string
+              pagination.setRowsPerPage(Number(selected))
+            }}
+            className="w-20"
+            aria-label="Sélectionner le nombre de lignes par page"
+          >
+            {rowsPerPageOptions.map((option) => (
+              <SelectItem key={option.toString()}>
+                {option.toString()}
+              </SelectItem>
+            ))}
+          </Select>
         </div>
       )}
+      
+      {/* Pagination - au centre */}
       <div className="flex justify-center">
         <Pagination
           total={pagination.totalPages}
@@ -158,11 +153,19 @@ export function DataGrid<T extends { id: string | number }>({
           aria-label="Navigation de pagination"
         />
       </div>
+      
+      {/* Info résultats - à droite */}
+      <div className="flex items-center">
+        <span className="text-muted-foreground text-[0.8125rem]">
+          Affichage {pagination.startIndex + 1}-{pagination.endIndex} de{" "}
+          {totalItems ?? rows.length} résultats
+        </span>
+      </div>
     </div>
   )
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col">
       <DataTable
         {...props}
         aria-label="data-grid"
@@ -224,7 +227,7 @@ export function DataGrid<T extends { id: string | number }>({
                 />
                 <span
                   className={mergeTailwindClasses(
-                    "text-[0.8125rem] opacity-70 transition-all duration-500",
+                    "text-[0.8125rem] text-muted-foreground transition-all duration-500",
                     isFetching ? "opacity-100" : "opacity-70"
                   )}
                 >
