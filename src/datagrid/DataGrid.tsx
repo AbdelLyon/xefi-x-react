@@ -119,6 +119,9 @@ export function DataGrid<T extends { id: string | number }>({
           <Select
             size="sm"
             radius="md"
+            classNames={{
+              selectorIcon: "text-success",
+            }}
             selectedKeys={[pagination.rowsPerPage.toString()]}
             onSelectionChange={(keys) => {
               const selected = Array.from(keys)[0] as string

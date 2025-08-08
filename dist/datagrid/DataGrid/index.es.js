@@ -155,6 +155,9 @@ function DataGrid(_a) {
         {
           size: "sm",
           radius: "md",
+          classNames: {
+            selectorIcon: "text-success"
+          },
           selectedKeys: [pagination.rowsPerPage.toString()],
           onSelectionChange: (keys) => {
             const selected = Array.from(keys)[0];
