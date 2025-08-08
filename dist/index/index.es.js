@@ -76,6 +76,7 @@ import { useDisclosure } from "../hooks/useDisclosure/index.es.js";
 import { useAsyncState } from "../hooks/useAsyncState/index.es.js";
 import { useClipboard } from "../hooks/useClipboard/index.es.js";
 import { useKeyboard } from "../hooks/useKeyboard/index.es.js";
+import { usePagination } from "../hooks/usePagination/index.es.js";
 export * from "@tabler/icons-react";
 import { ThemeProvider } from "../providers/ThemeProvider/index.es.js";
 import { UIProvider } from "../providers/UIProvider/index.es.js";
@@ -236,6 +237,7 @@ export {
   useMediaQuery,
   useMergedRef,
   useMounted,
+  usePagination,
   usePreviousValue,
   useReactiveSet,
   useRerender,

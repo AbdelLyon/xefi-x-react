@@ -31,11 +31,13 @@ var __objRest = (source, exclude) => {
 };
 import { jsx, jsxs } from "react/jsx-runtime";
 import { useDataGridState } from "../useDataGridState/index.es.js";
-import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Spinner } from "@heroui/react";
+import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Spinner, Select, SelectItem, Pagination } from "@heroui/react";
 import { IconCaretUpFilled, IconCaretDownFilled } from "@tabler/icons-react";
 import { DataGridSkeleton } from "../DataGridSkeleton/index.es.js";
 import { GRID_VARIANTS } from "../variants/index.es.js";
+import { useMemo } from "react";
 import { useInfiniteScroll } from "../../hooks/useInfiniteScroll/index.es.js";
+import { usePagination } from "../../hooks/usePagination/index.es.js";
 import { TruncatedText } from "../../utils/TruncatedText/index.es.js";
 import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
 function DataGrid(_a) {
@@ -50,7 +52,16 @@ function DataGrid(_a) {
     fetchNextPage,
     childrenProps,
     skeletonRowsCount,
-    classNames
+    classNames,
+    paginationType = "infinite",
+    rowsPerPageOptions = [10, 25, 50, 100],
+    defaultRowsPerPage = 10,
+    showRowsPerPageSelector = true,
+    totalItems,
+    currentPage,
+    onPageChange,
+    onRowsPerPageChange,
+    onFetchPage
   } = _b, props = __objRest(_b, [
     "rows",
     "columns",
@@ -62,7 +73,16 @@ function DataGrid(_a) {
     "fetchNextPage",
     "childrenProps",
     "skeletonRowsCount",
-    "classNames"
+    "classNames",
+    "paginationType",
+    "rowsPerPageOptions",
+    "defaultRowsPerPage",
+    "showRowsPerPageSelector",
+    "totalItems",
+    "currentPage",
+    "onPageChange",
+    "onRowsPerPageChange",
+    "onFetchPage"
   ]);
   var _a2, _b2, _c;
   const {
@@ -83,6 +103,35 @@ function DataGrid(_a) {
       fetchNextPage == null ? void 0 : fetchNextPage();
     }
   });
+  const pagination = usePagination({
+    totalItems: totalItems != null ? totalItems : rows.length,
+    defaultPage: currentPage != null ? currentPage : 1,
+    defaultRowsPerPage,
+    rowsPerPageOptions,
+    onPageChange: (page) => {
+      onPageChange == null ? void 0 : onPageChange(page);
+      onFetchPage == null ? void 0 : onFetchPage(page, pagination.rowsPerPage);
+    },
+    onRowsPerPageChange: (rowsPerPage) => {
+      onRowsPerPageChange == null ? void 0 : onRowsPerPageChange(rowsPerPage);
+      onFetchPage == null ? void 0 : onFetchPage(1, rowsPerPage);
+    }
+  });
+  const displayedRows = useMemo(() => {
+    if (paginationType === "traditional") {
+      if (onFetchPage) {
+        return rows;
+      }
+      return rows.slice(pagination.startIndex, pagination.endIndex);
+    }
+    return rows;
+  }, [
+    rows,
+    paginationType,
+    pagination.startIndex,
+    pagination.endIndex,
+    onFetchPage
+  ]);
   const variantClasses = GRID_VARIANTS[variant];
   if (isLoading) {
     return /* @__PURE__ */ jsx(
@@ -109,7 +158,7 @@ function DataGrid(_a) {
       ),
       shadow: (_a2 = props.shadow) != null ? _a2 : "none",
       radius: (_b2 = props.radius) != null ? _b2 : "none",
-      baseRef: scrollContainerRef,
+      baseRef: paginationType === "infinite" ? scrollContainerRef : void 0,
       classNames: {
         wrapper: mergeTailwindClasses(
           "bg-white/80 backdrop-blur-sm border-0 p-0 dark:bg-background/90",
@@ -136,7 +185,54 @@ function DataGrid(_a) {
           classNames == null ? void 0 : classNames.base
         )
       },
-      bottomContent: hasMoreData ? /* @__PURE__ */ jsx("div", { className: "flex w-full justify-center py-2", children: /* @__PURE__ */ jsxs("div", { className: "flex items-center gap-3 rounded-full bg-content1-100 px-6 py-1 backdrop-blur-sm", children: [
+      bottomContent: paginationType === "traditional" ? /* @__PURE__ */ jsxs("div", { className: "flex flex-col gap-4 py-4", children: [
+        showRowsPerPageSelector && /* @__PURE__ */ jsxs("div", { className: "flex items-center justify-between", children: [
+          /* @__PURE__ */ jsxs("div", { className: "flex items-center gap-2", children: [
+            /* @__PURE__ */ jsx("span", { className: "text-[0.8125rem] opacity-70", children: "Lignes par page:" }),
+            /* @__PURE__ */ jsx(
+              Select,
+              {
+                size: "sm",
+                selectedKeys: [pagination.rowsPerPage.toString()],
+                onSelectionChange: (keys) => {
+                  const selected = Array.from(keys)[0];
+                  pagination.setRowsPerPage(Number(selected));
+                },
+                className: "w-20",
+                "aria-label": "Sélectionner le nombre de lignes par page",
+                children: rowsPerPageOptions.map((option) => /* @__PURE__ */ jsx(SelectItem, { children: option.toString() }, option.toString()))
+              }
+            )
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "flex items-center gap-4", children: /* @__PURE__ */ jsxs("span", { className: "text-[0.8125rem] opacity-80", children: [
+            "Affichage ",
+            pagination.startIndex + 1,
+            "-",
+            pagination.endIndex,
+            " ",
+            "de ",
+            totalItems != null ? totalItems : rows.length,
+            " résultats"
+          ] }) })
+        ] }),
+        /* @__PURE__ */ jsx("div", { className: "flex justify-center", children: /* @__PURE__ */ jsx(
+          Pagination,
+          {
+            total: pagination.totalPages,
+            page: pagination.currentPage,
+            onChange: pagination.setPage,
+            showControls: true,
+            size: "sm",
+            color: "primary",
+            classNames: {
+              wrapper: "gap-0 overflow-visible",
+              item: "w-8 h-8 text-small rounded-none bg-transparent",
+              cursor: "bg-primary-500 shadow-lg text-white font-semibold"
+            },
+            "aria-label": "Navigation de pagination"
+          }
+        ) })
+      ] }) : hasMoreData ? /* @__PURE__ */ jsx("div", { className: "flex w-full justify-center py-2", children: /* @__PURE__ */ jsxs("div", { className: "flex items-center gap-3 rounded-full bg-content1-100 px-6 py-1 backdrop-blur-sm", children: [
         /* @__PURE__ */ jsx(
           Spinner,
           {
@@ -242,10 +338,17 @@ function DataGrid(_a) {
           TableBody,
           __spreadProps(__spreadValues({
             isLoading,
-            items: rows,
+            items: displayedRows,
             "aria-label": "table body",
             "aria-labelledby": "table body",
-            loadingContent: /* @__PURE__ */ jsx(Spinner, { ref: loaderRef, size: "sm", color: "primary" })
+            loadingContent: /* @__PURE__ */ jsx(
+              Spinner,
+              {
+                ref: paginationType === "infinite" ? loaderRef : void 0,
+                size: "sm",
+                color: "primary"
+              }
+            )
           }, childrenProps == null ? void 0 : childrenProps.tableBodyProps), {
             children: (row) => {
               var _a3;

@@ -96,6 +96,18 @@ export interface DataGridInfiniteScrollProps {
   skeletonRowsCount?: number;
 }
 
+export interface DataGridPaginationProps {
+  paginationType?: 'traditional' | 'infinite';
+  rowsPerPageOptions?: number[];
+  defaultRowsPerPage?: number;
+  showRowsPerPageSelector?: boolean;
+  totalItems?: number;
+  currentPage?: number;
+  onPageChange?: (page: number) => void;
+  onRowsPerPageChange?: (rowsPerPage: number) => void;
+  onFetchPage?: (page: number, rowsPerPage: number) => Promise<void> | void;
+}
+
 export interface DataGridCallbacks<T> {
   onSortChange?: (column: keyof T, direction: SortDirection) => void;
   onGridScrollEnd?: () => void;
@@ -106,4 +118,5 @@ export interface DataGridProps<T extends { id: string | number }>
   extends DataGridBaseProps<T>,
     DataGridCallbacks<T>,
     DataGridInfiniteScrollProps,
+    DataGridPaginationProps,
     Omit<TableProps, "onSortChange"> {}

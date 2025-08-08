@@ -26,3 +26,4 @@ export { useDisclosure } from './useDisclosure';
 export { useAsyncState, type AsyncState, type UseAsyncStateReturn } from './useAsyncState';
 export { useClipboard, type UseClipboardOptions, type UseClipboardReturn } from './useClipboard';
 export { useKeyboard, type KeyboardHandler, type KeyboardShortcut, type UseKeyboardOptions, type UseKeyboardReturn } from './useKeyboard';
+export { usePagination, type UsePaginationOptions, type UsePaginationReturn } from './usePagination';

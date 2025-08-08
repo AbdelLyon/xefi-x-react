@@ -69,3 +69,9 @@ export {
   type UseKeyboardOptions,
   type UseKeyboardReturn
 } from "@/hooks/useKeyboard";
+
+export {
+  usePagination,
+  type UsePaginationOptions,
+  type UsePaginationReturn
+} from "@/hooks/usePagination";

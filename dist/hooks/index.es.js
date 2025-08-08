@@ -26,6 +26,7 @@ import { useDisclosure } from "./useDisclosure/index.es.js";
 import { useAsyncState } from "./useAsyncState/index.es.js";
 import { useClipboard } from "./useClipboard/index.es.js";
 import { useKeyboard } from "./useKeyboard/index.es.js";
+import { usePagination } from "./usePagination/index.es.js";
 export {
   useAsyncState,
   useBooleanToggle,
@@ -47,6 +48,7 @@ export {
   useMediaQuery,
   useMergedRef,
   useMounted,
+  usePagination,
   usePreviousValue,
   useReactiveSet,
   useRerender,
