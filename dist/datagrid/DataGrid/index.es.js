@@ -174,11 +174,6 @@ function DataGrid(_a) {
         showControls: true,
         size: "sm",
         color: "primary",
-        classNames: __spreadValues({
-          wrapper: "gap-0 overflow-visible",
-          item: "w-8 h-8 text-small rounded-none bg-transparent",
-          cursor: "bg-primary-500 shadow-lg text-white font-semibold"
-        }, paginationProps == null ? void 0 : paginationProps.classNames),
         "aria-label": "Navigation de pagination"
       }, paginationProps)
     ) }),

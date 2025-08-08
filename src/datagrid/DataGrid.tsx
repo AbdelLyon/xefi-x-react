@@ -144,12 +144,6 @@ export function DataGrid<T extends { id: string | number }>({
           showControls
           size="sm"
           color="primary"
-          classNames={{
-            wrapper: "gap-0 overflow-visible",
-            item: "w-8 h-8 text-small rounded-none bg-transparent",
-            cursor: "bg-primary-500 shadow-lg text-white font-semibold",
-            ...paginationProps?.classNames,
-          }}
           aria-label="Navigation de pagination"
           {...paginationProps}
         />
