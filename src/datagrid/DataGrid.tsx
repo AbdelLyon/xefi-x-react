@@ -141,9 +141,6 @@ export function DataGrid<T extends { id: string | number }>({
           total={pagination.totalPages}
           page={pagination.currentPage}
           onChange={pagination.setPage}
-          showControls
-          size="sm"
-          color="primary"
           aria-label="Navigation de pagination"
           {...paginationProps}
         />
