@@ -41,7 +41,8 @@ const modules = [
   "skeleton",
   "toast",
   "divider",
-  "skeleton"
+  "skeleton",
+  "templates"
 ];
 
 export default defineConfig({
