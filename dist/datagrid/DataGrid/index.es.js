@@ -171,6 +171,9 @@ function DataGrid(_a) {
         total: pagination.totalPages,
         page: pagination.currentPage,
         onChange: pagination.setPage,
+        showControls: true,
+        size: "sm",
+        color: "primary",
         "aria-label": "Navigation de pagination"
       }, paginationProps)
     ) }),
