@@ -119,8 +119,10 @@ export function DataGrid<T extends { id: string | number }>({
           <Select
             size="sm"
             radius="md"
-            classNames={{
-              selectorIcon: "text-success",
+            listboxProps={{
+              itemClasses: {
+                selectedIcon: "text-success",
+              },
             }}
             selectedKeys={[pagination.rowsPerPage.toString()]}
             onSelectionChange={(keys) => {
