@@ -42,6 +42,7 @@ export function DataGrid<T extends { id: string | number }>({
   onPageChange,
   onRowsPerPageChange,
   onFetchPage,
+  paginationProps,
   ...props
 }: DataGridProps<T>): JSX.Element {
   const {
@@ -114,9 +115,7 @@ export function DataGrid<T extends { id: string | number }>({
       {/* Sélecteur lignes par page - à gauche */}
       {showRowsPerPageSelector && (
         <div className="flex items-center gap-2">
-          <span className="text-muted-foreground text-[0.8125rem]">
-            Lignes par page:
-          </span>
+          <span className="text-[0.8125rem] opacity-70">Lignes par page:</span>
           <Select
             size="sm"
             selectedKeys={[pagination.rowsPerPage.toString()]}
@@ -135,7 +134,7 @@ export function DataGrid<T extends { id: string | number }>({
           </Select>
         </div>
       )}
-      
+
       {/* Pagination - au centre */}
       <div className="flex justify-center">
         <Pagination
@@ -149,14 +148,16 @@ export function DataGrid<T extends { id: string | number }>({
             wrapper: "gap-0 overflow-visible",
             item: "w-8 h-8 text-small rounded-none bg-transparent",
             cursor: "bg-primary-500 shadow-lg text-white font-semibold",
+            ...paginationProps?.classNames,
           }}
           aria-label="Navigation de pagination"
+          {...paginationProps}
         />
       </div>
-      
+
       {/* Info résultats - à droite */}
       <div className="flex items-center">
-        <span className="text-muted-foreground text-[0.8125rem]">
+        <span className="text-[0.8125rem] opacity-70">
           Affichage {pagination.startIndex + 1}-{pagination.endIndex} de{" "}
           {totalItems ?? rows.length} résultats
         </span>
@@ -227,7 +228,7 @@ export function DataGrid<T extends { id: string | number }>({
                 />
                 <span
                   className={mergeTailwindClasses(
-                    "text-[0.8125rem] text-muted-foreground transition-all duration-500",
+                    "text-[0.8125rem] opacity-70 transition-all duration-500",
                     isFetching ? "opacity-100" : "opacity-70"
                   )}
                 >

@@ -5,6 +5,7 @@ import type {
   TableHeaderProps,
   TableProps,
   TableRowProps,
+  PaginationProps,
 } from "@heroui/react";
 
 export interface SortConfig<T> {
@@ -106,6 +107,7 @@ export interface DataGridPaginationProps {
   onPageChange?: (page: number) => void;
   onRowsPerPageChange?: (rowsPerPage: number) => void;
   onFetchPage?: (page: number, rowsPerPage: number) => Promise<void> | void;
+  paginationProps?: Omit<PaginationProps, 'total' | 'page' | 'onChange'>;
 }
 
 export interface DataGridCallbacks<T> {
