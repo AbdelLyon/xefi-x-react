@@ -51,12 +51,12 @@ interface ProfileDropdownProps
 }
 
 const defaultTriggerClassNames = {
-  default: "transition-all duration-200 hover:bg-content1-100",
+  default: "bg-background transition-all duration-200 hover:bg-content1-100",
   bordered:
-    "border border-border transition-all duration-200 hover:bg-content1-100",
+    "bg-background border border-border transition-all duration-200 hover:bg-content1-100",
   shadow:
-    "shadow-md transition-all duration-200 hover:shadow-lg hover:bg-content1-100",
-  flat: "bg-content1-50/50 transition-all duration-200 hover:bg-content1-100",
+    "bg-background shadow-md transition-all duration-200 hover:shadow-lg hover:bg-content1-100",
+  flat: "bg-background transition-all duration-200 hover:bg-content1-100",
 } as const
 
 const sizeClasses = {
@@ -119,9 +119,10 @@ export const ProfileDropdown = forwardRef<HTMLDivElement, ProfileDropdownProps>(
         showStatus={user.showStatus}
         clickable
         className={mergeTailwindClasses(
-          "cursor-pointer rounded-lg",
+          "cursor-pointer rounded-lg w-full",
           defaultTriggerClassNames[variant],
-          sizeClasses[size]
+          sizeClasses[size],
+          classNames?.trigger
         )}
         avatarProps={{
           size: size === "lg" ? "md" : "sm",
@@ -140,11 +141,12 @@ export const ProfileDropdown = forwardRef<HTMLDivElement, ProfileDropdownProps>(
         placement={placement}
         onItemPress={onActionPress}
         classNames={{
-          base: "before:bg-default-200",
+          base: mergeTailwindClasses("before:bg-default-200", classNames?.base),
           content: mergeTailwindClasses(
-            "p-0 border border-border bg-background shadow-lg rounded-lg min-w-[200px]",
+            "p-0 border border-border bg-background shadow-lg rounded-lg",
             classNames?.content
           ),
+          trigger: mergeTailwindClasses("w-full", classNames?.trigger),
           ...classNames,
         }}
         {...dropdownProps}
