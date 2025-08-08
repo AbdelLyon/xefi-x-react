@@ -118,6 +118,7 @@ export function DataGrid<T extends { id: string | number }>({
           <span className="text-[0.8125rem] opacity-70">Lignes par page:</span>
           <Select
             size="sm"
+            radius="md"
             selectedKeys={[pagination.rowsPerPage.toString()]}
             onSelectionChange={(keys) => {
               const selected = Array.from(keys)[0] as string
