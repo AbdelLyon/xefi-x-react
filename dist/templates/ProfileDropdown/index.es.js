@@ -32,10 +32,10 @@ import { UserAvatar } from "../../avatar/Avatar/index.es.js";
 import { Dropdown } from "../../dropdown/Dropdown/index.es.js";
 import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
 const defaultTriggerClassNames = {
-  default: "transition-all duration-200 hover:bg-content1-100",
-  bordered: "border border-border transition-all duration-200 hover:bg-content1-100",
-  shadow: "shadow-md transition-all duration-200 hover:shadow-lg hover:bg-content1-100",
-  flat: "bg-content1-50/50 transition-all duration-200 hover:bg-content1-100"
+  default: "bg-background transition-all duration-200 hover:bg-content1-100",
+  bordered: "bg-background border border-border transition-all duration-200 hover:bg-content1-100",
+  shadow: "bg-background shadow-md transition-all duration-200 hover:shadow-lg hover:bg-content1-100",
+  flat: "bg-background transition-all duration-200 hover:bg-content1-100"
 };
 const sizeClasses = {
   sm: "px-2 py-1",
@@ -100,9 +100,10 @@ const ProfileDropdown = forwardRef(
         showStatus: user.showStatus,
         clickable: true,
         className: mergeTailwindClasses(
-          "cursor-pointer rounded-lg",
+          "cursor-pointer rounded-lg w-full",
           defaultTriggerClassNames[variant],
-          sizeClasses[size]
+          sizeClasses[size],
+          classNames == null ? void 0 : classNames.trigger
         ),
         avatarProps: __spreadValues({
           size: size === "lg" ? "md" : "sm",
@@ -119,11 +120,12 @@ const ProfileDropdown = forwardRef(
         placement,
         onItemPress: onActionPress,
         classNames: __spreadValues({
-          base: "before:bg-default-200",
+          base: mergeTailwindClasses("before:bg-default-200", classNames == null ? void 0 : classNames.base),
           content: mergeTailwindClasses(
-            "p-0 border border-border bg-background shadow-lg rounded-lg min-w-[200px]",
+            "p-0 border border-border bg-background shadow-lg rounded-lg",
             classNames == null ? void 0 : classNames.content
-          )
+          ),
+          trigger: mergeTailwindClasses("w-full", classNames == null ? void 0 : classNames.trigger)
         }, classNames)
       }, dropdownProps)
     );
