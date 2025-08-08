@@ -97,7 +97,7 @@ export interface DataGridInfiniteScrollProps {
 }
 
 export interface DataGridPaginationProps {
-  paginationType?: 'traditional' | 'infinite';
+  paginationType?: 'paginated' | 'infinite';
   rowsPerPageOptions?: number[];
   defaultRowsPerPage?: number;
   showRowsPerPageSelector?: boolean;

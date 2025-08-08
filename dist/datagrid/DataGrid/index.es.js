@@ -31,7 +31,7 @@ var __objRest = (source, exclude) => {
 };
 import { jsx, jsxs } from "react/jsx-runtime";
 import { useDataGridState } from "../useDataGridState/index.es.js";
-import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Spinner, Select, SelectItem, Pagination } from "@heroui/react";
+import { Select, SelectItem, Pagination, Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Spinner } from "@heroui/react";
 import { IconCaretUpFilled, IconCaretDownFilled } from "@tabler/icons-react";
 import { DataGridSkeleton } from "../DataGridSkeleton/index.es.js";
 import { GRID_VARIANTS } from "../variants/index.es.js";
@@ -110,15 +110,15 @@ function DataGrid(_a) {
     rowsPerPageOptions,
     onPageChange: (page) => {
       onPageChange == null ? void 0 : onPageChange(page);
-      onFetchPage == null ? void 0 : onFetchPage(page, pagination.rowsPerPage);
+      void (onFetchPage == null ? void 0 : onFetchPage(page, pagination.rowsPerPage));
     },
     onRowsPerPageChange: (rowsPerPage) => {
       onRowsPerPageChange == null ? void 0 : onRowsPerPageChange(rowsPerPage);
-      onFetchPage == null ? void 0 : onFetchPage(1, rowsPerPage);
+      void (onFetchPage == null ? void 0 : onFetchPage(1, rowsPerPage));
     }
   });
   const displayedRows = useMemo(() => {
-    if (paginationType === "traditional") {
+    if (paginationType === "paginated") {
       if (onFetchPage) {
         return rows;
       }
@@ -145,262 +145,267 @@ function DataGrid(_a) {
       }
     );
   }
-  return /* @__PURE__ */ jsxs(
-    Table,
-    __spreadProps(__spreadValues({}, props), {
-      "aria-label": "data-grid",
-      "aria-labelledby": "data-grid",
-      className: mergeTailwindClasses(
-        "overflow-hidden rounded-xl border border-border/60 dark:bg-background/95 backdrop-blur-sm shadow-sm",
-        "p-4 transition-all duration-300 hover:shadow-md hover:border-border/70",
-        "!pr-1.5",
-        props.className
-      ),
-      shadow: (_a2 = props.shadow) != null ? _a2 : "none",
-      radius: (_b2 = props.radius) != null ? _b2 : "none",
-      baseRef: paginationType === "infinite" ? scrollContainerRef : void 0,
-      classNames: {
-        wrapper: mergeTailwindClasses(
-          "bg-white/80 backdrop-blur-sm border-0 p-0 dark:bg-background/90",
-          "rounded-lg transition-colors duration-300",
-          "!pr-1.5",
-          classNames == null ? void 0 : classNames.wrapper
-        ),
-        th: mergeTailwindClasses(
-          variantClasses.th,
-          props.showSelectionCheckboxes && "first:w-10 first:max-w-10",
-          classNames == null ? void 0 : classNames.th
-        ),
-        tr: mergeTailwindClasses(variantClasses.tr, classNames == null ? void 0 : classNames.tr),
-        td: mergeTailwindClasses(
-          variantClasses.td,
-          props.showSelectionCheckboxes && "first:w-10 first:max-w-10",
-          classNames == null ? void 0 : classNames.td
-        ),
-        base: mergeTailwindClasses(
-          "w-full relative overflow-auto",
-          "table-fixed backdrop-blur-sm rounded-lg",
-          "scrollbar-thin scrollbar-track-transparent scrollbar-thumb-border/20",
-          "hover:scrollbar-thumb-border/30 transition-all duration-300",
-          classNames == null ? void 0 : classNames.base
-        )
-      },
-      bottomContent: paginationType === "traditional" ? /* @__PURE__ */ jsxs("div", { className: "flex flex-col gap-4 py-4", children: [
-        showRowsPerPageSelector && /* @__PURE__ */ jsxs("div", { className: "flex items-center justify-between", children: [
-          /* @__PURE__ */ jsxs("div", { className: "flex items-center gap-2", children: [
-            /* @__PURE__ */ jsx("span", { className: "text-[0.8125rem] opacity-70", children: "Lignes par page:" }),
-            /* @__PURE__ */ jsx(
-              Select,
-              {
-                size: "sm",
-                selectedKeys: [pagination.rowsPerPage.toString()],
-                onSelectionChange: (keys) => {
-                  const selected = Array.from(keys)[0];
-                  pagination.setRowsPerPage(Number(selected));
-                },
-                className: "w-20",
-                "aria-label": "Sélectionner le nombre de lignes par page",
-                children: rowsPerPageOptions.map((option) => /* @__PURE__ */ jsx(SelectItem, { children: option.toString() }, option.toString()))
-              }
-            )
-          ] }),
-          /* @__PURE__ */ jsx("div", { className: "flex items-center gap-4", children: /* @__PURE__ */ jsxs("span", { className: "text-[0.8125rem] opacity-80", children: [
-            "Affichage ",
-            pagination.startIndex + 1,
-            "-",
-            pagination.endIndex,
-            " ",
-            "de ",
-            totalItems != null ? totalItems : rows.length,
-            " résultats"
-          ] }) })
-        ] }),
-        /* @__PURE__ */ jsx("div", { className: "flex justify-center", children: /* @__PURE__ */ jsx(
-          Pagination,
+  const paginationComponent = paginationType === "paginated" && /* @__PURE__ */ jsxs("div", { className: "flex flex-col gap-4 py-4", children: [
+    showRowsPerPageSelector && /* @__PURE__ */ jsxs("div", { className: "flex items-center justify-between", children: [
+      /* @__PURE__ */ jsxs("div", { className: "flex items-center gap-2", children: [
+        /* @__PURE__ */ jsx("span", { className: "text-[0.8125rem] opacity-70", children: "Lignes par page:" }),
+        /* @__PURE__ */ jsx(
+          Select,
           {
-            total: pagination.totalPages,
-            page: pagination.currentPage,
-            onChange: pagination.setPage,
-            showControls: true,
             size: "sm",
-            color: "primary",
-            classNames: {
-              wrapper: "gap-0 overflow-visible",
-              item: "w-8 h-8 text-small rounded-none bg-transparent",
-              cursor: "bg-primary-500 shadow-lg text-white font-semibold"
+            selectedKeys: [pagination.rowsPerPage.toString()],
+            onSelectionChange: (keys) => {
+              const selected = Array.from(keys)[0];
+              pagination.setRowsPerPage(Number(selected));
             },
-            "aria-label": "Navigation de pagination"
-          }
-        ) })
-      ] }) : hasMoreData ? /* @__PURE__ */ jsx("div", { className: "flex w-full justify-center py-2", children: /* @__PURE__ */ jsxs("div", { className: "flex items-center gap-3 rounded-full bg-content1-100 px-6 py-1 backdrop-blur-sm", children: [
-        /* @__PURE__ */ jsx(
-          Spinner,
-          {
-            ref: loaderRef,
-            size: "sm",
-            color: "primary",
-            className: mergeTailwindClasses(
-              "transition-all duration-500",
-              isFetching ? "opacity-100 scale-100" : "opacity-0 scale-75"
-            )
-          }
-        ),
-        /* @__PURE__ */ jsx(
-          "span",
-          {
-            className: mergeTailwindClasses(
-              "text-[0.8125rem] text-muted-foreground transition-all duration-500",
-              isFetching ? "opacity-100" : "opacity-70"
-            ),
-            children: isFetching ? "Chargement..." : "Scroll pour plus"
+            className: "w-20",
+            "aria-label": "Sélectionner le nombre de lignes par page",
+            children: rowsPerPageOptions.map((option) => /* @__PURE__ */ jsx(SelectItem, { children: option.toString() }, option.toString()))
           }
         )
-      ] }) }) : !((_c = childrenProps == null ? void 0 : childrenProps.tableBodyProps) == null ? void 0 : _c.emptyContent) ? /* @__PURE__ */ jsx("div", { className: "p-6 text-center", children: /* @__PURE__ */ jsx("span", { className: "text-[0.8125rem] font-medium", children: "Toutes les données ont été chargées" }) }) : null,
-      children: [
-        /* @__PURE__ */ jsx(
-          TableHeader,
-          __spreadProps(__spreadValues({
-            "aria-label": "table header",
-            "aria-labelledby": "table header",
-            columns: processedColumns,
-            className: variantClasses.thead
-          }, childrenProps == null ? void 0 : childrenProps.tableHeaderProps), {
-            children: (column) => {
-              var _a3;
-              return /* @__PURE__ */ jsx(
-                TableColumn,
-                __spreadProps(__spreadValues({
-                  "aria-labelledby": "table header",
-                  "aria-label": extractColumnHeader(column),
-                  className: mergeTailwindClasses(
-                    "relative",
-                    column.className,
-                    (_a3 = childrenProps == null ? void 0 : childrenProps.tableColumnProps) == null ? void 0 : _a3.className
-                  )
-                }, childrenProps == null ? void 0 : childrenProps.tableColumnProps), {
-                  children: /* @__PURE__ */ jsxs(
-                    "div",
-                    {
-                      className: mergeTailwindClasses(
-                        "flex min-w-0 w-max items-center gap-2 transition-all duration-300",
-                        "opacity-80 hover:opacity-100",
-                        column.sortable !== false ? "cursor-pointer px-2 py-1 -mx-2 -my-1" : "",
-                        sortConfig.field === column.key ? "opacity-100" : ""
-                      ),
-                      onClick: column.sortable !== false ? () => onSort(column) : void 0,
-                      role: column.sortable !== false ? "button" : void 0,
-                      "aria-label": column.sortable !== false ? formatSortHeader(column.header) : void 0,
-                      children: [
-                        /* @__PURE__ */ jsx(
-                          TruncatedText,
-                          {
-                            className: mergeTailwindClasses(
-                              "truncate text-[0.8125rem] font-semibold text-foreground transition-all duration-200",
-                              sortConfig.field === column.key ? "opacity-80 font-bold" : "group-hover:opacity-100"
-                            ),
-                            tooltipClassName: "border border-bordTr/50 px-3 py-2 shadow-xl backdrop-blur-md bg-white/95 dark:bg-background/95 rounded-lg",
-                            placement: "top",
-                            children: column.header
-                          }
+      ] }),
+      /* @__PURE__ */ jsx("div", { className: "flex items-center gap-4", children: /* @__PURE__ */ jsxs("span", { className: "text-[0.8125rem] opacity-70", children: [
+        "Affichage ",
+        pagination.startIndex + 1,
+        "-",
+        pagination.endIndex,
+        " de",
+        " ",
+        totalItems != null ? totalItems : rows.length,
+        " résultats"
+      ] }) })
+    ] }),
+    /* @__PURE__ */ jsx("div", { className: "flex justify-center", children: /* @__PURE__ */ jsx(
+      Pagination,
+      {
+        total: pagination.totalPages,
+        page: pagination.currentPage,
+        onChange: pagination.setPage,
+        showControls: true,
+        size: "sm",
+        color: "primary",
+        classNames: {
+          wrapper: "gap-0 overflow-visible",
+          item: "w-8 h-8 text-small rounded-none bg-transparent",
+          cursor: "bg-primary-500 shadow-lg text-white font-semibold"
+        },
+        "aria-label": "Navigation de pagination"
+      }
+    ) })
+  ] });
+  return /* @__PURE__ */ jsxs("div", { className: "flex flex-col gap-4", children: [
+    /* @__PURE__ */ jsxs(
+      Table,
+      __spreadProps(__spreadValues({}, props), {
+        "aria-label": "data-grid",
+        "aria-labelledby": "data-grid",
+        className: mergeTailwindClasses(
+          "overflow-hidden rounded-xl border border-border/60 dark:bg-background/95 backdrop-blur-sm shadow-sm",
+          "p-4 transition-all duration-300 hover:shadow-md hover:border-border/70",
+          "!pr-1.5",
+          props.className
+        ),
+        shadow: (_a2 = props.shadow) != null ? _a2 : "none",
+        radius: (_b2 = props.radius) != null ? _b2 : "none",
+        baseRef: paginationType === "infinite" ? scrollContainerRef : void 0,
+        classNames: {
+          wrapper: mergeTailwindClasses(
+            "bg-white/80 backdrop-blur-sm border-0 p-0 dark:bg-background/90",
+            "rounded-lg transition-colors duration-300",
+            "!pr-1.5",
+            classNames == null ? void 0 : classNames.wrapper
+          ),
+          th: mergeTailwindClasses(
+            variantClasses.th,
+            props.showSelectionCheckboxes && "first:w-10 first:max-w-10",
+            classNames == null ? void 0 : classNames.th
+          ),
+          tr: mergeTailwindClasses(variantClasses.tr, classNames == null ? void 0 : classNames.tr),
+          td: mergeTailwindClasses(
+            variantClasses.td,
+            props.showSelectionCheckboxes && "first:w-10 first:max-w-10",
+            classNames == null ? void 0 : classNames.td
+          ),
+          base: mergeTailwindClasses(
+            "w-full relative",
+            paginationType === "paginated" ? "overflow-hidden" : "overflow-auto",
+            "table-fixed backdrop-blur-sm rounded-lg",
+            paginationType === "infinite" ? "scrollbar-thin scrollbar-track-transparent scrollbar-thumb-border/20" : "",
+            paginationType === "infinite" ? "hover:scrollbar-thumb-border/30 transition-all duration-300" : "",
+            classNames == null ? void 0 : classNames.base
+          )
+        },
+        bottomContent: paginationType === "infinite" && hasMoreData ? /* @__PURE__ */ jsx("div", { className: "flex w-full justify-center py-2", children: /* @__PURE__ */ jsxs("div", { className: "flex items-center gap-3 rounded-full bg-content1-100 px-6 py-1 backdrop-blur-sm", children: [
+          /* @__PURE__ */ jsx(
+            Spinner,
+            {
+              ref: loaderRef,
+              size: "sm",
+              color: "primary",
+              className: mergeTailwindClasses(
+                "transition-all duration-500",
+                isFetching ? "opacity-100 scale-100" : "opacity-0 scale-75"
+              )
+            }
+          ),
+          /* @__PURE__ */ jsx(
+            "span",
+            {
+              className: mergeTailwindClasses(
+                "text-[0.8125rem] opacity-70 transition-all duration-500",
+                isFetching ? "opacity-100" : "opacity-70"
+              ),
+              children: isFetching ? "Chargement..." : "Scroll pour plus"
+            }
+          )
+        ] }) }) : paginationType === "infinite" && !((_c = childrenProps == null ? void 0 : childrenProps.tableBodyProps) == null ? void 0 : _c.emptyContent) ? /* @__PURE__ */ jsx("div", { className: "p-6 text-center", children: /* @__PURE__ */ jsx("span", { className: "text-[0.8125rem] font-medium", children: "Toutes les données ont été chargées" }) }) : null,
+        children: [
+          /* @__PURE__ */ jsx(
+            TableHeader,
+            __spreadProps(__spreadValues({
+              "aria-label": "table header",
+              "aria-labelledby": "table header",
+              columns: processedColumns,
+              className: variantClasses.thead
+            }, childrenProps == null ? void 0 : childrenProps.tableHeaderProps), {
+              children: (column) => {
+                var _a3;
+                return /* @__PURE__ */ jsx(
+                  TableColumn,
+                  __spreadProps(__spreadValues({
+                    "aria-labelledby": "table header",
+                    "aria-label": extractColumnHeader(column),
+                    className: mergeTailwindClasses(
+                      "relative",
+                      column.className,
+                      (_a3 = childrenProps == null ? void 0 : childrenProps.tableColumnProps) == null ? void 0 : _a3.className
+                    )
+                  }, childrenProps == null ? void 0 : childrenProps.tableColumnProps), {
+                    children: /* @__PURE__ */ jsxs(
+                      "div",
+                      {
+                        className: mergeTailwindClasses(
+                          "flex min-w-0 w-max items-center gap-2 transition-all duration-300",
+                          "opacity-80 hover:opacity-100",
+                          column.sortable !== false ? "cursor-pointer px-2 py-1 -mx-2 -my-1" : "",
+                          sortConfig.field === column.key ? "opacity-100" : ""
                         ),
-                        column.sortable !== false && /* @__PURE__ */ jsxs("div", { className: "flex size-5 flex-shrink-0 flex-col items-center justify-center", children: [
+                        onClick: column.sortable !== false ? () => onSort(column) : void 0,
+                        role: column.sortable !== false ? "button" : void 0,
+                        "aria-label": column.sortable !== false ? formatSortHeader(column.header) : void 0,
+                        children: [
                           /* @__PURE__ */ jsx(
-                            IconCaretUpFilled,
+                            TruncatedText,
                             {
-                              size: 14,
                               className: mergeTailwindClasses(
-                                "transition-all duration-300 -mb-0.5",
-                                sortConfig.field === column.key && sortConfig.direction === "asc" ? "opacity-100 drop-shadow-sm" : "opacity-40 hover:opacity-60"
-                              )
+                                "truncate text-[0.8125rem] font-semibold text-foreground transition-all duration-200",
+                                sortConfig.field === column.key ? "opacity-80 font-bold" : "group-hover:opacity-100"
+                              ),
+                              tooltipClassName: "border border-bordTr/50 px-3 py-2 shadow-xl backdrop-blur-md bg-white/95 dark:bg-background/95 rounded-lg",
+                              placement: "top",
+                              children: column.header
                             }
                           ),
-                          /* @__PURE__ */ jsx(
-                            IconCaretDownFilled,
+                          column.sortable !== false && /* @__PURE__ */ jsxs("div", { className: "flex size-5 flex-shrink-0 flex-col items-center justify-center", children: [
+                            /* @__PURE__ */ jsx(
+                              IconCaretUpFilled,
+                              {
+                                size: 14,
+                                className: mergeTailwindClasses(
+                                  "transition-all duration-300 -mb-0.5",
+                                  sortConfig.field === column.key && sortConfig.direction === "asc" ? "opacity-100 drop-shadow-sm" : "opacity-40 hover:opacity-60"
+                                )
+                              }
+                            ),
+                            /* @__PURE__ */ jsx(
+                              IconCaretDownFilled,
+                              {
+                                size: 14,
+                                className: mergeTailwindClasses(
+                                  "transition-all duration-300 -mt-0.5",
+                                  sortConfig.field === column.key && sortConfig.direction === "desc" ? "opacity-100 scale-110 drop-shadow-sm" : "opacity-40 hover:opacity-60"
+                                )
+                              }
+                            )
+                          ] })
+                        ]
+                      }
+                    )
+                  }),
+                  column.key
+                );
+              }
+            })
+          ),
+          /* @__PURE__ */ jsx(
+            TableBody,
+            __spreadProps(__spreadValues({
+              isLoading,
+              items: displayedRows,
+              "aria-label": "table body",
+              "aria-labelledby": "table body",
+              loadingContent: /* @__PURE__ */ jsx(
+                Spinner,
+                {
+                  ref: paginationType === "infinite" ? loaderRef : void 0,
+                  size: "sm",
+                  color: "primary"
+                }
+              )
+            }, childrenProps == null ? void 0 : childrenProps.tableBodyProps), {
+              children: (row) => {
+                var _a3;
+                return /* @__PURE__ */ jsx(
+                  TableRow,
+                  __spreadProps(__spreadValues({
+                    "aria-label": "row",
+                    "aria-labelledby": "row"
+                  }, childrenProps == null ? void 0 : childrenProps.tableRowProps), {
+                    className: mergeTailwindClasses(
+                      variantClasses.tr,
+                      (_a3 = childrenProps == null ? void 0 : childrenProps.tableRowProps) == null ? void 0 : _a3.className
+                    ),
+                    children: (columnKey) => {
+                      var _a4;
+                      const cellClasses = extractCellClassName(
+                        columnKey,
+                        row,
+                        columns
+                      );
+                      return /* @__PURE__ */ jsx(
+                        TableCell,
+                        __spreadProps(__spreadValues({}, childrenProps == null ? void 0 : childrenProps.tableCellProps), {
+                          className: mergeTailwindClasses(
+                            "relative min-w-0",
+                            (_a4 = childrenProps == null ? void 0 : childrenProps.tableCellProps) == null ? void 0 : _a4.className,
+                            cellClasses
+                          ),
+                          "aria-label": "cell",
+                          children: /* @__PURE__ */ jsx(
+                            TruncatedText,
                             {
-                              size: 14,
                               className: mergeTailwindClasses(
-                                "transition-all duration-300 -mt-0.5",
-                                sortConfig.field === column.key && sortConfig.direction === "desc" ? "opacity-100 scale-110 drop-shadow-sm" : "opacity-40 hover:opacity-60"
-                              )
+                                "w-full truncate text-[0.8125rem] text-foreground/90 transition-colors duration-200 group-hover:text-foreground"
+                              ),
+                              tooltipClassName: "border border-border/50 px-3 py-2 shadow-xl backdrop-blur-md bg-white/95 dark:bg-background/95 rounded-lg",
+                              placement: "top",
+                              children: extractCellValue(columnKey, row, columns)
                             }
                           )
-                        ] })
-                      ]
+                        })
+                      );
                     }
-                  )
-                }),
-                column.key
-              );
-            }
-          })
-        ),
-        /* @__PURE__ */ jsx(
-          TableBody,
-          __spreadProps(__spreadValues({
-            isLoading,
-            items: displayedRows,
-            "aria-label": "table body",
-            "aria-labelledby": "table body",
-            loadingContent: /* @__PURE__ */ jsx(
-              Spinner,
-              {
-                ref: paginationType === "infinite" ? loaderRef : void 0,
-                size: "sm",
-                color: "primary"
+                  }),
+                  row.id
+                );
               }
-            )
-          }, childrenProps == null ? void 0 : childrenProps.tableBodyProps), {
-            children: (row) => {
-              var _a3;
-              return /* @__PURE__ */ jsx(
-                TableRow,
-                __spreadProps(__spreadValues({
-                  "aria-label": "row",
-                  "aria-labelledby": "row"
-                }, childrenProps == null ? void 0 : childrenProps.tableRowProps), {
-                  className: mergeTailwindClasses(
-                    variantClasses.tr,
-                    (_a3 = childrenProps == null ? void 0 : childrenProps.tableRowProps) == null ? void 0 : _a3.className
-                  ),
-                  children: (columnKey) => {
-                    var _a4;
-                    const cellClasses = extractCellClassName(
-                      columnKey,
-                      row,
-                      columns
-                    );
-                    return /* @__PURE__ */ jsx(
-                      TableCell,
-                      __spreadProps(__spreadValues({}, childrenProps == null ? void 0 : childrenProps.tableCellProps), {
-                        className: mergeTailwindClasses(
-                          "relative min-w-0",
-                          (_a4 = childrenProps == null ? void 0 : childrenProps.tableCellProps) == null ? void 0 : _a4.className,
-                          cellClasses
-                        ),
-                        "aria-label": "cell",
-                        children: /* @__PURE__ */ jsx(
-                          TruncatedText,
-                          {
-                            className: mergeTailwindClasses(
-                              "w-full truncate text-[0.8125rem] text-foreground/90 transition-colors duration-200 group-hover:text-foreground"
-                            ),
-                            tooltipClassName: "border border-border/50 px-3 py-2 shadow-xl backdrop-blur-md bg-white/95 dark:bg-background/95 rounded-lg",
-                            placement: "top",
-                            children: extractCellValue(columnKey, row, columns)
-                          }
-                        )
-                      })
-                    );
-                  }
-                }),
-                row.id
-              );
-            }
-          })
-        )
-      ]
-    })
-  );
+            })
+          )
+        ]
+      })
+    ),
+    paginationComponent
+  ] });
 }
 export {
   DataGrid
