@@ -23,7 +23,7 @@ interface LanguageSelectProps
 const defaultClassNames = {
   base: "max-w-xs",
   trigger:
-    "border border-border bg-transparent data-[focus-visible=true]:outline-0 data-[focus=true]:border-outline data-[hover=true]:bg-transparent data-[hover=true]:border-outline min-h-unit-10",
+    "border border-border bg-transparent data-[focus-visible=true]:outline-0 data-[focus=true]:border-outline data-[hover=true]:bg-transparent data-[hover=true]:border-outline min-h-unit-11",
   listbox: "data-[focus=true]:outline-0",
   value: "flex items-center justify-center",
   popoverContent: "bg-white dark:bg-background",
@@ -98,9 +98,14 @@ export const LanguageSelect = forwardRef<
               aria-label={`Langue: ${language.label || language.code}`}
               className="text-small"
             >
-              <div className="flex w-full items-center justify-center">
-                {language.flag}
-              </div>
+              <Tooltip
+                trigger={
+                  <div className="flex w-full items-center justify-center">
+                    {language.flag}
+                  </div>
+                }
+                content={language?.label || language?.code}
+              />
             </SelectItem>
           )
         )}
