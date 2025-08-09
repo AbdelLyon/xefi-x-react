@@ -81,7 +81,7 @@ export const LanguageSelect = forwardRef<
           return (
             <Tooltip
               trigger={
-                <div className="flex size-4 w-full items-center justify-center">
+                <div className="flex w-full items-center justify-center text-lg">
                   {selectedLanguage?.flag}
                 </div>
               }

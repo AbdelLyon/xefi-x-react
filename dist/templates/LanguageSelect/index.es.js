@@ -94,7 +94,7 @@ const LanguageSelect = forwardRef(
           return /* @__PURE__ */ jsx(
             Tooltip,
             {
-              trigger: /* @__PURE__ */ jsx("div", { className: "flex size-4 w-full items-center justify-center", children: selectedLanguage == null ? void 0 : selectedLanguage.flag }),
+              trigger: /* @__PURE__ */ jsx("div", { className: "flex w-full items-center justify-center text-lg", children: selectedLanguage == null ? void 0 : selectedLanguage.flag }),
               content: (selectedLanguage == null ? void 0 : selectedLanguage.label) || (selectedLanguage == null ? void 0 : selectedLanguage.code)
             }
           );

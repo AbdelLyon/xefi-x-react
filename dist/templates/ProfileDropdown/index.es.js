@@ -38,9 +38,9 @@ const defaultTriggerClassNames = {
   flat: "bg-background transition-all duration-200 hover:bg-content1-100"
 };
 const sizeClasses = {
-  sm: "px-2 py-1",
-  md: "px-3 py-1.5",
-  lg: "px-4 py-2"
+  sm: "px-1.5 py-0.5",
+  md: "px-2 py-1",
+  lg: "px-2.5 py-1.5"
 };
 const ProfileDropdown = forwardRef(
   (_a, ref) => {
