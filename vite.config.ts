@@ -3,6 +3,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import dts from "vite-plugin-dts";
 import tailwindcss from "tailwindcss";
+import { bundleOptimizer } from "./vite-plugins/bundle-optimizer";
 
 import fs from 'fs-extra';
 
@@ -48,6 +49,7 @@ const modules = [
 export default defineConfig({
   plugins: [
     react(),
+    bundleOptimizer(),
     dts({
       exclude: ["src/tests/**/*", "**/*.test.*", "**/*.spec.*"],
       outDir: "dist",
@@ -158,7 +160,10 @@ export default defineConfig({
         "chart.js",
         "tailwind-merge",
         "@heroui/react",
+        "@heroui/system",
+        "@heroui/theme",
         /^react\/.*/,
+        /^@heroui\/.*/,
         /^node_modules\/.*/,
       ],
 
@@ -188,6 +193,8 @@ export default defineConfig({
         moduleSideEffects: false,
         propertyReadSideEffects: false,
         tryCatchDeoptimization: false,
+        preset: "smallest",
+        unknownGlobalSideEffects: false,
       },
     },
 
@@ -201,10 +208,21 @@ export default defineConfig({
           "console.debug",
           "console.warn",
         ],
-        passes: 2,
+        passes: 3,
+        pure_getters: true,
+        unsafe: true,
+        unsafe_comps: true,
+        unsafe_math: true,
+        unsafe_methods: true,
+        unsafe_proto: true,
+        unsafe_regexp: true,
+        unsafe_undefined: true,
       },
       mangle: {
         safari10: true,
+        properties: {
+          regex: /^_/,
+        },
       },
       format: {
         comments: false,

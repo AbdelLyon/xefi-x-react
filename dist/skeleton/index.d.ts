@@ -1,1 +1,2 @@
-export { Skeleton, type SkeletonProps, type SkeletonSlots, } from '@heroui/react';
+export { Skeleton } from './Skeleton';
+export type { SkeletonProps, SkeletonSlots } from '@heroui/react';

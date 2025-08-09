@@ -1,2 +1,3 @@
 import "@/index.css";
-export { Image } from "@heroui/react";
+export { Image } from "@/image/Image";
+export type { ImageProps } from "@heroui/react";

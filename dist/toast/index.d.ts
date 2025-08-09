@@ -1,1 +1,2 @@
-export { addToast } from '@heroui/react';
+export { addToast } from './Toast';
+export type { ToastProps } from './Toast';

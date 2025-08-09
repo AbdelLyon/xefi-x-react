@@ -1,5 +1,5 @@
 /* empty css                */
-import { Image } from "@heroui/react";
+import { Image } from "./Image/index.es.js";
 export {
   Image
 };

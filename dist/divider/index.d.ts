@@ -1,1 +1,2 @@
-export { Divider, type DividerProps, type DividerVariantProps, } from '@heroui/react';
+export { Divider } from './Divider';
+export type { DividerProps, DividerVariantProps } from '@heroui/react';

@@ -205,6 +205,7 @@
   },
   "scripts": {
     "build": "vite build",
+    "build:analyze": "vite build && npx vite-bundle-analyzer dist",
     "build:watch": "vite build --watch",
     "clean": "rimraf node_modules dist *.log && pnpm install",
     "dev": "vite build --watch",

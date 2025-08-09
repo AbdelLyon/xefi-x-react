@@ -1,4 +1,5 @@
-import { Skeleton } from "@heroui/react";
+/* empty css                */
+import { Skeleton } from "./Skeleton/index.es.js";
 export {
   Skeleton
 };
