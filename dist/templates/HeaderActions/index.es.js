@@ -67,7 +67,7 @@ const HeaderActions = forwardRef(
           "aria-label": languageSelectProps["aria-label"],
           classNames: {
             base: mergeTailwindClasses(
-              "flex-shrink-0 min-w-[100px]",
+              "flex-shrink-0 ",
               languageSelectProps.className
             )
           }
