@@ -3,6 +3,7 @@ import { forwardRef } from "react"
 import type { SelectProps as UISelectProps, Selection } from "@heroui/react"
 import { Select as UISelect, SelectItem } from "@heroui/react"
 import { mergeTailwindClasses } from "@/utils"
+import { Tooltip } from "@/tooltip"
 
 export interface Language {
   code: string
@@ -78,9 +79,14 @@ export const LanguageSelect = forwardRef<
             (lang) => lang.code === selectedItem.key
           )
           return (
-            <div className="flex w-full items-center justify-center">
-              {selectedLanguage?.flag}
-            </div>
+            <Tooltip
+              trigger={
+                <div className="flex w-full items-center justify-center">
+                  {selectedLanguage?.flag}
+                </div>
+              }
+              content={selectedLanguage?.label || selectedLanguage?.code}
+            />
           )
         }}
         {...props}

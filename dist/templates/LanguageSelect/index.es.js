@@ -32,6 +32,7 @@ var __objRest = (source, exclude) => {
 import { jsx } from "react/jsx-runtime";
 import { forwardRef } from "react";
 import { Select, SelectItem } from "@heroui/react";
+import { Tooltip } from "../../tooltip/Tooltip/index.es.js";
 import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
 const defaultClassNames = {
   base: "max-w-xs",
@@ -90,7 +91,13 @@ const LanguageSelect = forwardRef(
           const selectedLanguage = languages.find(
             (lang) => lang.code === selectedItem.key
           );
-          return /* @__PURE__ */ jsx("div", { className: "flex w-full items-center justify-center", children: selectedLanguage == null ? void 0 : selectedLanguage.flag });
+          return /* @__PURE__ */ jsx(
+            Tooltip,
+            {
+              trigger: /* @__PURE__ */ jsx("div", { className: "flex w-full items-center justify-center", children: selectedLanguage == null ? void 0 : selectedLanguage.flag }),
+              content: (selectedLanguage == null ? void 0 : selectedLanguage.label) || (selectedLanguage == null ? void 0 : selectedLanguage.code)
+            }
+          );
         }
       }, props), {
         children: languages.map(
