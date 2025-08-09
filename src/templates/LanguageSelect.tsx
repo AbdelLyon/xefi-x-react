@@ -23,7 +23,7 @@ interface LanguageSelectProps
 const defaultClassNames = {
   base: "max-w-xs",
   trigger:
-    "border border-border bg-transparent data-[focus-visible=true]:outline-0 data-[focus=true]:border-outline data-[hover=true]:bg-transparent data-[hover=true]:border-outline min-h-unit-11",
+    "border border-border bg-transparent data-[focus-visible=true]:outline-0 data-[focus=true]:border-outline data-[hover=true]:bg-transparent data-[hover=true]:border-outline min-h-unit-10",
   listbox: "data-[focus=true]:outline-0",
   value: "flex items-center justify-center",
   popoverContent: "bg-white dark:bg-background",
@@ -81,7 +81,7 @@ export const LanguageSelect = forwardRef<
           return (
             <Tooltip
               trigger={
-                <div className="flex w-full items-center justify-center">
+                <div className="flex size-4 w-full items-center justify-center">
                   {selectedLanguage?.flag}
                 </div>
               }
