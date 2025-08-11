@@ -1,2 +1,2 @@
 import "@/index.css";
-export { Typography, type TypographyProps } from "@/typography/Typography";
+export { Text, type TextProps } from "./Text";

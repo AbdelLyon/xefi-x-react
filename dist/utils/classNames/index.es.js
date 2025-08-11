@@ -14,7 +14,7 @@ var __spreadValues = (a, b) => {
     }
   return a;
 };
-import { mergeTailwindClasses } from "../utils/index.es.js";
+import { mergeTailwindClasses } from "../string/index.es.js";
 const mergeComponentClassNames = (defaultClasses, customClasses) => {
   if (!customClasses) {
     return defaultClasses;

@@ -36,7 +36,7 @@ import { useState, useRef, useEffect, useMemo, useCallback } from "react";
 import { useDebouncedValue } from "../../hooks/useDebouncedValue/index.es.js";
 import { useInfiniteScroll } from "../../hooks/useInfiniteScroll/index.es.js";
 import { Tooltip } from "../../tooltip/Tooltip/index.es.js";
-import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
+import { mergeTailwindClasses } from "../../utils/string/index.es.js";
 function InfiniteAutocomplete(_a) {
   var _b = _a, {
     items,

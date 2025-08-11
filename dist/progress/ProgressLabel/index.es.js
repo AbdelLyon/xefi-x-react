@@ -1,7 +1,7 @@
 import { jsxs, jsx } from "react/jsx-runtime";
 import { useMemo } from "react";
 import { formatProgressValue } from "../progressUtils/index.es.js";
-import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
+import { mergeTailwindClasses } from "../../utils/string/index.es.js";
 const ProgressLabel = ({
   label,
   value,

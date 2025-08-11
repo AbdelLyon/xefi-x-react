@@ -2,7 +2,7 @@ import type { JSX } from "react";
 import { forwardRef } from "react";
 import type { InputOtpProps } from "@heroui/react";
 import { InputOtp as UIInputOtp } from "@heroui/react";
-import { mergeTailwindClasses } from "@/utils/utils";
+import { mergeTailwindClasses } from "@/utils";
 
 type InputOtpWrapperProps = {
   length?: number;

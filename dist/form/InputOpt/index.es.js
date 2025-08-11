@@ -29,7 +29,7 @@ var __objRest = (source, exclude) => {
 import { jsxs, jsx } from "react/jsx-runtime";
 import { forwardRef } from "react";
 import { InputOtp as InputOtp$1 } from "@heroui/react";
-import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
+import { mergeTailwindClasses } from "../../utils/string/index.es.js";
 const InputOtp = forwardRef(
   (_a, ref) => {
     var _b = _a, { length = 6, label, labelClasses, containerClasses } = _b, props = __objRest(_b, ["length", "label", "labelClasses", "containerClasses"]);

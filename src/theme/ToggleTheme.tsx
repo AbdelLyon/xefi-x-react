@@ -1,6 +1,6 @@
 import { IconMoonFilled, IconSunFilled } from "@tabler/icons-react";
 
-import { mergeTailwindClasses } from "@/utils/utils";
+import { mergeTailwindClasses } from "@/utils";
 import { useTheme } from "@/hooks/useTheme";
 import type { JSX } from "react";
 

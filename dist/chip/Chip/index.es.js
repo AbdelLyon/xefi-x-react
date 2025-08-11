@@ -53,7 +53,7 @@ import { jsx } from "react/jsx-runtime";
 import { Chip as Chip$1 } from "@heroui/react";
 import { forwardRef, useState, useCallback } from "react";
 import { validateChipConfig, chipClassConfig, getChipSizeClasses, getChipVariantClasses, createChipProps, getChipColorClasses, generateChipKey } from "../chipConfig/index.es.js";
-import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
+import { mergeTailwindClasses } from "../../utils/string/index.es.js";
 const Chip = forwardRef(
   (_a, ref) => {
     var _b = _a, {

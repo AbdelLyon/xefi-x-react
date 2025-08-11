@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { clampNumber } from "@/utils/utils";
+import { clampNumber } from "@/utils";
 
 /**
  * Options for useCounter hook

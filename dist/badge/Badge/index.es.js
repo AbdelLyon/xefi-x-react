@@ -32,7 +32,7 @@ var __objRest = (source, exclude) => {
 import { jsx, Fragment, jsxs } from "react/jsx-runtime";
 import { forwardRef } from "react";
 import { Chip } from "@heroui/react";
-import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
+import { mergeTailwindClasses } from "../../utils/string/index.es.js";
 const Badge = forwardRef(
   (_a, ref) => {
     var _b = _a, {

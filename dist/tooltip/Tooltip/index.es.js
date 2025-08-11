@@ -31,7 +31,7 @@ var __objRest = (source, exclude) => {
 };
 import { jsx } from "react/jsx-runtime";
 import { Tooltip as Tooltip$1 } from "@heroui/react";
-import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
+import { mergeTailwindClasses } from "../../utils/string/index.es.js";
 const Tooltip = (_a) => {
   var _b = _a, {
     trigger,

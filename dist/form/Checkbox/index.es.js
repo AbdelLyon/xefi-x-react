@@ -55,7 +55,7 @@ import { CheckboxGroup as CheckboxGroup$1, Checkbox } from "@heroui/react";
 import { Checkbox as Checkbox2 } from "@heroui/react";
 import { validateCheckboxGroup } from "../checkboxConfig/index.es.js";
 import { validateComponentProps } from "../../utils/typeUtils/index.es.js";
-import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
+import { mergeTailwindClasses } from "../../utils/string/index.es.js";
 const CheckboxGroup = forwardRef(
   (_a, ref) => {
     var _b = _a, {

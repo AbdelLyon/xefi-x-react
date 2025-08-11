@@ -33,7 +33,7 @@ import { jsx } from "react/jsx-runtime";
 import { Select, SelectItem } from "@heroui/react";
 import { useState, useMemo } from "react";
 import { useInfiniteScroll } from "../../hooks/useInfiniteScroll/index.es.js";
-import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
+import { mergeTailwindClasses } from "../../utils/string/index.es.js";
 const defaultClassNames = {
   base: "max-w-xs",
   trigger: "h-10 bg-white dark:bg-background data-[focus-visible=true]:outline-0 data-[focus=true]:border-outline data-[hover=true]:bg-transparant data-[hover=true]:border-outline",

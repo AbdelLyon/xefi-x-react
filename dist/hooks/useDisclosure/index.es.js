@@ -19,8 +19,8 @@ var __spreadValues = (a, b) => {
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { useId } from "react";
 import { useCallbackRef } from "../useCallbackRef/index.es.js";
-import { chainCallbacks } from "../../utils/utils/index.es.js";
 import { useControlledState } from "../useControlledState/index.es.js";
+import { chainCallbacks } from "../../utils/object/index.es.js";
 const useDisclosure = (props = {}) => {
   const {
     id: idProp,

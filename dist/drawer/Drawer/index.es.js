@@ -53,7 +53,7 @@ import { jsxs, Fragment, jsx } from "react/jsx-runtime";
 import { Drawer as Drawer$1, DrawerContent, DrawerHeader, DrawerBody, DrawerFooter } from "@heroui/react";
 import { useDisclosure } from "../../hooks/useDisclosure/index.es.js";
 import { Button } from "../../button/Button/index.es.js";
-import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
+import { mergeTailwindClasses } from "../../utils/string/index.es.js";
 const isValidButtonLabel = (label) => typeof label === "string" && label.length > 0;
 const Drawer = (_a) => {
   var _b = _a, {

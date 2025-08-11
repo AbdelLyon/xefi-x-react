@@ -1,5 +1,5 @@
 /* empty css                */
-import { Typography } from "./Typography/index.es.js";
+import { Text } from "./Text/index.es.js";
 export {
-  Typography
+  Text
 };

@@ -33,7 +33,7 @@ import { jsx, jsxs } from "react/jsx-runtime";
 import { forwardRef } from "react";
 import { Avatar as Avatar$1, useAvatarGroup, AvatarGroupProvider, User } from "@heroui/react";
 import { avatarStatusClasses } from "../avatarConfig/index.es.js";
-import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
+import { mergeTailwindClasses } from "../../utils/string/index.es.js";
 const Avatar = forwardRef(
   (props, ref) => {
     return /* @__PURE__ */ jsx(Avatar$1, __spreadValues({ ref }, props));

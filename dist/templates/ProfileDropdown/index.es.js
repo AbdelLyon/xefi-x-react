@@ -30,7 +30,7 @@ import { jsx } from "react/jsx-runtime";
 import { forwardRef } from "react";
 import { UserAvatar } from "../../avatar/Avatar/index.es.js";
 import { Dropdown } from "../../dropdown/Dropdown/index.es.js";
-import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
+import { mergeTailwindClasses } from "../../utils/string/index.es.js";
 const defaultTriggerClassNames = {
   default: "bg-background transition-all duration-200 hover:bg-content1-100",
   bordered: "bg-background border border-border transition-all duration-200 hover:bg-content1-100",

@@ -1,5 +1,5 @@
 import { useRef, useCallback, useLayoutEffect } from "react";
-import { createDebouncedFunction } from "../../utils/utils/index.es.js";
+import { createDebouncedFunction } from "../../utils/object/index.es.js";
 const useInfiniteScroll = (props = {}) => {
   const {
     hasMore = true,

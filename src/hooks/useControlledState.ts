@@ -55,7 +55,7 @@ export function useControlledState<T, C = T>(
   const setValue: SetValueFunction<T> = (newValue, ...args): void => {
     if (typeof newValue === "function") {
       console.warn(
-        "We can not support a function callback. See Github Issues for details https://github.com/adobe/react-spectrum/issues/2320",
+        "We can not support a function callback. See Github Issues for details",
       );
 
       const updateFunction = (oldValue: T): T => {

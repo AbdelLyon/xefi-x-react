@@ -27,7 +27,7 @@ import {
   createDebouncedFunction,
   dataAttr,
   generateUniqueId,
-} from "@/utils/utils";
+} from "@/utils";
 
 describe("Utility Functions", (): void => {
   describe("String Utilities", (): void => {

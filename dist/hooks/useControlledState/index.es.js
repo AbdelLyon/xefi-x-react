@@ -22,7 +22,7 @@ function useControlledState(value, defaultValue, onChange) {
   const setValue = (newValue, ...args) => {
     if (typeof newValue === "function") {
       console.warn(
-        "We can not support a function callback. See Github Issues for details https://github.com/adobe/react-spectrum/issues/2320"
+        "We can not support a function callback. See Github Issues for details"
       );
       const updateFunction = (oldValue) => {
         const valueUpdateFn = newValue;

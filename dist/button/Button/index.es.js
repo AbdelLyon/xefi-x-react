@@ -32,7 +32,7 @@ var __objRest = (source, exclude) => {
 import { jsx } from "react/jsx-runtime";
 import { Button as Button$1, Spinner } from "@heroui/react";
 import { forwardRef } from "react";
-import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
+import { mergeTailwindClasses } from "../../utils/string/index.es.js";
 const Button = forwardRef(
   (_a, ref) => {
     var _b = _a, {

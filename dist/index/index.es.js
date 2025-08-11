@@ -9,9 +9,6 @@ import { Badge } from "../badge/Badge/index.es.js";
 import { Button } from "../button/Button/index.es.js";
 import { Buttons } from "../buttons/Buttons/index.es.js";
 import { Card } from "../card/Card/index.es.js";
-import { Chart } from "../chart/Chart/index.es.js";
-import { defaultChartClasses, defaultChartTheme, registerChartComponents } from "../chart/chartConfig/index.es.js";
-import { createDefaultChartOptions, mergeChartOptions } from "../chart/chartOptions/index.es.js";
 import { Chip } from "../chip/Chip/index.es.js";
 import { DatePicker, DateRangePicker } from "../datepicker/DatePicker/index.es.js";
 import { Divider } from "../divider/Divider/index.es.js";
@@ -31,7 +28,7 @@ import { Spinner } from "../spiner/Spiner/index.es.js";
 import { Tabs } from "../tabs/Tabs/index.es.js";
 import { defaultTabsClassNames, mergeTabsClassNames } from "../tabs/tabsUtils/index.es.js";
 import { Tooltip } from "../tooltip/Tooltip/index.es.js";
-import { Typography } from "../typography/Typography/index.es.js";
+import { Text } from "../typography/Text/index.es.js";
 import { RadioGroup } from "../form/Radio/index.es.js";
 import { CheckboxGroup } from "../form/Checkbox/index.es.js";
 import { InputOtp } from "../form/InputOpt/index.es.js";
@@ -43,14 +40,16 @@ import { InfiniteSelect } from "../form/InfiniteSelect/index.es.js";
 import { InfiniteAutocomplete } from "../form/InfiniteAutocomplete/index.es.js";
 import { Layout } from "../layout/Layout/index.es.js";
 import { useLayoutConfig } from "../layout/useLayoutConfig/index.es.js";
-import { TruncatedText } from "../utils/TruncatedText/index.es.js";
 import { isFunction, isNonEmptyString, isPositiveInteger, isValidNumber, isValidReactNode } from "../utils/typeUtils/index.es.js";
-import { arrayToObject, capitalizeString, chainCallbacks, clampNumber, cleanObject, convertToLowerCase, convertToUpperCase, createDebouncedFunction, dataAttr, filterUnique, findIntersection, generateUniqueId, getNestedValue, hasPrefix, hasSuffix, isArray, isEmpty, isEmptyArray, isEmptyObject, isNumeric, isObject, joinStringsWithSpace, mergeTailwindClasses, reverseString, serializeObject, trimWhitespace } from "../utils/utils/index.es.js";
+import { TruncatedText } from "../utils/TruncatedText/index.es.js";
+import { capitalizeString, convertToLowerCase, convertToUpperCase, hasPrefix, hasSuffix, joinStringsWithSpace, mergeTailwindClasses, reverseString, trimWhitespace } from "../utils/string/index.es.js";
+import { clampNumber, isNumeric } from "../utils/number/index.es.js";
+import { isArray, isObject } from "../utils/typeChecking/index.es.js";
+import { isEmpty, isEmptyArray, isEmptyObject } from "../utils/stateChecking/index.es.js";
+import { arrayToObject, filterUnique, findIntersection } from "../utils/array/index.es.js";
+import { chainCallbacks, cleanObject, createDebouncedFunction, getNestedValue, serializeObject } from "../utils/object/index.es.js";
+import { dataAttr, formatArrayWithZeroLast, generateUniqueId } from "../utils/ui/index.es.js";
 import { colorClasses, conditionalClasses, createClassNamesConfig, mergeComponentClassNames, sizeClasses, variantClasses } from "../utils/classNames/index.es.js";
-import { ComponentStyleManager, checkComponentBestPractices, createPropsMerger, validateClassMerging, validateTailwindClasses } from "../utils/componentHelpers/index.es.js";
-import { createDebouncedValidator, isEmail, isPhone, isStrongPassword, isUrl, validate, validateSchema, validationRules } from "../utils/validation/index.es.js";
-import { formatCreditCard, formatCurrency, formatDate, formatDuration, formatFileSize, formatNumber, formatPercentage, formatPhoneNumber, formatRelativeTime, maskString, toCamelCase, toKebabCase, toSnakeCase, toTitleCase, truncateText } from "../utils/format/index.es.js";
-import { chunk, debounceAsync, delay, makeCancelable, memoizeAsync, parallel, raceAll, retry, waitFor, withTimeout } from "../utils/async/index.es.js";
 import { useTheme } from "../hooks/useTheme/index.es.js";
 import { useMediaQuery } from "../hooks/useMediaQuery/index.es.js";
 import { useResponsive } from "../hooks/useResponsive/index.es.js";
@@ -95,12 +94,10 @@ export {
   Button,
   Buttons,
   Card,
-  Chart,
   Checkbox,
   CheckboxGroup,
   Chip,
   CircularProgress,
-  ComponentStyleManager,
   DataGrid,
   DatePicker,
   DateRangePicker,
@@ -127,6 +124,7 @@ export {
   Spinner,
   Switch,
   Tabs,
+  Text,
   Textarea,
   ThemeProvider,
   Toast,
@@ -134,7 +132,6 @@ export {
   ToggleTheme,
   Tooltip,
   TruncatedText,
-  Typography,
   UIProvider,
   UserAvatar,
   addToast,
@@ -142,8 +139,6 @@ export {
   calculatePercentage,
   capitalizeString,
   chainCallbacks,
-  checkComponentBestPractices,
-  chunk,
   clampNumber,
   cleanObject,
   colorClasses,
@@ -152,29 +147,14 @@ export {
   convertToUpperCase,
   createClassNamesConfig,
   createDebouncedFunction,
-  createDebouncedValidator,
-  createDefaultChartOptions,
-  createPropsMerger,
   darkTheme,
   dataAttr,
-  debounceAsync,
-  defaultChartClasses,
-  defaultChartTheme,
   defaultProgressFormatOptions,
   defaultTabsClassNames,
-  delay,
   filterUnique,
   findIntersection,
-  formatCreditCard,
-  formatCurrency,
-  formatDate,
-  formatDuration,
-  formatFileSize,
-  formatNumber,
-  formatPercentage,
-  formatPhoneNumber,
+  formatArrayWithZeroLast,
   formatProgressValue,
-  formatRelativeTime,
   generateUniqueId,
   getNestedValue,
   getProgressStatus,
@@ -182,7 +162,6 @@ export {
   hasSuffix,
   heroui,
   isArray,
-  isEmail,
   isEmpty,
   isEmptyArray,
   isEmptyObject,
@@ -190,35 +169,19 @@ export {
   isNonEmptyString,
   isNumeric,
   isObject,
-  isPhone,
   isPositiveInteger,
-  isStrongPassword,
-  isUrl,
   isValidNumber,
   isValidReactNode,
   joinStringsWithSpace,
   lightTheme,
-  makeCancelable,
-  maskString,
-  memoizeAsync,
-  mergeChartOptions,
   mergeComponentClassNames,
   mergeTabsClassNames,
   mergeTailwindClasses,
-  parallel,
-  raceAll,
-  registerChartComponents,
-  retry,
   reverseString,
   serializeObject,
   sizeClasses,
   skeleton,
-  toCamelCase,
-  toKebabCase,
-  toSnakeCase,
-  toTitleCase,
   trimWhitespace,
-  truncateText,
   useAsyncState,
   useBooleanToggle,
   useCallbackRef,
@@ -250,13 +213,6 @@ export {
   useTimeout,
   useToggle,
   useWindowEvent,
-  validate,
-  validateClassMerging,
   validateProgressValue,
-  validateSchema,
-  validateTailwindClasses,
-  validationRules,
-  variantClasses,
-  waitFor,
-  withTimeout
+  variantClasses
 };

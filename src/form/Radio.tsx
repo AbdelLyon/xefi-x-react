@@ -2,7 +2,7 @@ import type { JSX } from "react";
 import { forwardRef } from "react";
 import type { RadioGroupProps, RadioProps } from "@heroui/react";
 import { RadioGroup as RadioGroupRoot, Radio } from "@heroui/react";
-import { mergeTailwindClasses } from "@/utils/utils";
+import { mergeTailwindClasses } from "@/utils";
 
 type RadioItemProps = {
   label?: React.ReactNode;

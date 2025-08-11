@@ -6,7 +6,6 @@ export * from "./src/badge";
 export * from "./src/button";
 export * from "./src/buttons";
 export * from "./src/card";
-export * from "./src/chart";
 export * from "./src/chip";
 export * from "./src/datepicker";
 export * from "./src/divider";

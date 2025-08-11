@@ -2,7 +2,7 @@ import { jsxs, jsx } from "react/jsx-runtime";
 import { Link } from "@heroui/react";
 import { useState, useEffect } from "react";
 import { Tooltip } from "../../tooltip/Tooltip/index.es.js";
-import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
+import { mergeTailwindClasses } from "../../utils/string/index.es.js";
 const DelayedText = ({
   text,
   shouldShow,

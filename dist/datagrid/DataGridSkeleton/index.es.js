@@ -20,7 +20,7 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { jsxs, jsx } from "react/jsx-runtime";
 import { GRID_VARIANTS } from "../variants/index.es.js";
 import { Table, TableHeader, TableColumn, Skeleton, TableBody, TableRow, TableCell } from "@heroui/react";
-import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
+import { mergeTailwindClasses } from "../../utils/string/index.es.js";
 const DataGridSkeleton = ({
   rows = 10,
   checkboxSelection = true,

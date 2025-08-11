@@ -32,7 +32,7 @@ var __objRest = (source, exclude) => {
 import { jsx } from "react/jsx-runtime";
 import { forwardRef } from "react";
 import { Select as Select$1, SelectItem } from "@heroui/react";
-import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
+import { mergeTailwindClasses } from "../../utils/string/index.es.js";
 const defaultClassNames = {
   base: "max-w-xs",
   trigger: "border border-border bg-transparant data-[focus-visible=true]:outline-0 data-[focus=true]:border-outline data-[hover=true]:bg-transparant data-[hover=true]:border-outline",

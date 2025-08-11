@@ -15,7 +15,7 @@ var __spreadValues = (a, b) => {
   return a;
 };
 import { useState, useCallback } from "react";
-import { clampNumber } from "../../utils/utils/index.es.js";
+import { clampNumber } from "../../utils/number/index.es.js";
 const DEFAULT_OPTIONS = {
   min: -Infinity,
   max: Infinity,

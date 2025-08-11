@@ -44,7 +44,6 @@
     "accessibility",
     "responsive",
     "hooks",
-    "charts",
     "forms"
   ],
   "license": "MIT",
@@ -78,10 +77,6 @@
     "./card": {
       "types": "./dist/card/index.d.ts",
       "import": "./dist/card/index.es.js"
-    },
-    "./chart": {
-      "types": "./dist/chart/index.d.ts",
-      "import": "./dist/chart/index.es.js"
     },
     "./chip": {
       "types": "./dist/chip/index.d.ts",
@@ -240,9 +235,7 @@
     "react-dom": "^18.0.0"
   },
   "optionalDependencies": {
-    "@internationalized/date": "^3.8.2",
-    "chart.js": "^4.5.0",
-    "react-chartjs-2": "^5.3.0"
+    "@internationalized/date": "^3.8.2"
   },
   "devDependencies": {
     "@emotion/react": "^11.14.0",

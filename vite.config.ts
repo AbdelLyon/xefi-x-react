@@ -3,7 +3,6 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import dts from "vite-plugin-dts";
 import tailwindcss from "tailwindcss";
-import { bundleOptimizer } from "./vite-plugins/bundle-optimizer";
 
 import fs from 'fs-extra';
 
@@ -38,7 +37,6 @@ const modules = [
   "tabs",
   "pagination",
   "typography",
-  "chart",
   "skeleton",
   "toast",
   "divider",
@@ -49,7 +47,6 @@ const modules = [
 export default defineConfig({
   plugins: [
     react(),
-    bundleOptimizer(),
     dts({
       exclude: ["src/tests/**/*", "**/*.test.*", "**/*.spec.*"],
       outDir: "dist",
@@ -156,8 +153,6 @@ export default defineConfig({
         "react-intersection-observer",
         "clsx",
         "next-themes",
-        "react-chartjs-2",
-        "chart.js",
         "tailwind-merge",
         "@heroui/react",
         "@heroui/system",
@@ -176,8 +171,6 @@ export default defineConfig({
           "react-dom": "ReactDOM",
           "framer-motion": "FramerMotion",
           "@tabler/icons-react": "TablerIcons",
-          "chart.js": "Chart",
-          "react-chartjs-2": "ReactChartJS",
           "@heroui/react": "HerouiReact",
           "react-intersection-observer": "ReactIntersectionObserver"
         },

@@ -33,7 +33,7 @@ import { jsx } from "react/jsx-runtime";
 import { forwardRef } from "react";
 import { Select, SelectItem } from "@heroui/react";
 import { Tooltip } from "../../tooltip/Tooltip/index.es.js";
-import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
+import { mergeTailwindClasses } from "../../utils/string/index.es.js";
 const defaultClassNames = {
   base: "max-w-xs",
   trigger: "border border-border bg-transparent data-[focus-visible=true]:outline-0 data-[focus=true]:border-outline data-[hover=true]:bg-transparent data-[hover=true]:border-outline min-h-unit-10",

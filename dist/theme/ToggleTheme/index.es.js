@@ -1,7 +1,7 @@
 import { jsxs, jsx } from "react/jsx-runtime";
 import { IconSunFilled, IconMoonFilled } from "@tabler/icons-react";
-import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
 import { useTheme } from "../../hooks/useTheme/index.es.js";
+import { mergeTailwindClasses } from "../../utils/string/index.es.js";
 const ToggleTheme = ({
   className,
   size = 22

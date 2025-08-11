@@ -31,7 +31,7 @@ var __objRest = (source, exclude) => {
 };
 import { jsxs, jsx } from "react/jsx-runtime";
 import { Dropdown as Dropdown$1, DropdownTrigger, DropdownMenu, DropdownSection, DropdownItem } from "@heroui/react";
-import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
+import { mergeTailwindClasses } from "../../utils/string/index.es.js";
 const Dropdown = (_a) => {
   var _b = _a, {
     trigger,

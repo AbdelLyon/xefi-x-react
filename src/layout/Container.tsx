@@ -1,6 +1,6 @@
 import type { ReactNode, ForwardedRef, JSX } from "react";
 import { forwardRef } from "react";
-import { mergeTailwindClasses } from "@/utils/utils";
+import { mergeTailwindClasses } from "@/utils";
 
 interface ContainerProps {
   children: ReactNode;

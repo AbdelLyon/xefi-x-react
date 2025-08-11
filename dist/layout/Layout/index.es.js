@@ -21,7 +21,7 @@ import { jsxs, jsx } from "react/jsx-runtime";
 import { Navbar } from "../../navbar/Navbar/index.es.js";
 import { Sidebar } from "../../sidebar/Sidebar/index.es.js";
 import { useSidebarLayout } from "../../sidebar/useSidebarLayout/index.es.js";
-import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
+import { mergeTailwindClasses } from "../../utils/string/index.es.js";
 const Layout = ({
   children,
   navbar,

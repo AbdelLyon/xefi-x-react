@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 import { LanguageSelect } from "../LanguageSelect/index.es.js";
 import { ProfileDropdown } from "../ProfileDropdown/index.es.js";
 import { ToggleTheme } from "../../theme/ToggleTheme/index.es.js";
-import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
+import { mergeTailwindClasses } from "../../utils/string/index.es.js";
 const gapClasses = {
   "0": "gap-0",
   "1": "gap-1",

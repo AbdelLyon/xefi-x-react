@@ -1,6 +1,6 @@
 import { useId } from "react";
 import { useCallbackRef } from "./useCallbackRef";
-import { chainCallbacks } from "@/utils/utils";
+import { chainCallbacks } from "@/utils";
 import { useControlledState } from "./useControlledState";
 
 export interface UseDisclosureProps {

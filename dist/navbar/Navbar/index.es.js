@@ -33,7 +33,7 @@ import { jsxs, jsx } from "react/jsx-runtime";
 import { forwardRef } from "react";
 import { Navbar as Navbar$1, NavbarContent, NavbarMenuToggle, NavbarItem, Link, NavbarMenu, NavbarMenuItem } from "@heroui/react";
 import { useResponsive } from "../../hooks/useResponsive/index.es.js";
-import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
+import { mergeTailwindClasses } from "../../utils/string/index.es.js";
 const Navbar = forwardRef(
   (_a, ref) => {
     var _b = _a, {

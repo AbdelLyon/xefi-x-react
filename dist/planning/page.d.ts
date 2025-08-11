@@ -1,0 +1,2 @@
+declare const PlanningPage: () => import("react/jsx-runtime").JSX.Element;
+export default PlanningPage;

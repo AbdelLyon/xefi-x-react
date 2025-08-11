@@ -9,6 +9,7 @@
   },
   "include": [
     "vite.config.ts",
-    "tailwind.export.ts"
+    "tailwind.export.ts",
+    "vite-plugins/**/*"
   ]
 }

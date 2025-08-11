@@ -1,4 +1,4 @@
-import { mergeTailwindClasses } from "./utils"
+import { mergeTailwindClasses } from "./string"
 
 /**
  * Type for component class names configuration

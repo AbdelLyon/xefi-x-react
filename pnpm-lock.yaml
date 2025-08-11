@@ -35,16 +35,6 @@ importers:
       tailwind-merge:
         specifier: ^2.6.0
         version: 2.6.0
-    optionalDependencies:
-      '@internationalized/date':
-        specifier: ^3.8.2
-        version: 3.8.2
-      chart.js:
-        specifier: ^4.5.0
-        version: 4.5.0
-      react-chartjs-2:
-        specifier: ^5.3.0
-        version: 5.3.0(chart.js@4.5.0)(react@18.3.1)
     devDependencies:
       '@emotion/react':
         specifier: ^11.14.0
@@ -166,6 +156,10 @@ importers:
       vitest:
         specifier: ^2.1.9
         version: 2.1.9(@types/node@22.16.5)(jsdom@25.0.1)(terser@5.43.1)
+    optionalDependencies:
+      '@internationalized/date':
+        specifier: ^3.8.2
+        version: 3.8.2
 
 packages:
 
@@ -1314,9 +1308,6 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.29':
     resolution: {integrity: sha512-uw6guiW/gcAGPDhLmd77/6lW8QLeiV5RUTsAX46Db6oLhGaVj4lhnPwb184s1bkc8kdVg/+h988dro8GRDpmYQ==}
-
-  '@kurkle/color@0.3.4':
-    resolution: {integrity: sha512-M5UknZPHRu3DEDWoipU6sE8PdkZ6Z/S+v4dD+Ke8IaNlpdSQah50lz1KtcFBa2vsdOnwbbnxJwVM4wty6udA5w==}
 
   '@mdx-js/react@3.1.0':
     resolution: {integrity: sha512-QjHtSaoameoalGnKDT3FoIl4+9RwyTmo9ZJGBdLOks/YOiWHoRDI3PUwEzOE7kEmGcV3AFcp9K6dYu9rEuKLAQ==}
@@ -2664,10 +2655,6 @@ packages:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
     engines: {node: '>=10'}
 
-  chart.js@4.5.0:
-    resolution: {integrity: sha512-aYeC/jDgSEx8SHWZvANYMioYMZ2KX02W6f6uVfyteuCGcadDLcYVHdfdygsTQkQ4TKn5lghoojAsPj5pu0SnvQ==}
-    engines: {pnpm: '>=8'}
-
   check-error@2.1.1:
     resolution: {integrity: sha512-OAlb+T7V4Op9OwdkjmguYRqncdlx5JiofwOAUkmTF+jNdHwzTaTs4sRAGpzLF3oOz5xAyDGrPgeIDFQmDOTiJw==}
     engines: {node: '>= 16'}
@@ -3641,12 +3628,6 @@ packages:
 
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
-
-  react-chartjs-2@5.3.0:
-    resolution: {integrity: sha512-UfZZFnDsERI3c3CZGxzvNJd02SHjaSJ8kgW1djn65H1KK8rehwTjyrRKOG3VTMG8wtHZ5rgAO5oTHtHi9GCCmw==}
-    peerDependencies:
-      chart.js: ^4.1.1
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   react-docgen-typescript@2.4.0:
     resolution: {integrity: sha512-ZtAp5XTO5HRzQctjPU0ybY0RRCQO19X/8fxn3w7y2VVTUbGHDKULPTL4ky3vB05euSgG5NpALhEhDPvQ56wvXg==}
@@ -5812,9 +5793,6 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.4
 
-  '@kurkle/color@0.3.4':
-    optional: true
-
   '@mdx-js/react@3.1.0(@types/react@19.1.8)(react@18.3.1)':
     dependencies:
       '@types/mdx': 2.0.13
@@ -7655,11 +7633,6 @@ snapshots:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
 
-  chart.js@4.5.0:
-    dependencies:
-      '@kurkle/color': 0.3.4
-    optional: true
-
   check-error@2.1.1: {}
 
   chokidar@3.6.0:
@@ -8628,12 +8601,6 @@ snapshots:
   quansync@0.2.10: {}
 
   queue-microtask@1.2.3: {}
-
-  react-chartjs-2@5.3.0(chart.js@4.5.0)(react@18.3.1):
-    dependencies:
-      chart.js: 4.5.0
-      react: 18.3.1
-    optional: true
 
   react-docgen-typescript@2.4.0(typescript@5.6.3):
     dependencies:

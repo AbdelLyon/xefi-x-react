@@ -34,7 +34,7 @@ import { forwardRef } from "react";
 import { Progress as Progress$1 } from "@heroui/react";
 import { ProgressLabel } from "../ProgressLabel/index.es.js";
 import { defaultProgressFormatOptions, validateProgressValue } from "../progressUtils/index.es.js";
-import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
+import { mergeTailwindClasses } from "../../utils/string/index.es.js";
 const Progress = forwardRef(
   (_a, ref) => {
     var _b = _a, {

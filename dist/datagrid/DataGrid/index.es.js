@@ -39,7 +39,7 @@ import { useMemo } from "react";
 import { useInfiniteScroll } from "../../hooks/useInfiniteScroll/index.es.js";
 import { usePagination } from "../../hooks/usePagination/index.es.js";
 import { TruncatedText } from "../../utils/TruncatedText/index.es.js";
-import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
+import { mergeTailwindClasses } from "../../utils/string/index.es.js";
 function DataGrid(_a) {
   var _b = _a, {
     rows,

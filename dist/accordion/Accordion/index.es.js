@@ -33,7 +33,7 @@ import { jsx } from "react/jsx-runtime";
 import { forwardRef } from "react";
 import { Accordion as Accordion$1, AccordionItem } from "@heroui/react";
 import { validateAccordionItem, getAccordionSizeClasses, getAccordionVariantClasses } from "../accordionConfig/index.es.js";
-import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
+import { mergeTailwindClasses } from "../../utils/string/index.es.js";
 const Accordion = forwardRef(
   (_a, ref) => {
     var _b = _a, {

@@ -1,12 +1,11 @@
-// Core utilities
-export * from "./utils";
-export * from "./classNames";
+// String utilities
+export * from "./string";
 
-// Component utilities
-export { TruncatedText } from "./TruncatedText";
-export * from "./componentHelpers";
+// Number utilities
+export * from "./number";
 
-// Type utilities
+// Type checking utilities
+export * from "./typeChecking";
 export {
    isNonEmptyString,
    isValidReactNode,
@@ -15,11 +14,22 @@ export {
    isPositiveInteger,
 } from "./typeUtils";
 
-// Validation utilities
-export * from "./validation";
+// State checking utilities
+export * from "./stateChecking";
 
-// Formatting utilities  
-export * from "./format";
+// Array utilities
+export * from "./array";
 
-// Async utilities
-export * from "./async";
+// Object utilities
+export * from "./object";
+
+// UI utilities
+export * from "./ui";
+
+// Class name utilities
+export * from "./classNames";
+
+// Component utilities
+export { TruncatedText } from "./TruncatedText";
+
+

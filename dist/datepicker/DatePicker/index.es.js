@@ -32,7 +32,7 @@ var __objRest = (source, exclude) => {
 import { jsx } from "react/jsx-runtime";
 import { forwardRef } from "react";
 import { DatePicker as DatePicker$1, DateRangePicker as DateRangePicker$1 } from "@heroui/react";
-import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
+import { mergeTailwindClasses } from "../../utils/string/index.es.js";
 const getVariantStyles = (variant = "bordered") => {
   switch (variant) {
     case "bordered":

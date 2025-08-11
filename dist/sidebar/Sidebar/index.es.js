@@ -4,7 +4,7 @@ import { IconPlus } from "@tabler/icons-react";
 import { SidebarLink } from "../SidebarLink/index.es.js";
 import { SidebarAction } from "../SidebarAction/index.es.js";
 import { SidebarHeader } from "../SidebarHeader/index.es.js";
-import { mergeTailwindClasses } from "../../utils/utils/index.es.js";
+import { mergeTailwindClasses } from "../../utils/string/index.es.js";
 const Sidebar = ({
   items = [],
   appLogo,
