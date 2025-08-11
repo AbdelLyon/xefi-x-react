@@ -8,12 +8,12 @@ import { addToast } from "@/toast"
 import { mergeTailwindClasses } from "@/utils"
 import { useCallback, useState } from "react"
 
-import type { 
-  FilterConfig, 
-  ActiveFilter, 
+import type {
+  FilterConfig,
+  ActiveFilter,
   ToolbarAction,
   ImportExportConfig,
-  ViewMode
+  ViewMode,
 } from "../types/planning.types"
 
 import { FilterControls } from "./filters/FilterControls"
@@ -25,29 +25,32 @@ interface ToolbarProps {
   // Core configuration
   enabled?: boolean
   className?: string
-  
+
   // Filters
   filters?: FilterConfig[]
   activeFilters?: ActiveFilter[]
-  onFilterChange?: (key: string, value: string | string[] | boolean | null) => void
+  onFilterChange?: (
+    key: string,
+    value: string | string[] | boolean | null
+  ) => void
   onFilterClear?: (key: string) => void
   onFiltersClearAll?: () => void
-  
+
   // View mode
   viewMode?: ViewMode
   viewModes?: Array<{ key: ViewMode; label: string; disabled?: boolean }>
   onViewModeChange?: (mode: ViewMode) => void
-  
+
   // Today button
   showToday?: boolean
   onTodayClick?: () => void
-  
+
   // Custom actions
   actions?: ToolbarAction[]
-  
+
   // Import/Export
   importExport?: ImportExportConfig
-  
+
   // Additional switches/toggles
   switches?: Array<{
     key: string
@@ -55,12 +58,12 @@ interface ToolbarProps {
     checked: boolean
     onChange: (checked: boolean) => void
   }>
-  
+
   // Date range
-  dateRange?: RangeValue
-  onDateRangeChange?: (range: RangeValue) => void
+  dateRange?: RangeValue<unknown>
+  onDateRangeChange?: (range: RangeValue<unknown>) => void
   showDateRangeFilter?: boolean
-  
+
   // Loading state
   isLoading?: boolean
 }
@@ -77,7 +80,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
   viewModes = [
     { key: "week", label: "Semaine" },
     { key: "month", label: "Mois" },
-    { key: "twomonths", label: "2 Mois" }
+    { key: "twomonths", label: "2 Mois" },
   ],
   onViewModeChange,
   showToday = true,
@@ -88,95 +91,109 @@ export const Toolbar: React.FC<ToolbarProps> = ({
   dateRange,
   onDateRangeChange,
   showDateRangeFilter = true,
-  isLoading = false
+  isLoading = false,
 }) => {
   const [isFiltersExpanded, setIsFiltersExpanded] = useState(false)
-  
-  const handleFilterChange = useCallback((key: string, value: string | string[] | boolean | null) => {
-    onFilterChange?.(key, value)
-  }, [onFilterChange])
-  
-  const handleFilterClear = useCallback((key: string) => {
-    onFilterClear?.(key)
-  }, [onFilterClear])
-  
+
+  const handleFilterChange = useCallback(
+    (key: string, value: string | string[] | boolean | null) => {
+      onFilterChange?.(key, value)
+    },
+    [onFilterChange]
+  )
+
+  const handleFilterClear = useCallback(
+    (key: string) => {
+      onFilterClear?.(key)
+    },
+    [onFilterClear]
+  )
+
   const handleAction = useCallback((action: ToolbarAction) => {
     if (action.disabled) {
       return
     }
-    
+
     try {
       action.onClick?.()
       if (action.variant === "primary") {
         addToast({
           title: `Action ${action.label}`,
           description: "Action exécutée avec succès",
-          type: "success"
+          color: "success",
         })
       }
     } catch {
       addToast({
         title: "Erreur",
         description: `Impossible d'exécuter ${action.label}`,
-        type: "error"
+        color: "danger",
       })
     }
   }, [])
-  
-  const handleImport = useCallback(async (file: File) => {
-    if (!importExport?.onImport) {
-      return
-    }
-    
-    try {
-      await importExport.onImport(file)
-      addToast({
-        title: "Import réussi",
-        description: `Fichier ${file.name} importé avec succès`,
-        type: "success"
-      })
-    } catch {
-      addToast({
-        title: "Erreur d'import",
-        description: "Impossible d'importer le fichier",
-        type: "error"
-      })
-    }
-  }, [importExport])
-  
-  const handleExport = useCallback(async (format: string) => {
-    if (!importExport?.onExport) {
-      return
-    }
-    
-    try {
-      await importExport.onExport(format)
-      addToast({
-        title: "Export réussi",
-        description: `Données exportées en format ${format}`,
-        type: "success"
-      })
-    } catch {
-      addToast({
-        title: "Erreur d'export",
-        description: "Impossible d'exporter les données",
-        type: "error"
-      })
-    }
-  }, [importExport])
-  
+
+  const handleImport = useCallback(
+    async (file: File) => {
+      if (!importExport?.onImport) {
+        return
+      }
+
+      try {
+        await importExport.onImport(file)
+        addToast({
+          title: "Import réussi",
+          description: `Fichier ${file.name} importé avec succès`,
+          color: "success",
+        })
+      } catch {
+        addToast({
+          title: "Erreur d'import",
+          description: "Impossible d'importer le fichier",
+          color: "danger",
+        })
+      }
+    },
+    [importExport]
+  )
+
+  const handleExport = useCallback(
+    async (format: string) => {
+      if (!importExport?.onExport) {
+        return
+      }
+
+      try {
+        await importExport.onExport(format)
+        addToast({
+          title: "Export réussi",
+          description: `Données exportées en format ${format}`,
+          color: "success",
+        })
+      } catch {
+        addToast({
+          title: "Erreur d'export",
+          description: "Impossible d'exporter les données",
+          color: "danger",
+        })
+      }
+    },
+    [importExport]
+  )
+
   const hasActiveFilters = activeFilters.length > 0
-  
+
   if (!enabled) {
     return null
   }
-  
+
   return (
-    <Card className={mergeTailwindClasses(
-      "mb-4 overflow-hidden transition-all duration-200",
-      isLoading && "opacity-50 pointer-events-none",
-      className
-    )}>
+    <Card
+      className={mergeTailwindClasses(
+        "mb-4 overflow-hidden transition-all duration-200",
+        isLoading && "opacity-50 pointer-events-none",
+        className
+      )}
+    >
       <div className="p-4">
         {/* Main toolbar row */}
         <div className="flex flex-wrap items-center justify-between gap-4">
@@ -188,14 +205,11 @@ export const Toolbar: React.FC<ToolbarProps> = ({
               onChange={onViewModeChange}
               disabled={isLoading}
             />
-            
+
             {showToday && (
-              <TodayButton 
-                onClick={onTodayClick}
-                disabled={isLoading}
-              />
+              <TodayButton onClick={onTodayClick} disabled={isLoading} />
             )}
-            
+
             {/* Filter toggle button */}
             {filters.length > 0 && (
               <button
@@ -218,7 +232,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
               </button>
             )}
           </div>
-          
+
           {/* Right section: Actions and switches */}
           <div className="flex items-center gap-3">
             {/* Custom switches */}
@@ -234,7 +248,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
                 </Switch>
               </div>
             ))}
-            
+
             {/* Import/Export actions */}
             {importExport?.enabled && (
               <ImportExportActions
@@ -244,7 +258,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
                 disabled={isLoading}
               />
             )}
-            
+
             {/* Custom actions */}
             {actions.map((action) => (
               <button
@@ -253,11 +267,16 @@ export const Toolbar: React.FC<ToolbarProps> = ({
                 disabled={action.disabled || isLoading}
                 className={mergeTailwindClasses(
                   "flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
-                  action.variant === "primary" && "bg-primary text-primary-foreground hover:bg-primary/90",
-                  action.variant === "secondary" && "bg-default-100 hover:bg-default-200 dark:bg-default-800 dark:hover:bg-default-700",
-                  action.variant === "danger" && "bg-danger text-danger-foreground hover:bg-danger/90",
-                  !action.variant && "hover:bg-default-100 dark:hover:bg-default-800",
-                  (action.disabled || isLoading) && "opacity-50 cursor-not-allowed"
+                  action.variant === "primary" &&
+                    "bg-primary text-primary-foreground hover:bg-primary/90",
+                  action.variant === "secondary" &&
+                    "bg-default-100 hover:bg-default-200 dark:bg-default-800 dark:hover:bg-default-700",
+                  action.variant === "danger" &&
+                    "bg-danger text-danger-foreground hover:bg-danger/90",
+                  !action.variant &&
+                    "hover:bg-default-100 dark:hover:bg-default-800",
+                  (action.disabled || isLoading) &&
+                    "opacity-50 cursor-not-allowed"
                 )}
               >
                 {action.icon}
@@ -266,7 +285,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
             ))}
           </div>
         </div>
-        
+
         {/* Active filters display */}
         {hasActiveFilters && (
           <div className="mt-3 flex flex-wrap items-center gap-2">
@@ -278,8 +297,12 @@ export const Toolbar: React.FC<ToolbarProps> = ({
                 key={filter.key}
                 className="flex items-center gap-1 rounded-full bg-primary/10 px-3 py-1 text-sm"
               >
-                <span className="font-medium text-primary">{filter.label}:</span>
-                <span className="text-foreground-700">{filter.displayValue || filter.value}</span>
+                <span className="font-medium text-primary">
+                  {filter.label}:
+                </span>
+                <span className="text-foreground-700">
+                  {filter.displayValue || filter.value}
+                </span>
                 <button
                   onClick={() => handleFilterClear(filter.key)}
                   className="ml-1 rounded-full p-0.5 hover:bg-primary/20"
@@ -300,7 +323,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
             )}
           </div>
         )}
-        
+
         {/* Expanded filters */}
         {isFiltersExpanded && filters.length > 0 && (
           <div className="mt-4 border-t border-border pt-4">

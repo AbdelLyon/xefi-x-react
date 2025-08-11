@@ -25,8 +25,8 @@ interface ToolbarProps {
         checked: boolean;
         onChange: (checked: boolean) => void;
     }>;
-    dateRange?: RangeValue;
-    onDateRangeChange?: (range: RangeValue) => void;
+    dateRange?: RangeValue<unknown>;
+    onDateRangeChange?: (range: RangeValue<unknown>) => void;
     showDateRangeFilter?: boolean;
     isLoading?: boolean;
 }

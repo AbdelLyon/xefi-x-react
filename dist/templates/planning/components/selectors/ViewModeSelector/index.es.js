@@ -3,7 +3,7 @@ import { Buttons } from "../../../../../buttons/Buttons/index.es.js";
 import { mergeTailwindClasses } from "../../../../../utils/string/index.es.js";
 const ViewModeSelector = ({
   value,
-  options,
+  options = [],
   onChange,
   disabled = false,
   className = ""
@@ -23,21 +23,13 @@ const ViewModeSelector = ({
       ),
       variant: "light",
       size: "sm",
-      children: options.map((option) => /* @__PURE__ */ jsx(
-        Buttons.Item,
-        {
-          isSelected: value === option.key,
-          isDisabled: option.disabled || disabled,
-          onPress: () => handleModeChange(option.key),
-          className: mergeTailwindClasses(
-            "px-3 py-1.5 text-sm font-medium transition-all",
-            value === option.key ? "bg-background shadow-sm text-foreground" : "text-foreground-600 hover:text-foreground-800",
-            "rounded-md"
-          ),
-          children: option.label
-        },
-        option.key
-      ))
+      buttons: options == null ? void 0 : options.map((option) => ({
+        key: option.key,
+        label: option.label,
+        disabled: option.disabled || disabled,
+        onPress: () => handleModeChange(option.key),
+        isSelected: value === option.key
+      }))
     }
   );
 };

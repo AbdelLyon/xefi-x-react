@@ -1,11 +1,12 @@
+import { ViewMode } from '../../types/planning.types';
 interface ViewModeSelectorProps {
     value: string;
-    options: Array<{
+    options: {
         key: string;
         label: string;
         disabled?: boolean;
-    }>;
-    onChange?: (mode: string) => void;
+    }[];
+    onChange?: ((mode: ViewMode) => void) | undefined;
     disabled?: boolean;
     className?: string;
 }
