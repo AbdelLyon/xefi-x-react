@@ -57,9 +57,9 @@ export const Planning = <
   TDate = GenericDate,
 >({
   // Data
-  groups,
-  items,
-  periodDays,
+  groups = [],
+  items = [],
+  periodDays = [],
 
   // View configuration
   viewMode = "month",

@@ -8,9 +8,9 @@ import { Legend } from "../components/Legend/index.es.js";
 import { mergeTailwindClasses } from "../../../utils/string/index.es.js";
 const Planning = ({
   // Data
-  groups,
-  items,
-  periodDays,
+  groups = [],
+  items = [],
+  periodDays = [],
   // View configuration
   viewMode = "month",
   viewModes = [
