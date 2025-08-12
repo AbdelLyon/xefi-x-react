@@ -21,7 +21,7 @@ export {
   PlanningBody,
   Toolbar,
   Legend,
-  FilterControls,
+  // FilterControls,
   ImportExportActions,
   ViewModeSelector,
   TodayButton,

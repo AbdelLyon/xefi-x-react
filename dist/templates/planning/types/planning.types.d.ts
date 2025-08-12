@@ -155,4 +155,3 @@ export interface PlanningConfig<TGroupData = Record<string, never>, TUserData = 
     ariaDescription?: string;
 }
 export type PlanningProps<TGroupData = Record<string, never>, TUserData = Record<string, never>, TItemData = Record<string, never>, TDate = GenericDate> = PlanningConfig<TGroupData, TUserData, TItemData, TDate>;
-export type { GenericDate, PlanningDay, PlanningItem, PlanningUser, PlanningGroup, ViewMode, ViewModeConfig, FilterOption, FilterConfig, ActiveFilter, ToolbarAction, ImportExportConfig, LegendItem, LegendConfig, SidebarTab, SidebarConfig, PlanningConfig };

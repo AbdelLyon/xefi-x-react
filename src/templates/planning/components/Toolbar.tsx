@@ -1,5 +1,3 @@
-"use client"
-
 import { Card } from "@/card"
 import type { RangeValue } from "@/datepicker"
 import { Switch } from "@/form"
@@ -16,7 +14,7 @@ import type {
   ViewMode,
 } from "../types/planning.types"
 
-import { FilterControls } from "./filters/FilterControls"
+// import { FilterControls } from "./filters/FilterControls"
 import { ImportExportActions } from "./actions/ImportExportActions"
 import { ViewModeSelector } from "./selectors/ViewModeSelector"
 import { TodayButton } from "./actions/TodayButton"
@@ -73,7 +71,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
   className = "",
   filters = [],
   activeFilters = [],
-  onFilterChange,
+  // onFilterChange,
   onFilterClear,
   onFiltersClearAll,
   viewMode = "month",
@@ -88,19 +86,19 @@ export const Toolbar: React.FC<ToolbarProps> = ({
   actions = [],
   importExport,
   switches = [],
-  dateRange,
-  onDateRangeChange,
-  showDateRangeFilter = true,
+  // dateRange,
+  // onDateRangeChange,
+  // showDateRangeFilter = true,
   isLoading = false,
 }) => {
   const [isFiltersExpanded, setIsFiltersExpanded] = useState(false)
 
-  const handleFilterChange = useCallback(
-    (key: string, value: string | string[] | boolean | null) => {
-      onFilterChange?.(key, value)
-    },
-    [onFilterChange]
-  )
+  // const handleFilterChange = useCallback(
+  //   (key: string, value: string | string[] | boolean | null) => {
+  //     onFilterChange?.(key, value)
+  //   },
+  //   [onFilterChange]
+  // )
 
   const handleFilterClear = useCallback(
     (key: string) => {
@@ -324,7 +322,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
           </div>
         )}
 
-        {/* Expanded filters */}
+        {/* Expanded filters
         {isFiltersExpanded && filters.length > 0 && (
           <div className="mt-4 border-t border-border pt-4">
             <FilterControls
@@ -336,7 +334,7 @@ export const Toolbar: React.FC<ToolbarProps> = ({
               disabled={isLoading}
             />
           </div>
-        )}
+        )} */}
       </div>
     </Card>
   )

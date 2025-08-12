@@ -1,5 +1,3 @@
-"use client"
-
 import { Button } from "@/button"
 import type { DropdownItemConfig } from "@/dropdown"
 import { Dropdown } from "@/dropdown"
@@ -109,7 +107,7 @@ export const ImportExportActions: React.FC<ImportExportActionsProps> = ({
     [onExport]
   )
 
- const exportDropdownItems: DropdownItemConfig[] = formats.map((format) => ({
+  const exportDropdownItems: DropdownItemConfig[] = formats.map((format) => ({
     key: format,
     label: formatLabels[format] || format.toUpperCase(),
     startContent: formatIcons[format] || <IconFile className="size-4" />,

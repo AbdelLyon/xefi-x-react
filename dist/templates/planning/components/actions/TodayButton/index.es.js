@@ -8,18 +8,24 @@ const TodayButton = ({
   label = "Aujourd'hui",
   className = ""
 }) => {
-  return /* @__PURE__ */ jsx(Tooltip, { content: "Aller à aujourd'hui", children: /* @__PURE__ */ jsx(
-    Button,
+  return /* @__PURE__ */ jsx(
+    Tooltip,
     {
-      variant: "light",
-      size: "sm",
-      startContent: /* @__PURE__ */ jsx(IconCalendar, { className: "size-4" }),
-      onPress: onClick,
-      isDisabled: disabled,
-      className: `hover:bg-default-100 ${className}`,
-      children: label
+      content: "Aller à aujourd'hui",
+      trigger: /* @__PURE__ */ jsx(
+        Button,
+        {
+          variant: "light",
+          size: "sm",
+          leftIcon: /* @__PURE__ */ jsx(IconCalendar, { className: "size-4" }),
+          onClick,
+          isDisabled: disabled,
+          className: `hover:bg-default-100 ${className}`,
+          children: label
+        }
+      )
     }
-  ) });
+  );
 };
 export {
   TodayButton

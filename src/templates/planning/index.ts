@@ -11,7 +11,7 @@ export { Toolbar } from "./components/Toolbar";
 export { Legend } from "./components/Legend";
 
 // Sub-components
-export { FilterControls } from "./components/filters/FilterControls";
+// export { FilterControls } from "./components/filters/FilterControls";
 export { ImportExportActions } from "./components/actions/ImportExportActions";
 export { ViewModeSelector } from "./components/selectors/ViewModeSelector";
 export { TodayButton } from "./components/actions/TodayButton";

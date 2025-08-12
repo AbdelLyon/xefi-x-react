@@ -1,22 +1,22 @@
-"use client";
+"use client"
 
-import { Dayjs } from "dayjs";
-import React from "react";
+import type { Dayjs } from "dayjs"
+import React from "react"
 
-import { Leave } from "@/models/Leave";
-import { Group } from "@/models/User";
-import { usePlanningStore } from "@/store/usePlanningStore";
+import type { Leave } from "@/models/Leave"
+import type { Group } from "@/models/User"
+import { usePlanningStore } from "@/store/usePlanningStore"
 
-import { useCellSize } from "../../_hooks/usePlanningBodyData";
+import { useCellSize } from "../../_hooks/usePlanningBodyData"
 
-import { GroupRenderer } from "./GroupRenderer";
-import { PlanningBodySkeleton } from "./PlanningBodySkeleton";
+import { GroupRenderer } from "./GroupRenderer"
+import { PlanningBodySkeleton } from "./PlanningBodySkeleton"
 
 interface PlanningBodyProps {
-  currentGroups: Group[];
-  isLoading?: boolean;
-  leaves: Leave[];
-  periodDays: Dayjs[];
+  currentGroups: Group[]
+  isLoading?: boolean
+  leaves: Leave[]
+  periodDays: Dayjs[]
 }
 
 export const PlanningBody: React.FC<PlanningBodyProps> = ({
@@ -32,12 +32,12 @@ export const PlanningBody: React.FC<PlanningBodyProps> = ({
     expandedTeams,
 
     filters,
-  } = usePlanningStore();
+  } = usePlanningStore()
 
-  const cellSize = useCellSize(periodDays, viewMode, filters);
+  const cellSize = useCellSize(periodDays, viewMode, filters)
 
   const currentExpandedState =
-    selectedTab === "sites" ? expandedSites : expandedTeams;
+    selectedTab === "sites" ? expandedSites : expandedTeams
 
   if (isLoading) {
     return (
@@ -45,7 +45,7 @@ export const PlanningBody: React.FC<PlanningBodyProps> = ({
         groupCount={currentGroups.length || 3}
         usersPerGroup={5}
       />
-    );
+    )
   }
 
   return (
@@ -58,5 +58,5 @@ export const PlanningBody: React.FC<PlanningBodyProps> = ({
         cellSize={cellSize}
       />
     </div>
-  );
-};
+  )
+}

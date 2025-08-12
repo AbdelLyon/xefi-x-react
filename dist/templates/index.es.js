@@ -9,12 +9,10 @@ import { Sidebar } from "./planning/components/Sidebar/index.es.js";
 import { PlanningBody } from "./planning/components/PlanningBody/index.es.js";
 import { Toolbar } from "./planning/components/Toolbar/index.es.js";
 import { Legend } from "./planning/components/Legend/index.es.js";
-import { FilterControls } from "./planning/components/filters/FilterControls/index.es.js";
 import { ImportExportActions } from "./planning/components/actions/ImportExportActions/index.es.js";
 import { ViewModeSelector } from "./planning/components/selectors/ViewModeSelector/index.es.js";
 import { TodayButton } from "./planning/components/actions/TodayButton/index.es.js";
 export {
-  FilterControls,
   Header,
   HeaderActions,
   ImportExportActions,

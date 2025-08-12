@@ -1,5 +1,3 @@
-"use client"
-
 import { useCallback } from "react"
 
 import type {
@@ -14,7 +12,10 @@ import { IconChevronDown, IconEye, IconEyeClosed } from "@tabler/icons-react"
 import { Skeleton } from "@/skeleton"
 import { Tabs, type TabItem } from "@/tabs"
 
-interface SidebarProps<TGroupData = Record<string, never>, TUserData = Record<string, never>> {
+interface SidebarProps<
+  TGroupData = Record<string, never>,
+  TUserData = Record<string, never>,
+> {
   // Core configuration
   enabled?: boolean
   width?: number
@@ -60,12 +61,15 @@ interface SidebarProps<TGroupData = Record<string, never>, TUserData = Record<st
     onToggle: () => void
   ) => React.ReactNode
   renderHeader?: () => React.ReactNode
-  
+
   // Hover state
   hoveredUser?: string
 }
 
-export const Sidebar = <TGroupData = Record<string, never>, TUserData = Record<string, never>>({
+export const Sidebar = <
+  TGroupData = Record<string, never>,
+  TUserData = Record<string, never>,
+>({
   enabled = true,
   width = 240,
   className = "",

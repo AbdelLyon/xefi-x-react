@@ -1,5 +1,3 @@
-"use client"
-
 import { Chip } from "@/chip"
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react"
 import { Skeleton } from "@/skeleton"

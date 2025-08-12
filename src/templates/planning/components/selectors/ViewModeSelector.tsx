@@ -1,5 +1,3 @@
-"use client"
-
 import { Buttons } from "@/buttons"
 import { mergeTailwindClasses } from "@/utils"
 import type { ViewMode } from "../../types/planning.types"

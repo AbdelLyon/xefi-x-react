@@ -1,3 +1,4 @@
+import { default as React } from 'react';
 import { PlanningDay, PlanningGroup, PlanningItem, PlanningUser, GenericDate } from '../types/planning.types';
 interface PlanningBodyProps<TGroupData = Record<string, never>, TUserData = Record<string, never>, TItemData = Record<string, never>, TDate = GenericDate> {
     groups: PlanningGroup<TGroupData, TUserData>[];
@@ -15,5 +16,5 @@ interface PlanningBodyProps<TGroupData = Record<string, never>, TUserData = Reco
     hoveredUser?: string;
     hoveredDay?: string;
 }
-export declare const PlanningBody: <TGroupData = Record<string, never>, TUserData = Record<string, never>, TItemData = Record<string, never>, TDate = GenericDate>({ groups, items, periodDays, expandedGroups, cellMinWidth, isLoading, onItemClick, onCellClick, onUserClick: _onUserClick, renderCell, renderItem, className, hoveredUser, hoveredDay }: PlanningBodyProps<TGroupData, TUserData, TItemData, TDate>) => import("react/jsx-runtime").JSX.Element;
+export declare const PlanningBody: <TGroupData = Record<string, never>, TUserData = Record<string, never>, TItemData = Record<string, never>, TDate = GenericDate>({ groups, items, periodDays, expandedGroups, cellMinWidth, isLoading, onItemClick, onCellClick, onUserClick: _onUserClick, renderCell, renderItem, className, hoveredUser, hoveredDay, }: PlanningBodyProps<TGroupData, TUserData, TItemData, TDate>) => import("react/jsx-runtime").JSX.Element;
 export {};

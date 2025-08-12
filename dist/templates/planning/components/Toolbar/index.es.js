@@ -21,7 +21,6 @@ var __async = (__this, __arguments, generator) => {
 import { jsx, jsxs } from "react/jsx-runtime";
 import { IconFilter, IconX } from "@tabler/icons-react";
 import { useState, useCallback } from "react";
-import { FilterControls } from "../filters/FilterControls/index.es.js";
 import { ImportExportActions } from "../actions/ImportExportActions/index.es.js";
 import { ViewModeSelector } from "../selectors/ViewModeSelector/index.es.js";
 import { TodayButton } from "../actions/TodayButton/index.es.js";
@@ -34,7 +33,7 @@ const Toolbar = ({
   className = "",
   filters = [],
   activeFilters = [],
-  onFilterChange,
+  // onFilterChange,
   onFilterClear,
   onFiltersClearAll,
   viewMode = "month",
@@ -49,18 +48,12 @@ const Toolbar = ({
   actions = [],
   importExport,
   switches = [],
-  dateRange,
-  onDateRangeChange,
-  showDateRangeFilter = true,
+  // dateRange,
+  // onDateRangeChange,
+  // showDateRangeFilter = true,
   isLoading = false
 }) => {
   const [isFiltersExpanded, setIsFiltersExpanded] = useState(false);
-  const handleFilterChange = useCallback(
-    (key, value) => {
-      onFilterChange == null ? void 0 : onFilterChange(key, value);
-    },
-    [onFilterChange]
-  );
   const handleFilterClear = useCallback(
     (key) => {
       onFilterClear == null ? void 0 : onFilterClear(key);
@@ -253,18 +246,7 @@ const Toolbar = ({
               children: "Effacer tout"
             }
           )
-        ] }),
-        isFiltersExpanded && filters.length > 0 && /* @__PURE__ */ jsx("div", { className: "mt-4 border-t border-border pt-4", children: /* @__PURE__ */ jsx(
-          FilterControls,
-          {
-            filters,
-            onFilterChange: handleFilterChange,
-            dateRange,
-            onDateRangeChange,
-            showDateRangeFilter,
-            disabled: isLoading
-          }
-        ) })
+        ] })
       ] })
     }
   );

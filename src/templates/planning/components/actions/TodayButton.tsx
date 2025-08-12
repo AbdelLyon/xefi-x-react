@@ -1,5 +1,3 @@
-"use client"
-
 import { Button } from "@/button"
 import { IconCalendar } from "@tabler/icons-react"
 import { Tooltip } from "@/tooltip"
@@ -15,20 +13,23 @@ export const TodayButton: React.FC<TodayButtonProps> = ({
   onClick,
   disabled = false,
   label = "Aujourd'hui",
-  className = ""
+  className = "",
 }) => {
   return (
-    <Tooltip content="Aller à aujourd'hui">
-      <Button
-        variant="light"
-        size="sm"
-        startContent={<IconCalendar className="size-4" />}
-        onPress={onClick}
-        isDisabled={disabled}
-        className={`hover:bg-default-100 ${className}`}
-      >
-        {label}
-      </Button>
-    </Tooltip>
+    <Tooltip
+      content="Aller à aujourd'hui"
+      trigger={
+        <Button
+          variant="light"
+          size="sm"
+          leftIcon={<IconCalendar className="size-4" />}
+          onClick={onClick}
+          isDisabled={disabled}
+          className={`hover:bg-default-100 ${className}`}
+        >
+          {label}
+        </Button>
+      }
+    ></Tooltip>
   )
 }
